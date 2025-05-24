@@ -6,6 +6,9 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import "@styles/root.less";
 import "@styles/dark.less";
+import "@styles/hero.less";
+// Import animate.css for WOW animations
+import "animate.css";
 
 // Define a type for images from the content collection
 type ContentImage = {
@@ -134,4 +137,30 @@ const { description, title, preloadedImage } = Astro.props as Props;
     setTheme();
   
     document.addEventListener("astro:after-swap", setTheme); // For View Transitions purposes - astro:after-swap ensures that the theme is kept after navigating to a new page.
-  </script>
+</script>
+
+<!-- WOW.js initialization -->
+<script is:inline>
+  document.addEventListener('astro:page-load', () => {
+    // Initialize WOW.js when the page loads
+    if (typeof window !== 'undefined') {
+      // Dynamically import WOW.js
+      import('wowjs').then((module) => {
+        const { WOW } = module.default;
+        // Initialize WOW.js with options
+        const wow = new WOW({
+          boxClass: 'wow',      // animated element css class
+          animateClass: 'animated', // animation css class
+          offset: 50,          // distance to the element when triggering the animation
+          mobile: true,        // enable animations on mobile devices
+          live: true,          // continuously check for new WOW elements
+          callback: function(box) {
+            // callback when an element is animated
+          },
+          scrollContainer: null // optional scroll container selector
+        });
+        wow.init();
+      });
+    }
+  });
+</script>
