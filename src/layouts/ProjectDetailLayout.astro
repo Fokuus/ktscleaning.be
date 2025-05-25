@@ -4,10 +4,15 @@ import { formatDate } from "@js/utils";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import TableOfContents from "@components/TemplateComponents/TableOfContents.astro";
 import CTA from "@components/CTA.astro";
+import { Image } from "astro:assets";
 import "@styles/markdown.less";
 
 const { project, headings } = Astro.props;
 const { title, date, description, image, imageAlt, category } = project.data;
+
+// For debugging
+console.log('Image type:', typeof image);
+console.log('Image value:', image);
 ---
 
 <BaseLayout title={title} description={description} preloadedImage={image}>
@@ -31,9 +36,15 @@ const { title, date, description, image, imageAlt, category } = project.data;
 				</header>
 
 				<!--Main Project Image-->
-				<picture class="project-mainImage">
-					<img src={image} alt={imageAlt} width="795" height="400" decoding="async" />
-				</picture>
+				<div class="project-mainImage">
+					<Image 
+						src={image} 
+						alt={imageAlt} 
+						width={795} 
+						height={400} 
+						class="project-img"
+					/>
+				</div>
 
 				<!-- Mobile Table of Contents -->
 				<div class="project-sidebar_widget-wrapper cs-hide-on-desktop">

@@ -22,8 +22,8 @@ logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 site_url: https://intermediate-astro-kit-decap-cms.netlify.app
 
 # Default media folder settings
-media_folder: src/assets/images # Main media folder
-public_folder: src/assets/images # Main public folder
+media_folder: "src/assets/images" # Main media folder
+public_folder: "/src/assets/images" # Main public folder with leading slash for absolute paths
 
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog. Is also the key when fetching data from the CMS.
@@ -31,7 +31,7 @@ collections:
     folder: "src/content/blog" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     media_folder: "../../assets/images/blog" # Relative to the blog folder
-    public_folder: "../../assets/images/blog" # Path used in markdown files
+    public_folder: "/src/assets/images/blog" # Absolute path used in markdown files
     fields: # The fields for each document
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
@@ -48,7 +48,7 @@ collections:
     create: true
     slug: "{{slug}}"
     media_folder: "../../assets/images/projects" # Relative to the projects folder
-    public_folder: "../../assets/images/projects" # Path used in markdown files
+    public_folder: "/src/assets/images/projects" # Absolute path used in markdown files
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }

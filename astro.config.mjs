@@ -4,7 +4,7 @@ import icon from "astro-icon";
 import netlify from "@astrojs/netlify";
 
 export default defineConfig({
-  site: "https://www.yourwebsite.com", // update me!
+  site: "https://www.fokuus.nl", // Updated to Fokuus domain
   integrations: [
     icon(),
     sitemap({

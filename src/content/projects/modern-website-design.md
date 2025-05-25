@@ -3,9 +3,9 @@ title: "Modern Website Design"
 description: "A modern website design project featuring clean UI and responsive layout."
 category: "Web Development"
 date: 2023-12-15
-image: "../../assets/images/projects/website-design.jpg"
+image: "/src/assets/images/projects/website-design.jpg"
 imageAlt: "Modern website design mockup"
-logo: "../../assets/images/projects/cyclowax-logo.svg"
+logo: "/src/assets/images/projects/cyclowax-logo.svg"
 isFeatured: true
 ---
 

@@ -6,12 +6,29 @@
 import { getCollection } from "astro:content";
 import { formatDate } from "@js/utils";
 import "@styles/projects.less";
+import { Image } from "astro:assets";
+import placeholderLogo from "../assets/images/projects/placeholder-logo.svg";
+
+// Define the project type to fix TypeScript errors
+type ProjectEntry = {
+  id: string;
+  data: {
+    title: string;
+    category: string;
+    image: string | any; // Can be string or Astro image object
+    imageAlt: string;
+    description: string;
+    date: Date;
+    isFeatured?: boolean;
+    logo?: string;
+  };
+};
 
 // Get all projects from the collection
-let projects = [];
+let projects: ProjectEntry[] = [];
 try {
   console.log('Attempting to load projects collection...');
-  projects = await getCollection("projects");
+  projects = await getCollection("projects") as ProjectEntry[];
   console.log(`Found ${projects.length} projects for featured display`);
   console.log('Project files:', projects.map(p => p.id));
 } catch (error) {
@@ -19,7 +36,7 @@ try {
 }
 
 // Sort by featured status and date, then limit to 4 items for homepage
-const featuredProjects = projects
+const featuredProjects: ProjectEntry[] = projects
   .sort((a, b) => {
     // First sort by featured status
     if (a.data.isFeatured && !b.data.isFeatured) return -1;
@@ -34,36 +51,70 @@ const featuredProjects = projects
 <section id="projects" class="projects-section">
   <div class="projects-container">
     <div class="projects-header">
-      <p class="cs-topper">Our Work</p>
-      <h2 class="cs-title">Featured Projects</h2>
+      <p class="cs-topper">Ons Werk</p>
+      <h2 class="cs-title">Uitgelichte Projecten</h2>
       <div class="projects-divider"></div>
     </div>
 
-    <div class="projects-grid">
+    <div class="projects-grid homepage-grid">
       {featuredProjects.map((project) => (
         <a href={`/projects/${project.id}`} class="project-card">
-          <div class="project-image">
-            <img 
-              src={project.data.image} 
-              alt={project.data.imageAlt} 
-              width="400" 
-              height="400" 
-              decoding="async" 
-            />
-          </div>
-          <div class="project-content">
-            <p class="project-category">{project.data.category}</p>
-            <h3 class="project-title">{project.data.title}</h3>
-            <p class="project-date">{formatDate(project.data.date)}</p>
-            <p class="project-description">{project.data.description}</p>
-            <span class="project-link">View Project</span>
+          <div class="project-card-inner">
+            {/* Background image with zoom effect */}
+            <div class="project-background">
+              {typeof project.data.image === 'string' ? (
+                <img 
+                  src={project.data.image} 
+                  alt={project.data.imageAlt}
+                  class="project-bg-image"
+                />
+              ) : (
+                <Image 
+                  src={project.data.image} 
+                  alt={project.data.imageAlt}
+                  class="project-bg-image"
+                  width={800}
+                  height={800}
+                />
+              )}
+            </div>
+            
+            {/* Overlay with gradient */}
+            <div class="project-overlay"></div>
+            
+            {/* Centered logo */}
+            <div class="project-logo-container">
+              {project.data.logo ? (
+                <img 
+                  src={project.data.logo} 
+                  alt={`${project.data.title} logo`}
+                  class="project-logo"
+                  width="120"
+                  height="120"
+                />
+              ) : (
+                <Image 
+                  src={placeholderLogo} 
+                  alt={`${project.data.title} logo`}
+                  class="project-logo"
+                  width="120"
+                  height="120"
+                />
+              )}
+            </div>
+            
+            {/* Bottom info bar */}
+            <div class="project-info">
+              <div class="project-title">{project.data.title}</div>
+              <div class="project-category">{project.data.category}</div>
+            </div>
           </div>
         </a>
       ))}
     </div>
     
     <div class="projects-cta">
-      <a href="/projects" class="projects-button">See all projects</a>
+      <a href="/projects" class="projects-button">Bekijk alle projecten</a>
     </div>
   </div>
 </section>

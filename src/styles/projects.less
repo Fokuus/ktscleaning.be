@@ -29,6 +29,20 @@
     @media (min-width: 1200px) {
       grid-template-columns: repeat(3, 1fr);
     }
+    
+    /* Homepage grid is always 2x2 */
+    &.homepage-grid {
+      grid-template-columns: repeat(1, 1fr);
+      
+      @media (min-width: 600px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      /* Force 2x2 grid even on larger screens */
+      @media (min-width: 900px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   }
 
   .project-card {

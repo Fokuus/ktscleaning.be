@@ -1,11 +1,22 @@
 /* CODESTITCH STYLES, RESET, HEADER/NAVIGATION AND FOOTER */
 
 /* Import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+/* Font import moved to BaseLayout.astro */
 
 /* Apply fonts to body */
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+/* Set headings to normal weight for contrast */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+/* Use bold weight for specific elements that need emphasis */
+.cs-title, .nav-link, .btn, .button {
+  font-weight: 400;
 }
 
 /*-- -------------------------- -->
@@ -16,8 +27,8 @@ body {
 @media only screen and (min-width: 0em) {
 	// Website colors
 	:root {
-		--primary: hsl(0, 87%, 52%);
-		--primaryLight: hsl(80, 60%, 40%);
+		--primary: #05a8ff;
+		--primaryLight: hsl(225, 60%, 40%);
 		--secondary: #001f3f;
 		--secondaryLight: #001f3f;
 		--headerColor: #1a1a1a;

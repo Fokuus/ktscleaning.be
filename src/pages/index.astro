@@ -1,6 +1,7 @@
 ---
 import "@styles/root.less";
 import "@styles/reviews.less";
+import "@styles/services.less";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import CTA from "@components/CTA.astro";
 import FAQ from "@components/FAQ.astro";
@@ -31,12 +32,12 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 <section id="hero-856" class="wow animate__animated animate__fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
   <div class="cs-container">
       <div class="cs-content wow animate__animated animate__fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
-          <span class="cs-topper">Modern and Professional</span>
-          <h1 class="cs-title">Physical Therapy & Health and Wellness</h1>
+          <span class="cs-topper">Modern en Professioneel</span>
+          <h1 class="cs-title">Fokuus Webagency</h1>
           <p class="cs-text">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus unde id saepe quo. Est, ea! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id, provident? Lorem ipsum dolor sit amet consectetur adipisicing.
+              Wij maken websites die converteren en gebruiksvriendelijk zijn. Bij Fokuus begrijpen we dat een website niet alleen mooi moet zijn, maar ook effectief moet werken voor uw bedrijf en uw klanten.
           </p>
-          <a href="" class="cs-button-solid">Schedule An Appointment</a>
+          <a href="/contact" class="cs-button-solid">Neem contact op</a>
       </div>
       <!--Hero Image-->
       <picture class="cs-picture wow animate__animated animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.7s">
@@ -56,39 +57,60 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 </section>
                               
 
-  <!-- ============================================ -->
-  <!--                  Services                    -->
-  <!-- ============================================ -->
+<!-- ============================================ -->
+<!--                  Services                    -->
+<!-- ============================================ -->
 
-
-
-<section id="services-2371" class="wow animate__animated animate__fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-    <div class="cs-container">
-        <ul class="cs-card-group">
-            <li class="cs-item wow animate__animated animate__fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
-                <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FIcons%2Ftherapy1.svg" alt="icon" width="120" height="120">
-                <h3 class="cs-h3">Find Your Therapist</h3>
-                <p class="cs-item-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, rerum rem repudiandae libero.
-                </p>
-            </li>
-            <li class="cs-item wow animate__animated animate__fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s">
-                <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FIcons%2Ftherapy2.svg" alt="icon" width="120" height="120">
-                <h3 class="cs-h3">Begin Your Journey</h3>
-                <p class="cs-item-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, rerum rem repudiandae libero.
-                </p>
-            </li>
-            <li class="cs-item wow animate__animated animate__fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.7s">
-                <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FIcons%2Ftherapy3.svg" alt="icon" width="120" height="120">
-                <h3 class="cs-h3">Engine Diagnostics</h3>
-                <p class="cs-item-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, rerum rem repudiandae libero.
-                </p>
-            </li>
-        </ul>
-    </div>
+<!-- Import the services styles -->
+<section id="services-690">
+  <div class="cs-container">
+      <div class="cs-content">
+          <div class="cs-flex-group">
+              <span class="cs-topper">Onze Diensten</span>
+              <h2 class="cs-title">Wij maken websites die <span class="cs-color">converteren</span></h2>
+          </div>
+          <p class="cs-text">
+              Bij Fokuus helpen we bedrijven om online succesvol te zijn met gebruiksvriendelijke websites die bezoekers omzetten in klanten. Onze websites zijn niet alleen mooi, maar ook effectief voor uw bedrijfsdoelen.
+          </p>
+      </div>
+      <ul class="cs-card-group">
+          <li class="cs-item">
+              <a href="/diensten" class="cs-link">
+                  <picture class="cs-picture">
+                      <img class="cs-icon" src="/assets/images/icons/web-design.svg" loading="lazy" decoding="async" alt="webdesign icon" width="32" height="32" aria-hidden="true">
+                  </picture>
+                  <h3 class="cs-h3">Webdesign</h3>
+                  <p class="cs-item-text">
+                      Wij ontwerpen moderne, aantrekkelijke websites die uw merk perfect weerspiegelen en uw bezoekers direct aanspreken met een professionele uitstraling.
+                  </p>
+              </a>
+          </li>
+          <li class="cs-item">
+              <a href="/diensten" class="cs-link">
+                  <picture class="cs-picture">
+                      <img class="cs-icon" src="/assets/images/icons/web-development.svg" loading="lazy" decoding="async" alt="webontwikkeling icon" width="32" height="32" aria-hidden="true">
+                  </picture>
+                  <h3 class="cs-h3">Webontwikkeling</h3>
+                  <p class="cs-item-text">
+                      Onze developers bouwen gebruiksvriendelijke websites met schone code die snel laden en perfect werken op alle apparaten, van desktop tot mobiel.
+                  </p>
+              </a>
+          </li>
+          <li class="cs-item">
+              <a href="/diensten" class="cs-link">
+                  <picture class="cs-picture">
+                      <img class="cs-icon" src="/assets/images/icons/conversion.svg" loading="lazy" decoding="async" alt="conversie icon" width="32" height="32" aria-hidden="true">
+                  </picture>
+                  <h3 class="cs-h3">Conversie Optimalisatie</h3>
+                  <p class="cs-item-text">
+                      We zorgen ervoor dat uw website niet alleen mooi is, maar ook effectief bezoekers omzet in klanten voor uw bedrijf met doelgerichte call-to-actions.
+                  </p>
+              </a>
+          </li>
+      </ul>
+  </div>
 </section>
+                              
                                 
 
   <!-- ============================================ -->

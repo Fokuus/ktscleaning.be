@@ -5,9 +5,10 @@
 
 import { formatDate } from "@js/utils";
 import "@styles/projects.less";
+import { Image } from "astro:assets";
+import placeholderLogo from "../assets/images/projects/placeholder-logo.svg";
 
 const { projects } = Astro.props;
-const defaultLogo = "../../assets/images/projects/placeholder-logo.svg";
 ---
 
 <section class="projects-section">
@@ -17,17 +18,53 @@ const defaultLogo = "../../assets/images/projects/placeholder-logo.svg";
         projects.map((project) => (
           <a href={`/projects/${project.id}`} class="project-card">
             <div class="project-card-inner">
-              <div class="project-logo-container">
-                <img 
-                  src={project.data.logo || defaultLogo} 
-                  alt={`${project.data.title} logo`}
-                  class="project-logo"
-                  width="120"
-                  height="120"
-                />
+              {/* Background image with zoom effect */}
+              <div class="project-background">
+                {typeof project.data.image === 'string' ? (
+                  <img 
+                    src={project.data.image} 
+                    alt={project.data.imageAlt}
+                    class="project-bg-image"
+                  />
+                ) : (
+                  <Image 
+                    src={project.data.image} 
+                    alt={project.data.imageAlt}
+                    class="project-bg-image"
+                    width={800}
+                    height={800}
+                  />
+                )}
               </div>
-              <div class="project-client">
-                <span>{project.data.title}</span>
+              
+              {/* Overlay with gradient */}
+              <div class="project-overlay"></div>
+              
+              {/* Centered logo */}
+              <div class="project-logo-container">
+                {project.data.logo ? (
+                  <img 
+                    src={project.data.logo} 
+                    alt={`${project.data.title} logo`}
+                    class="project-logo"
+                    width="120"
+                    height="120"
+                  />
+                ) : (
+                  <Image 
+                    src={placeholderLogo} 
+                    alt={`${project.data.title} logo`}
+                    class="project-logo"
+                    width="120"
+                    height="120"
+                  />
+                )}
+              </div>
+              
+              {/* Bottom info bar */}
+              <div class="project-info">
+                <div class="project-title">{project.data.title}</div>
+                <div class="project-category">{project.data.category}</div>
               </div>
             </div>
           </a>

@@ -1,5 +1,5 @@
 ---
-import { ClientRouter } from "astro:transitions";
+// Page transitions disabled as requested
 import type { GetImageResult } from 'astro';
 import client from "@data/client.json";
 import Header from "@components/Header.astro";
@@ -33,8 +33,7 @@ const { description, title, preloadedImage } = Astro.props as Props;
 <!-- A fully fleshed-out <head>, dynamically changing based on client.json and the page front matter -->
 <html lang="en">
         <head>
-            <!-- View Transitions support -->
-            <ClientRouter />
+            <!-- View Transitions disabled as requested -->
 
             <!-- Standard meta tags -->
             <meta charset="UTF-8">
@@ -47,6 +46,11 @@ const { description, title, preloadedImage } = Astro.props as Props;
             <!-- If present, preloads the image passed as a prop -->
             {preloadedImage && <link rel="preload" href={preloadedImage.src} as="image" />}
 
+            <!-- Google Fonts - Lato -->
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+            
             <!-- Social Media Display - generated automatically with the props passd to BaseLayout -->
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
@@ -59,12 +63,11 @@ const { description, title, preloadedImage } = Astro.props as Props;
             }
                 
             <!-- Favicons -->
-            <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
-            <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png?v1">
-            <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+            <link rel="apple-touch-icon" href="/assets/images/logo.svg">
+            <link rel="icon" type="image/svg+xml" href="/favicon.svg?v3">
             <link rel="sitemap" href="/sitemap-index.xml" />
             <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-            <link rel="alternate icon" href="data:image/x-icon;base64," type="image/x-icon" />
+            <link rel="alternate icon" href="/favicon.svg" type="image/svg+xml" />
             <link rel="manifest" href="/assets/favicons/site.webmanifest">
             <meta name="msapplication-TileColor" content="#da532c">
             <meta name="theme-color" content="#ffffff">
