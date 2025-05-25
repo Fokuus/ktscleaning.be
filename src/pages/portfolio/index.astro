@@ -1,0 +1,220 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import "@styles/portfolio.less";
+
+// Get all portfolio items
+const portfolioItems = await getCollection("portfolio");
+
+// Sort by order and date (newest first)
+const sortedItems = portfolioItems.sort((a, b) => {
+  // First sort by order
+  if (a.data.order !== b.data.order) {
+    return a.data.order - b.data.order;
+  }
+  // If order is the same, sort by date (newest first)
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+});
+
+// Placeholder items if no real items exist
+const placeholderItems = [
+  {
+    id: "modern-website-design",
+    data: {
+      title: "Modern Website Design",
+      category: "Web Development",
+      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      layout: "tall",
+      date: new Date()
+    }
+  },
+  {
+    id: "e-commerce-platform",
+    data: {
+      title: "E-commerce Platform",
+      category: "Web Development",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      layout: "wide",
+      date: new Date()
+    }
+  },
+  {
+    id: "mobile-app-development",
+    data: {
+      title: "Mobile App Development",
+      category: "App Development",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      layout: "regular",
+      date: new Date()
+    }
+  }
+];
+
+// Use real items if available, otherwise use placeholders
+const displayItems = sortedItems.length > 0 ? sortedItems : placeholderItems;
+
+// Get unique categories for filtering
+const categories = [...new Set(displayItems.map(item => item.data.category))];
+---
+
+<BaseLayout title="Portfolio" description="Our portfolio of projects and case studies">
+  <!-- Portfolio Hero -->
+  <section class="portfolio-hero">
+    <div class="portfolio-hero-content">
+      <h1>Our Portfolio</h1>
+      <p>Explore our latest projects and case studies</p>
+    </div>
+  </section>
+
+  <!-- Portfolio Filters -->
+  <section class="portfolio-filters">
+    <div class="container">
+      <div class="filter-buttons">
+        <button class="filter-button active" data-category="all">All</button>
+        {categories.map(category => (
+          <button class="filter-button" data-category={category}>{category}</button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Grid -->
+  <section class="portfolio-section">
+    <div class="portfolio-container">
+      <div class="portfolio-grid">
+        {displayItems.map((item) => {
+          const slug = item.id.replace(/\.md$/, '');
+          
+          return (
+            <a href={`/portfolio/${slug}`} class="portfolio-link" data-category={item.data.category}>
+              <div class={`portfolio-item ${item.data.layout}`}>
+                <div class="portfolio-image-wrapper">
+                  <img src={item.data.image} alt={item.data.title} />
+                </div>
+                <div class="portfolio-overlay">
+                  <h3>{item.data.title}</h3>
+                  <p>{item.data.category}</p>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style lang="less">
+  .portfolio-hero {
+    background-color: var(--primary);
+    color: white;
+    padding: 5rem 1rem;
+    text-align: center;
+    
+    .portfolio-hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      
+      h1 {
+        font-size: 3.5rem;
+        font-weight: 900;
+        margin-bottom: 1rem;
+      }
+      
+      p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+    }
+  }
+  
+  .portfolio-filters {
+    padding: 2rem 1rem;
+    background-color: #f8f8f8;
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      
+      .filter-button {
+        padding: 0.5rem 1.5rem;
+        border: none;
+        background-color: white;
+        border-radius: 30px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        
+        &:hover {
+          background-color: #f0f0f0;
+        }
+        
+        &.active {
+          background-color: var(--primary);
+          color: white;
+        }
+      }
+    }
+  }
+  
+  /* Dark mode styles */
+  :global(body.dark-mode) {
+    .portfolio-filters {
+      background-color: rgba(0,0,0,0.2);
+      
+      .filter-buttons {
+        .filter-button {
+          background-color: rgba(255,255,255,0.1);
+          color: var(--bodyTextColorWhite);
+          
+          &:hover {
+            background-color: rgba(255,255,255,0.2);
+          }
+          
+          &.active {
+            background-color: var(--primary);
+          }
+        }
+      }
+    }
+  }
+</style>
+
+<script>
+  // Filter functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.filter-button');
+    const portfolioItems = document.querySelectorAll('.portfolio-link');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        // Get selected category
+        const category = button.getAttribute('data-category');
+        
+        // Filter items
+        portfolioItems.forEach(item => {
+          if (category === 'all' || item.getAttribute('data-category') === category) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
