@@ -5,7 +5,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import CTA from "@components/CTA.astro";
 import FAQ from "@components/FAQ.astro";
 import BlogMasonryGallery from "@components/BlogMasonryGallery.astro";
-import PortfolioMasonry from "@components/PortfolioMasonry.astro";
+import FeaturedProjects from "@components/FeaturedProjects.astro";
 import { getCollection } from "astro:content";
 
 // Get blog posts for the gallery
@@ -95,7 +95,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
   <!--                 Portfolio                  -->
   <!-- ============================================ -->
 
-  <PortfolioMasonry />
+  <FeaturedProjects />
 
   <!-- ============================================ -->
   <!--            Extra Content To Rank             -->

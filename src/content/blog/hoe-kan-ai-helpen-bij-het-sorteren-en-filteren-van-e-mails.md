@@ -8,7 +8,7 @@ description: In dit artikel bespreken we hoe AI je kan helpen bij het sorteren
   waardoor je kostbare tijd bespaart en je productiviteit verbetert.
 author: Anton
 date: 2025-05-24T11:12:00.000Z
-image: src/assets/images/blog/blog-cover.jpg
+image: "../../assets/images/blog/blog-cover.jpg"
 imageAlt: Kon
 isFeatured: true
 ---

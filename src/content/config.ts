@@ -1,28 +1,28 @@
-import { defineCollection, z } from 'astro:content';
+// src/content/config.ts
+import { z, defineCollection } from 'astro:content';
 
-// Define the schema for the portfolio collection
-const portfolioCollection = defineCollection({
+// Define a schema for each collection
+const projects = defineCollection({
   type: 'content',
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
+    description: z.string(),
     category: z.string(),
-    image: z.string(),
-    featured: z.boolean().default(false),
-    layout: z.enum(['regular', 'tall', 'wide']).default('regular'),
-    order: z.number().default(0),
     date: z.date(),
+    image: image(),
+    imageAlt: z.string(),
+    isFeatured: z.boolean().default(false),
   }),
 });
 
-// Define the schema for the blog collection
-const blogCollection = defineCollection({
+const blog = defineCollection({
   type: 'content',
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
     author: z.string(),
     date: z.date(),
-    image: z.string(),
+    image: image(),
     imageAlt: z.string(),
     isFeatured: z.boolean().default(false),
   }),
@@ -30,6 +30,6 @@ const blogCollection = defineCollection({
 
 // Export a single `collections` object to register your collection(s)
 export const collections = {
-  'portfolio': portfolioCollection,
-  'blog': blogCollection,
+  projects,
+  blog,
 };

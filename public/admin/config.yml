@@ -30,6 +30,8 @@ collections:
     label: "Blog" # Used in the admin dashboard UI
     folder: "src/content/blog" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
+    media_folder: "../../assets/images/blog" # Relative to the blog folder
+    public_folder: "../../assets/images/blog" # Path used in markdown files
     fields: # The fields for each document
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
@@ -40,17 +42,19 @@ collections:
       - { label: "Is it a featured post?", name: "isFeatured", widget: "boolean", default: false }
       - { label: "Body", name: "body", widget: "markdown" }
       
-  - name: "portfolio"
-    label: "Portfolio Projects"
-    folder: "src/content/portfolio"
+  - name: "projects"
+    label: "Projects"
+    folder: "src/content/projects"
     create: true
     slug: "{{slug}}"
+    media_folder: "../../assets/images/projects" # Relative to the projects folder
+    public_folder: "../../assets/images/projects" # Path used in markdown files
     fields:
       - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
       - { label: "Category", name: "category", widget: "string" }
-      - { label: "Project Image", name: "image", widget: "image" }
-      - { label: "Featured Project", name: "featured", widget: "boolean", default: false }
-      - { label: "Layout", name: "layout", widget: "select", options: ["regular", "tall", "wide"], default: "regular" }
-      - { label: "Display Order", name: "order", widget: "number", default: 0, value_type: "int" }
       - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Project Description", name: "body", widget: "markdown" }
+      - { label: "Project Image", name: "image", widget: "image" }
+      - { label: "Image Caption", name: "imageAlt", widget: "string" }
+      - { label: "Featured Project", name: "isFeatured", widget: "boolean", default: false }
+      - { label: "Project Content", name: "body", widget: "markdown" }

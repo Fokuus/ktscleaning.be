@@ -4,12 +4,41 @@ import "@styles/portfolio.less";
 import { getCollection } from "astro:content";
 
 // Get all portfolio items from the collection
-const portfolioItems = await getCollection("portfolio");
+let portfolioItems = [];
+try {
+  portfolioItems = await getCollection("portfolio");
+  console.log(`Found ${portfolioItems.length} portfolio items`);
+} catch (error) {
+  console.error('Error loading portfolio items:', error);
+}
 
-// Sort by date and limit to 4 items for homepage
-const sortedItems = portfolioItems
+// Placeholder projects when no items are found in the collection
+const placeholderItems = [
+  {
+    id: "placeholder-project",
+    data: {
+      title: "Placeholder Project",
+      category: "Web Development",
+      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      layout: "regular",
+      featured: true,
+      order: 0,
+      date: new Date()
+    }
+  }
+];
+
+// Use real items if available, otherwise use placeholders
+const allItems = portfolioItems.length > 0 ? portfolioItems : placeholderItems;
+
+// Sort by date and get featured items first, then limit to 4 items for homepage
+const sortedItems = allItems
   .sort((a, b) => {
-    // Sort by date (newest first)
+    // First sort by featured status
+    if (a.data.featured && !b.data.featured) return -1;
+    if (!a.data.featured && b.data.featured) return 1;
+    
+    // Then sort by date (newest first)
     return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
   })
   .slice(0, 4); // Limit to 4 items for homepage
