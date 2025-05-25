@@ -2,7 +2,7 @@
 title: "Gebakken"
 description: "Kitchen renovation project with modern design and functionality."
 category: "Interior Design"
-date: 2024-02-15
+date: 2025-05-25T20:33:00.000Z
 image: "../../assets/images/projects/website-design.jpg"
 imageAlt: "Modern kitchen renovation"
 isFeatured: true
