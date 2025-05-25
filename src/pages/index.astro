@@ -28,50 +28,101 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 <!--                    Hero                      -->
 <!-- ============================================ -->
 
-<section id="hero" class="wow animate__animated animate__fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-  <div class="cs-container">
-    <div class="cs-content wow animate__animated animate__fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
-      <h1 class="cs-title">Fast and Reliable<br>Professional<br>Cleaning Services</h1>
-      <p class="cs-text">
-        Donec hendrerit ultricies velit, vel ullamcorper est efficiend id. Lagusia in viverra lectus. Proin ac justo quis nunc varius cursus.
-      </p>
-      <div class="cs-button-group">
-        <a href="/contact" class="cs-button-solid">Get Service</a>
-        <a href="#video" class="cs-button-transparent">
-          <span class="cs-play-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
+<section id="hero" class="cleansy-hero">
+  <div class="hero-inner">
+    <!-- Left Column - Content -->  
+    <div class="hero-content">
+      <!-- Animated Heading -->
+      <div class="heading-animation">
+        <h1 class="animated-headline">
+          <span>Fast and Reliable </span>
+          <span class="words-wrapper">
+            <b class="is-visible">Professional</b>
+            <b class="is-hidden">Trusted</b>
+            <b class="is-hidden">Quality</b>
           </span>
-          Play video
-        </a>
+          <span> Cleaning Services</span>
+        </h1>
+      </div>
+      
+      <!-- Description Text -->
+      <div class="hero-description">
+        <p>Donec hendrerit ultricies velit, vel ullamcorper elit eleifend id. Lagusa in viverra lectus. Proin ac justo quis nunc varius cursus.</p>
+      </div>
+      
+      <!-- Decorative Element -->
+      <div class="hero-decoration">
+        <img src="https://elementor.altdesain.com/cleansy/wp-content/uploads/2025/04/elm1.png" alt="" width="136" height="73">
+      </div>
+      
+      <!-- Buttons Row -->
+      <div class="hero-buttons">
+        <!-- Play Button -->
+        <div class="play-button-wrapper">
+          <a href="#" class="play-button">
+            <span class="play-icon">
+              <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path>
+              </svg>
+            </span>
+          </a>
+          <span class="play-text">Play video</span>
+        </div>
+        
+        <!-- Get Service Button -->
+        <div class="service-button-wrapper">
+          <a href="/contact" class="service-button">
+            <span class="button-text">Get Service</span>
+          </a>
+        </div>
       </div>
     </div>
     
-    <div class="cs-hero-right wow animate__animated animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.7s">
-      <div class="cs-hero-image">
-        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Professional cleaner" width="600" height="700">
+    <!-- Right Column - Image & Review Card -->
+    <div class="hero-image-container">
+      <!-- Main Image -->
+      <div class="hero-image">
+        <img src="https://elementor.altdesain.com/cleansy/wp-content/uploads/2025/04/img1-reva.jpg" alt="Professional cleaner" width="336" height="424">
       </div>
       
-      <div class="cs-testimonial-card">
-        <div class="cs-testimonial-avatars">
-          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Customer avatar" width="40" height="40">
-          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer avatar" width="40" height="40">
-          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer avatar" width="40" height="40">
-          <span class="cs-more-avatars">+</span>
+      <!-- Review Card -->
+      <div class="review-card">
+        <!-- Avatars Row -->
+        <div class="avatar-container">
+          <div class="avatar">
+            <img src="https://elementor.altdesain.com/cleansy/wp-content/uploads/2025/04/ava1.png" alt="" width="55" height="55">
+          </div>
+          <div class="avatar">
+            <img src="https://elementor.altdesain.com/cleansy/wp-content/uploads/2025/04/ava2.png" alt="" width="55" height="55">
+          </div>
+          <div class="avatar">
+            <img src="https://elementor.altdesain.com/cleansy/wp-content/uploads/2025/04/ava3.png" alt="" width="55" height="55">
+          </div>
+          <div class="avatar-plus">
+            <a href="#" class="plus-button">
+              <span class="plus-icon">
+                <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+                </svg>
+              </span>
+            </a>
+          </div>
         </div>
-        <div class="cs-stars">
-          ★★★★★
+        
+        <!-- Review Count & Stars -->
+        <div class="review-info">
+          <span class="review-count">1,256 reviews</span>
+          <div class="star-rating">
+            <span class="stars">★★★★★</span>
+          </div>
         </div>
-        <p class="cs-testimonial-text">Maecenas consectetur tellus urna, in pulvinar lorem imperdiet eget.</p>
+        
+        <!-- Review Text -->
+        <div class="review-text">
+          <span>Maecenas consectetur tellus urna, in pulvinar lorem imperdiet eget.</span>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <div class="cs-curve-bottom">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path fill="#ffffff" fill-opacity="1" d="M0,96L80,106.7C160,117,320,139,480,149.3C640,160,800,160,960,138.7C1120,117,1280,75,1360,53.3L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
-    </svg>
   </div>
 </section>
                               
