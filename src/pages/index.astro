@@ -1,11 +1,11 @@
 ---
 import "@styles/root.less";
 import "@styles/reviews.less";
-import "@styles/cleansy-hero.less";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import CTA from "@components/CTA.astro";
 import FAQ from "@components/FAQ.astro";
 import BlogMasonryGallery from "@components/BlogMasonryGallery.astro";
+import PortfolioMasonry from "@components/PortfolioMasonry.astro";
 import { getCollection } from "astro:content";
 
 // Get blog posts for the gallery
@@ -28,102 +28,31 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 <!--                    Hero                      -->
 <!-- ============================================ -->
 
-<section id="hero" class="cleansy-hero">
-  <div class="hero-inner">
-    <!-- Left Column - Content -->  
-    <div class="hero-content">
-      <!-- Animated Heading -->
-      <div class="heading-animation">
-        <h1 class="animated-headline">
-          <span>Fast and Reliable </span>
-          <span class="words-wrapper">
-            <b class="is-visible">Professional</b>
-            <b class="is-hidden">Trusted</b>
-            <b class="is-hidden">Quality</b>
-          </span>
-          <span> Cleaning Services</span>
-        </h1>
+<section id="hero-856" class="wow animate__animated animate__fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+  <div class="cs-container">
+      <div class="cs-content wow animate__animated animate__fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+          <span class="cs-topper">Modern and Professional</span>
+          <h1 class="cs-title">Physical Therapy & Health and Wellness</h1>
+          <p class="cs-text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus unde id saepe quo. Est, ea! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id, provident? Lorem ipsum dolor sit amet consectetur adipisicing.
+          </p>
+          <a href="" class="cs-button-solid">Schedule An Appointment</a>
       </div>
-      
-      <!-- Description Text -->
-      <div class="hero-description">
-        <p>Donec hendrerit ultricies velit, vel ullamcorper elit eleifend id. Lagusa in viverra lectus. Proin ac justo quis nunc varius cursus.</p>
-      </div>
-      
-      <!-- Decorative Element -->
-      <div class="hero-decoration">
-        <img src="https://elementor.altdesain.com/cleansy/wp-content/uploads/2025/04/elm1.png" alt="" width="136" height="73">
-      </div>
-      
-      <!-- Buttons Row -->
-      <div class="hero-buttons">
-        <!-- Play Button -->
-        <div class="play-button-wrapper">
-          <a href="#" class="play-button">
-            <span class="play-icon">
-              <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
-                <path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path>
-              </svg>
-            </span>
-          </a>
-          <span class="play-text">Play video</span>
-        </div>
-        
-        <!-- Get Service Button -->
-        <div class="service-button-wrapper">
-          <a href="/contact" class="service-button">
-            <span class="button-text">Get Service</span>
-          </a>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Right Column - Image & Review Card -->
-    <div class="hero-image-container">
-      <!-- Main Image -->
-      <div class="hero-image">
-        <img src="https://elementor.altdesain.com/cleansy/wp-content/uploads/2025/04/img1-reva.jpg" alt="Professional cleaner" width="336" height="424">
-      </div>
-      
-      <!-- Review Card -->
-      <div class="review-card">
-        <!-- Avatars Row -->
-        <div class="avatar-container">
-          <div class="avatar">
-            <img src="https://elementor.altdesain.com/cleansy/wp-content/uploads/2025/04/ava1.png" alt="" width="55" height="55">
-          </div>
-          <div class="avatar">
-            <img src="https://elementor.altdesain.com/cleansy/wp-content/uploads/2025/04/ava2.png" alt="" width="55" height="55">
-          </div>
-          <div class="avatar">
-            <img src="https://elementor.altdesain.com/cleansy/wp-content/uploads/2025/04/ava3.png" alt="" width="55" height="55">
-          </div>
-          <div class="avatar-plus">
-            <a href="#" class="plus-button">
-              <span class="plus-icon">
-                <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
-                </svg>
-              </span>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Review Count & Stars -->
-        <div class="review-info">
-          <span class="review-count">1,256 reviews</span>
-          <div class="star-rating">
-            <span class="stars">★★★★★</span>
-          </div>
-        </div>
-        
-        <!-- Review Text -->
-        <div class="review-text">
-          <span>Maecenas consectetur tellus urna, in pulvinar lorem imperdiet eget.</span>
-        </div>
-      </div>
-    </div>
+      <!--Hero Image-->
+      <picture class="cs-picture wow animate__animated animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.7s">
+          <!--Mobile-->
+          <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy.jpg">
+          <!--Tablet-->
+          <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy.jpg">
+          <!--Desktop-->
+          <source media="(min-width: 1024px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy.jpg">
+          <img aria-hidden="true" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy.jpg" alt="therapy" width="570" height="701">
+          </picture>
   </div>
+  <!--Change the svg path fill color to whatever color the section below is so you can match it and create the illusion it is all one piece-->
+  <svg class="cs-wave" width="1920" height="179" viewBox="0 0 1920 179" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M1920 179V91.3463C1835.33 91.3463 1715.47 76.615 1549.2 32.9521C1299.48 -32.3214 1132.77 12.1006 947.32 61.5167C810.762 97.9044 664.042 137 466.533 137C331.607 137 256.468 123.447 188.082 111.113C130.974 100.812 78.5746 91.3609 0 91.3609V179H1920Z" fill="white"/>
+  </svg>
 </section>
                               
 
@@ -163,89 +92,10 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
                                 
 
   <!-- ============================================ -->
-  <!--                 Side By Side                 -->
+  <!--                 Portfolio                  -->
   <!-- ============================================ -->
 
-  <section id="sbs">
-    <div class="cs-container">
-      <!-- Left Image Section -->
-      <div class="cs-left">
-        <picture class="cs-picture cs-picture1">
-          <source
-            media="(max-width: 600px)"
-            srcset="/assets/images/cabinets2-m.jpg"
-          />
-          <source
-            media="(min-width: 601px)"
-            srcset="/assets/images/cabinets2.jpg"
-          />
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/images/cabinets2.jpg"
-            alt="cabinets"
-            loading="lazy"
-            width="400"
-            height="563"
-          />
-        </picture>
-        <picture class="cs-picture cs-picture2">
-          <source
-            media="(max-width: 600px)"
-            srcset="/assets/images/construction-m.jpg"
-          />
-          <source
-            media="(min-width: 601px)"
-            srcset="/assets/images/construction.jpg"
-          />
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/images/construction.jpg"
-            alt="house"
-            loading="lazy"
-            width="400"
-            height="563"
-          />
-        </picture>
-      </div>
-      <!-- Right Content Section-->
-      <div class="cs-right">
-        <span class="cs-topper">About Us</span>
-        <h2 class="cs-title">About Company Title</h2>
-        <p class="cs-text">
-          In consequat tincidunt turpis sit amet imperdiet. Praesent Class
-          officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur
-          et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent
-          nonatourean olei aptent taciti sociosqu ad litora torquent per.
-        </p>
-        <p class="cs-text">
-          In consequat tincidunt turpis sit amet imperdiet. Praesent Class
-          officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur
-          et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent
-          nonatourean olei aptent taciti sociosqu ad litora torquent per.
-        </p>
-        <div class="cs-flex-group">
-          <p class="cs-flex-p">
-            In consequat tincidunt turpis sit amet imperdiet. Praesent Classei
-            consequat tincidunt turpis sit amet imperdiet for mind.
-          </p>
-          <span class="cs-name">Justin Time</span>
-          <span class="cs-job">CEO-Founder</span>
-          <img
-            class="cs-quote-icon"
-            loading="lazy"
-            decoding="async"
-            src="https://csimg.nyc3.digitaloceanspaces.com/SideBySide/quote-white.svg"
-            alt="gavel"
-            width="136"
-            height="77"
-          />
-        </div>
-        <a href="/about" class="cs-button-solid">More About Us</a>
-      </div>
-    </div>
-  </section>
+  <PortfolioMasonry />
 
   <!-- ============================================ -->
   <!--            Extra Content To Rank             -->
@@ -406,20 +256,93 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
   /*-- -------------------------- -->
 <---           Hero             -->
 <--- -------------------------- -*/
+
   /* Mobile - 360px */
   @media only screen and (min-width: 0em) {
     #hero {
       font-family: "Roboto", "Arial", sans-serif;
-      background-color: #d9e8ed; /* Light blue background */
-      padding: 6rem 1rem 0;
+      /* Centers button */
+      text-align: center;
+      /* changes on tablet */
+      padding: 0 (16/16rem);
+      padding-bottom: (100/16rem);
       position: relative;
-      overflow: hidden;
       z-index: 1;
+      /* prevents overflow from the lines extending past the screen width */
+      overflow: hidden;
+
+      .cs-picture {
+        /* Background Image */
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -2;
+
+        &:before {
+          /* Black Color Overlay */
+          content: "";
+          width: 100%;
+          height: 100%;
+          background: #000;
+          opacity: 0.7;
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          /* prevents the cursor from interacting with it */
+          pointer-events: none;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          /* Makes image act like a background-image */
+          object-fit: cover;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
 
       .cs-container {
         width: 100%;
-        max-width: 1280px;
-        margin: 0 auto;
+        max-width: (1280/16em);
+        margin: auto;
+        /* we put the padding top and bottom on the container instead of #Hero so the pseudo element lines go to the top and bottom of the section */
+        /* 144px - 280px - leaving extra space for the navigation */
+        /* changes on tablet */
+        padding: clamp(9em, 25.95vw, 17.5em) 0;
+        position: relative;
+
+        &:before {
+          /* Left Line */
+          content: "";
+          width: 1px;
+          height: 100%;
+          background: -moz-linear-gradient(
+            top,
+            rgba(250, 251, 252, 0.5) 0%,
+            rgba(250, 251, 252, 0) 100%
+          ); /* FF3.6-15 */
+          background: -webkit-linear-gradient(
+            top,
+            rgba(250, 251, 252, 0.5) 0%,
+            rgba(250, 251, 252, 0) 100%
+          ); /* Chrome10-25,Safari5.1-6 */
+          opacity: 1;
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+
+      .cs-flex-group {
+        width: 80vw;
         /* 464px - 562px */
         max-width: clamp(29em, 60vw, 35.125em);
         margin: auto;
