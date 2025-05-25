@@ -20,12 +20,11 @@ const blogCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    pubDate: z.date(),
-    updatedDate: z.date().optional(),
-    heroImage: z.string().optional(),
-    categories: z.array(z.string()).default(['general']),
-    tags: z.array(z.string()).default([]),
-    featured: z.boolean().default(false),
+    author: z.string(),
+    date: z.date(),
+    image: z.string(),
+    imageAlt: z.string(),
+    isFeatured: z.boolean().default(false),
   }),
 });
 

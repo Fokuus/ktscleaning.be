@@ -6,41 +6,69 @@ import { getCollection } from "astro:content";
 // Get all portfolio items from the collection
 const portfolioItems = await getCollection("portfolio");
 
-// Sort portfolio items by order property
-let sortedItems = [];
-
-// Check if we have portfolio items
-if (portfolioItems.length > 0) {
-  sortedItems = portfolioItems.sort((a, b) => a.data.order - b.data.order);
-} else {
-  // Placeholder projects when no items are found in the collection
-  sortedItems = [
-    {
-      data: {
-        title: "Modern Website Design",
-        category: "Web Development",
-        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-        layout: "tall"
-      }
-    },
-    {
-      data: {
-        title: "E-commerce Platform",
-        category: "Web Development",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-        layout: "wide"
-      }
-    },
-    {
-      data: {
-        title: "Mobile App Development",
-        category: "App Development",
-        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-        layout: "regular"
-      }
+// Placeholder projects when no items are found in the collection
+const placeholderItems = [
+  {
+    id: "modern-website-design",
+    data: {
+      title: "Modern Website Design",
+      category: "Web Development",
+      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      layout: "regular",
+      order: 1,
+      date: new Date()
     }
-  ];
-}
+  },
+  {
+    id: "e-commerce-platform",
+    data: {
+      title: "E-commerce Platform",
+      category: "Web Development",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      layout: "regular",
+      order: 2,
+      date: new Date()
+    }
+  },
+  {
+    id: "mobile-app-development",
+    data: {
+      title: "Mobile App Development",
+      category: "App Development",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      layout: "regular",
+      order: 3,
+      date: new Date()
+    }
+  },
+  {
+    id: "brand-identity-design",
+    data: {
+      title: "Brand Identity Design",
+      category: "Branding",
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      layout: "regular",
+      order: 4,
+      date: new Date()
+    }
+  }
+];
+
+// Use real items if available, otherwise use placeholders
+const allItems = portfolioItems.length > 0 ? portfolioItems : placeholderItems;
+
+// Sort by order and limit to 4 items for homepage
+const sortedItems = allItems
+  .sort((a, b) => {
+    // First sort by featured status (featured items first)
+    if (a.data.featured !== b.data.featured) {
+      return a.data.featured ? -1 : 1;
+    }
+    // Then sort by order
+    return a.data.order - b.data.order;
+  })
+  .slice(0, 4); // Limit to 4 items for homepage
+
 ---
 
 <section id="portfolio" class="portfolio-section">
@@ -51,7 +79,7 @@ if (portfolioItems.length > 0) {
       <div class="portfolio-divider"></div>
     </div>
 
-    <div class="portfolio-grid">
+    <div class="portfolio-grid homepage-grid">
       {sortedItems.map((item) => {
         // For real portfolio items, use the ID as slug
         // For placeholder items, create a slug from the title
@@ -73,6 +101,10 @@ if (portfolioItems.length > 0) {
           </a>
         );
       })}
+    </div>
+    
+    <div class="portfolio-cta">
+      <a href="/portfolio" class="portfolio-button">See all projects</a>
     </div>
   </div>
 </section>

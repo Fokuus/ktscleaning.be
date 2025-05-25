@@ -64,18 +64,16 @@ const { entry, placeholderProject } = Astro.props;
 const isPlaceholder = !!placeholderProject;
 
 // Get the data we need
-let title, category, image, date, formattedDate, Content;
+let title, category, image, date, formattedDate;
+let isPlaceholderContent = false;
+let placeholderBody = "";
+let Content;
 
 if (isPlaceholder) {
   // Using placeholder project
   ({ title, category, image, date } = placeholderProject.data);
-  
-  // Create a simple content component for the placeholder
-  Content = () => {
-    return (
-      <div set:html={placeholderProject.body}></div>
-    );
-  };
+  isPlaceholderContent = true;
+  placeholderBody = placeholderProject.body;
 } else {
   // Using real entry from collection
   ({ title, category, image, date } = entry.data);
@@ -115,7 +113,11 @@ formattedDate = new Date(date).toLocaleDateString('en-US', {
   <section class="project-content">
     <div class="container">
       <div class="project-details">
-        <Content />
+        {isPlaceholderContent ? (
+          <p>{placeholderBody}</p>
+        ) : (
+          <Content />
+        )}
       </div>
     </div>
   </section>

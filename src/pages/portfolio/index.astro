@@ -3,18 +3,8 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import "@styles/portfolio.less";
 
-// Get all portfolio items
+// Get all portfolio items from the CMS collection
 const portfolioItems = await getCollection("portfolio");
-
-// Sort by order and date (newest first)
-const sortedItems = portfolioItems.sort((a, b) => {
-  // First sort by order
-  if (a.data.order !== b.data.order) {
-    return a.data.order - b.data.order;
-  }
-  // If order is the same, sort by date (newest first)
-  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
-});
 
 // Placeholder items if no real items exist
 const placeholderItems = [
@@ -25,6 +15,7 @@ const placeholderItems = [
       category: "Web Development",
       image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
       layout: "tall",
+      order: 1,
       date: new Date()
     }
   },
@@ -35,6 +26,7 @@ const placeholderItems = [
       category: "Web Development",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
       layout: "wide",
+      order: 2,
       date: new Date()
     }
   },
@@ -45,16 +37,92 @@ const placeholderItems = [
       category: "App Development",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
       layout: "regular",
+      order: 3,
+      date: new Date()
+    }
+  },
+  {
+    id: "brand-identity-design",
+    data: {
+      title: "Brand Identity Design",
+      category: "Branding",
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      layout: "regular",
+      order: 4,
+      date: new Date()
+    }
+  },
+  {
+    id: "social-media-campaign",
+    data: {
+      title: "Social Media Campaign",
+      category: "Marketing",
+      image: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      layout: "wide",
+      order: 5,
+      date: new Date()
+    }
+  },
+  {
+    id: "product-packaging",
+    data: {
+      title: "Product Packaging",
+      category: "Branding",
+      image: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      layout: "tall",
+      order: 6,
+      date: new Date()
+    }
+  },
+  {
+    id: "ui-ux-design",
+    data: {
+      title: "UI/UX Design",
+      category: "Web Development",
+      image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      layout: "regular",
+      order: 7,
+      date: new Date()
+    }
+  },
+  {
+    id: "seo-optimization",
+    data: {
+      title: "SEO Optimization",
+      category: "Marketing",
+      image: "https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      layout: "regular",
+      order: 8,
       date: new Date()
     }
   }
 ];
 
 // Use real items if available, otherwise use placeholders
-const displayItems = sortedItems.length > 0 ? sortedItems : placeholderItems;
+const allItems = portfolioItems.length > 0 ? portfolioItems : placeholderItems;
+
+// Sort by order and date (newest first)
+const sortedItems = allItems.sort((a, b) => {
+  // First sort by order
+  if (a.data.order !== b.data.order) {
+    return a.data.order - b.data.order;
+  }
+  // If order is the same, sort by date (newest first)
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+});
 
 // Get unique categories for filtering
-const categories = [...new Set(displayItems.map(item => item.data.category))];
+const categories = [...new Set(sortedItems.map(item => item.data.category))];
+
+// Pagination settings
+const itemsPerPage = 6;
+const currentPage = 1; // Default to first page
+const totalPages = Math.ceil(sortedItems.length / itemsPerPage);
+
+// Get items for current page
+const startIndex = (currentPage - 1) * itemsPerPage;
+const endIndex = startIndex + itemsPerPage;
+const currentItems = sortedItems.slice(startIndex, endIndex);
 ---
 
 <BaseLayout title="Portfolio" description="Our portfolio of projects and case studies">
@@ -82,7 +150,7 @@ const categories = [...new Set(displayItems.map(item => item.data.category))];
   <section class="portfolio-section">
     <div class="portfolio-container">
       <div class="portfolio-grid">
-        {displayItems.map((item) => {
+        {currentItems.map((item) => {
           const slug = item.id.replace(/\.md$/, '');
           
           return (
@@ -100,6 +168,28 @@ const categories = [...new Set(displayItems.map(item => item.data.category))];
           );
         })}
       </div>
+      
+      <!-- Pagination Controls -->
+      {totalPages > 1 && (
+        <div class="pagination">
+          <button class="pagination-button" id="prev-page" disabled={currentPage === 1}>
+            <span>&laquo; Previous</span>
+          </button>
+          <div class="pagination-numbers">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+              <button 
+                class={`pagination-number ${page === currentPage ? 'active' : ''}`}
+                data-page={page}
+              >
+                {page}
+              </button>
+            ))}
+          </div>
+          <button class="pagination-button" id="next-page" disabled={currentPage === totalPages}>
+            <span>Next &raquo;</span>
+          </button>
+        </div>
+      )}
     </div>
   </section>
 </BaseLayout>
@@ -108,7 +198,7 @@ const categories = [...new Set(displayItems.map(item => item.data.category))];
   .portfolio-hero {
     background-color: var(--primary);
     color: white;
-    padding: 5rem 1rem;
+    padding: 8rem 1rem;
     text-align: center;
     
     .portfolio-hero-content {
@@ -166,6 +256,62 @@ const categories = [...new Set(displayItems.map(item => item.data.category))];
     }
   }
   
+  /* Pagination styles */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    gap: 1rem;
+    
+    .pagination-button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      
+      &:hover:not(:disabled) {
+        background-color: darken(#0070f3, 10%);
+      }
+      
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+    
+    .pagination-numbers {
+      display: flex;
+      gap: 0.5rem;
+      
+      .pagination-number {
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background-color: #f0f0f0;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background-color: #e0e0e0;
+        }
+        
+        &.active {
+          background-color: var(--primary);
+          color: white;
+        }
+      }
+    }
+  }
+  
   /* Dark mode styles */
   :global(body.dark-mode) {
     .portfolio-filters {
@@ -186,35 +332,170 @@ const categories = [...new Set(displayItems.map(item => item.data.category))];
         }
       }
     }
+    
+    .pagination {
+      .pagination-button {
+        background-color: var(--primary);
+        
+        &:hover:not(:disabled) {
+          background-color: lighten(#0070f3, 5%);
+        }
+      }
+      
+      .pagination-numbers {
+        .pagination-number {
+          background-color: rgba(255,255,255,0.1);
+          color: var(--bodyTextColorWhite);
+          
+          &:hover {
+            background-color: rgba(255,255,255,0.2);
+          }
+          
+          &.active {
+            background-color: var(--primary);
+          }
+        }
+      }
+    }
   }
 </style>
 
 <script>
-  // Filter functionality
+  // Client-side filtering and pagination
   document.addEventListener('DOMContentLoaded', () => {
+    // Store all portfolio items in a variable for client-side manipulation
+    const allPortfolioItems = Array.from(document.querySelectorAll('.portfolio-link'));
     const filterButtons = document.querySelectorAll('.filter-button');
-    const portfolioItems = document.querySelectorAll('.portfolio-link');
+    const itemsPerPage = 6;
+    let currentPage = 1;
+    let currentCategory = 'all';
     
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterButtons.forEach(btn => btn.classList.remove('active'));
+    // Get pagination elements
+    const prevButton = document.getElementById('prev-page');
+    const nextButton = document.getElementById('next-page');
+    const pageButtons = document.querySelectorAll('.pagination-number');
+    const paginationContainer = document.querySelector('.pagination');
+    
+    // Filter items by category
+    function filterItems(category) {
+      currentCategory = category;
+      currentPage = 1; // Reset to first page when changing filters
+      
+      // Get filtered items
+      const filteredItems = allPortfolioItems.filter(item => {
+        return category === 'all' || item.getAttribute('data-category') === category;
+      });
+      
+      // Update pagination based on filtered items
+      updatePagination(filteredItems);
+      
+      // Show items for the current page
+      showItemsForCurrentPage(filteredItems);
+      
+      // Update active filter button
+      filterButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-category') === category);
+      });
+    }
+    
+    // Update pagination controls based on filtered items
+    function updatePagination(filteredItems) {
+      const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+      
+      // Hide pagination if only one page or no items
+      if (totalPages <= 1) {
+        paginationContainer.style.display = 'none';
+      } else {
+        paginationContainer.style.display = 'flex';
         
-        // Add active class to clicked button
-        button.classList.add('active');
-        
-        // Get selected category
-        const category = button.getAttribute('data-category');
-        
-        // Filter items
-        portfolioItems.forEach(item => {
-          if (category === 'all' || item.getAttribute('data-category') === category) {
-            item.style.display = 'block';
+        // Update page number buttons
+        pageButtons.forEach(btn => {
+          const pageNum = parseInt(btn.getAttribute('data-page'));
+          if (pageNum <= totalPages) {
+            btn.style.display = 'flex';
+            btn.classList.toggle('active', pageNum === currentPage);
           } else {
-            item.style.display = 'none';
+            btn.style.display = 'none';
           }
         });
+        
+        // Update prev/next buttons
+        prevButton.disabled = currentPage === 1;
+        nextButton.disabled = currentPage === totalPages;
+      }
+    }
+    
+    // Show items for the current page
+    function showItemsForCurrentPage(filteredItems) {
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = Math.min(startIndex + itemsPerPage, filteredItems.length);
+      
+      // Hide all items first
+      allPortfolioItems.forEach(item => {
+        item.style.display = 'none';
+      });
+      
+      // Show only the items for the current page and filter
+      filteredItems.slice(startIndex, endIndex).forEach(item => {
+        item.style.display = 'block';
+      });
+    }
+    
+    // Go to a specific page
+    function goToPage(page) {
+      currentPage = page;
+      
+      // Get currently filtered items
+      const filteredItems = allPortfolioItems.filter(item => {
+        return currentCategory === 'all' || item.getAttribute('data-category') === currentCategory;
+      });
+      
+      // Update pagination UI
+      updatePagination(filteredItems);
+      
+      // Show items for the current page
+      showItemsForCurrentPage(filteredItems);
+    }
+    
+    // Add event listeners to filter buttons
+    filterButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const category = button.getAttribute('data-category');
+        filterItems(category);
       });
     });
+    
+    // Add event listeners to pagination buttons
+    pageButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const page = parseInt(button.getAttribute('data-page'));
+        goToPage(page);
+      });
+    });
+    
+    // Add event listeners to prev/next buttons
+    prevButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (currentPage > 1) {
+        goToPage(currentPage - 1);
+      }
+    });
+    
+    nextButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const filteredItems = allPortfolioItems.filter(item => {
+        return currentCategory === 'all' || item.getAttribute('data-category') === currentCategory;
+      });
+      const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+      
+      if (currentPage < totalPages) {
+        goToPage(currentPage + 1);
+      }
+    });
+    
+    // Initialize with 'all' filter
+    filterItems('all');
   });
 </script>
