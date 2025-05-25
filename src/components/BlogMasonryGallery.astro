@@ -22,7 +22,7 @@ const { posts } = Astro.props;
             {
                 posts.length >= 1 &&
                 posts.map((post, index) => (
-                    <a href={`/blog/${post.slug}`} class="cs-item wow animate__animated animate__fadeIn" data-wow-duration="0.5s" data-wow-delay={`${0.2 + index * 0.1}s`}>
+                    <a href={`/blog/${post.id}`} class="cs-item wow animate__animated animate__fadeIn" data-wow-duration="0.5s" data-wow-delay={`${0.2 + index * 0.1}s`}>
                         <Picture
                             src={post.data.image}
                             quality={"mid"}
@@ -108,17 +108,14 @@ const { posts } = Astro.props;
 
         .cs-image-group {
             width: 100%;
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            grid-template-rows: repeat(3, auto);
-            grid-auto-flow: dense;
+            display: flex;
+            flex-wrap: wrap;
             gap: 1.25rem;
         }
 
         .cs-item {
             text-decoration: none;
             width: 100%;
-            height: 100%;
             position: relative;
             display: block;
             border-radius: 0.5rem;
@@ -201,42 +198,16 @@ const { posts } = Astro.props;
 @media only screen and (min-width: 48rem) {
     #gallery-2371 {
         .cs-image-group {
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(3, auto);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
         }
-
-        .cs-item {
-            &:nth-of-type(1) {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-            &:nth-of-type(2) {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-            &:nth-of-type(3) {
-                grid-column: span 2;
-                grid-row: span 1;
-                
-                .cs-image {
-                    height: 20rem;
-                }
-            }
-            &:nth-of-type(4) {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-            &:nth-of-type(5) {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-            &:nth-of-type(6) {
-                grid-column: span 2;
-                grid-row: span 1;
-                
-                .cs-image {
-                    height: 20rem;
-                }
+        
+        .cs-item {  
+            width: calc(50% - 0.625rem);
+            
+            .cs-image {
+                height: 15rem;
             }
         }
     }
@@ -251,45 +222,27 @@ const { posts } = Astro.props;
         }
 
         .cs-image-group {
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(3, auto);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
         }
-
+        
         .cs-item {
-            &:nth-of-type(1) {
-                grid-column: span 1;
-                grid-row: span 1;
+            width: calc(33.333% - 0.85rem);
+            
+            .cs-image {
+                height: 15rem;
             }
-            &:nth-of-type(2) {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
+            
             &:nth-of-type(3) {
-                grid-column: span 1;
-                grid-row: span 1;
-                
                 .cs-image {
                     height: 15rem;
                 }
             }
+            
             &:nth-of-type(4) {
-                grid-column: span 2;
-                grid-row: span 1;
-                
                 .cs-image {
-                    height: 20rem;
-                }
-            }
-            &:nth-of-type(5) {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-            &:nth-of-type(6) {
-                grid-column: span 3;
-                grid-row: span 1;
-                
-                .cs-image {
-                    height: 20rem;
+                    height: 15rem;
                 }
             }
         }

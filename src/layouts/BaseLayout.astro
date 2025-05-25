@@ -94,7 +94,20 @@ const { description, title, preloadedImage } = Astro.props as Props;
         </head>
         <body>
             <!-- Screen reader skip main nav -->
-            <a class="skip" aria-label="skip to main content" href="#main">Click To Skip To Main Content</a>
+            <a class="skip visually-hidden" aria-label="skip to main content" href="#main">Click To Skip To Main Content</a>
+            <style>
+                .visually-hidden {
+                    position: absolute;
+                    width: 1px;
+                    height: 1px;
+                    padding: 0;
+                    margin: -1px;
+                    overflow: hidden;
+                    clip: rect(0, 0, 0, 0);
+                    white-space: nowrap;
+                    border: 0;
+                }
+            </style>
     
             <Header />
             <main id="main">
