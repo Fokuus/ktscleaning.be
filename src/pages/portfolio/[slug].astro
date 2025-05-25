@@ -5,25 +5,92 @@ import { getCollection, getEntry } from "astro:content";
 // Generate static paths for all portfolio items
 export async function getStaticPaths() {
   const portfolioEntries = await getCollection("portfolio");
-  return portfolioEntries.map(entry => ({
-    params: { slug: entry.id.replace(/\.md$/, '') },
-    props: { entry },
+  
+  // If we have real portfolio entries, use those
+  if (portfolioEntries.length > 0) {
+    return portfolioEntries.map(entry => ({
+      params: { slug: entry.id.replace(/\.md$/, '') },
+      props: { entry },
+    }));
+  }
+  
+  // Otherwise, generate paths for placeholder projects
+  const placeholderProjects = [
+    {
+      slug: "modern-website-design",
+      data: {
+        title: "Modern Website Design",
+        category: "Web Development",
+        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+        layout: "tall",
+        date: new Date()
+      },
+      body: "A modern website design project featuring clean UI and responsive layout."
+    },
+    {
+      slug: "e-commerce-platform",
+      data: {
+        title: "E-commerce Platform",
+        category: "Web Development",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+        layout: "wide",
+        date: new Date()
+      },
+      body: "Custom e-commerce solution with integrated payment processing and inventory management."
+    },
+    {
+      slug: "mobile-app-development",
+      data: {
+        title: "Mobile App Development",
+        category: "App Development",
+        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+        layout: "regular",
+        date: new Date()
+      },
+      body: "Cross-platform mobile application with real-time data synchronization."
+    }
+  ];
+  
+  return placeholderProjects.map(project => ({
+    params: { slug: project.slug },
+    props: { placeholderProject: project },
   }));
 }
 
-// Get the portfolio entry from the props
-const { entry } = Astro.props;
-const { title, category, image, date } = entry.data;
+// Get the entry or placeholder from props
+const { entry, placeholderProject } = Astro.props;
+
+// Determine if we're using a real entry or a placeholder
+const isPlaceholder = !!placeholderProject;
+
+// Get the data we need
+let title, category, image, date, formattedDate, Content;
+
+if (isPlaceholder) {
+  // Using placeholder project
+  ({ title, category, image, date } = placeholderProject.data);
+  
+  // Create a simple content component for the placeholder
+  Content = () => {
+    return (
+      <div set:html={placeholderProject.body}></div>
+    );
+  };
+} else {
+  // Using real entry from collection
+  ({ title, category, image, date } = entry.data);
+  
+  // Get the rendered content
+  const rendered = await entry.render();
+  Content = rendered.Content;
+}
 
 // Format the date
-const formattedDate = new Date(date).toLocaleDateString('en-US', {
+formattedDate = new Date(date).toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric'
 });
-
-// Get the content
-const { Content } = await entry.render();
 ---
 
 <BaseLayout title={title} description={`Portfolio project: ${title}`}>
