@@ -1,6 +1,13 @@
 ---
 // PortfolioMasonry.astro - A masonry grid portfolio component with smooth hover effects
 import "@styles/portfolio.less";
+import { getCollection } from "astro:content";
+
+// Get all portfolio items from the collection
+const portfolioItems = await getCollection("portfolio");
+
+// Sort portfolio items by order property
+const sortedItems = portfolioItems.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section id="portfolio" class="portfolio-section">
@@ -12,71 +19,17 @@ import "@styles/portfolio.less";
     </div>
 
     <div class="portfolio-grid">
-      <!-- Item 1 - Tall -->
-      <div class="portfolio-item tall">
-        <div class="portfolio-image-wrapper">
-          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Project 1" />
+      {sortedItems.map((item) => (
+        <div class={`portfolio-item ${item.data.layout}`}>
+          <div class="portfolio-image-wrapper">
+            <img src={item.data.image} alt={item.data.title} />
+          </div>
+          <div class="portfolio-overlay">
+            <h3>{item.data.title}</h3>
+            <p>{item.data.category}</p>
+          </div>
         </div>
-        <div class="portfolio-overlay">
-          <h3>Project Name</h3>
-          <p>Category</p>
-        </div>
-      </div>
-      
-      <!-- Item 2 - Regular -->
-      <div class="portfolio-item">
-        <div class="portfolio-image-wrapper">
-          <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Project 2" />
-        </div>
-        <div class="portfolio-overlay">
-          <h3>Project Name</h3>
-          <p>Category</p>
-        </div>
-      </div>
-      
-      <!-- Item 3 - Wide -->
-      <div class="portfolio-item wide">
-        <div class="portfolio-image-wrapper">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Project 3" />
-        </div>
-        <div class="portfolio-overlay">
-          <h3>Project Name</h3>
-          <p>Category</p>
-        </div>
-      </div>
-      
-      <!-- Item 4 - Regular -->
-      <div class="portfolio-item">
-        <div class="portfolio-image-wrapper">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Project 4" />
-        </div>
-        <div class="portfolio-overlay">
-          <h3>Project Name</h3>
-          <p>Category</p>
-        </div>
-      </div>
-      
-      <!-- Item 5 - Regular -->
-      <div class="portfolio-item">
-        <div class="portfolio-image-wrapper">
-          <img src="https://images.unsplash.com/photo-1555421689-3f034debb7a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Project 5" />
-        </div>
-        <div class="portfolio-overlay">
-          <h3>Project Name</h3>
-          <p>Category</p>
-        </div>
-      </div>
-      
-      <!-- Item 6 - Tall -->
-      <div class="portfolio-item tall">
-        <div class="portfolio-image-wrapper">
-          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Project 6" />
-        </div>
-        <div class="portfolio-overlay">
-          <h3>Project Name</h3>
-          <p>Category</p>
-        </div>
-      </div>
+      ))}
     </div>
   </div>
 </section>
