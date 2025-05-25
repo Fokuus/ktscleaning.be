@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Laravel Logo</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M155.714,142.857 L155.714,157.143 L44.2857,157.143 L44.2857,142.857 L155.714,142.857 Z M155.714,114.286 L155.714,128.571 L44.2857,128.571 L44.2857,114.286 L155.714,114.286 Z M155.714,85.7143 L155.714,100 L44.2857,100 L44.2857,85.7143 L155.714,85.7143 Z M155.714,57.1429 L155.714,71.4286 L44.2857,71.4286 L44.2857,57.1429 L155.714,57.1429 Z M155.714,28.5714 L155.714,42.8571 L44.2857,42.8571 L44.2857,28.5714 L155.714,28.5714 Z" fill="#FFFFFF" fill-rule="nonzero"></path>
+    </g>
+</svg>

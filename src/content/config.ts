@@ -11,6 +11,7 @@ const projects = defineCollection({
     date: z.date(),
     image: image(),
     imageAlt: z.string(),
+    logo: z.string().optional(),
     isFeatured: z.boolean().default(false),
   }),
 });

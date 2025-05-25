@@ -1,10 +1,11 @@
 ---
-title: "Mobile App Design"
+title: "Laravel"
 description: "Cross-platform mobile application with real-time data synchronization."
 category: "App Development"
 date: 2023-10-05
 image: "../../assets/images/projects/mobile-app.jpg"
 imageAlt: "Mobile app interface design"
+logo: "../../assets/images/projects/laravel-logo.svg"
 isFeatured: true
 ---
 

@@ -1,10 +1,11 @@
 ---
-title: "E-commerce Platform"
+title: "Shopify"
 description: "A comprehensive e-commerce solution with inventory management and payment processing."
 category: "Web Development"
 date: 2024-01-20
 image: "../../assets/images/projects/ecommerce.jpg"
 imageAlt: "E-commerce platform dashboard"
+logo: "../../assets/images/projects/shopify-logo.svg"
 isFeatured: true
 ---
 

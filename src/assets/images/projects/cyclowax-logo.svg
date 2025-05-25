@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Cyclowax Logo</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M100,30 C139.765,30 172,62.2355 172,102 C172,141.765 139.765,174 100,174 C60.2355,174 28,141.765 28,102 C28,62.2355 60.2355,30 100,30 Z M100,50 C71.2812,50 48,73.2812 48,102 C48,130.719 71.2812,154 100,154 C128.719,154 152,130.719 152,102 C152,73.2812 128.719,50 100,50 Z" fill="#FFFFFF" fill-rule="nonzero"></path>
+        <path d="M100,70 L130,120 L70,120 L100,70 Z" fill="#FFFFFF" fill-rule="nonzero"></path>
+    </g>
+</svg>

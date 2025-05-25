@@ -49,92 +49,70 @@
     display: block;
     border-radius: (8/16em);
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: var(--cardBg);
+    background-color: #121212;
     text-decoration: none;
     height: 100%;
     aspect-ratio: 1/1;
+    position: relative;
     
     &:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-      
-      .project-link {
-        color: var(--primary);
-        
-        &::after {
-          transform: scaleX(1);
-          transform-origin: left;
-        }
-      }
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
-  }
-
-  .project-image {
-    width: 100%;
-    height: 50%;
-    position: relative;
-    overflow: hidden;
     
-    img {
-      width: 100%;
+    .project-card-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    &:hover img {
-      transform: scale(1.05);
+      width: 100%;
+      position: relative;
+      padding: 2rem;
     }
   }
 
-  .project-content {
-    padding: (24/16em);
+  .project-logo-container {
+    flex: 1;
     display: flex;
-    flex-direction: column;
-    height: 50%;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .project-logo {
+    width: 120px;
+    height: auto;
+    max-height: 120px;
+    filter: brightness(0) invert(1); /* Make logo white */
+    transition: transform 0.5s ease;
+  }
+  
+  .project-client {
+    width: 100%;
+    text-align: center;
+    margin-top: auto;
+    padding-top: 2rem;
+    
+    span {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
   }
 
-  .project-category {
-    font-size: (14/16em);
-    font-weight: 600;
-    text-transform: uppercase;
-    color: var(--primary);
-    margin-bottom: (8/16em);
+  /* Updated grid layout for more spacing between cards */
+  .projects-grid {
+    gap: (32/16em);
   }
-
-  .project-title {
-    font-size: (20/16em);
-    font-weight: 700;
-    line-height: 1.3;
-    color: var(--headerColor);
-    margin-bottom: (12/16em);
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .project-date {
-    font-size: (14/16em);
-    color: var(--bodyTextColor);
-    opacity: 0.8;
-    margin-bottom: (12/16em);
-  }
-
-  .project-description {
-    font-size: (14/16em);
-    line-height: 1.5;
-    color: var(--bodyTextColor);
-    margin-bottom: (16/16em);
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    flex-grow: 1;
+  
+  /* Add subtle hover animation */
+  .project-card:hover .project-logo {
+    transform: scale(1.1);
   }
 
   .project-link {
@@ -161,11 +139,11 @@
   }
 }
 
-/* Dark Mode */
+/* Dark Mode - already dark by default, but keeping for consistency */
 @media only screen and (min-width: 0em) {
   body.dark-mode {
     .project-card {
-      background-color: var(--darkBg);
+      background-color: #121212;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       
       &:hover {
@@ -173,18 +151,19 @@
       }
     }
     
-    .project-title {
-      color: var(--bodyTextColorWhite);
+    .project-client span {
+      color: #ffffff;
+    }
+  }
+  
+  /* Light mode override */
+  body:not(.dark-mode) {
+    .project-card {
+      background-color: #121212;
     }
     
-    .project-description,
-    .project-date {
-      color: var(--bodyTextColorWhite);
-      opacity: 0.8;
-    }
-    
-    .project-link {
-      color: var(--bodyTextColorWhite);
+    .project-client span {
+      color: #ffffff;
     }
   }
 }

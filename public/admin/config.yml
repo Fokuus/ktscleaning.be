@@ -56,5 +56,6 @@ collections:
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Project Image", name: "image", widget: "image" }
       - { label: "Image Caption", name: "imageAlt", widget: "string" }
+      - { label: "Project Logo", name: "logo", widget: "image", required: false, hint: "Optional logo that will appear on hover (SVG preferred)" }
       - { label: "Featured Project", name: "isFeatured", widget: "boolean", default: false }
       - { label: "Project Content", name: "body", widget: "markdown" }

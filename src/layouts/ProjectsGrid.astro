@@ -7,6 +7,7 @@ import { formatDate } from "@js/utils";
 import "@styles/projects.less";
 
 const { projects } = Astro.props;
+const defaultLogo = "../../assets/images/projects/placeholder-logo.svg";
 ---
 
 <section class="projects-section">
@@ -15,21 +16,19 @@ const { projects } = Astro.props;
       {
         projects.map((project) => (
           <a href={`/projects/${project.id}`} class="project-card">
-            <div class="project-image">
-              <img 
-                src={project.data.image} 
-                alt={project.data.imageAlt} 
-                width="400" 
-                height="400" 
-                decoding="async" 
-              />
-            </div>
-            <div class="project-content">
-              <p class="project-category">{project.data.category}</p>
-              <h3 class="project-title">{project.data.title}</h3>
-              <p class="project-date">{formatDate(project.data.date)}</p>
-              <p class="project-description">{project.data.description}</p>
-              <span class="project-link">View Project</span>
+            <div class="project-card-inner">
+              <div class="project-logo-container">
+                <img 
+                  src={project.data.logo || defaultLogo} 
+                  alt={`${project.data.title} logo`}
+                  class="project-logo"
+                  width="120"
+                  height="120"
+                />
+              </div>
+              <div class="project-client">
+                <span>{project.data.title}</span>
+              </div>
             </div>
           </a>
         ))
