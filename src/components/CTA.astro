@@ -1,133 +1,218 @@
----
-/**
- * * Example use case of the CSPicture component if you need to use different images on mobile and desktop, for art direction.
- * * If you're fine with using the same image on all devices, you can use an >Image /> or <Picture /> component.
-**/
-// Import the component and all the images you want to use with it
-import CSPicture from "@components/TemplateComponents/CSPicture.astro";
-import mobileImage from "@assets/images/CTA/construction-m.jpg"
-import desktopImage from "@assets/images/CTA/cabinets2.jpg"
-import fallbackImage from "@assets/images/CTA/cabinets2.jpg"
----
+<!-- ============================================ -->
+<!--                    CTA                       -->
+<!-- ============================================ -->
 
-<section id="cta">
-  <div class="container">
-    <h2 class="title">
-      Get It Done
-      <br />
-       With Us Today
-    </h2>
-    <p>
-      Say something catchy, informative, and encouraging to click the button to
-      go to the contact page. I like to add these to the bottom of all pages.
-    </p>
-    <a href="/contact" class="cs-button-solid">Get an Estimate Now</a>
+<section id="cta-262">
+  <div class="cs-container">
+      <div class="cs-left-section">
+          <h2 class="cs-title">Schedule Your Next Checkup With Us</h2>
+          <a href="" class="cs-button-solid">Request Appointment</a>
+      </div>
+      <div class="cs-content">
+          <span class="cs-header">Available Hours</span>
+          <p class="cs-p"> 
+              Tuesday, Thursday, Friday: 9am-6pm<br>
+              ​(closed for lunch 12pm-2pm)
+          </p>
+          <p class="cs-p">
+              Appointments Preferred, Walk-Ins Welcome.<br>
+              Saturdays by Appointment Only.
+          </p>
+      </div>
+      <picture class="cs-background">
+          <source media="(max-width: 600px)" srcset="https://csimg.nyc3.digitaloceanspaces.com/CTA/cloth-m.jpg">
+          <source media="(min-width: 601px)" srcset="https://csimg.nyc3.digitaloceanspaces.com/CTA/cloth.jpg">
+          <img aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/CTA/cloth.jpg" alt="appliance" width="275" height="132">
+      </picture>
   </div>
-  <CSPicture
-    mobileImgUrl={mobileImage}
-    mobileMediaWidth="600px"
-    desktopImgUrl={desktopImage}
-    desktopMediaWidth="601px"
-    fallbackImgUrl={fallbackImage}
-    alt=""
-  />
-  
 </section>
+                              
 
-<style lang="less">
-  
-/* Mobile */
-@media only screen and (min-width: 0em) {
-  #cta {
-    padding: (50/16rem) 0;
-    position: relative;
+<style>
+  /*-- -------------------------- -->
+<---            CTA             -->
+<--- -------------------------- -*/
 
-    &:before {
-      content: "";
-      width: 100%;
-      height: 100%;
-      background: #000;
-      opacity: 0.7;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #cta-262 {
+        padding: var(--sectionPadding);
+
+        .cs-container {
+            width: 100%;
+            max-width: (1280/16rem);
+            margin: auto;
+            /* 32px - 88px top & bottom */
+            /* 24px - 88px left & right */
+            padding: clamp(2em, 6.3vw, 5.5em) clamp(1.5em, 5.7vw, 5.5em);
+            border-radius: (16/16rem);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: (32/16rem);
+            position: relative;
+            /* clips the corners for the border radius to show */
+            overflow: hidden;
+            z-index: 1;
+            /* prevents padding from adding to height and width */
+            box-sizing: border-box;
+        }
+
+        .cs-background {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            z-index: -1;
+
+            &:before {
+                /* black overlay */
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: #000;
+                opacity: 0.7;
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+
+            &:after {
+                /* brown overlay */
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: var(--primaryLight);
+                opacity: 0.2;
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                z-index: 2;
+            }
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .cs-left-section {
+            max-width: (434/16rem);
+        }
+
+        .cs-title {
+            color: var(--bodyTextColorWhite);
+            margin-bottom: clamp(1.25rem, 4.2vw, 3rem);
+        }
+
+        .cs-button-solid {
+            font-size: (16/16rem);
+            /* 46px - 56px */
+            line-height: clamp(2.875em, 5.5vw, 3.5em);
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            margin: auto;
+            color: #fff;
+            min-width: (150/16rem);
+            padding: 0 (24/16rem);
+            background-color: var(--primary);
+            border-radius: (4/16rem);
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            /* prevents padding from adding to the width */
+            box-sizing: border-box;
+
+            &:before {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 0%;
+                background: #000;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                border-radius: (4/16rem);
+                transition: width 0.3s;
+            }
+
+            &:hover {
+                &:before {
+                    width: 100%;
+                }
+            }
+        }
+
+        .cs-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            /* 12px - 20px */
+            gap: clamp(0.75rem, 1.6vw, 1.25rem);
+        }
+
+        .cs-header {
+            /* 20px - 25px */
+            font-size: clamp(1.25rem, 2.4vw, 1.5625rem);
+            font-weight: bold;
+            color: var(--primaryLight);
+            display: block;
+        }
+
+        .cs-p {
+            /* 14px - 20px */
+            font-size: clamp(0.875rem, 1.5vw, 1.25rem);
+            line-height: 1.5em;
+            margin: 0;
+            color: var(--bodyTextColorWhite);
+        }
     }
-
-    .container {
-      text-align: center;
-    }
-
-    .title {
-      font-size: ~"min(9vw, 3rem)";
-      font-weight: 900;
-      line-height: 58/48;
-      text-align: center;
-      margin-bottom: (36/16rem);
-      color: #fff;
-      position: relative;
-    }
-
-    p {
-      text-align: center;
-      width: 96%;
-      max-width: (598/16rem);
-      margin: auto;
-      margin-bottom: (36/16rem);
-      color: #fff;
-      opacity: 1;
-    }
-  }
 }
 
-/* Small Desktop */
-@media only screen and (min-width: 64em) {
-  #cta {
-    padding: (168/16rem) 0;
-  }
-}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #cta-262 {
+        .cs-container {
+            flex-direction: row;
+            justify-content: space-between;
+        }
 
-/* Large Desktop */
-@media only screen and (min-width: 1300px) {
-  #cta {
-    margin-top: (100/16rem);
-    position: relative;
-    &:before {
-      display: none;
+        .cs-content {
+            align-items: flex-end;
+            text-align: right;
+            /* prevents flexbox from squishing it */
+            flex: none;
+        }
     }
-    &:after {
-      content: "";
-      // width: (2000/16rem);
-      width: 100%; /* a fixed width causes overflow on desktop */
-      height: (1108/16rem);
-      background: url("/assets/svgs/cta-squares.svg");
-      background-position: center;
-      background-size: contain;
-      background-repeat: no-repeat;
-      opacity: 1;
-      display: block;
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      z-index: -3;
-      transform: translateX(-50%);
-    }
-    .container {
-      width: 90.0625%;
-      margin: auto;
-    }
-  }
 }
 
 /* Dark Mode */
-@media only screen and (min-width: 0em) {
-  body.dark-mode {
-    #cta {
-      &:after {
-        display: none;
-      }
+@media only screen and (min-width: 0rem) {
+    body.dark-mode {
+        #cta-262 {
+            .cs-background {
+                &:before {
+                    opacity: 0.9;
+                }
+                &:after {
+                    opacity: 0.1;
+                }
+            }
+        }
     }
-  }
 }
+                                
 </style>
