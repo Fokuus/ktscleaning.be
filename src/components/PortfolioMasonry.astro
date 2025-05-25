@@ -7,7 +7,40 @@ import { getCollection } from "astro:content";
 const portfolioItems = await getCollection("portfolio");
 
 // Sort portfolio items by order property
-const sortedItems = portfolioItems.sort((a, b) => a.data.order - b.data.order);
+let sortedItems = [];
+
+// Check if we have portfolio items
+if (portfolioItems.length > 0) {
+  sortedItems = portfolioItems.sort((a, b) => a.data.order - b.data.order);
+} else {
+  // Placeholder projects when no items are found in the collection
+  sortedItems = [
+    {
+      data: {
+        title: "Modern Website Design",
+        category: "Web Development",
+        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+        layout: "tall"
+      }
+    },
+    {
+      data: {
+        title: "E-commerce Platform",
+        category: "Web Development",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+        layout: "wide"
+      }
+    },
+    {
+      data: {
+        title: "Mobile App Development",
+        category: "App Development",
+        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+        layout: "regular"
+      }
+    }
+  ];
+}
 ---
 
 <section id="portfolio" class="portfolio-section">
