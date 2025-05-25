@@ -21,8 +21,9 @@ logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 # Add site links in DecapCMS (optional)
 site_url: https://intermediate-astro-kit-decap-cms.netlify.app
 
-media_folder: src/assets/images/blog # Location where files will be stored in the repo - we store them in src so that Astro can optimize them.
-public_folder: src/assets/images/blog # Ensure that this path is the same as the media_folder path above.
+# Default media folder settings
+media_folder: src/assets/images # Main media folder
+public_folder: src/assets/images # Main public folder
 
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog. Is also the key when fetching data from the CMS.
@@ -38,3 +39,18 @@ collections:
       - { label: "Image Caption", name: "imageAlt", widget: "string" }
       - { label: "Is it a featured post?", name: "isFeatured", widget: "boolean", default: false }
       - { label: "Body", name: "body", widget: "markdown" }
+      
+  - name: "portfolio"
+    label: "Portfolio Projects"
+    folder: "src/content/portfolio"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Project Image", name: "image", widget: "image" }
+      - { label: "Featured Project", name: "featured", widget: "boolean", default: false }
+      - { label: "Layout", name: "layout", widget: "select", options: ["regular", "tall", "wide"], default: "regular" }
+      - { label: "Display Order", name: "order", widget: "number", default: 0, value_type: "int" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Project Description", name: "body", widget: "markdown" }
