@@ -1,6 +1,7 @@
 ---
 import "@styles/root.less";
 import "@styles/reviews.less";
+import "@styles/cleansy-hero.less";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import CTA from "@components/CTA.astro";
 import FAQ from "@components/FAQ.astro";
@@ -27,31 +28,51 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 <!--                    Hero                      -->
 <!-- ============================================ -->
 
-<section id="hero-856" class="wow animate__animated animate__fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+<section id="hero" class="wow animate__animated animate__fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
   <div class="cs-container">
-      <div class="cs-content wow animate__animated animate__fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
-          <span class="cs-topper">Modern and Professional</span>
-          <h1 class="cs-title">Physical Therapy & Health and Wellness</h1>
-          <p class="cs-text">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus unde id saepe quo. Est, ea! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id, provident? Lorem ipsum dolor sit amet consectetur adipisicing.
-          </p>
-          <a href="" class="cs-button-solid">Schedule An Appointment</a>
+    <div class="cs-content wow animate__animated animate__fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+      <h1 class="cs-title">Fast and Reliable<br>Professional<br>Cleaning Services</h1>
+      <p class="cs-text">
+        Donec hendrerit ultricies velit, vel ullamcorper est efficiend id. Lagusia in viverra lectus. Proin ac justo quis nunc varius cursus.
+      </p>
+      <div class="cs-button-group">
+        <a href="/contact" class="cs-button-solid">Get Service</a>
+        <a href="#video" class="cs-button-transparent">
+          <span class="cs-play-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </span>
+          Play video
+        </a>
       </div>
-      <!--Hero Image-->
-      <picture class="cs-picture wow animate__animated animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.7s">
-          <!--Mobile-->
-          <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy.jpg">
-          <!--Tablet-->
-          <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy.jpg">
-          <!--Desktop-->
-          <source media="(min-width: 1024px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy.jpg">
-          <img aria-hidden="true" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy.jpg" alt="therapy" width="570" height="701">
-          </picture>
+    </div>
+    
+    <div class="cs-hero-right wow animate__animated animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.7s">
+      <div class="cs-hero-image">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Professional cleaner" width="600" height="700">
+      </div>
+      
+      <div class="cs-testimonial-card">
+        <div class="cs-testimonial-avatars">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Customer avatar" width="40" height="40">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer avatar" width="40" height="40">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer avatar" width="40" height="40">
+          <span class="cs-more-avatars">+</span>
+        </div>
+        <div class="cs-stars">
+          ★★★★★
+        </div>
+        <p class="cs-testimonial-text">Maecenas consectetur tellus urna, in pulvinar lorem imperdiet eget.</p>
+      </div>
+    </div>
   </div>
-  <!--Change the svg path fill color to whatever color the section below is so you can match it and create the illusion it is all one piece-->
-  <svg class="cs-wave" width="1920" height="179" viewBox="0 0 1920 179" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M1920 179V91.3463C1835.33 91.3463 1715.47 76.615 1549.2 32.9521C1299.48 -32.3214 1132.77 12.1006 947.32 61.5167C810.762 97.9044 664.042 137 466.533 137C331.607 137 256.468 123.447 188.082 111.113C130.974 100.812 78.5746 91.3609 0 91.3609V179H1920Z" fill="white"/>
-  </svg>
+  
+  <div class="cs-curve-bottom">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#ffffff" fill-opacity="1" d="M0,96L80,106.7C160,117,320,139,480,149.3C640,160,800,160,960,138.7C1120,117,1280,75,1360,53.3L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+    </svg>
+  </div>
 </section>
                               
 
@@ -334,93 +355,20 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
   /*-- -------------------------- -->
 <---           Hero             -->
 <--- -------------------------- -*/
-
   /* Mobile - 360px */
   @media only screen and (min-width: 0em) {
     #hero {
       font-family: "Roboto", "Arial", sans-serif;
-      /* Centers button */
-      text-align: center;
-      /* changes on tablet */
-      padding: 0 (16/16rem);
-      padding-bottom: (100/16rem);
+      background-color: #d9e8ed; /* Light blue background */
+      padding: 6rem 1rem 0;
       position: relative;
-      z-index: 1;
-      /* prevents overflow from the lines extending past the screen width */
       overflow: hidden;
-
-      .cs-picture {
-        /* Background Image */
-        width: 100%;
-        height: 100%;
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -2;
-
-        &:before {
-          /* Black Color Overlay */
-          content: "";
-          width: 100%;
-          height: 100%;
-          background: #000;
-          opacity: 0.7;
-          display: block;
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: 1;
-          /* prevents the cursor from interacting with it */
-          pointer-events: none;
-        }
-
-        img {
-          width: 100%;
-          height: 100%;
-          /* Makes image act like a background-image */
-          object-fit: cover;
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
-      }
+      z-index: 1;
 
       .cs-container {
         width: 100%;
-        max-width: (1280/16em);
-        margin: auto;
-        /* we put the padding top and bottom on the container instead of #Hero so the pseudo element lines go to the top and bottom of the section */
-        /* 144px - 280px - leaving extra space for the navigation */
-        /* changes on tablet */
-        padding: clamp(9em, 25.95vw, 17.5em) 0;
-        position: relative;
-
-        &:before {
-          /* Left Line */
-          content: "";
-          width: 1px;
-          height: 100%;
-          background: -moz-linear-gradient(
-            top,
-            rgba(250, 251, 252, 0.5) 0%,
-            rgba(250, 251, 252, 0) 100%
-          ); /* FF3.6-15 */
-          background: -webkit-linear-gradient(
-            top,
-            rgba(250, 251, 252, 0.5) 0%,
-            rgba(250, 251, 252, 0) 100%
-          ); /* Chrome10-25,Safari5.1-6 */
-          opacity: 1;
-          display: block;
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
-      }
-
-      .cs-flex-group {
-        width: 80vw;
+        max-width: 1280px;
+        margin: 0 auto;
         /* 464px - 562px */
         max-width: clamp(29em, 60vw, 35.125em);
         margin: auto;

@@ -1,17 +1,17 @@
 <!-- ============================================ -->
-<!--                   Header                    -->
+<!--                 Navigation                   -->
 <!-- ============================================ -->
 
 <header id="cs-navigation">
   <div class="cs-container">
-      <!-- Logo -->
+      <!--Nav Logo-->
+      <!--Logo is turned white in the css with a filter on dark mode-->
       <a href="/" class="cs-logo" aria-label="back to home">
-          <span class="cs-logo-icon">🧹</span> Cleansy
+          <img src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/day-care.svg" alt="logo" width="210" height="29" aria-hidden="true" decoding="async">
       </a>
-
-      <!-- Navigation List -->
+      <!--Navigation List-->
       <nav class="cs-nav" role="navigation">
-          <!-- Mobile Nav Toggle -->
+          <!--Mobile Nav Toggle-->
           <button id="mobile-menu-toggle" class="cs-toggle" aria-label="mobile menu toggle" aria-expanded="false">
               <div class="cs-box" aria-hidden="true">
                   <span class="cs-line cs-line1" aria-hidden="true"></span>
@@ -19,123 +19,92 @@
                   <span class="cs-line cs-line3" aria-hidden="true"></span>
               </div>
           </button>
-
+          <!-- We need a wrapper div so we can set a fixed height on the cs-ul in case the nav list gets too long from too many dropdowns being opened and needs to have an overflow scroll. This wrapper acts as the background so it can go the full height of the screen and not cut off any overflowing nav items while the cs-ul stops short of the bottom of the screen, which keeps all nav items in view no matter how mnay there are-->
           <div id="cs-ul-wrapper" class="cs-ul-wrapper">
               <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
                   <li class="cs-li">
-                      <a href="/" class="cs-li-link cs-active">Home</a>
+                      <a href="/" class="cs-li-link cs-active">
+                          Home
+                      </a>
                   </li>
                   <li class="cs-li">
-                      <a href="/pages" class="cs-li-link">Pages</a>
+                      <a href="/about" class="cs-li-link">
+                          About
+                      </a>
                   </li>
-                  <li class="cs-li">
-                      <a href="/about" class="cs-li-link">About</a>
-                  </li>
+                  <!--Copy and paste this cs-dropdown list item and replace any .cs-li with this cs-dropdown group to make a new dropdown and it will work-->
                   <li class="cs-li cs-dropdown" tabindex="0">
-                      <button class="cs-li-link cs-dropdown-button" aria-haspopup="true" aria-expanded="false">
-                          Services
-                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="cs-drop-icon" viewBox="0 0 16 16">
-                              <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-                          </svg>
-                      </button>
+                      <button class="cs-li-link cs-dropdown-button" style="
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+" aria-haspopup="true" aria-expanded="false">
+                           Services
+                           <img class="cs-drop-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/down-gold.svg" alt="dropdown icon" width="15" height="15" decoding="async" aria-hidden="true" style="margin-left: 0.25em; position: static; top: auto; right: auto; transform: none;">
+                       </button>
                       <ul class="cs-drop-ul">
                           <li class="cs-drop-li">
-                              <a href="/services/residential" class="cs-li-link cs-drop-link">Residential Cleaning</a>
+                              <a href="/services/registration" class="cs-li-link cs-drop-link">Registration</a>
                           </li>
                           <li class="cs-drop-li">
-                              <a href="/services/commercial" class="cs-li-link cs-drop-link">Commercial Cleaning</a>
-                          </li>
-                          <li class="cs-drop-li">
-                              <a href="/services/specialty" class="cs-li-link cs-drop-link">Specialty Cleaning</a>
+                              <a href="/services/classes" class="cs-li-link cs-drop-link">Our Classes</a>
                           </li>
                       </ul>
                   </li>
                   <li class="cs-li">
-                      <a href="/blog" class="cs-li-link">Blog</a>
+                      <a href="/blog" class="cs-li-link">
+                          Blog
+                      </a>
+                  </li>
+                  <li class="cs-li">
+                      <a href="/contact" class="cs-li-link">
+                          Contact
+                      </a>
                   </li>
               </ul>
           </div>
       </nav>
-
-      <!-- Contact and CTA -->
       <div class="cs-contact-group">
-          <div class="cs-quick-call">
-              <span>Quick Call:</span>
-              <a href="tel:+1-949-260-2369">+49-260-2369</a>
+          <a href="tel:+84 1985 33 999" class="cs-phone">
+              <img class="cs-phone-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/phone-1a.svg" alt="logo" width="24" height="24" aria-hidden="true" decoding="async">
+              +84 1985 33 999
+          </a>
+          <div class="cs-social">
+              <a href="" class="cs-social-link">
+                  <img class="cs-social-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/facebook-1a.svg" alt="logo" width="12" height="12" aria-hidden="true" decoding="async">
+              </a>
+              <a href="" class="cs-social-link">
+                  <img class="cs-social-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/twitter-1a.svg" alt="logo" width="12" height="12" aria-hidden="true" decoding="async">
+              </a>
+              <a href="" class="cs-social-link">
+                  <img class="cs-social-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/instagram1a.svg" alt="logo" width="12" height="12" aria-hidden="true" decoding="async">
+              </a>
+              <a href="" class="cs-social-link">
+                  <img class="cs-social-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/youtube1a.svg" alt="logo" width="12" height="12" aria-hidden="true" decoding="async">
+              </a>
           </div>
-          <a href="/contact" class="cs-button-solid">Get Service</a>
       </div>
+      <!--Dark Mode toggle, uncomment button code if you want to enable a dark mode toggle-->
+      <!-- <button id="dark-mode-toggle" aria-label="dark mode toggle">
+          <svg class="cs-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" style="enable-background:new 0 0 480 480" xml:space="preserve"><path d="M459.782 347.328c-4.288-5.28-11.488-7.232-17.824-4.96-17.76 6.368-37.024 9.632-57.312 9.632-97.056 0-176-78.976-176-176 0-58.4 28.832-112.768 77.12-145.472 5.472-3.712 8.096-10.4 6.624-16.832S285.638 2.4 279.078 1.44C271.59.352 264.134 0 256.646 0c-132.352 0-240 107.648-240 240s107.648 240 240 240c84 0 160.416-42.688 204.352-114.176 3.552-5.792 3.04-13.184-1.216-18.496z"/></svg>
+          <img class="cs-sun" aria-hidden="true" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fsun.svg" decoding="async" alt="moon" width="15" height="15">
+      </button> -->
   </div>
 </header>
+                              
 
 <style lang="less">
 
 /*-- -------------------------- -->
-<---         Header             -->
+<---     Mobile Navigation      -->
 <--- -------------------------- -*/
-
-/* Base styles for all screen sizes */
-#cs-navigation {
-  width: 100%;
-  background-color: #f7ffd3;
-  position: relative;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.cs-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0.75rem 1rem;
-}
-
-.cs-logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-decoration: none;
-  color: #333;
-  display: flex;
-  align-items: center;
-  
-  .cs-logo-icon {
-    margin-right: 0.5rem;
-    font-size: 1.75rem;
-  }
-}
-
-.cs-quick-call {
-  display: none;
-  align-items: center;
-  margin-right: 1rem;
-  
-  span {
-    font-size: 0.9rem;
-    margin-right: 0.5rem;
-    color: #333;
-  }
-  
-  a {
-    font-weight: 600;
-    text-decoration: none;
-    color: var(--primary);
-  }
-}
-
-.cs-button-solid {
-  background-color: var(--primary);
-  color: white;
-  padding: 0.5rem 1.25rem;
-  border-radius: 4px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background-color 0.3s;
-  
-  &:hover {
-    background-color: darken(#d00, 10%);
-  }
-}
 
 /* Mobile - 1023px */
 @media only screen and (max-width: 63.9375rem) {
@@ -464,113 +433,6 @@
     #cs-navigation {
         .cs-contact-group {
             display: block;
-        }
-    }
-}
-
-/* Desktop - 1024px */
-@media only screen and (min-width: 64rem) {
-    #cs-navigation {
-        width: 100%;
-        padding: 0.75rem 1rem;
-        /* prevents padding from affecting height and width */
-        box-sizing: border-box;
-        /* 12px - 24px */
-        padding: clamp(0.75rem, 2vw, 1.5rem);
-        /* 12px - 24px */
-        border-radius: clamp(0.75rem, 2vw, 1.5rem);
-        display: flex;
-        align-items: center;
-        position: fixed;
-        top: (32/16rem);
-        left: 50%;
-        z-index: 10000;
-        transform: translateX(-50%);
-        transition: top 0.3s, border-radius 0.3s, width 0.3s, max-width 0.3s;
-
-        .cs-container {
-            width: 100%;
-            max-width: (1440/16rem);
-            margin: auto;
-            /* prevents padding from affecting height and width */
-            box-sizing: border-box;
-            padding: 0 (24/16rem);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: (24/16rem);
-        }
-
-        .cs-toggle {
-            display: none;
-        }
-
-        .cs-logo {
-            width: 18.4%;
-            max-width: (350/16rem);
-            height: (32/16rem);
-            /* margin-right auto pushes everything away from it to the right */
-            margin: 0 auto 0 0;
-            padding: 0;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            z-index: 100;
-
-            img {
-                width: auto;
-                height: 100%;
-                /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
-                object-fit: contain;
-            }
-        }
-
-        .cs-contact-group {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: (24/16rem);
-        }
-
-        .cs-quick-call {
-            display: flex;
-        }
-
-        .cs-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: (24/16rem);
-        }
-
-        .cs-ul {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: (24/16rem);
-        }
-
-        .cs-li {
-            list-style: none;
-            margin-right: 0;
-        }
-
-        .cs-li-link {
-            font-size: (16/16rem);
-            line-height: 1.2em;
-            text-decoration: none;
-            margin: 0;
-            color: var(--headerColor);
-            display: inline-block;
-            position: relative;
-
-            &.cs-active {
-                color: var(--primary);
-            }
-
-            &:hover {
-                color: var(--primary);
-            }
         }
     }
 }
