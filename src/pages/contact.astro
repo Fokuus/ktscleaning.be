@@ -30,7 +30,8 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 
   <section id="cs-contact">
     <div class="cs-container">
-      <form id="cs-form" name="Contact Form" method="post" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field">
+      <form id="cs-form" name="Contact Form" method="post" action="/thanks" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="Contact Form" />
         <p class="hidden">
           <label>
             Don’t fill this out if you’re human: <input name="bot-field" />
