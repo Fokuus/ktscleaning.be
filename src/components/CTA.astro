@@ -5,19 +5,41 @@
 <section id="cta-262">
   <div class="cs-container">
       <div class="cs-left-section">
-          <h2 class="cs-title">Schedule Your Next Checkup With Us</h2>
-          <a href="" class="cs-button-solid">Request Appointment</a>
+          <h2 class="cs-title">Dringend hulp of offerte nodig?</h2>
+          <a href="tel:+32471708090" class="cs-button-solid">Bel ons op +32 (0)471 70 80 90</a>
       </div>
       <div class="cs-content">
-          <span class="cs-header">Available Hours</span>
+          <span class="cs-header">Neem contact op</span>
           <p class="cs-p"> 
-              Tuesday, Thursday, Friday: 9am-6pm<br>
-              ​(closed for lunch 12pm-2pm)
+              Vul onderstaand formulier in en wij nemen zo snel mogelijk contact met u op.
           </p>
-          <p class="cs-p">
-              Appointments Preferred, Walk-Ins Welcome.<br>
-              Saturdays by Appointment Only.
-          </p>
+          <form id="contact-form" class="cs-form">
+              <div class="cs-form-group">
+                  <label for="name">Naam</label>
+                  <input type="text" id="name" name="name" required>
+              </div>
+              <div class="cs-form-group">
+                  <label for="location">Locatie</label>
+                  <input type="text" id="location" name="location" required>
+              </div>
+              <div class="cs-form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" required>
+              </div>
+              <div class="cs-form-group">
+                  <label for="message">Bericht</label>
+                  <textarea id="message" name="message" rows="4" required></textarea>
+              </div>
+              <div class="cs-form-group">
+                  <label for="spam">Spamcontrole: 3 + 1 = ?</label>
+                  <input type="text" id="spam" name="spam" required>
+              </div>
+              <div class="cs-form-group cs-checkbox-group">
+                  <input type="checkbox" id="privacy" name="privacy" required>
+                  <label for="privacy">Ik ga akkoord met het <a href="/privacybeleid">privacybeleid</a>.</label>
+              </div>
+              <button type="submit" class="cs-button-solid">Versturen</button>
+          </form>
       </div>
       <picture class="cs-background">
           <source media="(max-width: 600px)" srcset="https://csimg.nyc3.digitaloceanspaces.com/CTA/cloth-m.jpg">
