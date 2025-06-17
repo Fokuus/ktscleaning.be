@@ -1,3 +1,7 @@
+---
+import Button from "./Button.astro";
+import PhoneCTASimple from "./PhoneCTASimple.astro";
+---
 <!-- ============================================ -->
 <!--                 Navigation                   -->
 <!-- ============================================ -->
@@ -7,7 +11,7 @@
       <!--Nav Logo-->
       <!--Logo is turned white in the css with a filter on dark mode-->
       <a href="/" class="cs-logo" aria-label="back to home">
-          <img src="/assets/images/kts-cleaning-logo.webp" alt="KTS Cleaning logo" width="210" height="auto" aria-hidden="true" decoding="async">
+          <img src="/assets/images/Nieuw logo.png" alt="KTS Cleaning logo" width="180" height="45" aria-hidden="true" decoding="async">
       </a>
       <!--Navigation List-->
       <nav class="cs-nav" role="navigation">
@@ -77,24 +81,8 @@
           </div>
       </nav>
       <div class="cs-contact-group">
-          <a href="tel:+84 1985 33 999" class="cs-phone">
-              <img class="cs-phone-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/phone-1a.svg" alt="logo" width="24" height="24" aria-hidden="true" decoding="async">
-              +84 1985 33 999
-          </a>
-          <div class="cs-social">
-              <a href="" class="cs-social-link">
-                  <img class="cs-social-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/facebook-1a.svg" alt="logo" width="12" height="12" aria-hidden="true" decoding="async">
-              </a>
-              <a href="" class="cs-social-link">
-                  <img class="cs-social-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/twitter-1a.svg" alt="logo" width="12" height="12" aria-hidden="true" decoding="async">
-              </a>
-              <a href="" class="cs-social-link">
-                  <img class="cs-social-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/instagram1a.svg" alt="logo" width="12" height="12" aria-hidden="true" decoding="async">
-              </a>
-              <a href="" class="cs-social-link">
-                  <img class="cs-social-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/youtube1a.svg" alt="logo" width="12" height="12" aria-hidden="true" decoding="async">
-              </a>
-          </div>
+          <PhoneCTASimple />
+          <Button text="Contact" href="/contact" />
       </div>
       <!--Dark Mode toggle, uncomment button code if you want to enable a dark mode toggle-->
       <!-- <button id="dark-mode-toggle" aria-label="dark mode toggle">
@@ -192,27 +180,25 @@
         .cs-container {
             width: 100%;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
             gap: (24/16rem);
         }
 
         .cs-logo {
-            width: auto;
-            max-width: (200/16rem);
-            height: 100%;
+            width: 80px !important;
+            height: auto;
+            /* margin-right auto pushes everything away from it to the right */
             margin: 0 auto 0 0;
-            /* prevents padding from affecting height and width */
-            box-sizing: border-box;
             padding: 0;
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            z-index: 10;
+            z-index: 100;
 
             img {
-                width: 100%;
-                height: 100%;
+                width: 80px !important;
+                height: auto !important;
                 /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
                 object-fit: contain;
             }
@@ -222,7 +208,7 @@
             width: (56/16rem);
             height: (56/16rem);
             margin: 0 0 0 auto;
-            background-color: #1a1a1a;
+            background-color: white;
             border: none;
             border-radius: (4/16rem);
             display: flex;
@@ -239,9 +225,20 @@
         }
 
         .cs-contact-group {
-            display: none;
-            position: relative;
+            display: flex;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 10;
+            margin-right: -200px !important;
+            :global(.phone-cta-simple) {
+                justify-content: center;
+            }
+
+            :global(.custom-button) {
+                display: none;
+                
+            }
         }
 
         .cs-phone {
@@ -295,7 +292,7 @@
         .cs-line {
             width: 100%;
             height: 2px;
-            background-color: #fafbfc;
+            background-color: darkgrey;
             border-radius: 2px;
             position: absolute;
             left: 50%;
@@ -631,6 +628,25 @@
                 }
             }
         }
+
+        .cs-logo {
+            width: 180px !important;
+            max-width: 250px !important;
+            height: 45px !important;
+            /* margin-right auto pushes everything away from it to the right */
+            margin: 0 0 0 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-start !important;
+            z-index: 100;
+
+            img {
+                width: 80px !important;
+                height: 70px !important;
+                /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
+
+            }
+        }
     }
 }
 
@@ -688,30 +704,51 @@
         }
 
         .cs-logo {
-            width: 18.4%;
-            max-width: (350/16rem);
-            height: (32/16rem);
-            /* margin-right auto pushes everything away from it to the right */
-            margin: 0 auto 0 0;
-            padding: 0;
+            width: 200px;
+            height: 50px;
+            position: relative;
+            z-index: 10;
             display: flex;
-            justify-content: flex-start;
             align-items: center;
-            z-index: 100;
+            margin: 0 auto 0 0;
 
             img {
-                width: auto;
-                height: 100%;
-                /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
+                width: 100%;
+                height: auto;
                 object-fit: contain;
+                display: block;
             }
         }
 
         .cs-contact-group {
             display: flex;
-            justify-content: center;
             align-items: center;
-            gap: (24/16rem);
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+
+            :global(.phone-number) {
+                font-size: 1rem;
+                /* matches the nav items */
+                color: var(--headerColor);
+                text-decoration: none;
+                line-height: 1.5em;
+                transition: color .3s;
+                
+                &:hover {
+                    color: var(--primary);
+                }
+            }
+
+            :global(.custom-button) {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+                height: auto;
+                min-height: 45px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
         }
 
         .cs-phone {
@@ -858,7 +895,7 @@
             }
 
             &:hover {
-                color: #1a1a1a;
+                color: white;
                 &:before {
                     width: 100%;
                 }
@@ -930,3 +967,24 @@
                                 
 
 </script>
+
+<style>
+.cs-logo img {
+  width: 120px;
+  height: auto;
+}
+@media (min-width: 768px) {
+  .cs-logo img {
+    width: 280px;
+  }
+}
+
+#cs-navigation .cs-nav-link {
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 0;
+    color: var(--headerColor);
+    display: inline-block;
+    position: relative;
+}
+</style>

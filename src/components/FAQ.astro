@@ -1,10 +1,8 @@
-<section id="faq-1741">
+<section id="faq-326">
   <div class="cs-container">
     <div class="cs-content">
-      <span class="cs-topper">Frequently Asked Questions</span>
-      <h2 class="cs-title">
-        In consequat tincidunt turpis sit amet imperdiet.
-      </h2>
+      <span class="cs-topper">FAQ's</span>
+      <h2 class="cs-title">Frequently Asked Questions</h2>
     </div>
     <div class="cs-flex-group">
       <ul class="cs-faq-group">
@@ -12,53 +10,51 @@
         <li class="cs-faq-item active">
           <button class="cs-button">
             <span class="cs-button-text">
-              How do I start a kitchen design project with you?
+              What is the difference between a lawyer and an attorney?
             </span>
           </button>
-          <p class="cs-item-text">
-            To begin your kitchen design project, simply reach out to us through
-            our contact form or give us a call. We'll set up an initial
-            consultation to understand your needs, preferences, and budget. From
-            there, we'll guide you through the process, from design concepts to
-            installation.
+          <p class="cs-item-p">
+            In the U.S., the terms lawyer and attorney are often used interchangeably. A lawyer provides legal services such as giving legal advice, writing legal documents and providing policy counsel to governments. An attorney, on top of these things also holds a state or regional license to represent clients in a law court.
           </p>
         </li>
         <li class="cs-faq-item">
           <button class="cs-button">
             <span class="cs-button-text">
-              What payment methods do you accept?
+              How do I get started?
             </span>
           </button>
-          <p class="cs-item-text">
-            We accept a variety of payment methods including major credit cards,
-            bank transfers, and financing options. Our team will work with you
-            to find the best payment plan that suits your project.
+          <p class="cs-item-p">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit convallis nunc neque, bibendum pulvinar vitae commodo velit. Proin diam tortor sed malesuada nunc, habitant. Dignissim ipsum porta enim, magna urna, quam. 
           </p>
         </li>
         <li class="cs-faq-item">
           <button class="cs-button">
             <span class="cs-button-text">
-              How can I track the progress of my kitchen design?
+              I'm New to the United States and Need an Attorney. Can I Hire a Stitch Lawyer Instead?
             </span>
           </button>
-          <p class="cs-item-text">
-            Once your project begins, you'll receive regular updates from your
-            dedicated project manager. You can also track progress through our
-            online portal, where you can view timelines, design approvals, and
-            other key milestones.
+          <p class="cs-item-p">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit convallis nunc neque, bibendum pulvinar vitae commodo velit. Proin diam tortor sed malesuada nunc, habitant. Dignissim ipsum porta enim, magna urna, quam. 
           </p>
         </li>
         <li class="cs-faq-item">
           <button class="cs-button">
             <span class="cs-button-text">
-              What is your return policy for custom cabinetry?
+              What Do Lawyers Do? Do They Spend Most of Their Time Arguing Cases in Court?
             </span>
           </button>
-          <p class="cs-item-text">
-            Due to the custom nature of our cabinetry, returns are handled on a
-            case-by-case basis. We strive for complete customer satisfaction and
-            will work with you to resolve any issues that may arise. Please
-            refer to our full return policy for more details.
+          <p class="cs-item-p">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit convallis nunc neque, bibendum pulvinar vitae commodo velit. Proin diam tortor sed malesuada nunc, habitant. Dignissim ipsum porta enim, magna urna, quam. 
+          </p>
+        </li>
+        <li class="cs-faq-item">
+          <button class="cs-button">
+            <span class="cs-button-text">
+              May a Lawyer Who Is Licensed in One State Practice Law in Another State?
+            </span>
+          </button>
+          <p class="cs-item-p">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit convallis nunc neque, bibendum pulvinar vitae commodo velit. Proin diam tortor sed malesuada nunc, habitant. Dignissim ipsum porta enim, magna urna, quam. 
           </p>
         </li>
       </ul>
@@ -66,41 +62,71 @@
   </div>
 </section>
 
-<!-- Instead of loading a <script>  tag in BaseLayout, we use a scoped style in this component -->
-<!-- Astro will process this script automatically. -->
-<!-- The processed script will be injected into your page’s <head> with type="module" -->
-<!-- As a consequence, there is no need to use the defer attribute when loading a module script because modules are deferred automatically. -->
-
 <script>
-// Astro:page-load wrapper for View Transitions purposes
-document.addEventListener('astro:page-load', () => { // Makes the script available after navigating to a new page.
-    const faqItems = Array.from(document.querySelectorAll(".cs-faq-item"));
-    for (const item of faqItems) {
-      const onClick = () => {
-        item.classList.toggle("active");
-      };
-      item.addEventListener("click", onClick);
-    }
-  });
+  // Function to initialize FAQ accordions
+  function initFAQ() {
+    const faqContainer = document.querySelector(".cs-faq-group");
+    if (!faqContainer) return;
+
+    const faqItems = document.querySelectorAll(".cs-faq-item");
+    faqItems.forEach(item => {
+      // Ensure item is an HTMLElement
+      if (item instanceof HTMLElement) {
+        const button = item.querySelector('.cs-button');
+        if (button) {
+          // Add click event listener to the button
+          button.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Get all FAQ items again to ensure we have the current state
+            const allItems = document.querySelectorAll(".cs-faq-item");
+            
+            // Close all other items
+            allItems.forEach(otherItem => {
+              if (otherItem !== item && otherItem.classList.contains('active')) {
+                otherItem.classList.remove('active');
+              }
+            });
+            
+            // Toggle the clicked item
+            item.classList.toggle("active");
+          });
+        }
+      }
+    });
+  }
+
+  // Run on initial page load
+  initFAQ();
+  
+  // Also run when navigating between pages with View Transitions
+  document.addEventListener('astro:page-load', initFAQ);
 </script>
 
 <style lang="less">
   /* Mobile - 360px */
   @media only screen and (min-width: 0rem) {
-    #faq-1741 {
+    #faq-326 {
       padding: var(--sectionPadding);
       position: relative;
 
       .cs-container {
         width: 100%;
         /* changes to 1280px at desktop */
-        max-width: (584/16rem);
+        max-width: calc(700rem / 16);
         margin: 2em auto;
         display: flex;
         flex-direction: column;
         align-items: center;
         /* 48px - 64px */
         gap: clamp(3rem, 6vw, 4rem);
+      }
+
+      .cs-flex-group {
+        width: 100%;
+        /* Smaller min-height for mobile */
+        min-height: 24rem;
       }
 
       .cs-content {
@@ -124,121 +150,112 @@ document.addEventListener('astro:page-load', () => { // Makes the script availab
         padding: 0;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         gap: (12/16rem);
+        /* Smaller min-height for mobile */
+        min-height: 20rem;
       }
 
       .cs-faq-item {
         list-style: none;
         width: 100%;
+        background-color: #f7f7f7;
         /* clips all corners of the button that overlap the rounded border */
         overflow: hidden;
-        transition: border-bottom 0.3s;
+        border-radius: (12/16rem);
+        transition: all 0.3s ease-in-out;
 
         &.active {
           .cs-button {
-            background-color: var(--secondary);
-            color: var(--bodyTextColorWhite);
+            background-color: var(--primary);
+            color: var(--secondaryLight);
 
             &:before {
-              background-color: var(--bodyTextColorWhite);
+              background-color: var(--secondaryLight);
               transform: rotate(315deg);
             }
 
             &:after {
-              background-color: var(--bodyTextColorWhite);
+              background-color: var(--secondaryLight);
               transform: rotate(-315deg);
             }
           }
 
-          .cs-item-text {
-            height: auto;
-            /* 16px - 24px */
-            padding: (16/16rem) clamp(1rem, 2vw, 1.5rem);
+          .cs-item-p {
+            max-height: 500px; /* Large enough to fit content */
+            /* 20px - 24px top & bottom */
+            /* 16px - 24px left & right */
+            padding: clamp(1.25rem, 1.3vw, 1.5rem) clamp(1rem, 2vw, 1.5rem);
             opacity: 1;
-            border: 1px solid #e8e8e8;
           }
         }
       }
 
       .cs-button {
-        /* 16px - 20px */
-        font-size: clamp(1rem, 2.5vw, 1.25rem);
-        font-weight: bold;
+        font-size: calc(16rem / 16);
         line-height: 1.2em;
         text-align: left;
-        width: 100%;
-        padding: (16/16rem);
-        padding-left: (52/16rem);
-        background-color: transparent;
+        /* 16px - 20px */
+        padding: clamp(1rem, 1.3vw, 1.25rem);
+        background-color: #f7f7f7;
+        border: none;
         color: var(--headerColor);
-        border: 1px solid #e8e8e8;
         display: block;
+        width: 100%;
         position: relative;
-        transition:
-          background-color 0.3s,
-          color 0.3s;
-
-        &:hover {
-          cursor: pointer;
-        }
-
-        &:before {
-          /* left line */
-          content: "";
-          width: (8/16rem);
-          height: (2/16rem);
-          background-color: var(--headerColor);
-          opacity: 1;
-          display: block;
-          position: absolute;
-          top: 45%;
-          left: (18/16rem);
-          transform: rotate(45deg);
-          transition: transform 0.5s;
-          /* animate the transform from the left side of the x axis, and the center of the y */
-          transform-origin: left center;
-        }
-
-        &:after {
-          /* right line */
-          content: "";
-          width: (8/16rem);
-          height: (2/16rem);
-          background-color: var(--headerColor);
-          opacity: 1;
-          display: block;
-          position: absolute;
-          top: 45%;
-          left: (21/16rem);
-          transform: rotate(-45deg);
-          transition: transform 0.5s;
-          /* animate the transform from the right side of the x axis, and the center of the y */
-          transform-origin: right center;
-        }
+        transition: all 0.3s ease-in-out;
       }
 
-      .cs-item-text {
-        /* 14px - 16px */
-        font-size: clamp(0.875rem, 1.5vw, 1rem);
-        line-height: 1.5em;
-        height: 0;
+      .cs-button:hover {
+        cursor: pointer;
+      }
+
+      .cs-button:before {
+        /* left line */
+        content: "";
+        width: calc(8rem / 16);
+        height: calc(2rem / 16);
+        background-color: var(--headerColor);
+        opacity: 1;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        right: calc(24rem / 16);
+        transform: rotate(45deg);
+        transition: transform 0.3s ease-in-out, background-color 0.3s;
+      }
+
+      .cs-button:after {
+        /* right line */
+        content: "";
+        width: calc(8rem / 16);
+        height: calc(2rem / 16);
+        background-color: var(--headerColor);
+        opacity: 1;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        right: calc(24rem / 16);
+        transform: rotate(-45deg);
+        transition: transform 0.3s ease-in-out, background-color 0.3s;
+      }
+
+      .cs-item-p {
         margin: 0;
-        /* clips the text so it doesn't show up */
-        overflow: hidden;
-        color: var(--bodyTextColor);
+        height: auto;
+        max-height: 0;
+        padding: 0 clamp(1rem, 2vw, 1.5rem);
         opacity: 0;
-        transition:
-          opacity 0.3s,
-          padding-bottom 0.3s;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
       }
     }
   }
 
   /* Tablet - 768px */
   @media only screen and (min-width: 48rem) {
-    #faq-1741 {
+    #faq-326 {
       .cs-gallery {
         max-width: (1720/16rem);
       }
@@ -246,12 +263,20 @@ document.addEventListener('astro:page-load', () => { // Makes the script availab
       .cs-picture {
         grid-column: span 1;
       }
+
+      .cs-flex-group {
+        min-height: 28rem;
+      }
+
+      .cs-faq-group {
+        min-height: 24rem;
+      }
     }
   }
 
   /* Desktop - 1024px */
   @media only screen and (min-width: 64rem) {
-    #faq-1741 {
+    #faq-326 {
       .cs-container {
         max-width: (1280/16rem);
         flex-direction: row;
@@ -266,15 +291,23 @@ document.addEventListener('astro:page-load', () => { // Makes the script availab
         /* prevents flexbox from squishing it */
         flex: none;
       }
+
+      .cs-flex-group {
+        min-height: 32rem;
+      }
+
+      .cs-faq-group {
+        min-height: 28rem;
+      }
     }
   }
 
   /* Dark Mode */
   @media only screen and (min-width: 0rem) {
     body.dark-mode {
-      #faq-1741 {
+      #faq-326 {
         .cs-title,
-        .cs-item-text {
+        .cs-item-p {
           color: var(--bodyTextColorWhite);
         }
 
@@ -294,7 +327,7 @@ document.addEventListener('astro:page-load', () => { // Makes the script availab
               }
             }
 
-            .cs-item-text {
+            .cs-item-p {
               /* 20px - 24px */
               padding-top: clamp(1.25rem, 1.3vw, 1.5rem);
               border-color: var(--accent);

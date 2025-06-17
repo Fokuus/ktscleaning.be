@@ -2,6 +2,7 @@
 import client from "@data/client.json";
 import navData from "@data/navData.json";
 import { getCurrentYear } from "@js/utils"
+import FooterCTA from "@components/FooterCTA.astro";
 
 const currentYear = getCurrentYear()
 ---
@@ -10,26 +11,15 @@ const currentYear = getCurrentYear()
 <!--                   Footer                     -->
 <!-- ============================================ -->
 
+<FooterCTA />
+
 <footer id="cs-footer-1294">
-  <div class="cs-container">       
-      <!-- Subscribe Form -->
-      <div id="cta-1294">
-          <div class="cs-content">
-              <h2 class="cs-title">Neem contact met ons op voor een vrijblijvende offerte</h2>
-              <a href="/contact" class="cs-button-solid">Offerte Aanvragen</a>
-          </div>
-          <!--Background Image-->
-          <picture class="cs-background">
-              <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/cta-waves.svg">
-              <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/cta-waves-t.svg">
-              <img loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/cta-waves-t.svg" alt="waves" width="1280" height="278" aria-hidden="true">
-          </picture>
-      </div>                
+  <div class="cs-container">   
       <div class="cs-wrapper">
           <!-- Logo Group -->
           <div class="cs-logo-group">
                 <a aria-label="ga terug naar home" class="cs-logo" href="/">
-                    <img class="cs-logo-img" aria-hidden="true" loading="lazy" decoding="async" src="/assets/images/kts-cleaning-logo.webp" alt="KTS Cleaning logo" width="240" height="auto">
+                    <img class="cs-logo-img" aria-hidden="true" loading="lazy" decoding="async" src="/assets/images/Nieuw logo.png" alt="KTS Cleaning logo" width="240" height="auto">
                 </a>
                <p class="cs-text">
                    Kts Cleaning<br>
@@ -99,7 +89,6 @@ const currentYear = getCurrentYear()
       <div class="cs-floater" aria-hidden="true"></div>
   </div>
 </footer>
-                              
 
 <style lang="less">
   /*-- -------------------------- -->
@@ -292,7 +281,6 @@ const currentYear = getCurrentYear()
 @media only screen and (min-width: 0rem) {
     #cs-footer-1294 {
         padding: var(--sectionPadding);
-        padding-top: 0;
         padding-bottom: (20/16rem);
         background-color: #1a1a1a;
         position: relative;
@@ -318,7 +306,7 @@ const currentYear = getCurrentYear()
         }
 
         .cs-logo-img {
-            width: 100%;
+            width: 120px;
             height: auto;
 
             &.dark {
@@ -380,7 +368,6 @@ const currentYear = getCurrentYear()
         .cs-header {
             font-size: (16/16rem);
             line-height: 1.2em;
-            font-weight: 700;
             margin-bottom: (8/16rem);
             color: var(--bodyTextColorWhite);
             position: relative;
@@ -585,6 +572,16 @@ const currentYear = getCurrentYear()
             background-color: rgba(0, 0, 0, 0.6);
         }
     }
+}
+
+.cs-logo-img {
+  width: 120px;
+  height: auto;
+}
+@media (min-width: 768px) {
+  .cs-logo-img {
+    width: 240px;
+  }
 }
                                 
 </style>

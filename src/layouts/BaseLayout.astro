@@ -4,6 +4,7 @@ import type { GetImageResult } from 'astro';
 import client from "@data/client.json";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import FooterCTA from "@components/FooterCTA.astro";
 import "@styles/root.less";
 import "@styles/dark.less";
 import "@styles/hero.less";
@@ -31,7 +32,7 @@ const { description, title, preloadedImage } = Astro.props as Props;
 
 ---
 <!-- A fully fleshed-out <head>, dynamically changing based on client.json and the page front matter -->
-<html lang="en">
+<html lang="nl">
         <head>
             <!-- View Transitions disabled as requested -->
 

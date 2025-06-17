@@ -3,20 +3,35 @@
 /* Import fonts */
 /* Font import moved to BaseLayout.astro */
 
-/* Apply fonts to body */
+/* Reset all margins and padding */
+* {
+  box-sizing: border-box;
+}
+
+/* Apply fonts to body and reset margins/padding */
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Reset HTML tag */
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Set headings to normal weight for contrast */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
+  font-weight: 300 !important;
 }
 
 /* Use bold weight for specific elements that need emphasis */
 .cs-title, .nav-link, .btn, .button {
-  font-weight: 400;
+  font-weight: 300;
 }
 
 /*-- -------------------------- -->
@@ -27,12 +42,12 @@ h1, h2, h3, h4, h5, h6 {
 @media only screen and (min-width: 0em) {
 	// Website colors
 	:root {
-		--primary: #05a8ff;
-		--primaryLight: hsl(225, 60%, 40%);
+		--primary: hwb(50 12% 0% / 1);
+		--primaryLight: #fefcf4;
 		--secondary: #001f3f;
 		--secondaryLight: #001f3f;
 		--headerColor: #1a1a1a;
-		--bodyTextColor: #4e4b66;
+		--bodyTextColor: #66644b;
 		--bodyTextColorWhite: #fafbfc;
 
 		/* 13px - 16px */
@@ -40,9 +55,9 @@ h1, h2, h3, h4, h5, h6 {
 		/* 31px - 49px */
 		--headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
 		--bodyFontSize: 1rem;
-
+		--bodyFontSizeBigger: 1.5rem;
 		/* 60px - 100px top and bottom */
-		--sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+		--sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 3rem;
 	}
 
 	// Text styles - can be replaced using CodeStitch's "Content Flair" Stitches
@@ -104,6 +119,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Global scaling solution - MODIFIED TO FIX SIZING ISSUES */
 html {
 	font-size: 16px;
+	margin: 0;
+	padding: 0;
 }
 
 @media only screen and (min-width: 1024px) {

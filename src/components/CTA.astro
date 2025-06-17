@@ -1,52 +1,47 @@
+---
+import Button from "@components/Button.astro";
+---
+
 <!-- ============================================ -->
 <!--                    CTA                       -->
 <!-- ============================================ -->
 
-<section id="cta-262">
-  <div class="cs-container">
-      <div class="cs-left-section">
-          <h2 class="cs-title">Dringend hulp of offerte nodig?</h2>
-          <a href="tel:+32471708090" class="cs-button-solid">Bel ons op +32 (0)471 70 80 90</a>
-      </div>
-      <div class="cs-content">
-          <span class="cs-header">Neem contact op</span>
-          <p class="cs-p"> 
-              Vul onderstaand formulier in en wij nemen zo snel mogelijk contact met u op.
-          </p>
-          <form id="contact-form" class="cs-form">
-              <div class="cs-form-group">
-                  <label for="name">Naam</label>
-                  <input type="text" id="name" name="name" required>
-              </div>
-              <div class="cs-form-group">
-                  <label for="location">Locatie</label>
-                  <input type="text" id="location" name="location" required>
-              </div>
-              <div class="cs-form-group">
-                  <label for="email">Email</label>
-                  <input type="email" id="email" name="email" required>
-              </div>
-              <div class="cs-form-group">
-                  <label for="message">Bericht</label>
-                  <textarea id="message" name="message" rows="4" required></textarea>
-              </div>
-              <div class="cs-form-group">
-                  <label for="spam">Spamcontrole: 3 + 1 = ?</label>
-                  <input type="text" id="spam" name="spam" required>
-              </div>
-              <div class="cs-form-group cs-checkbox-group">
-                  <input type="checkbox" id="privacy" name="privacy" required>
-                  <label for="privacy">Ik ga akkoord met het <a href="/privacybeleid">privacybeleid</a>.</label>
-              </div>
-              <button type="submit" class="cs-button-solid">Versturen</button>
-          </form>
-      </div>
-      <picture class="cs-background">
-          <source media="(max-width: 600px)" srcset="https://csimg.nyc3.digitaloceanspaces.com/CTA/cloth-m.jpg">
-          <source media="(min-width: 601px)" srcset="https://csimg.nyc3.digitaloceanspaces.com/CTA/cloth.jpg">
-          <img aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/CTA/cloth.jpg" alt="appliance" width="275" height="132">
-      </picture>
-  </div>
+<section id="cta-1018">
+    <div class="cs-container">
+        <div class="cs-content">
+            <div class="cs-flex">
+                <span class="cs-topper">Neem contact op</span>
+                <h2 class="cs-title">Vraag een offerte aan</h2>
+                <p class="cs-text">
+                    Vul het formulier in en wij nemen binnen 24 uur contact met u op.
+                </p>
+            </div>
+            <form id="cs-form-1018" name="Contact Form" method="post">
+                <label class="cs-label">
+                    Naam
+                    <input class="cs-input" required type="text" id="name-1018" name="name" placeholder="Naam">
+                </label>
+                <label class="cs-label">
+                    Email
+                    <input class="cs-input" required type="email" id="email-1018" name="email" placeholder="Email">
+                </label>
+                <label class="cs-label">
+                    Telefoon
+                    <input class="cs-input" required type="tel" id="phone-1018" name="phone" placeholder="Telefoon">
+                </label>
+                <label class="cs-label">
+                    Bericht
+                    <textarea class="cs-input cs-textarea" required name="Message" id="message-1018" placeholder="Bericht"></textarea>
+                </label>
+                <Button text="Versturen" />
+            </form>
+        </div>
+        <picture class="cs-background">
+            <source media="(max-width: 600px)" srcset="https://csimg.nyc3.digitaloceanspaces.com/CTA/cloth-m.jpg">
+            <source media="(min-width: 601px)" srcset="https://csimg.nyc3.digitaloceanspaces.com/CTA/cloth.jpg">
+            <img aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/CTA/cloth.jpg" alt="appliance" width="275" height="132">
+        </picture>
+    </div>
 </section>
                               
 
@@ -57,7 +52,7 @@
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
-    #cta-262 {
+    #cta-1018 {
         padding: var(--sectionPadding);
 
         .cs-container {
@@ -206,7 +201,7 @@
 
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
-    #cta-262 {
+    #cta-1018 {
         .cs-container {
             flex-direction: row;
             justify-content: space-between;
@@ -224,7 +219,7 @@
 /* Dark Mode */
 @media only screen and (min-width: 0rem) {
     body.dark-mode {
-        #cta-262 {
+        #cta-1018 {
             .cs-background {
                 &:before {
                     opacity: 0.9;

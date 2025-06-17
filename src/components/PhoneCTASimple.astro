@@ -1,0 +1,50 @@
+---
+
+---
+
+<div class="phone-cta-simple">
+    <img src="/assets/images/call.svg" alt="Bel ons" class="phone-icon" />
+    <a href="tel:+32471708090" class="phone-link">
+        <span class="phone-number">+32 (0)471 70 80 90</span>
+    </a>
+</div>
+
+<style lang="less">
+    .phone-cta-simple {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .phone-link {
+        text-decoration: none;
+        color: var(--bodyTextColor);
+        font-weight: 500;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+    }
+
+    .phone-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+
+    .phone-number {
+        font-size: 1.125rem;
+    }
+
+    /* Dark Mode */
+    :global(body.dark-mode) {
+        .phone-link {
+            color: var(--primaryLight);
+
+            &:hover {
+                color: var(--primary);
+            }
+        }
+    }
+</style>

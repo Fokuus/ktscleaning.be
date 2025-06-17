@@ -1,0 +1,121 @@
+---
+interface Props {
+    text: string;
+    href?: string;
+    className?: string;
+    variant?: 'solid' | 'outlined';
+}
+
+const { text, href, className = '', variant = 'solid' } = Astro.props;
+---
+
+{
+    href ? (
+        <a href={href} class={`custom-button ${variant === 'outlined' ? 'custom-button--outlined' : ''} ${className}`}>
+            {text}
+        </a>
+    ) : (
+        <button class={`custom-button ${variant === 'outlined' ? 'custom-button--outlined' : ''} ${className}`}>
+            {text}
+        </button>
+    )
+}
+
+<style>
+    .custom-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 17px 32px;
+        background-color: var(--primary);
+        color: #000;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 16px;
+        border: none;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        /* Ensure text is perfectly centered */
+        text-align: center;
+        line-height: 1.2;
+
+        /* notch dimensions */
+        --notch-width: 5px;   /* half the base of the triangle */
+        --notch-depth: 5px;   /* height of the triangle */
+
+        /* clip-path with three centered notches: top, right, bottom */
+        clip-path: polygon(
+            /* top edge */
+            0% 0%,
+            calc(50% - var(--notch-width)) 0%,
+            50% var(--notch-depth),
+            calc(50% + var(--notch-width)) 0%,
+            100% 0%,
+            /* right edge */
+            100% calc(50% - var(--notch-width)),
+            calc(100% - var(--notch-depth)) 50%,
+            100% calc(50% + var(--notch-width)),
+            100% 100%,
+            /* bottom edge */
+            calc(50% + var(--notch-width)) 100%,
+            50% calc(100% - var(--notch-depth)),
+            calc(50% - var(--notch-width)) 100%,
+            /* left edge */
+            0% 100%,
+            0% 0%
+        );
+        overflow: hidden;
+    }
+
+    .custom-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        clip-path: inherit;
+    }
+
+    .custom-button:hover {
+        background-color: var(--primary);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-button:hover::before {
+        opacity: 1;
+    }
+
+    .custom-button:active {
+        transform: translateY(0);
+        background-color: #FFC700;
+    }
+
+    /* Outlined variant */
+    .custom-button--outlined {
+        background-color: transparent;
+        color: #FFD700;
+        box-shadow: inset 0 0 0 2px #FFD700;
+    }
+
+    .custom-button--outlined::before {
+        background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0) 100%);
+    }
+
+    .custom-button--outlined:hover {
+        background-color: transparent;
+        color: #FFE44D;
+        box-shadow: inset 0 0 0 2px #FFE44D;
+    }
+
+    .custom-button--outlined:active {
+        background-color: transparent;
+        color: #FFC700;
+        box-shadow: inset 0 0 0 2px #FFC700;
+    }
+</style> 
