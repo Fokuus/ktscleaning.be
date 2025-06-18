@@ -16,29 +16,33 @@ import Button from "@components/Button.astro";
             <Button text="Neem Contact op" href="/contact" />
         </div>
         <ul class="cs-card-group">
-            <li class="cs-item">
-                <img class="cs-icon" loading="lazy" decoding="async" src="/assets/images/icons/web-development.svg" alt="24/7 bereikbaar icon" width="72" height="72">
+            <li class="cs-item cs-item-24-7">
+                <img class="cs-icon cs-icon-normal" loading="lazy" decoding="async" src="/assets/images/icons/7-normaal.svg" alt="24/7 bereikbaar icon" width="72" height="72">
+                <img class="cs-icon cs-icon-hover" loading="lazy" decoding="async" src="/assets/images/icons/7-hover.svg" alt="24/7 bereikbaar icon" width="72" height="72">
                 <h3 class="cs-h3">24/7 bereikbaar</h3>
                 <p class="cs-item-text">
                     Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
                 </p>
             </li>
-            <li class="cs-item">
-                <img class="cs-icon" loading="lazy" decoding="async" src="/assets/images/icons/web-design.svg" alt="13 jaar ervaring icon" width="72" height="72">
+            <li class="cs-item cs-item-ervaring">
+                <img class="cs-icon cs-icon-normal" loading="lazy" decoding="async" src="/assets/images/icons/13 jaar ervaring-normaal.svg" alt="13 jaar ervaring icon" width="72" height="72">
+                <img class="cs-icon cs-icon-hover" loading="lazy" decoding="async" src="/assets/images/icons/13 jaar ervaring-hover.svg" alt="13 jaar ervaring icon" width="72" height="72">
                 <h3 class="cs-h3">13 jaar ervaring</h3>
                 <p class="cs-item-text">
                     Meer dan 4.000 uitgevoerde opdrachten in Vlaanderen
                 </p>
             </li>
-            <li class="cs-item">
-                <img class="cs-icon" loading="lazy" decoding="async" src="/assets/images/icons/conversion.svg" alt="Betrouwbare partner icon" width="72" height="72">
+            <li class="cs-item cs-item-partner">
+                <img class="cs-icon cs-icon-normal" loading="lazy" decoding="async" src="/assets/images/icons/betrouwbare partner-normal.svg" alt="Betrouwbare partner icon" width="72" height="72">
+                <img class="cs-icon cs-icon-hover" loading="lazy" decoding="async" src="/assets/images/icons/betrouwbare partner-hover.svg" alt="Betrouwbare partner icon" width="72" height="72">
                 <h3 class="cs-h3">Betrouwbare partner</h3>
                 <p class="cs-item-text">
                     Van politie, gemeentes en hulpdiensten tot particulieren.
                 </p>
             </li>
-            <li class="cs-item">
-                <img class="cs-icon" loading="lazy" decoding="async" src="/assets/images/icons/web-development.svg" alt="100% Proper icon" width="72" height="72">
+            <li class="cs-item cs-item-proper">
+                <img class="cs-icon cs-icon-normal" loading="lazy" decoding="async" src="/assets/images/icons/100 propor-normaal.svg" alt="100% Proper icon" width="72" height="72">
+                <img class="cs-icon cs-icon-hover" loading="lazy" decoding="async" src="/assets/images/icons/100 propor-hover.svg" alt="100% Proper icon" width="72" height="72">
                 <h3 class="cs-h3">100% Proper</h3>
                 <p class="cs-item-text">
                     Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
@@ -129,6 +133,35 @@ import Button from "@components/Button.astro";
         filter: grayscale(1) brightness(1000%);
     }
 
+    #why-choose-223 .cs-item:hover .cs-icon path,
+    #why-choose-223 .cs-item:hover .cs-icon line,
+    #why-choose-223 .cs-item:hover .cs-icon polyline {
+        fill: #fff;
+        stroke: #fff;
+    }
+
+    /* Icon hover effects for all items with dual images */
+    #why-choose-223 .cs-item-24-7 .cs-icon-hover,
+    #why-choose-223 .cs-item-ervaring .cs-icon-hover,
+    #why-choose-223 .cs-item-partner .cs-icon-hover,
+    #why-choose-223 .cs-item-proper .cs-icon-hover {
+        display: none;
+    }
+
+    #why-choose-223 .cs-item-24-7:hover .cs-icon-normal,
+    #why-choose-223 .cs-item-ervaring:hover .cs-icon-normal,
+    #why-choose-223 .cs-item-partner:hover .cs-icon-normal,
+    #why-choose-223 .cs-item-proper:hover .cs-icon-normal {
+        display: none;
+    }
+
+    #why-choose-223 .cs-item-24-7:hover .cs-icon-hover,
+    #why-choose-223 .cs-item-ervaring:hover .cs-icon-hover,
+    #why-choose-223 .cs-item-partner:hover .cs-icon-hover,
+    #why-choose-223 .cs-item-proper:hover .cs-icon-hover {
+        display: block;
+    }
+
     #why-choose-223 .cs-item:hover .cs-h3,
     #why-choose-223 .cs-item:hover .cs-item-text {
         color: #fff;
@@ -140,6 +173,13 @@ import Button from "@components/Button.astro";
         margin: 0;
         height: auto;
         display: block;
+    }
+
+    #why-choose-223 .cs-icon path,
+    #why-choose-223 .cs-icon line,
+    #why-choose-223 .cs-icon polyline {
+        fill: var(--primary);
+        stroke: var(--primary);
     }
 
     #why-choose-223 .cs-h3 {

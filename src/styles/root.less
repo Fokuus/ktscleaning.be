@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
 @media only screen and (min-width: 0em) {
 	// Website colors
 	:root {
-		--primary: hwb(50 12% 0% / 1);
+		--primary: #fed500;
 		--primaryLight: #fefcf4;
 		--secondary: #001f3f;
 		--secondaryLight: #001f3f;
@@ -56,8 +56,15 @@ h1, h2, h3, h4, h5, h6 {
 		--headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
 		--bodyFontSize: 1rem;
 		--bodyFontSizeBigger: 1.5rem;
-		/* 60px - 100px top and bottom */
-		--sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 3rem;
+		/* 80px - 120px top and bottom, 1rem left/right on mobile, 3rem on desktop */
+		--sectionPadding: clamp(5rem, 9vw, 7.5rem) 1rem;
+	}
+
+	/* Tablet and larger - increase side padding */
+	@media only screen and (min-width: 768px) {
+		:root {
+			--sectionPadding: clamp(5rem, 9vw, 7.5rem) 3rem;
+		}
 	}
 
 	// Text styles - can be replaced using CodeStitch's "Content Flair" Stitches
@@ -69,6 +76,8 @@ h1, h2, h3, h4, h5, h6 {
 		letter-spacing: 0.1em;
 		color: var(--secondary);
 		display: block;
+		
+
 	}
 
 	.cs-title {

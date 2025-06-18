@@ -37,10 +37,9 @@ import Button from "@components/Button.astro";
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: clamp(1rem, 3vw, 1.5rem);
+    padding-right: clamp(1rem, 3vw, 1.5rem);
     box-sizing: border-box;
-    
   }
 
   .footer-cta {
@@ -54,22 +53,24 @@ import Button from "@components/Button.astro";
     pointer-events: auto;
     border: 2px solid var(--primary);
 
-    .footer-cta__content {
-      width: 100%;
-      min-height: 110px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 3rem;
+          .footer-cta__content {
+        width: 100%;
+        min-height: 110px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 3rem);
 
-      .footer-cta__text {
-        color: var(--bodyText);
-        font-size: var(--bodyFontSizeBigger);
-        font-weight: normal;
-        letter-spacing: 0.01em;
-        line-height: 1.2;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.08);
-      }
+              .footer-cta__text {
+          color: var(--bodyText);
+          font-size: clamp(1.1rem, 3vw, 1.5rem);
+          font-weight: normal;
+          letter-spacing: 0.01em;
+          line-height: 1.2;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+          flex-shrink: 1;
+
+        }
       
       .footer-cta__button {
         background: var(--bodyTextColorWhite);
@@ -110,43 +111,85 @@ import Button from "@components/Button.astro";
       }
     }
 
-    .cs-button-group {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-    }
+          .cs-button-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        gap: clamp(0.5rem, 2vw, 1rem);
+        flex-shrink: 0;
+        flex-wrap: wrap;
+        flex-grow: 1
+      }
   }
 
-  @media (max-width: 900px) {
-    .footer-cta__content {
-      flex-direction: column;
-      gap: 1.5rem;
-      padding: 2rem 1rem;
-      min-height: unset;
-      justify-content: center;
-      align-items: center;
-      .footer-cta__text {
-        font-size: 1.3rem;
-        text-align: center;
-      }
-    }
-  }
-  @media (max-width: 600px) {
-    .footer-cta {
-      border-radius: 0.75rem; // 12px
+      /* Tablet breakpoint */
+    @media (max-width: 900px) {
       .footer-cta__content {
-        padding: 1.2rem 0.5rem;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: clamp(1.5rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem);
+        min-height: unset;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        
         .footer-cta__text {
-          font-size: 1.05rem;
-        }
-        .footer-cta__button {
-          font-size: 1rem;
-          padding: 0.8rem 1.5rem;
+          margin-right: 0;
+          text-align: center;
         }
       }
     }
-  }
+    
+    /* Mobile breakpoint */
+    @media (max-width: 600px) {
+      .footer-cta {
+        border-radius: clamp(0.5rem, 2vw, 0.75rem);
+        margin-bottom: clamp(30px, 8vw, 60px);
+        
+        .footer-cta__content {
+          padding: clamp(1rem, 4vw, 1.5rem) clamp(0.75rem, 3vw, 1rem);
+          
+          .footer-cta__text {
+            font-size: clamp(1.5rem, 4vw, 1.75rem);
+            text-align: center;
+            padding: 0 1rem;
+          }
+          
+          .cs-button-group {
+            flex-direction: column;
+            gap: clamp(0.5rem, 1.5vw, 0.75rem);
+            
+            p {
+              font-size: clamp(0.875rem, 2.5vw, 1rem);
+            }
+          }
+        }
+      }
+    }
+    
+    /* Very small mobile */
+    @media (max-width: 380px) {
+      .cs-container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
+      
+      .footer-cta {
+        .footer-cta__content {
+          padding: 1rem 0.5rem;
+          
+          .cs-button-group {
+            flex-direction: column;
+            gap: 0.75rem;
+            width: 100%;
+            
+            p {
+              order: -1;
+            }
+          }
+        }
+      }
+    }
 }
 </style> 
