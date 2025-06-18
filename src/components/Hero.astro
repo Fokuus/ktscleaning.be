@@ -24,21 +24,25 @@ import Button from "@components/Button.astro";
             <ul id="stats-1336" class="cs-ul">
               <li class="cs-item wow animate__fadeInUp" data-wow-delay="0.3s">
                   <span class="cs-number">24/7</span>
-                  <h3 class="cs-h3">Beschikbaarheid</h3>
+                  <h2 class="cs-h3">Beschikbaarheid</h2>
               </li>
               <li class="cs-item wow animate__fadeInUp" data-wow-delay="0.4s">
                   <span class="cs-number">10+</span>
-                  <h3 class="cs-h3">Jaren ervaring</h3>
+                  <h2 class="cs-h3">Jaren ervaring</h2>
               </li>
               <li class="cs-item wow animate__fadeInUp" data-wow-delay="0.5s">
                   <span class="cs-number">100%</span>
-                  <h3 class="cs-h3">Klanttevredenheid</h3>
+                  <h2 class="cs-h3">Klanttevredenheid</h2>
               </li>
           </ul>
         </div>
         <div class="cs-video-group wow animate__fadeInRight" data-wow-delay="0.2s">
             <div class="cs-video-wrapper">
-                <video src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Videos/gym.mp4" poster="/assets/images/industriele-reiniging-productielijnen.webp" preload="metadata" muted controls={false}></video>
+                <video poster="/assets/images/industriele-reiniging-productielijnen.webp" preload="none" muted controls={false} onerror="this.style.display='none'">
+                    <source src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Videos/gym.mp4" type="video/mp4">
+                    <track kind="captions" src="/assets/video-captions.vtt" srclang="nl" label="Nederlands" default>
+                    Je browser ondersteunt geen video tag.
+                </video>
                 <button class="cs-play" aria-label="click to play video">
                     <img src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/play-right.svg" alt="play icon" class="cs-icon" width="24" height="24" aria-hidden="true" decoding="async">
                 </button>

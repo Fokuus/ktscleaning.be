@@ -1,0 +1,46 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://csimg.nyc3.cdn.digitaloceanspaces.com; media-src 'self' https://csimg.nyc3.cdn.digitaloceanspaces.com; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self';"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Embedder-Policy = "require-corp"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    
+    # Cache headers for assets
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Redirects and URL handling
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+# Build settings
+[build]
+  command = "npm run build"
+  publish = "dist" 

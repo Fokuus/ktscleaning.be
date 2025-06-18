@@ -44,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
 	:root {
 		--primary: #fed500;
 		--primaryLight: #fefcf4;
-		--secondary: #3f3800;
+		--secondary: #2a2400;
 		--secondaryLight: #001f3f;
 		--headerColor: #1a1a1a;
 		--bodyTextColor: #66644b;
@@ -216,19 +216,20 @@ html {
   animation: fadeInDown 0.6s ease-out forwards;
 }
 
-/* Subtle scroll animation styles - Global */
+/* Subtle scroll animation styles - Global - Optimized for performance */
 .wow {
   visibility: hidden;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translate3d(0, 20px, 0);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
 }
 
 /* When animation is triggered */
 .wow.animated {
   visibility: visible;
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 @media only screen and (min-width: 90rem) {

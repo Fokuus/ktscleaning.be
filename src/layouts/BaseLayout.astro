@@ -49,10 +49,17 @@ const { description, title, preloadedImage } = Astro.props as Props;
             <!-- If present, preloads the image passed as a prop -->
             {preloadedImage && <link rel="preload" href={preloadedImage.src} as="image" />}
 
-            <!-- Google Fonts - Lato -->
+            <!-- Critical CSS inlined for performance -->
+            <style>
+                /* Critical font fallback */
+                body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif; }
+            </style>
+            
+            <!-- Google Fonts - Lato - Load async for performance -->
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+            <noscript><link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"></noscript>
             
             <!-- Social Media Display - generated automatically with the props passd to BaseLayout -->
             <meta property="og:title" content={title} />
@@ -101,8 +108,9 @@ const { description, title, preloadedImage } = Astro.props as Props;
             <!-- Sitewide Scripts -->
             <script src="@js/nav.js"></script>
             
-            <!-- Load Animate.css for animations -->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+            <!-- Load Animate.css deferred for better performance -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'">
+            <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"></noscript>
 
             <!-- Back to Top Button Styles -->
             <style>
