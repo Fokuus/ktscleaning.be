@@ -5,23 +5,32 @@
     "children": []
   },
   {
-    "key": "About Us",
+    "key": "Over Ons",
     "url": "/about/",
     "children": []
   },
   {
-    "key": "Projects",
-    "url": "/projects/",
+    "key": "Diensten",
+    "url": "#",
     "children": [
       {
-        "key": "Project 1",
-        "url": "/projects/project-1/"
+        "key": "Crime Scene Cleaning",
+        "url": "/diensten/crime-scene-cleaning/"
       },
       {
-        "key": "Project 2",
-        "url": "/projects/project-2/"
+        "key": "Gespecialiseerde Schoonmaak",
+        "url": "/diensten/gespecialiseerde-schoonmaak/"
+      },
+      {
+        "key": "Industriële Reiniging",
+        "url": "/diensten/industriele-reiniging/"
       }
     ]
+  },
+  {
+    "key": "Portfolio",
+    "url": "/projects/",
+    "children": []
   },
   {
     "key": "Reviews",

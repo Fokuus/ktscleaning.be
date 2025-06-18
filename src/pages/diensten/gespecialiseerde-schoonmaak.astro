@@ -1,0 +1,309 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+import Landing from "@components/Landing.astro";
+import FAQ from "@components/FAQ.astro";
+import Button from "@components/Button.astro";
+import ContentSection from "@components/ContentSection.astro";
+import TableOfContents from "@components/TemplateComponents/TableOfContents.astro";
+import SideBySide from "@components/SideBySide.astro";
+
+// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
+import landingImage from "@assets/images/landing.jpg"
+import { getImage } from "astro:assets";
+const optimizedImage = await getImage({src: landingImage, format: 'avif'})
+
+// Define the headings for the Table of Contents
+const headings = [
+  { depth: 2, slug: "zwaar-vervuilde-woning", text: "Zwaar vervuilde woning" },
+  { depth: 2, slug: "onopgemerkt-overlijden", text: "Onopgemerkt overlijden" },
+  { depth: 2, slug: "brandschade", text: "Brandschade" },
+  { depth: 2, slug: "waterschade", text: "Waterschade" },
+  { depth: 2, slug: "veelgestelde-vragen", text: "Veelgestelde Vragen" }
+];
+---
+
+<BaseLayout
+  title="Gespecialiseerde Schoonmaak - KTS Cleaning"
+  description="Professionele schoonmaak van zwaar vervuilde woningen, na overlijden, inboedelontruiming en periodieke reiniging. KTS Cleaning biedt discrete en volledige schoonmaakdiensten."
+  preloadedImage = {optimizedImage}
+>
+  <!-- ============================================ -->
+  <!--                    LANDING                   -->
+  <!-- ============================================ -->
+
+  <Landing 
+    title="Gespecialiseerde Schoonmaak"
+    image={optimizedImage}
+  />
+
+  <!-- ============================================ -->
+  <!--              Table of Contents               -->
+  <!-- ============================================ -->
+
+  <section id="table-of-contents">
+    <div class="cs-container">
+      <div class="cs-content">
+        <span class="cs-topper">Professionele Expertise</span>
+        <h2 class="cs-title">Gespecialiseerde Schoonmaak Diensten</h2>
+        <p class="cs-text">
+          Van het eenmalig reinigen van een <strong>zwaar vervuilde woning</strong> of na een <strong>onopgemerkt overlijden</strong> tot het ontruimen van inboedel of een periodieke stal- en industriële reiniging… onze <strong>ervaren teams</strong> voeren zowel specialistische opdrachten als grootschalige projecten uit. <strong>Professioneel en persoonlijk</strong>, reken op een vlekkeloos resultaat.
+        </p>
+        <ul class="cs-services-list">
+          <li><strong>Specialistische opdrachten</strong> en grootschalige projecten</li>
+          <li><strong>Professioneel en persoonlijk</strong> contact</li>
+          <li><strong>Vlekkeloos resultaat</strong> gegarandeerd</li>
+          <li><strong>Ervaren teams</strong> voor alle situaties</li>
+        </ul>
+        <Button text="Vraag Gratis Offerte" href="/contact" />
+      </div>
+      <div class="cs-toc-wrapper" id="desktop-toc">
+        <TableOfContents headings={headings} levels={2} />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!--                Content Sections             -->
+  <!-- ============================================ -->
+
+  <div id="zwaar-vervuilde-woning">
+    <ContentSection
+      heading="Zwaar vervuilde woning"
+      text="Bij een <strong>zwaar verontreinigde woning</strong> gaat het om situaties waarbij de woning <strong>onbewoonbaar is</strong> zonder dat er eerst maatregelen worden genomen. Vaak gaat dit gepaard met <strong>geurhinder, schimmelvorming, vochtplekken en uitwerpselen van ongedierte</strong>. Niet alleen is een zwaar vervuilde woning een aanslag op de gezondheid, het brengt ook risico's zoals <strong>brandgevaar</strong> met zich mee."
+      servicesTitle="Onze aanpak:"
+      services={[
+        "<strong>Gezonde leefomgeving</strong> binnen korte tijd",
+        "<strong>Geurhinder en schimmel</strong> professioneel aangepakt",
+        "<strong>Gezondheidsrisico's</strong> weggenomen",
+        "<strong>Brandgevaar</strong> geëlimineerd"
+      ]}
+      buttonText="Vraag offerte"
+      buttonHref="/contact"
+      imageSrc="/public/assets/images/gespecialiseerde-schoonmaak-01.jpg"
+      imageAlt="Zwaar vervuilde woning professioneel gereinigd"
+    />
+  </div>
+
+  <div id="onopgemerkt-overlijden">
+    <ContentSection
+      reversed={true}
+      heading="Onopgemerkt overlijden"
+      text="Iemand verliezen die je nauw aan het hart ligt, is op zich al een <strong>ingrijpende gebeurtenis</strong>. Wanneer de overleden persoon pas dagen na het overlijden wordt aangetroffen, is het noodzakelijk om een beroep te doen op een <strong>gespecialiseerde schoonmaakdienst</strong>. Slechts enkele minuten na het overlijden zet het <strong>ontbindingsproces</strong> in. Hierbij komen gassen vrij die een indringende geur kunnen achterlaten in de ruimte."
+      servicesTitle="Gespecialiseerde aanpak:"
+      services={[
+        "<strong>Deskundige reiniging</strong> van het pand",
+        "<strong>Gezondheidsrisico's</strong> uitgesloten",
+        "<strong>Geen sporen</strong> van het overlijden achterlaten",
+        "<strong>Contaminatie met lijkvocht</strong> professioneel aangepakt"
+      ]}
+      buttonText="Vraag offerte"
+      buttonHref="/contact"
+      imageSrc="/public/assets/images/reiniging-na-overlijden.jpg"
+      imageAlt="Professionele reiniging na onopgemerkt overlijden"
+    />
+  </div>
+
+  <div id="brandschade">
+    <ContentSection
+      heading="Brandschade"
+      text="<strong>Vuurschade</strong> uit zich in uiteenlopende vormen. Het meest voor de hand liggend is de schade aan het gebouw en aan het meubilair. Daarnaast heb je ook nog <strong>roetdeeltjes</strong> die zich overal hebben verspreid en aangehecht, en de <strong>onaangename geur</strong>. Bij brand- of vuurschade gaan we eerst na met welk type brand de ruimte of het gebouw te maken heeft gehad."
+      servicesTitle="Onze brandschade aanpak:"
+      services={[
+        "<strong>Analyse van het brandtype</strong> en schade",
+        "<strong>Roetdeeltjes</strong> professioneel verwijderen",
+        "<strong>Onaangename geuren</strong> elimineren",
+        "<strong>Muren en plafonds</strong> herschilderen"
+      ]}
+      buttonText="Vraag offerte"
+      buttonHref="/contact"
+      imageSrc="/public/assets/images/brandschade-reiniging.jpg"
+      imageAlt="Professionele brandschade reiniging"
+    />
+  </div>
+
+  <div id="waterschade">
+    <ContentSection
+      reversed={true}
+      heading="Waterschade"
+      text="Een <strong>ondergelopen kelder, woonruimte of kantoor</strong> na een overstroming? Een waterlek bij jou of je buur? Of plots last van extreme regenval? <strong>Water kan een enorme ravage aanrichten</strong>. Het is dan ook belangrijk om zo snel mogelijk te handelen. Hoe langer water aanwezig blijft, hoe meer schade het aanricht aan muren, meubilair en toestellen."
+      servicesTitle="Waterschade herstel:"
+      services={[
+        "<strong>Snelle behandeling</strong> van elke oproep",
+        "<strong>Verschillende ploegen</strong> verspreid over regio's",
+        "<strong>Akkoord verzekeringsmaatschappij</strong> geregeld",
+        "<strong>Minimale schade</strong> door snelle interventie"
+      ]}
+      buttonText="Vraag offerte"
+      buttonHref="/contact"
+      imageSrc="/public/assets/images/waterschade-herstel.jpg"
+      imageAlt="Professionele waterschade herstel"
+    />
+  </div>
+
+  <!-- ============================================ -->
+  <!--              Before & After Sections        -->
+  <!-- ============================================ -->
+
+  <SideBySide 
+    id="sbs-specialized-cleaning"
+    title="Zwaar vervuilde woning - gezonde leefomgeving"
+    text="Deze woning was <strong>onbewoonbaar</strong> door extreme vervuiling, geurhinder en schimmelvorming. Als professionele reinigingsdienst hebben wij ervoor gezorgd dat de woning binnen korte tijd opnieuw een <strong>gezonde leefomgeving</strong> werd - <strong>professioneel en persoonlijk</strong>."
+    beforeImage="/assets/images/voor.png"
+    afterImage="/assets/images/na.png"
+    beforeAlt="Voor - onbewoonbare zwaar vervuilde woning"
+    afterAlt="Na - gezonde en bewoonbare leefomgeving"
+    projectItems={[
+        "<strong>Geurhinder en schimmel</strong> volledig weggenomen",
+        "<strong>Gezondheidsrisico's</strong> geëlimineerd",
+        "<strong>Gezonde leefomgeving</strong> binnen korte tijd hersteld"
+    ]}
+    showStats={false}
+  />
+
+  <div id="veelgestelde-vragen">
+    <FAQ 
+      title="Gespecialiseerde Schoonmaak FAQ"
+      topper="Veelgestelde Vragen"
+      faqs={[
+        {
+          question: "Wat valt onder gespecialiseerde schoonmaak?",
+          answer: "Gespecialiseerde schoonmaak omvat alle reinigingssituaties die verder gaan dan gewone schoonmaak: zwaar vervuilde woningen, reiniging na overlijden, hoarding cleanup, water- en brandschade, en andere complexe situaties die speciale expertise en uitrusting vereisen.",
+          isActive: true
+        },
+        {
+          question: "Hoe discreet werken jullie?",
+          answer: "Discretie is voor ons van het grootste belang. Wij werken zonder opvallende bedrijfsvoertuigen, respecteren uw privacy volledig, en al onze medewerkers zijn gebonden aan strikte geheimhouding. Uw situatie blijft volledig vertrouwelijk."
+        },
+        {
+          question: "Zijn jullie verzekerd voor dit type werk?",
+          answer: "Ja, KTS Cleaning is volledig verzekerd voor alle gespecialiseerde schoonmaakwerkzaamheden. Wij hebben zowel aansprakelijkheids- als beroepsverzekering, zodat u zich geen zorgen hoeft te maken over eventuele schade tijdens het werk."
+        },
+        {
+          question: "Hoe lang duurt een gespecialiseerde schoonmaak?",
+          answer: "De duur hangt af van de omvang en complexiteit van de situatie. Een zwaar vervuilde woning kan 1-3 dagen duren, terwijl kleinere projecten vaak binnen een dag afgerond zijn. Wij geven u vooraf een realistische inschatting van de benodigde tijd."
+        },
+        {
+          question: "Wat gebeurt er met de spullen die weggehaald moeten worden?",
+          answer: "Wij sorteren alles zorgvuldig en bespreken met u wat bewaard moet blijven. Waardevolle of sentimentele spullen worden apart gehouden. Afval wordt op milieuvriendelijke wijze afgevoerd naar erkende verwerkingsbedrijven, conform alle regelgeving."
+        }
+      ]}
+    />
+  </div>
+
+</BaseLayout>
+
+<style lang="less">
+  /* Table of Contents Styles */
+  #table-of-contents {
+    padding: var(--sectionPadding);
+    padding-bottom: 0rem !important;
+    background-color: #f8f9fa;
+
+    .cs-container {
+      display: flex;
+      flex-direction: column;
+      gap: (48/16rem);
+
+      @media only screen and (min-width: 64rem) {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: (80/16rem);
+      }
+    }
+
+    .cs-content {
+      text-align: left;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      @media only screen and (min-width: 64rem) {
+        width: 60%;
+      }
+    }
+
+    .cs-topper {
+      text-align: left;
+      margin-bottom: (4/16rem);
+    }
+
+    .cs-title {
+      text-align: left;
+      max-width: none;
+      margin: 0 0 (16/16rem) 0;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .cs-text {
+      text-align: left;
+      margin-bottom: (32/16rem);
+      max-width: none;
+    }
+
+    .cs-services-list {
+      margin: 0 0 (32/16rem) 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        font-size: (16/16rem);
+        line-height: 1.5em;
+        color: var(--bodyTextColor);
+        margin-bottom: (12/16rem);
+        padding-left: (20/16rem);
+        position: relative;
+
+        &::before {
+          content: "";
+          width: (8/16rem);
+          height: (8/16rem);
+          background-color: var(--primary);
+          position: absolute;
+          left: 0;
+          top: (8/16rem);
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    .cs-toc-wrapper {
+      width: 100%;
+      background-color: #fff;
+      padding: (32/16rem);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+      @media only screen and (min-width: 64rem) {
+        width: 40%;
+        position: sticky;
+        top: (120/16rem);
+      }
+    }
+  }
+
+  /* Dark Mode */
+  @media only screen and (min-width: 0em) {
+    body.dark-mode {
+      #table-of-contents {
+        background-color: var(--dark);
+
+        .cs-title,
+        .cs-text {
+          color: var(--bodyTextColorWhite);
+        }
+
+        .cs-services-list li {
+          color: var(--bodyTextColorWhite);
+        }
+
+        .cs-toc-wrapper {
+          background-color: var(--accent);
+        }
+      }
+    }
+  }
+</style> 

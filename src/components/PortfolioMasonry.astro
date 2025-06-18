@@ -50,14 +50,14 @@ const sortedItems = allItems
 
 <section id="portfolio" class="portfolio-section">
   <div class="portfolio-container">
-    <div class="portfolio-header">
+    <div class="portfolio-header wow animate__fadeInUp">
       <p class="cs-topper">Ons Werk</p>
       <h2 class="cs-title">Uitgelichte Projecten</h2>
       <div class="portfolio-divider"></div>
     </div>
 
     <div class="projects-grid homepage-grid">
-      {sortedItems.map((item) => {
+      {sortedItems.map((item, index) => {
         // For real portfolio items, use the ID as slug
         // For placeholder items, create a slug from the title
         const slug = item.id ? 
@@ -65,7 +65,7 @@ const sortedItems = allItems
           item.data.title.toLowerCase().replace(/\s+/g, '-');
         
         return (
-          <a href={`/portfolio/${slug}`} class="project-card">
+          <a href={`/portfolio/${slug}`} class={`project-card wow animate__fadeInUp`} data-wow-delay={`${0.1 + index * 0.1}s`}>
             <div class="project-card-inner">
               {/* Background image with zoom effect */}
               <div class="project-background">
@@ -121,7 +121,7 @@ const sortedItems = allItems
       })}
     </div>
     
-    <div class="portfolio-cta">
+    <div class="portfolio-cta wow animate__fadeInUp" data-wow-delay="0.6s">
       <a href="/portfolio" class="portfolio-button">Bekijk alle projecten</a>
     </div>
   </div>

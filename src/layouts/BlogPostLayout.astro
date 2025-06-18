@@ -5,7 +5,7 @@ import { formatDate } from "@js/utils";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FeaturedPost from "@components/FeaturedPost.astro";
 import TableOfContents from "@components/TemplateComponents/TableOfContents.astro";
-import CTA from "@components/CTA.astro";
+
 import "@styles/markdown.less";
 
 const { post } = Astro.props;
@@ -65,7 +65,7 @@ const { Content, headings } = await render(post);
 		</aside>
 	</div>
 
-	<CTA />
+	
 
 </BaseLayout>
 

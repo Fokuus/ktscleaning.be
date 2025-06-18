@@ -4,7 +4,7 @@
 **/
 
 import BaseLayout from "@layouts/BaseLayout.astro";
-import CTA from "@components/CTA.astro";
+
 import { getCollection } from "astro:content";
 import { getImage } from "astro:assets";
 import "@styles/sidebar.less";
@@ -23,7 +23,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 
 ---
 
-<BaseLayout title="Blog" description="Meta description for the page" preloadedImage={optimizedImage}>
+<BaseLayout title="Blog - KTS Cleaning" description="Lees de laatste nieuwtjes en tips van KTS Cleaning over gespecialiseerde schoonmaak, crime scene cleaning en industriële reiniging. Expert advies en branche-inzichten." preloadedImage={optimizedImage}>
 	<Landing title="Blog" image={optimizedImage} />
 
 	<!-- Use the BlogRecentArticles layout to display the recent articles in a standard grid -->
@@ -31,7 +31,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 
 	<!-- Use the BlogRecentArticlesWithSidebar layout to display the recent articles in a custom sidebar layout-->
 	<BlogRecentArticlesWithSidebar posts={posts} />
-	<CTA />
+	
 
 </BaseLayout>
 

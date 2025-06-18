@@ -1,55 +1,94 @@
 ---
 import Button from "@components/Button.astro";
+
+interface Props {
+  // Content
+  topper?: string;
+  title: string;
+  text: string;
+  projectTitle?: string;
+  projectItems: string[];
+  buttonText?: string;
+  buttonHref?: string;
+  
+  // Images
+  beforeImage: string;
+  afterImage: string;
+  beforeAlt?: string;
+  afterAlt?: string;
+  
+  // Stats box (optional)
+  showStats?: boolean;
+  statsNumber?: string;
+  statsText?: string;
+  
+  // Layout
+  id?: string;
+}
+
+const {
+  topper = "VOOR & NA",
+  title,
+  text,
+  projectTitle = "Dit project:",
+  projectItems,
+  buttonText = "Offerte aanvragen",
+  buttonHref = "/contact",
+  beforeImage,
+  afterImage,
+  beforeAlt = "Voor reiniging",
+  afterAlt = "Na reiniging", 
+  showStats = true,
+  statsNumber = "13+",
+  statsText = "Jaar ervaring",
+  id = "sbs-2295"
+} = Astro.props;
 ---
 
 <!-- ============================================ -->
 <!--                  Side By Side                -->
 <!-- ============================================ -->
 
-<section id="sbs-2295">
+<section id={id}>
     <div class="cs-container">
-        <div class="cs-image-group">
+        <div class="cs-image-group wow animate__fadeInRight" data-wow-delay="0.2s">
             <div class="cs-picture-wrapper1">
                 <picture class="cs-picture">
-                    <source media="(max-width: 600px)" srcset="/assets/images/voor.png">
-                    <source media="(min-width: 601px)" srcset="/assets/images/voor.png">
-                    <img loading="lazy" decoding="async" src="/assets/images/voor.png" alt="cleaning" width="629" height="789">
+                    <source media="(max-width: 600px)" srcset={beforeImage}>
+                    <source media="(min-width: 601px)" srcset={beforeImage}>
+                    <img loading="lazy" decoding="async" src={beforeImage} alt={beforeAlt} width="629" height="789">
                 </picture>
             </div>
             <div class="cs-picture-wrapper2">
                 <picture class="cs-picture">
-                    <source media="(max-width: 600px)" srcset="/assets/images/na.png">
-                    <source media="(min-width: 601px)" srcset="/assets/images/na.png">
-                    <img loading="lazy" decoding="async" src="/assets/images/na.png" alt="cleaning" width="629" height="789">
+                    <source media="(max-width: 600px)" srcset={afterImage}>
+                    <source media="(min-width: 601px)" srcset={afterImage}>
+                    <img loading="lazy" decoding="async" src={afterImage} alt={afterAlt} width="629" height="789">
                 </picture>
             </div>
             <svg class="cs-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 134.97 84.97">
                 <path fill="currentColor" fill-rule="evenodd" d="M75.51 16.97L89.03 30.49H0v24h89.03l-13.52 13.51L92.49 84.97 134.97 42.49 92.49 0 75.51 16.97z"/>
             </svg>
-            <div class="cs-box">
-                <span class="cs-number">13+</span>
-                <span class="cs-tag">Jaar ervaring</span>
-            </div>
+            {showStats && (statsNumber && statsText) && (
+                <div class="cs-box">
+                    <span class="cs-number">{statsNumber}</span>
+                    <span class="cs-tag">{statsText}</span>
+                </div>
+            )}
         </div>
-        <div class="cs-content">
-            <span class="cs-topper">VOOR & NA</span>
-            <h2 class="cs-title">Zwaar vervuilde woning</h2>
-            <p class="cs-text">
-                Deze woning werd aangetroffen in extreem vervuilde toestand. Dankzij onze jarenlange ervaring in gespecialiseerde schoonmaak brachten wij de ruimte opnieuw in hygiënische staat – snel, discreet en grondig.
-            </p>
-            <h3 class="cs-h3">Dit project:</h3>
+        <div class="cs-content wow animate__fadeInLeft">
+            <span class="cs-topper">{topper}</span>
+            <h2 class="cs-title">{title}</h2>
+            <p class="cs-text">{text}</p>
+            <h3 class="cs-h3">{projectTitle}</h3>
             <ul class="cs-ul">
-                <li class="cs-li">
-                    <strong>WC volledig ontstopt en gereinigd</strong>
-                </li>
-                <li class="cs-li">
-                    <strong>Vloer en tegels</strong> professioneel gereinigd
-                </li>
-                <li class="cs-li">
-                    Alles weer <strong>hygiënisch</strong> én geurvrij
-                </li>
+                {projectItems && projectItems.map((item) => (
+                    <li class="cs-li" set:html={item}></li>
+                ))}
             </ul>
-            <Button text="Offerte aanvragen" href="/contact" />
+            {(buttonText && buttonHref) && (
+                <Button text={buttonText} href={buttonHref} />
+            )}
         </div>
     </div>
 </section>
@@ -61,17 +100,16 @@ import Button from "@components/Button.astro";
     
     /* Mobile - 360px */
     @media only screen and (min-width: 0rem) {
-      #sbs-2295 {
+      [id^="sbs-"] {
         padding: var(--sectionPadding);
         background-color: #fefcf4;
         overflow: hidden;
         position: relative;
         z-index: 1;
       }
-      #sbs-2295 .cs-container {
-        width: 100%;
-        /* changes to 1280px at tablet */
-        max-width: 44rem;
+      [id^="sbs-"] .cs-container {
+        width: var(--contentWidthMobile);
+        max-width: var(--contentWidthDesktopMax);
         margin: auto;
         display: flex;
         flex-direction: column;
@@ -79,7 +117,7 @@ import Button from "@components/Button.astro";
         /* 48px - 64px */
         gap: clamp(3rem, 4vw, 4rem);
       }
-      #sbs-2295 .cs-image-group {
+      [id^="sbs-"] .cs-image-group {
         /* scales the whole section down and ties the font size to the vw and stops at 75% of the vale of 1em, changes at desktop */
         font-size: min(1.98vw, .826rem);
         /* everything inside this box is in ems so we can scale it all down proportionally with a font size */
@@ -91,20 +129,20 @@ import Button from "@components/Button.astro";
         /* prevents flexbox from squishing it */
         flex: none;
       }
-      #sbs-2295 .cs-picture {
+      [id^="sbs-"] .cs-picture {
         width: 100%;
         height: 100%;
         border: 1em solid #fefcf4;
         display: block;
       }
-      #sbs-2295 .cs-picture img {
+      [id^="sbs-"] .cs-picture img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         top: 0;
         left: 0;
       }
-      #sbs-2295 .cs-picture-wrapper1 {
+      [id^="sbs-"] .cs-picture-wrapper1 {
         width: 25.75em;
         height: 28.5625em;
         display: flex;
@@ -114,7 +152,7 @@ import Button from "@components/Button.astro";
         top: 0;
         left: 0;
       }
-      #sbs-2295 .cs-picture-wrapper2 {
+      [id^="sbs-"] .cs-picture-wrapper2 {
         width: 25.8125em;
         height: 29.625em;
         display: flex;
@@ -124,14 +162,15 @@ import Button from "@components/Button.astro";
         right: 0;
         bottom: 0;
       }
-      #sbs-2295 .cs-tag {
+      [id^="sbs-"] .cs-tag {
         /* 14px - 24px */
         font-size: clamp(0.875rem, 1.4vw, 1.5rem);
         line-height: 1.2em;
         text-align: center;
-        color: var(--headerColor);
+        color: #fff;
+        font-weight: 400;
       }
-      #sbs-2295 .cs-arrow {
+      [id^="sbs-"] .cs-arrow {
         width: 7em;
         height: 4.5em;
         position: absolute;
@@ -143,7 +182,26 @@ import Button from "@components/Button.astro";
         fill-opacity: 1;
         stroke: none;
       }
-      #sbs-2295 .cs-content {
+      [id^="sbs-"] .cs-box {
+        padding: 1em 1.5em;
+        background-color: var(--primary);
+        border-radius: 0.5em;
+        position: absolute;
+        bottom: 2em;
+        right: 2em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25em;
+      }
+      [id^="sbs-"] .cs-number {
+        font-size: 2rem;
+        font-weight: 900;
+        line-height: 1em;
+        color: #fff;
+        display: block;
+      }
+      [id^="sbs-"] .cs-content {
         /* set text align to center if content needs to be centrally aligned */
         text-align: left;
         width: 100%;
@@ -153,16 +211,16 @@ import Button from "@components/Button.astro";
         /* aligns content to the left, set to center to centrally align */
         align-items: flex-start;
       }
-      #sbs-2295 .cs-title {
+      [id^="sbs-"] .cs-title {
         max-width: 30ch;
       }
-      #sbs-2295 .cs-text {
+      [id^="sbs-"] .cs-text {
         margin-bottom: 1rem;
       }
-      #sbs-2295 .cs-text:last-of-type {
+      [id^="sbs-"] .cs-text:last-of-type {
         margin-bottom: 1.5rem;
       }
-      #sbs-2295 .cs-button-solid {
+      [id^="sbs-"] .cs-button-solid {
         font-size: 1rem;
         /* 46px - 56px */
         line-height: clamp(2.875rem, 5.5vw, 3.5rem);
@@ -177,7 +235,7 @@ import Button from "@components/Button.astro";
         position: relative;
         z-index: 1;
       }
-      #sbs-2295 .cs-button-solid:before {
+      [id^="sbs-"] .cs-button-solid:before {
         content: "";
         width: 0%;
         height: 100%;
@@ -190,23 +248,23 @@ import Button from "@components/Button.astro";
         z-index: -1;
         transition: width 0.3s;
       }
-      #sbs-2295 .cs-button-solid:hover:before {
+      [id^="sbs-"] .cs-button-solid:hover:before {
         width: 100%;
       }
-      #sbs-2295 .cs-h3 {
+      [id^="sbs-"] .cs-h3 {
         font-size: 1rem;
         line-height: 1.5em;
         margin: 0;
         color: var(--headerColor);
       }
-      #sbs-2295 .cs-ul {
+      [id^="sbs-"] .cs-ul {
         margin: 0.75rem 0 2rem;
         padding: 0;
         display: flex;
         flex-direction: column;
         gap: 0.75rem;
       }
-      #sbs-2295 .cs-li {
+      [id^="sbs-"] .cs-li {
         font-size: 1rem;
         line-height: 1.5em;
         list-style: none;
@@ -215,10 +273,10 @@ import Button from "@components/Button.astro";
         color: var(--bodyTextColor);
         position: relative;
       }
-      #sbs-2295 .cs-li strong {
+      [id^="sbs-"] .cs-li strong {
         color: #1a1a1a;
       }
-      #sbs-2295 .cs-li::before {
+      [id^="sbs-"] .cs-li::before {
         content: "";
         width: 0.5rem;
         height: 0.5rem;
@@ -233,28 +291,28 @@ import Button from "@components/Button.astro";
     }
     /* Tablet - 768px */
     @media only screen and (min-width: 48rem) {
-      #sbs-2295 .cs-container {
-        max-width: 80rem;
+      [id^="sbs-"] .cs-container {
+        width: var(--contentWidthDesktop);
       }
-      #sbs-2295 .cs-image-group {
+      [id^="sbs-"] .cs-image-group {
         order: initial;
       }
     }
     /* Desktop - 1024px */
     @media only screen and (min-width: 64rem) {
-      #sbs-2295 .cs-container {
+      [id^="sbs-"] .cs-container {
         flex-direction: row;
         align-items: stretch;
       }
-      #sbs-2295 .cs-image-group {
+      [id^="sbs-"] .cs-image-group {
         font-size: min(1.03vw, 1rem);
         height: auto;
       }
-      #sbs-2295 .cs-picture-wrapper1 {
+      [id^="sbs-"] .cs-picture-wrapper1 {
         height: auto;
         bottom: 7.5625em;
       }
-      #sbs-2295 .cs-picture-wrapper2 {
+      [id^="sbs-"] .cs-picture-wrapper2 {
         height: auto;
         top: 6.5em;
       }

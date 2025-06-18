@@ -5,7 +5,7 @@ import netlify from "@astrojs/netlify";
 import path from "path";
 
 export default defineConfig({
-  site: "https://www.fokuus.nl", // Updated to Fokuus domain
+  site: "https://www.ktscleaning.be", // Updated to KTS Cleaning domain
   integrations: [
     icon(),
     sitemap({

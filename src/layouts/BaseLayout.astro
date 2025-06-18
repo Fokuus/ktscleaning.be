@@ -41,7 +41,9 @@ const { description, title, preloadedImage } = Astro.props as Props;
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta name="description" content={description}>
-            <meta name="keywords" content="">
+            <meta name="keywords" content="crime scene cleaning, gespecialiseerde schoonmaak, industriële reiniging, technische ontmanteling, 24/7 schoonmaak, België, KTS Cleaning">
+            <meta name="author" content="KTS Cleaning">
+            <meta name="robots" content="index, follow">
             <link rel="canonical" href={`https://${client.domain}${Astro.url.pathname}`}>
 
             <!-- If present, preloads the image passed as a prop -->
@@ -57,21 +59,31 @@ const { description, title, preloadedImage } = Astro.props as Props;
             <meta property="og:description" content={description} />
             <meta property="og:type" content="website" />
             <meta property="og:url" content={`https://${client.domain}${Astro.url.pathname}`} />
+            <meta property="og:site_name" content="KTS Cleaning" />
+            <meta property="og:locale" content="nl_BE" />
             {
               preloadedImage && 
                 <meta property="og:image" content={preloadedImage.src} /> 
                 <meta property="og:image:secure_url" content={preloadedImage.src} />
             }
+            
+            <!-- Twitter Card tags -->
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content={title} />
+            <meta name="twitter:description" content={description} />
+            {
+              preloadedImage && 
+                <meta name="twitter:image" content={preloadedImage.src} />
+            }
                 
             <!-- Favicons -->
-            <link rel="apple-touch-icon" href="/assets/images/logo.svg">
-            <link rel="icon" type="image/svg+xml" href="/favicon.svg?v3">
+            <link rel="apple-touch-icon" href="/favicon.svg">
+            <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+            <link rel="icon" type="image/png" href="/favicon.png">
             <link rel="sitemap" href="/sitemap-index.xml" />
-            <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-            <link rel="alternate icon" href="/favicon.svg" type="image/svg+xml" />
             <link rel="manifest" href="/assets/favicons/site.webmanifest">
-            <meta name="msapplication-TileColor" content="#da532c">
-            <meta name="theme-color" content="#ffffff">
+            <meta name="msapplication-TileColor" content="#fed500">
+            <meta name="theme-color" content="#fed500">
          
             <!-- For home page, use service keywords for the title, including location for SEO.
             Other pages should just include the page name.
@@ -81,20 +93,81 @@ const { description, title, preloadedImage } = Astro.props as Props;
             About Page - About us | Painters and Co.
             -->
             <title>
-                {Astro.url.pathname === "/" ?  (`${ title }
-                |
-                ${ client.name }
-                |
-                ${ client.address.city },
-                ${ client.address.state }`) :
-                (`${ title }
-                    |
-                    ${ client.name }`)
+                {Astro.url.pathname === "/" ?  (`${ title } | ${ client.name } | ${ client.address.city }, ${ client.address.state }`) :
+                (`${ title } | ${ client.name }`)
             }
             </title>
 
             <!-- Sitewide Scripts -->
             <script src="@js/nav.js"></script>
+            
+            <!-- Load Animate.css for animations -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+            <!-- Back to Top Button Styles -->
+            <style>
+              .back-to-top-btn {
+                position: fixed;
+                bottom: 2rem;
+                right: 2rem;
+                width: 3rem;
+                height: 3rem;
+                background-color: var(--primary);
+                color: #000;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                transition: all 0.3s ease;
+                opacity: 0;
+                transform: translateY(20px);
+              }
+
+              .back-to-top-btn:hover {
+                background-color: var(--primaryLight);
+                transform: translateY(0) scale(1.1);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+              }
+
+              .back-to-top-btn.show {
+                opacity: 1;
+                transform: translateY(0);
+              }
+
+              .back-to-top-btn svg {
+                width: 1.25rem;
+                height: 1.25rem;
+              }
+
+              /* Dark mode styling */
+              body.dark-mode .back-to-top-btn {
+                background-color: var(--primary);
+                color: #000;
+              }
+
+              body.dark-mode .back-to-top-btn:hover {
+                background-color: var(--primaryLight);
+              }
+
+              /* Mobile adjustments */
+              @media (max-width: 768px) {
+                .back-to-top-btn {
+                  bottom: 1.5rem;
+                  right: 1.5rem;
+                  width: 2.5rem;
+                  height: 2.5rem;
+                }
+
+                .back-to-top-btn svg {
+                  width: 1rem;
+                  height: 1rem;
+                }
+              }
+            </style>
         </head>
         <body>
             <!-- Screen reader skip main nav -->
@@ -118,6 +191,19 @@ const { description, title, preloadedImage } = Astro.props as Props;
                 <slot/>
             </main>
             <Footer />
+
+            <!-- Back to Top Button -->
+            <button 
+              class="back-to-top-btn" 
+              onclick="scrollToTop()" 
+              id="back-to-up"
+              aria-label="Back to top"
+              style="display: none;"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+              </svg>
+            </button>
     
         </body>
 </html>
@@ -157,40 +243,106 @@ const { description, title, preloadedImage } = Astro.props as Props;
     setTheme();
   
     document.addEventListener("astro:after-swap", setTheme); // For View Transitions purposes - astro:after-swap ensures that the theme is kept after navigating to a new page.
-</script>
 
-<!-- WOW.js initialization -->
-<script>
-  // Add type declaration for WOW
-  declare global {
-    interface Window {
-      WOW: any;
+    // Back to Top Button Functionality
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     }
-  }
-  
-  // Import WOW.js using a script tag instead of ES module import
-  document.addEventListener('astro:page-load', () => {
-    // Initialize WOW.js when the page loads
-    if (typeof window !== 'undefined') {
-      // Check if WOW is already available (from the script tag)
-      if (typeof window.WOW === 'function') {
-        // Initialize WOW.js with options
-        const wow = new window.WOW({
-          boxClass: 'wow',      // animated element css class
-          animateClass: 'animated', // animation css class
-          offset: 50,          // distance to the element when triggering the animation
-          mobile: true,        // enable animations on mobile devices
-          live: true,          // continuously check for new WOW elements
-          callback: function(box) {
-            // callback when an element is animated
-          },
-          scrollContainer: null // optional scroll container selector
-        });
-        wow.init();
+
+    function toggleTopButton() {
+      const backToTopBtn = document.getElementById('back-to-up');
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.classList.add('show');
+        backToTopBtn.style.display = 'flex';
+      } else {
+        backToTopBtn.classList.remove('show');
+        // Delay hiding to allow fade out transition
+        setTimeout(() => {
+          if (!backToTopBtn.classList.contains('show')) {
+            backToTopBtn.style.display = 'none';
+          }
+        }, 300);
       }
     }
-  });
+
+    // Initialize back to top functionality
+    window.addEventListener('scroll', toggleTopButton);
+    
+    // Re-initialize on page transitions
+    document.addEventListener("astro:after-swap", () => {
+      window.addEventListener('scroll', toggleTopButton);
+    });
 </script>
 
-<!-- Load WOW.js from CDN -->
-<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<!-- WOW.js already loaded in head -->
+
+<!-- Modern scroll animations using Intersection Observer -->
+<script is:inline>
+  // Initialize scroll animations
+  function initAnimations() {
+    console.log('Initializing modern scroll animations...');
+    setupScrollAnimations();
+  }
+
+  // Modern scroll animations using Intersection Observer
+  function setupScrollAnimations() {
+    console.log('Setting up subtle scroll animations...');
+    
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const element = entry.target;
+            
+            // Get delay from data-wow-delay attribute
+            const delayAttr = element.getAttribute('data-wow-delay');
+            const delay = delayAttr ? parseFloat(delayAttr.replace('s', '')) * 1000 : 0;
+            
+            // Apply subtle animation after delay
+            setTimeout(() => {
+              element.style.visibility = 'visible';
+              element.style.opacity = '1';
+              element.style.transform = 'translateY(0px)';
+              element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            }, delay);
+            
+            observer.unobserve(element);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '30px'
+      });
+
+      // Set initial state for elements and observe them
+      document.querySelectorAll('.wow').forEach(el => {
+        // Set initial subtle hidden state
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.visibility = 'hidden';
+        observer.observe(el);
+      });
+      
+      console.log('Subtle animation setup complete');
+    } else {
+      // Very old browser - just show everything
+      document.querySelectorAll('.wow').forEach(el => {
+        el.style.visibility = 'visible';
+        el.style.opacity = '1';
+      });
+    }
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnimations);
+  } else {
+    initAnimations();
+  }
+
+  // Re-initialize after page transitions (for Astro)
+  document.addEventListener('astro:after-swap', initAnimations);
+</script>

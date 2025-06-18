@@ -10,7 +10,7 @@ import PhoneCTASimple from "./PhoneCTASimple.astro";
   <div class="cs-container">
       <!--Nav Logo-->
       <!--Logo is turned white in the css with a filter on dark mode-->
-      <a href="/" class="cs-logo" aria-label="back to home">
+      <a href="/" class="cs-logo wow" data-wow-delay="0.2s" aria-label="back to home">
           <img src="/assets/images/Nieuw logo.png" alt="KTS Cleaning logo" width="180" height="45" aria-hidden="true" decoding="async">
       </a>
       <!--Navigation List-->
@@ -26,14 +26,14 @@ import PhoneCTASimple from "./PhoneCTASimple.astro";
           <!-- We need a wrapper div so we can set a fixed height on the cs-ul in case the nav list gets too long from too many dropdowns being opened and needs to have an overflow scroll. This wrapper acts as the background so it can go the full height of the screen and not cut off any overflowing nav items while the cs-ul stops short of the bottom of the screen, which keeps all nav items in view no matter how mnay there are-->
           <div id="cs-ul-wrapper" class="cs-ul-wrapper">
               <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
-                  <li class="cs-li">
+                  <li class="cs-li wow" data-wow-delay="0.4s">
                       <a href="/" class="cs-li-link cs-active">
                           Home
                       </a>
                   </li>
 
                   <!--Copy and paste this cs-dropdown list item and replace any .cs-li with this cs-dropdown group to make a new dropdown and it will work-->
-                  <li class="cs-li cs-dropdown" tabindex="0">
+                  <li class="cs-li cs-dropdown wow" data-wow-delay="0.6s" tabindex="0">
                       <button class="cs-li-link cs-dropdown-button" style="
   background: none;
   border: none;
@@ -53,19 +53,22 @@ import PhoneCTASimple from "./PhoneCTASimple.astro";
                        </button>
                       <ul class="cs-drop-ul">
                           <li class="cs-drop-li">
-                              <a href="/services/registration" class="cs-li-link cs-drop-link">Webdesign</a>
+                              <a href="/diensten/crime-scene-cleaning" class="cs-li-link cs-drop-link">Crime Scene Cleaning</a>
                           </li>
                           <li class="cs-drop-li">
-                              <a href="/services/classes" class="cs-li-link cs-drop-link">Webontwikkeling</a>
+                              <a href="/diensten/gespecialiseerde-schoonmaak" class="cs-li-link cs-drop-link">Gespecialiseerde Schoonmaak</a>
+                          </li>
+                          <li class="cs-drop-li">
+                              <a href="/diensten/industriele-reiniging" class="cs-li-link cs-drop-link">Industriële Reiniging</a>
                           </li>
                       </ul>
                   </li>
-                  <li class="cs-li">
+                  <li class="cs-li wow" data-wow-delay="0.8s">
                       <a href="/about" class="cs-li-link">
                           Over ons
                       </a>
                   </li>
-                  <li class="cs-li">
+                  <li class="cs-li wow" data-wow-delay="1.0s">
                       <a href="/contact" class="cs-li-link">
                           Contact
                       </a>
@@ -73,7 +76,7 @@ import PhoneCTASimple from "./PhoneCTASimple.astro";
               </ul>
           </div>
       </nav>
-      <div class="cs-contact-group">
+      <div class="cs-contact-group wow" data-wow-delay="1.2s">
           <PhoneCTASimple />
           <Button text="Contact" href="/contact" />
       </div>
@@ -118,11 +121,10 @@ import PhoneCTASimple from "./PhoneCTASimple.astro";
 
     #cs-navigation {
         width: 94%;
-        max-width: (1280/16rem);
         /* prevents padding from affecting height and width */
         box-sizing: border-box;
-        /* 12px - 24px */
-        padding: clamp(0.75rem, 2vw, 1.5rem);
+        /* 16px - 32px top/bottom, 20px - 32px left/right */
+        padding: clamp(1rem, 2vw, 2rem) clamp(1.25rem, 3vw, 2rem);
         /* 12px - 24px */
         border-radius: clamp(0.75rem, 2vw, 1.5rem);
         position: fixed;
@@ -219,18 +221,31 @@ import PhoneCTASimple from "./PhoneCTASimple.astro";
 
         .cs-contact-group {
             display: flex;
+            justify-content: center;
+            align-items: center;
             position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
             z-index: 10;
-            margin-right: -200px !important;
+            margin: 0 auto;
+            width: calc(100% - 200px); /* Account for logo and hamburger */
+            
             :global(.phone-cta-simple) {
+                display: flex !important;
                 justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
+
+            :global(.phone-number) {
+                font-size: 0.875rem !important;
+                text-align: center;
             }
 
             :global(.custom-button) {
                 display: none;
-                
             }
         }
 
@@ -457,7 +472,7 @@ import PhoneCTASimple from "./PhoneCTASimple.astro";
         }
 
         .cs-dropdown {
-            color: var(--bodyTextColorWhite);
+            color: var(--headerColor);
             position: relative;
             &.cs-active {
                 .cs-drop-ul {
@@ -504,6 +519,10 @@ import PhoneCTASimple from "./PhoneCTASimple.astro";
             overflow: hidden;
             transition: padding 0.3s, margin 0.3s, height 0.3s, opacity 0.3s,
                 visibility 0.3s;
+                
+            .cs-li-link.cs-drop-link {
+                color: #000 !important;
+            }
         }
 
         .cs-drop-li {
@@ -1001,5 +1020,19 @@ import PhoneCTASimple from "./PhoneCTASimple.astro";
     color: var(--headerColor);
     display: inline-block;
     position: relative;
+}
+
+/* Ensure wow elements are visible on mobile navigation when menu is open */
+@media only screen and (max-width: 63.9375rem) {
+  #cs-navigation .cs-li.wow {
+    opacity: 0;
+    animation: none;
+  }
+  
+  #cs-navigation.cs-active .cs-li.wow {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
 }
 </style>

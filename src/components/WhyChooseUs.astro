@@ -4,7 +4,7 @@ import Button from "@components/Button.astro";
 
 <section id="why-choose-223">
     <div class="cs-container">
-        <div class="cs-content">
+        <div class="cs-content wow animate__fadeInLeft">
             <span class="cs-topper">WAAROM VOOR ONS KIEZEN?</span>
             <h2 class="cs-title">Gespecialiseerd Sinds 2012</h2>
             <p class="cs-text">
@@ -16,15 +16,15 @@ import Button from "@components/Button.astro";
             <Button text="Neem Contact op" href="/contact" />
         </div>
         <ul class="cs-card-group">
-            <li class="cs-item cs-item-24-7">
+            <li class="cs-item cs-item-24-7 wow animate__fadeInUp" data-wow-delay="0.1s">
                 <img class="cs-icon cs-icon-normal" loading="lazy" decoding="async" src="/assets/images/icons/7-normaal.svg" alt="24/7 bereikbaar icon" width="72" height="72">
                 <img class="cs-icon cs-icon-hover" loading="lazy" decoding="async" src="/assets/images/icons/7-hover.svg" alt="24/7 bereikbaar icon" width="72" height="72">
                 <h3 class="cs-h3">24/7 bereikbaar</h3>
                 <p class="cs-item-text">
-                    Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
+                    Noodsituaties wachten niet. Daarom zijn wij dag en nacht bereikbaar voor spoedeisende opdrachten zoals crime scene cleaning en acute vervuiling.
                 </p>
             </li>
-            <li class="cs-item cs-item-ervaring">
+            <li class="cs-item cs-item-ervaring wow animate__fadeInUp" data-wow-delay="0.2s">
                 <img class="cs-icon cs-icon-normal" loading="lazy" decoding="async" src="/assets/images/icons/13 jaar ervaring-normaal.svg" alt="13 jaar ervaring icon" width="72" height="72">
                 <img class="cs-icon cs-icon-hover" loading="lazy" decoding="async" src="/assets/images/icons/13 jaar ervaring-hover.svg" alt="13 jaar ervaring icon" width="72" height="72">
                 <h3 class="cs-h3">13 jaar ervaring</h3>
@@ -32,7 +32,7 @@ import Button from "@components/Button.astro";
                     Meer dan 4.000 uitgevoerde opdrachten in Vlaanderen
                 </p>
             </li>
-            <li class="cs-item cs-item-partner">
+            <li class="cs-item cs-item-partner wow animate__fadeInUp" data-wow-delay="0.3s">
                 <img class="cs-icon cs-icon-normal" loading="lazy" decoding="async" src="/assets/images/icons/betrouwbare partner-normal.svg" alt="Betrouwbare partner icon" width="72" height="72">
                 <img class="cs-icon cs-icon-hover" loading="lazy" decoding="async" src="/assets/images/icons/betrouwbare partner-hover.svg" alt="Betrouwbare partner icon" width="72" height="72">
                 <h3 class="cs-h3">Betrouwbare partner</h3>
@@ -40,12 +40,12 @@ import Button from "@components/Button.astro";
                     Van politie, gemeentes en hulpdiensten tot particulieren.
                 </p>
             </li>
-            <li class="cs-item cs-item-proper">
+            <li class="cs-item cs-item-proper wow animate__fadeInUp" data-wow-delay="0.4s">
                 <img class="cs-icon cs-icon-normal" loading="lazy" decoding="async" src="/assets/images/icons/100 propor-normaal.svg" alt="100% Proper icon" width="72" height="72">
                 <img class="cs-icon cs-icon-hover" loading="lazy" decoding="async" src="/assets/images/icons/100 propor-hover.svg" alt="100% Proper icon" width="72" height="72">
                 <h3 class="cs-h3">100% Proper</h3>
                 <p class="cs-item-text">
-                    Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
+                    Kwaliteit staat centraal. Elk project wordt volgens de hoogste normen uitgevoerd, met de juiste certificeringen en volledige nazorg.
                 </p>
             </li>
         </ul>
@@ -61,10 +61,6 @@ import Button from "@components/Button.astro";
     }
 
     #why-choose-223 .cs-container {
-        width: 100%;
-        /* changes to 1280px on tablet */
-        max-width: calc(550rem / 16);
-        margin: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -110,7 +106,6 @@ import Button from "@components/Button.astro";
         /* 32px - 44px top & bottom, 24px - 32px left & right */
         padding: clamp(2rem, 4vw, 2.75rem) clamp(1.5rem, 4vw, 2rem);
         margin: 0;
-        border-radius: calc(5rem / 16);
         border: 1px solid #dad9e3;
         display: flex;
         justify-content: flex-start;
@@ -214,7 +209,6 @@ import Button from "@components/Button.astro";
         min-width: calc(150rem / 16);
         padding: 0 calc(24rem / 16);
         background-color: var(--primary);
-        border-radius: calc(4rem / 16);
         display: inline-block;
         position: relative;
         z-index: 1;
@@ -227,12 +221,11 @@ import Button from "@components/Button.astro";
         position: absolute;
         height: 100%;
         width: 0%;
-        background: #000;
+        background: var(--secondary);
         opacity: 1;
         top: 0;
         left: 0;
         z-index: -1;
-        border-radius: calc(4rem / 16);
         transition: width 0.3s;
     }
 
@@ -244,7 +237,6 @@ import Button from "@components/Button.astro";
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
     #why-choose-223 .cs-container {
-        max-width: calc(1280rem / 16);
     }
 
     #why-choose-223 .cs-content {

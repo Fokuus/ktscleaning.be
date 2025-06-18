@@ -4,7 +4,7 @@
 **/
 
 import BaseLayout from "@layouts/BaseLayout.astro";
-import CTA from "@components/CTA.astro";
+
 import { getCollection } from "astro:content";
 import { getImage } from "astro:assets";
 import "@styles/projects.less";
@@ -21,11 +21,11 @@ import landingImage from "@assets/images/landing.jpg"; // <-- THE PATH TO THE AS
 const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 ---
 
-<BaseLayout title="Projects" description="Our portfolio of projects and case studies" preloadedImage={optimizedImage}>
-	<Landing title="Projects" image={optimizedImage} />
+<BaseLayout title="Portfolio - KTS Cleaning" description="Bekijk onze portfolio van gespecialiseerde schoonmaakprojecten. Crime scene cleaning, industriële reiniging en technische ontmanteling uitgevoerd door KTS Cleaning professionals." preloadedImage={optimizedImage}>
+	<Landing title="Portfolio" image={optimizedImage} />
 
 	<!-- Display projects in a grid layout -->
 	<ProjectsGrid projects={projects} />
 	
-	<CTA />
+	
 </BaseLayout>

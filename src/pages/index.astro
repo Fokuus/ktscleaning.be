@@ -52,8 +52,8 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 ---
 
 <BaseLayout
-  title="Pixel Perfect Websites"
-  description="Meta description for the page"
+  title="Gespecialiseerde Schoonmaakdiensten"
+  description="KTS Cleaning - Professionele crime scene cleaning, gespecialiseerde schoonmaak en industriële reiniging. 24/7 beschikbaar voor noodsituaties in België."
   preloadedImage = {optimizedImage}
 >
 
@@ -63,7 +63,18 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 
 <WhyChooseUs />
 
-<SideBySide />
+<SideBySide 
+  title="Zwaar vervuilde woning"
+  text="Deze woning werd aangetroffen in extreem vervuilde toestand. Dankzij onze jarenlange ervaring in gespecialiseerde schoonmaak brachten wij de ruimte opnieuw in hygiënische staat – snel, discreet en grondig."
+  beforeImage="/assets/images/voor.png"
+  afterImage="/assets/images/na.png"
+  projectItems={[
+    "<strong>WC volledig ontstopt en gereinigd</strong>",
+    "<strong>Vloer en tegels</strong> professioneel gereinigd",
+    "Alles weer <strong>hygiënisch</strong> én geurvrij"
+  ]}
+  showStats={false}
+/>
 
 <FAQ />
 

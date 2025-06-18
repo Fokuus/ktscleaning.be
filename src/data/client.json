@@ -1,15 +1,15 @@
 {
-	"name": "Fokuus",
-	"email": "info@fokuus.nl",
-	"phoneForTel": "0612345678",
-	"phoneFormatted": "06 1234 5678",
+	"name": "KTS Cleaning",
+	"email": "info@ktscleaning.be",
+	"phoneForTel": "+32123456789",
+	"phoneFormatted": "+32 12 34 56 789",
 	"address": {
-		"lineOne": "Hoofdstraat 123",
+		"lineOne": "Industriestraat 123",
 		"lineTwo": "",
-		"city": "Amsterdam",
-		"state": "NH",
-		"zip": "1017 AB",
+		"city": "Brussel",
+		"state": "Brussels",
+		"zip": "1000",
 		"mapLink": "https://goo.gl/maps/UAQn4vuGDiwv7DV39"
 	},
-	"domain": "www.fokuus.nl"
+	"domain": "www.ktscleaning.be"
 }

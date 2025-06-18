@@ -1,0 +1,156 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Button from "@components/Button.astro";
+---
+
+<BaseLayout title="Bedankt! - KTS Cleaning" description="Bedankt voor uw bericht aan KTS Cleaning. Wij nemen snel contact met u op.">
+  <head slot="head">
+    <meta name="robots" content="noindex, nofollow">
+  </head>
+  
+  <section id="bedankt">
+    <div class="cs-container">
+      <div class="cs-content">
+        <span class="cs-topper">Succesvol verzonden</span>
+        <h2 class="cs-title">Bedankt voor uw bericht!</h2>
+        <p class="cs-text">
+          Uw bericht is succesvol verzonden. Wij nemen zo spoedig mogelijk contact met u op voor uw bericht. Ons team bekijkt uw aanvraag en zorgt voor een snelle respons.
+        </p>
+        <div class="cs-button-group">
+          <Button text="Terug naar Home" href="/" />
+          <Button text="Onze Diensten" href="/diensten/industriele-reiniging" variant="outlined" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style lang="less">
+  /* PAGE-SPECIFIC STYLES FOR THE BEDANKT PAGE */
+
+  /*-- -------------------------- -->
+<---           Bedankt          -->
+<--- -------------------------- -*/
+
+  /* Mobile - 360px */
+  @media only screen and (min-width: 0em) {
+    #bedankt {
+      font-family: "Roboto", "Arial", sans-serif;
+      padding: clamp(8rem, 12vw, 12rem) 1.5rem var(--sectionPadding) 1.5rem;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(254, 213, 0, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%);
+
+      .cs-container {
+        width: 100%;
+        max-width: (800/16rem);
+        margin: auto;
+        text-align: center;
+      }
+
+      .cs-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(1.5rem, 4vw, 2.5rem);
+      }
+
+
+
+      .cs-title {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 300;
+        line-height: 1.1em;
+        margin: 0;
+        color: var(--headerColor);
+        text-align: center;
+        /* Improve font rendering */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+
+      .cs-text {
+        font-size: clamp(1rem, 2.5vw, 1.125rem);
+        line-height: 1.6em;
+        margin: 0;
+        color: var(--bodyTextColor);
+        text-align: center;
+        max-width: (600/16rem);
+        font-weight: 300;
+        /* Improve font rendering */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+
+      .cs-button-group {
+        display: flex;
+        flex-direction: column;
+        gap: (16/16rem);
+        margin-top: (24/16rem);
+        width: 100%;
+        max-width: (500/16rem);
+        align-items: stretch;
+      }
+    }
+  }
+
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #bedankt {
+      .cs-content {
+        gap: clamp(2rem, 5vw, 3rem);
+      }
+
+      .cs-title {
+        margin-bottom: (24/16rem);
+      }
+
+      .cs-text {
+        margin-bottom: (8/16rem);
+      }
+
+      .cs-button-group {
+        flex-direction: row;
+        gap: (20/16rem);
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  /* Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
+    #bedankt {
+      .cs-container {
+        max-width: (1000/16rem);
+      }
+
+      .cs-content {
+        gap: clamp(2.5rem, 6vw, 4rem);
+      }
+    }
+  }
+
+  /* Dark Mode */
+  @media only screen and (min-width: 0em) {
+    body.dark-mode {
+      #bedankt {
+        background: linear-gradient(135deg, rgba(254, 213, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
+
+        .cs-title,
+        .cs-text {
+          color: var(--bodyTextColorWhite);
+        }
+
+        .cs-topper {
+          color: var(--primary);
+        }
+      }
+    }
+  }
+</style> 

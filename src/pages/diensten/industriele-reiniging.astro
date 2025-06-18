@@ -1,0 +1,309 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+import Landing from "@components/Landing.astro";
+import FAQ from "@components/FAQ.astro";
+import Button from "@components/Button.astro";
+import ContentSection from "@components/ContentSection.astro";
+import TableOfContents from "@components/TemplateComponents/TableOfContents.astro";
+import SideBySide from "@components/SideBySide.astro";
+
+// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
+import landingImage from "@assets/images/landing.jpg"
+import { getImage } from "astro:assets";
+const optimizedImage = await getImage({src: landingImage, format: 'avif'})
+
+// Define the headings for the Table of Contents
+const headings = [
+  { depth: 2, slug: "industriele-reiniging-productielijnen", text: "Industriële reiniging productielijnen" },
+  { depth: 2, slug: "binnenontmanteling", text: "Binnenontmanteling" },
+  { depth: 2, slug: "periodieke-reiniging", text: "Periodieke reiniging" },
+  { depth: 2, slug: "machinepark-onderhoud", text: "Machinepark onderhoud" },
+  { depth: 2, slug: "veelgestelde-vragen", text: "Veelgestelde Vragen" }
+];
+---
+
+<BaseLayout
+  title="Industriële Reiniging - KTS Cleaning"
+  description="Professionele industriële reiniging voor productiehallen, werkruimtes en industriële installaties. KTS Cleaning garandeert veiligheid en werkcomfort met gecertificeerde technieken."
+  preloadedImage = {optimizedImage}
+>
+  <!-- ============================================ -->
+  <!--                    LANDING                   -->
+  <!-- ============================================ -->
+
+  <Landing 
+    title="Industriële Reiniging"
+    image={optimizedImage}
+  />
+
+  <!-- ============================================ -->
+  <!--              Table of Contents               -->
+  <!-- ============================================ -->
+
+  <section id="table-of-contents">
+    <div class="cs-container">
+      <div class="cs-content">
+        <span class="cs-topper">Industriële Expertise</span>
+        <h2 class="cs-title">Professionele Industriële Reiniging</h2>
+        <p class="cs-text">
+          Bij intensief gebruik van <strong>productiehallen en werkruimtes</strong> is een professionele en industriële reiniging noodzakelijk om het <strong>werkcomfort en de veiligheid</strong> te garanderen. Wij adviseren en informeren je graag over alle mogelijkheden voor een <strong>éénmalige of periodieke reiniging</strong>.
+        </p>
+        <ul class="cs-services-list">
+          <li><strong>Éénmalige of periodieke</strong> reiniging</li>
+          <li><strong>Minimale productietijd verlies</strong></li>
+          <li><strong>Verlenging levensduur</strong> installaties</li>
+          <li><strong>Verbeterde productietijd</strong> en rendement</li>
+        </ul>
+        <Button text="Vraag Industriële Offerte" href="/contact" />
+      </div>
+      <div class="cs-toc-wrapper" id="desktop-toc">
+        <TableOfContents headings={headings} levels={2} />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!--                Content Sections             -->
+  <!-- ============================================ -->
+
+  <div id="industriele-reiniging-productielijnen">
+    <ContentSection
+      heading="Industriële reiniging productielijnen"
+      text="Om een goede werking en een zo hoog mogelijk <strong>rendement te garanderen</strong>, is een reiniging van de <strong>technische installaties en machinepark</strong> in je bedrijf noodzakelijk. <strong>KTS Cleaning</strong> is jouw partner voor de reiniging van jouw machines zonder dat je moet inboeten aan <strong>kostbare productietijd</strong>."
+      servicesTitle="Onze voordelen:"
+      services={[
+        "<strong>Geen verlies van productietijd</strong> tijdens reiniging",
+        "<strong>Verlenging levensduur</strong> van installaties",
+        "<strong>Verbeterde productietijd</strong> en efficiëntie",
+        "<strong>Kwalitatieve reiniging</strong> en onderhoud"
+      ]}
+      buttonText="Vraag offerte"
+      buttonHref="/contact"
+      imageSrc="/public/assets/images/industriele-reiniging-productielijnen.webp"
+      imageAlt="Industriële reiniging productielijnen"
+    />
+  </div>
+
+  <div id="binnenontmanteling">
+    <ContentSection
+      reversed={true}
+      heading="Binnenontmanteling"
+      text="Verhuist je bedrijf of wil je jouw <strong>fabriek ontmantelen of opruimen</strong>? Onze experten zorgen voor de <strong>sloopwerken en de ontmanteling</strong> van onder andere complete productielijnen, stoomketels, afgedankte machines, drukpersen, ventilatiekokers. We nemen je de zorgen voor jouw schoonmaak <strong>volledig uit handen</strong>."
+      servicesTitle="Ontmanteling diensten:"
+      services={[
+        "<strong>Complete productielijnen</strong> ontmantelen",
+        "<strong>Stoomketels en machines</strong> verwijderen",
+        "<strong>Veiligheids- en gezondheidsplan</strong>",
+        "<strong>Sloopwerken met grootste zorg</strong>"
+      ]}
+      buttonText="Vraag offerte"
+      buttonHref="/contact"
+      imageSrc="/public/assets/images/binnenontmanteling.jpg"
+      imageAlt="Binnenontmanteling fabriek"
+    />
+  </div>
+
+  <div id="periodieke-reiniging">
+    <ContentSection
+      heading="Periodieke reiniging"
+      text="Voor optimale werkomstandigheden en <strong>continue productiekwaliteit</strong> adviseren wij een periodieke reinigingsplanning. Met regelmatige <strong>professionele reiniging</strong> voorkom je onnodige stilstand en behoud je de <strong>hygiënische standaarden</strong> die jouw sector vereist."
+      servicesTitle="Periodieke diensten:"
+      services={[
+        "<strong>Maandelijkse of kwartaal</strong> reinigingsschema's",
+        "<strong>Preventief onderhoud</strong> van installaties",
+        "<strong>Hygiënische standaarden</strong> behouden",
+        "<strong>Continue productkwaliteit</strong> garanderen"
+      ]}
+      buttonText="Plan reiniging"
+      buttonHref="/contact"
+      imageSrc="/public/assets/images/periodieke-reiniging.jpg"
+      imageAlt="Periodieke industriële reiniging"
+    />
+  </div>
+
+  <div id="machinepark-onderhoud">
+    <ContentSection
+      reversed={true}
+      heading="Machinepark onderhoud"
+      text="Is <strong>snijbranden of slijpen niet mogelijk</strong>, dan overlopen we samen de opties. We werken met de <strong>grootste zorg</strong> én volgens een fatsoenlijk <strong>veiligheids- en gezondheidsplan</strong>, zo kan jij jouw productielijn opnieuw opbouwen. Niet alleen verlengen we met kwalitatieve reiniging de <strong>levensduur van je installaties</strong>."
+      servicesTitle="Onderhoud expertise:"
+      services={[
+        "<strong>Alternatieve oplossingen</strong> wanneer standaard niet mogelijk",
+        "<strong>Veiligheids- en gezondheidsplan</strong> op maat",
+        "<strong>Verlenging levensduur</strong> van installaties",
+        "<strong>Opbouw nieuwe productielijn</strong> mogelijk"
+      ]}
+      buttonText="Bespreek opties"
+      buttonHref="/contact"
+      imageSrc="/public/assets/images/machinepark-onderhoud.jpg"
+      imageAlt="Machinepark onderhoud"
+    />
+  </div>
+
+  <!-- ============================================ -->
+  <!--              Before & After Sections        -->
+  <!-- ============================================ -->
+
+  <SideBySide 
+    id="sbs-industrial-cleaning"
+    title="Productielijn reiniging"
+    text="Deze productielijn had dringend onderhoud nodig na intensief gebruik. Zonder <strong>kostbare productietijd te verliezen</strong> hebben wij de complete installatie gereinigd en geoptimaliseerd. Het resultaat: <strong>verbeterde productietijd en verlengde levensduur</strong>."
+    beforeImage="/assets/images/voor.png"
+    afterImage="/assets/images/na.png"
+    beforeAlt="Voor - vervuilde productielijn"
+    afterAlt="Na - gereinigde en geoptimaliseerde productielijn"
+    projectItems={[
+        "<strong>Geen productietijd verloren</strong> tijdens reiniging",
+        "<strong>Complete installatie</strong> professioneel onderhouden",
+        "<strong>Optimale werking</strong> en rendement hersteld"
+    ]}
+    showStats={false}
+  />
+
+  <div id="veelgestelde-vragen">
+    <FAQ 
+      title="Industriële Reiniging FAQ"
+      topper="Veelgestelde Vragen"
+      faqs={[
+        {
+          question: "Welke industrieën bedienen jullie?",
+          answer: "Wij bedienen alle industriële sectoren: voedingsindustrie (HACCP), chemische industrie, farmaceutische industrie (GMP), automotive, landbouw, metaalindustrie en meer. Ons team heeft de juiste certificeringen en expertise voor elke sector.",
+          isActive: true
+        },
+        {
+          question: "Kunnen jullie buiten kantooruren werken?",
+          answer: "Ja, wij begrijpen dat industriële reiniging vaak buiten productietijden moet plaatsvinden. Daarom zijn wij 24/7 beschikbaar en kunnen wij werken in weekenden, 's nachts of tijdens geplande stilstanden om uw productie niet te verstoren."
+        },
+        {
+          question: "Hebben jullie de juiste certificeringen?",
+          answer: "KTS Cleaning heeft alle benodigde certificeringen: HACCP voor voedingsindustrie, confined space certificering voor tankens, GMP kennis voor farmaceutische sector, en alle veiligheidscertificeringen voor chemische industrie. Wij blijven up-to-date met alle industriestandaarden."
+        },
+        {
+          question: "Hoe lang duurt een industriële reiniging?",
+          answer: "De duur hangt af van de omvang en complexiteit van uw faciliteit. Een kleine productiehal kan binnen 8-12 uur gereinigd worden, terwijl grote complexe installaties meerdere dagen kunnen duren. Wij plannen altijd in overleg met uw productie schema."
+        },
+        {
+          question: "Gebruiken jullie milieuvriendelijke producten?",
+          answer: "Waar mogelijk gebruiken wij milieuvriendelijke reinigingsproducten die even effectief zijn als traditionele chemicaliën. Voor specifieke industriële toepassingen kiezen wij altijd de meest geschikte en veilige producten die voldoen aan alle veiligheidseisen."
+        }
+      ]}
+    />
+  </div>
+
+</BaseLayout>
+
+<style lang="less">
+  /* Table of Contents Styles */
+  #table-of-contents {
+    padding: var(--sectionPadding);
+    padding-bottom: 0rem !important;
+    background-color: #f8f9fa;
+
+    .cs-container {
+      display: flex;
+      flex-direction: column;
+      gap: (48/16rem);
+
+      @media only screen and (min-width: 64rem) {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: (80/16rem);
+      }
+    }
+
+    .cs-content {
+      text-align: left;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      @media only screen and (min-width: 64rem) {
+        width: 60%;
+      }
+    }
+
+    .cs-topper {
+      text-align: left;
+      margin-bottom: (4/16rem);
+    }
+
+    .cs-title {
+      text-align: left;
+      max-width: none;
+      margin: 0 0 (16/16rem) 0;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .cs-text {
+      text-align: left;
+      margin-bottom: (32/16rem);
+      max-width: none;
+    }
+
+    .cs-services-list {
+      margin: 0 0 (32/16rem) 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        font-size: (16/16rem);
+        line-height: 1.5em;
+        color: var(--bodyTextColor);
+        margin-bottom: (12/16rem);
+        padding-left: (20/16rem);
+        position: relative;
+
+        &::before {
+          content: "";
+          width: (8/16rem);
+          height: (8/16rem);
+          background-color: var(--primary);
+          position: absolute;
+          left: 0;
+          top: (8/16rem);
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    .cs-toc-wrapper {
+      width: 100%;
+      background-color: #fff;
+      padding: (32/16rem);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+      @media only screen and (min-width: 64rem) {
+        width: 40%;
+        position: sticky;
+        top: (120/16rem);
+      }
+    }
+  }
+
+  /* Dark Mode */
+  @media only screen and (min-width: 0em) {
+    body.dark-mode {
+      #table-of-contents {
+        background-color: var(--dark);
+
+        .cs-title,
+        .cs-text {
+          color: var(--bodyTextColorWhite);
+        }
+
+        .cs-services-list li {
+          color: var(--bodyTextColorWhite);
+        }
+
+        .cs-toc-wrapper {
+          background-color: var(--accent);
+        }
+      }
+    }
+  }
+</style> 

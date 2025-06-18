@@ -8,9 +8,9 @@ import { Picture } from "astro:assets";
 const { posts } = Astro.props;
 ---
 
-<section id="gallery-2371" class="wow animate__animated animate__fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+<section id="gallery-2371">
     <div class="cs-container">
-        <div class="cs-content">
+        <div class="cs-content wow animate__fadeInUp">
             <span class="cs-topper">Our Blog</span>
             <h2 class="cs-title">Latest Articles</h2>
             <p class="cs-text">
@@ -22,7 +22,7 @@ const { posts } = Astro.props;
             {
                 posts.length >= 1 &&
                 posts.map((post, index) => (
-                    <a href={`/blog/${post.id}`} class="cs-item wow animate__animated animate__fadeIn" data-wow-duration="0.5s" data-wow-delay={`${0.2 + index * 0.1}s`}>
+                    <a href={`/blog/${post.id}`} class="cs-item wow animate__fadeInUp" data-wow-delay={`${0.2 + index * 0.1}s`}>
                         <Picture
                             src={post.data.image}
                             quality={"mid"}

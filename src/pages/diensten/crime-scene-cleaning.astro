@@ -1,0 +1,312 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+import Landing from "@components/Landing.astro";
+import FAQ from "@components/FAQ.astro";
+import Button from "@components/Button.astro";
+import ContentSection from "@components/ContentSection.astro";
+import TableOfContents from "@components/TemplateComponents/TableOfContents.astro";
+import SideBySide from "@components/SideBySide.astro";
+
+// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
+import landingImage from "@assets/images/landing.jpg"
+import { getImage } from "astro:assets";
+const optimizedImage = await getImage({src: landingImage, format: 'avif'})
+
+// Define the headings for the Table of Contents
+const headings = [
+  { depth: 2, slug: "plaats-delict", text: "Plaats delict" },
+  { depth: 2, slug: "gecontamineerde-voertuigen", text: "Gecontamineerde voertuigen" },
+  { depth: 2, slug: "gevangeniscellen", text: "Gevangeniscellen" },
+  { depth: 2, slug: "ontmanteling-cannabisplantage", text: "Ontmanteling cannabisplantage" },
+  { depth: 2, slug: "veelgestelde-vragen", text: "Veelgestelde Vragen" }
+];
+---
+
+<BaseLayout
+  title="Crime Scene Cleaning - KTS Cleaning"
+  description="Professionele crime scene cleaning diensten. KTS Cleaning biedt discrete en veilige reiniging van plaatsen delict, met 24/7 beschikbaarheid en volledige certificering."
+  preloadedImage = {optimizedImage}
+>
+  <!-- ============================================ -->
+  <!--                    LANDING                   -->
+  <!-- ============================================ -->
+
+  <Landing 
+    title="Crime Scene Cleaning"
+    image={optimizedImage}
+  />
+
+  <!-- ============================================ -->
+  <!--              Table of Contents               -->
+  <!-- ============================================ -->
+
+  <section id="table-of-contents">
+    <div class="cs-container">
+      <div class="cs-content">
+        <span class="cs-topper">Gespecialiseerde Dienstverlening</span>
+        <h2 class="cs-title">Crime Scene Cleaning Expertise</h2>
+        <p class="cs-text">
+          <strong>KTS Cleaning</strong> is specialist in <strong>crime scene cleaning</strong> en biedt discrete, professionele dienstverlening voor de meest complexe situaties. Met <strong>jarenlange ervaring</strong> en gespecialiseerde uitrusting zorgen wij voor <strong>veilige en grondige reiniging</strong> waar anderen het opgeven.
+        </p>
+        <ul class="cs-services-list">
+          <li><strong>24/7 spoedhulp</strong> voor noodsituaties</li>
+          <li><strong>Gecertificeerde biohazard</strong> verwijdering</li>
+          <li><strong>Discrete en respectvolle</strong> benadering</li>
+          <li>Samenwerking met <strong>hulpdiensten</strong></li>
+        </ul>
+        <Button text="24/7 Noodlijn" href="/contact" />
+      </div>
+      <div class="cs-toc-wrapper" id="desktop-toc">
+        <TableOfContents headings={headings} levels={2} />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!--                Content Sections             -->
+  <!-- ============================================ -->
+
+  <div id="plaats-delict">
+    <ContentSection
+      heading="Plaats delict"
+      text="Het opruimen van een <strong>plaats delict</strong> na een moord of zelfmoord is iets wat enkel aan een <strong>team van experts</strong> mag worden overgelaten. Bij het reinigen van een crime scene komen heel wat <strong>voorzorgsmaatregelen</strong> en geavanceerde reinigingstechnieken kijken. In de meeste gevallen gaat het om omstandigheden die een <strong>potentieel gezondheidsrisico</strong> voor de omgeving inhouden. <strong>KTS Cleaning</strong> is één van de weinige schoonmaakfirma's in België met expertise in het schoonmaken van <strong>crime scenes</strong>."
+      servicesTitle="Expertise omvat:"
+      services={[
+        "<strong>Biohazard materiaal</strong> verwijdering",
+        "<strong>Trauma scene cleaning</strong>",
+        "<strong>Hepatitis B, C en HIV</strong> veiligheidsprotocollen",
+        "<strong>Discrete en respectvolle</strong> benadering"
+      ]}
+      buttonText="Vraag offerte"
+      buttonHref="/contact"
+      imageSrc="/assets/images/crime-scene-cleaning-01.webp"
+      imageAlt="Crime scene cleaning"
+    />
+  </div>
+
+  <div id="gecontamineerde-voertuigen">
+    <ContentSection
+      reversed={true}
+      heading="Gecontamineerde voertuigen"
+      text="Bij een arrestatie of vervoer van <strong>geïntoxiceerde personen</strong> komt het voor dat voertuigen van ordediensten sporen van <strong>bloed of andere lichaamsvloeistoffen</strong> dragen. <strong>KTS Cleaning</strong> is hierin gespecialiseerd en komt voertuigen <strong>ter plaatse reinigen</strong>. Je hoeft het voertuig dus niet naar ons te brengen – <strong>wij komen tot bij jou</strong>."
+      servicesTitle="Voertuig reiniging:"
+      services={[
+        "<strong>Politievoertuigen</strong> professionele reiniging",
+        "<strong>Ambulances en hulpvoertuigen</strong>",
+        "<strong>Veilige verwijdering biologische materialen</strong>",
+        "<strong>Ter plaatse service</strong> - wij komen naar u"
+      ]}
+      buttonText="Neem contact"
+      buttonHref="/contact"
+      imageSrc="/assets/images/gecontamineerde-voertuigen.webp"
+      imageAlt="Vehicle cleaning"
+    />
+  </div>
+
+  <div id="gevangeniscellen">
+    <ContentSection
+      heading="Gevangeniscellen"
+      text="Onderbelicht maar daarom niet minder noodzakelijk is het <strong>reinigen en ontsmetten van gevangeniscellen</strong>. Het komt wel vaker door dat een <strong>gedetineerde</strong> zijn cel al dan niet opzettelijk vervuilt. Wij zorgen voor de <strong>opruiming, schoonmaak en ontsmetting</strong> van de gevangeniscel."
+      servicesTitle="Cel reiniging diensten:"
+      services={[
+        "<strong>Volledige cel ontsmetting</strong>",
+        "<strong>Vervuiling verwijdering</strong>",
+        "<strong>Sanitaire voorzieningen herstel</strong>",
+        "<strong>Veilige afvalverwerking</strong>"
+      ]}
+      buttonText="Neem contact"
+      buttonHref="/contact"
+      imageSrc="/assets/images/gevangeniscellen-reinigen.webp"
+      imageAlt="Prison cell cleaning"
+    />
+  </div>
+
+  <div id="ontmanteling-cannabisplantage">
+    <ContentSection
+      reversed={true}
+      heading="Ontmanteling cannabisplantage"
+      text="Na oproep van de betrokken eenheden komen wij <strong>ter plaatse</strong> om de aanwezige <strong>cannabisplanten</strong> te knippen en af te voeren naar een <strong>erkende verbrandingsinstallatie</strong>. Wij zorgen voor een <strong>totale technische ontmanteling</strong> van de installatie."
+      servicesTitle="Ontmanteling services:"
+      services={[
+        "<strong>Veilige verwijdering cannabisplanten</strong>",
+        "<strong>Afvoer naar erkende verbrandingsinstallatie</strong>",
+        "<strong>Technische ontmanteling installaties</strong>",
+        "<strong>Volledige locatie herstel</strong>"
+      ]}
+      buttonText="Neem contact"
+      buttonHref="/contact"
+      imageSrc="/assets/images/ontmanteling-cannabisplantage.webp"
+      imageAlt="Cannabis plantation dismantling"
+    />
+  </div>
+
+  <!-- ============================================ -->
+  <!--              Before & After Sections        -->
+  <!-- ============================================ -->
+
+      <SideBySide 
+        id="sbs-crime-scene"
+        title="Zwaar vervuilde woning"
+        text="Deze woning werd aangetroffen in <strong>extreem vervuilde toestand</strong>. Dankzij onze <strong>jarenlange ervaring</strong> in gespecialiseerde schoonmaak brachten wij de ruimte opnieuw in <strong>hygiënische staat</strong> – snel, discreet en grondig."
+        beforeImage="/assets/images/voor.png"
+        afterImage="/assets/images/na.png"
+        beforeAlt="Voor reiniging - extreem vervuilde woning"
+        afterAlt="Na professionele reiniging - volledig schoon"
+        projectItems={[
+            "<strong>WC volledig ontstopt en gereinigd</strong>",
+            "<strong>Vloer en tegels</strong> professioneel gereinigd",
+            "Alles weer <strong>hygiënisch</strong> én geurvrij"
+        ]}
+        showStats={false}
+    />
+
+
+  <div id="veelgestelde-vragen">
+    <FAQ 
+      title="Crime Scene Cleaning FAQ"
+      topper="Veelgestelde Vragen"
+      faqs={[
+        {
+          question: "Wat gebeurt er tijdens een crime scene cleaning?",
+          answer: "Bij crime scene cleaning verwijderen wij alle biologische materialen zoals bloed, lichaamsvloeistoffen en andere gevaarlijke stoffen. Wij gebruiken gespecialiseerde apparatuur en desinfectiemiddelen om de locatie volledig te reinigen en te ontsmetten. Alle afval wordt veilig afgevoerd volgens strikte regelgeving.",
+          isActive: true
+        },
+        {
+          question: "Hoe snel kunnen jullie ter plaatse zijn voor crime scene cleaning?",
+          answer: "Voor crime scene cleaning zijn wij 24/7 beschikbaar. Wij begrijpen dat dit spoedeisende situaties zijn en streven ernaar binnen 1-2 uur ter plaatse te zijn. Ons team staat altijd paraat met de juiste uitrusting en beschermingsmiddelen."
+        },
+        {
+          question: "Werken jullie samen met politie en hulpdiensten?",
+          answer: "Ja, KTS Cleaning is een erkende partner van politiediensten, parket en andere hulpverleners. Wij hebben ervaring met de procedures en weten hoe belangrijk discretie en professionaliteit zijn in deze gevoelige situaties. Wij wachten altijd op toestemming van de bevoegde instanties."
+        },
+        {
+          question: "Is crime scene cleaning gevaarlijk voor de omgeving?",
+          answer: "Crime scene cleaning wordt uitgevoerd door getrainde professionals met de juiste beschermingsmiddelen. Wij zorgen ervoor dat er geen risico's zijn voor bewoners of omstanders. De locatie wordt volledig veilig gemaakt voordat wij vertrekken."
+        },
+        {
+          question: "Wat kost crime scene cleaning en wie betaalt dit?",
+          answer: "De kosten variëren afhankelijk van de omvang en complexiteit. In veel gevallen wordt dit vergoed door de verzekeraar of overgenomen door gemeentelijke diensten. Wij bieden altijd een transparante offerte en zorgen voor alle benodigde documentatie voor vergoeding."
+        }
+      ]}
+    />
+  </div>
+
+</BaseLayout>
+
+<style lang="less">
+  /* Table of Contents Styles */
+  #table-of-contents {
+    padding: var(--sectionPadding);
+    padding-bottom: 0rem !important;
+    background-color: #f8f9fa;
+
+    .cs-container {
+      display: flex;
+      flex-direction: column;
+      gap: (48/16rem);
+
+      @media only screen and (min-width: 64rem) {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: (80/16rem);
+      }
+    }
+
+    .cs-content {
+      text-align: left;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      @media only screen and (min-width: 64rem) {
+        width: 60%;
+      }
+    }
+
+    .cs-topper {
+      text-align: left;
+      margin-bottom: (4/16rem);
+    }
+
+    .cs-title {
+      text-align: left;
+      max-width: none;
+      margin: 0 0 (16/16rem) 0;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .cs-text {
+      text-align: left;
+      margin-bottom: (32/16rem);
+      max-width: none;
+    }
+
+    .cs-services-list {
+      margin: 0 0 (32/16rem) 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        font-size: (16/16rem);
+        line-height: 1.5em;
+        color: var(--bodyTextColor);
+        margin-bottom: (12/16rem);
+        padding-left: (20/16rem);
+        position: relative;
+
+        &::before {
+          content: "";
+          width: (8/16rem);
+          height: (8/16rem);
+          background-color: var(--primary);
+          position: absolute;
+          left: 0;
+          top: (8/16rem);
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    .cs-toc-wrapper {
+      width: 100%;
+      background-color: #fff;
+      padding: (32/16rem);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+      @media only screen and (min-width: 64rem) {
+        width: 40%;
+        position: sticky;
+        top: (120/16rem);
+      }
+    }
+  }
+
+
+
+  /* Dark Mode */
+  @media only screen and (min-width: 0em) {
+    body.dark-mode {
+      #table-of-contents {
+        background-color: var(--dark);
+
+        .cs-title,
+        .cs-text {
+          color: var(--bodyTextColorWhite);
+        }
+
+        .cs-services-list li {
+          color: var(--bodyTextColorWhite);
+        }
+
+        .cs-toc-wrapper {
+          background-color: var(--accent);
+        }
+      }
+    }
+  }
+</style> 

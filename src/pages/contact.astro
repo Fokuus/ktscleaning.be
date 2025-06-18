@@ -10,8 +10,8 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 ---
 
 <BaseLayout
-  title="Contact"
-  description="Meta description for the page"
+  title="Contact - KTS Cleaning"
+  description="Neem contact op met KTS Cleaning voor gespecialiseerde schoonmaakdiensten. 24/7 beschikbaar voor noodsituaties. Vraag een offerte aan voor crime scene cleaning, industriële reiniging en meer."
   preloadedImage = {optimizedImage}
 >
 
@@ -30,7 +30,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 
   <section id="cs-contact">
     <div class="cs-container">
-      <form id="cs-form" name="Contact Form" method="post" action="/thanks" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field">
+      <form id="cs-form" name="Contact Form" method="post" action="/bedankt" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="Contact Form" />
         <p class="hidden">
           <label>
@@ -39,83 +39,103 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         </p>
         <div class="cs-content">
           <span class="cs-topper">Contact</span>
-          <h2 class="cs-title">Get in Touch</h2>
+          <h2 class="cs-title">Neem Contact Op</h2>
           <p class="cs-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ridiculus
-            elementum ullamcorper ipsum porttitor aliquam. Id magna urna
-            ultrices odio pulvinar. Sed ut.
+            Noodsituatie? Wij zijn 24/7 bereikbaar voor spoedeisende opdrachten. Van crime scene cleaning tot industriële reiniging - onze gespecialiseerde teams staan klaar om u te helpen. Vraag een vrijblijvende offerte aan.
           </p>
         </div>
         <label>
-          Name
-          <input
-            required
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Name"
-          />
+          Naam
+          <div class="cs-input-wrapper">
+            <input
+              required
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Uw naam"
+              class="smooth-cursor"
+            />
+          </div>
         </label>
         <label>
-          Email
-          <input
-            required
-            type="text"
-            id="email"
-            name="email"
-            placeholder="Email"
-          />
+          E-mail
+          <div class="cs-input-wrapper">
+            <input
+              required
+              type="email"
+              id="email"
+              name="email"
+              placeholder="uw.email@voorbeeld.be"
+              class="smooth-cursor"
+            />
+          </div>
         </label>
         <label>
-          Phone
-          <input
-            required
-            type="text"
-            id="phone"
-            name="phone"
-            placeholder="Phone"
-          />
+          Telefoon
+          <div class="cs-input-wrapper">
+            <input
+              required
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="+32 12 34 56 789"
+              class="smooth-cursor"
+            />
+          </div>
         </label>
-        <label>
-          How Did You Find Us
-          <input
-            type="text"
-            id="find"
-            name="find-us"
-            placeholder="How did you find us?"
-          />
-        </label>
+                  <label>
+            Type dienst
+            <div class="cs-custom-select" data-dropdown>
+              <input type="hidden" id="service" name="service-type" required />
+              <div class="cs-select-trigger" data-trigger>
+                <span class="cs-select-text" data-text>Selecteer een dienst...</span>
+                <div class="cs-select-arrow">
+                  <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="cs-select-options" data-options>
+                <div class="cs-option" data-value="industriele-reiniging">Industriële reiniging</div>
+                <div class="cs-option" data-value="gespecialiseerde-schoonmaak">Gespecialiseerde schoonmaak</div>
+                <div class="cs-option" data-value="crime-scene-cleaning">Crime scene cleaning</div>
+                <div class="cs-option" data-value="ontmanteling-cannabisplantage">Ontmanteling cannabisplantage</div>
+                <div class="cs-option" data-value="gecontamineerde-voertuigen">Gecontamineerde voertuigen</div>
+                <div class="cs-option" data-value="gevangeniscellen">Gevangeniscellen reinigen</div>
+                <div class="cs-option" data-value="andere">Andere</div>
+              </div>
+            </div>
+          </label>
         <label class="cs-label-message">
-          Message
-          <textarea
-            required
-            name="Message"
-            id="message"
-            placeholder="Write message..."></textarea>
+          Bericht
+          <div class="cs-input-wrapper">
+            <textarea
+              required
+              name="Message"
+              id="message"
+              placeholder="Beschrijf de situatie, locatie en gewenste diensten..."
+              class="smooth-cursor"></textarea>
+          </div>
         </label>
         <div data-netlify-recaptcha="true"></div>
-        <button class="cs-button-solid" type="submit">Submit Message</button>
+        <button type="submit" class="cs-button-solid">Bericht Versturen</button>
       </form>
       <div class="cs-right-section">
         <!--Email-->
-        <span class="cs-header">Email</span>
+        <span class="cs-header">E-mail</span>
         <a class="cs-link" href={`mailto:${client.email}`}>{client.email}</a>
         <!--Phone-->
-        <span class="cs-header">Phone</span>
+        <span class="cs-header">Telefoon</span>
         <a class="cs-link" href={`tel:${client.phoneForTel}`}
           >{client.phoneFormatted}</a
         >
         <!--Address-->
-        <span class="cs-header">Address</span>
+        <span class="cs-header">Adres</span>
         <a class="cs-link" href={client.address.mapLink}>
-          {client.address.lineOne},
-          <br />
-          {client.address.lineTwo},
+          {client.address.lineOne}
           <br />
           <span class="cs-block">
-            {client.address.city}
-            {client.address.state}
-            {client.address.zip}
+            {client.address.zip} {client.address.city}
           </span>
         </a>
 
@@ -123,13 +143,13 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         <picture class="cs-bg-picture">
           <source
             media="(min-width: 601px)"
-            srcset="/assets/images/skyscraper.jpg"
+            srcset="/assets/images/about.jpg"
           />
           <img
             aria-hidden="true"
             decoding="async"
-            src="/assets/images/skyscraper.jpg"
-            alt="building"
+            src="/assets/images/about.jpg"
+            alt="KTS Cleaning professional cleaning"
             loading="lazy"
             width="2500"
             height="1667"
@@ -140,8 +160,262 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
   </section>
 </BaseLayout>
 
+<script>
+  // Enhanced smooth cursor movement
+  document.addEventListener('DOMContentLoaded', function() {
+    const smoothInputs = document.querySelectorAll('.smooth-cursor');
+    
+    smoothInputs.forEach(input => {
+      let typingTimer;
+      
+      // Add smooth cursor movement on input
+      input.addEventListener('input', function(e) {
+        // Clear previous timer
+        clearTimeout(typingTimer);
+        
+        // Add smooth transition class temporarily
+        this.style.transition = 'all 0.1s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        // Remove transition after typing stops
+        typingTimer = setTimeout(() => {
+          this.style.transition = '';
+        }, 100);
+      });
+      
+      // Enhance cursor visibility during focus
+      input.addEventListener('focus', function() {
+        this.style.caretColor = 'var(--primary)';
+        
+        // Smooth cursor blink
+        this.style.animation = 'caret-pulse 1.5s ease-in-out infinite';
+      });
+      
+      input.addEventListener('blur', function() {
+        this.style.animation = '';
+      });
+      
+      // Handle cursor position changes smoothly
+      input.addEventListener('keydown', function(e) {
+        const keyEvent = e as KeyboardEvent;
+        // For navigation keys, add smooth transition
+        if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(keyEvent.key)) {
+          this.style.transition = 'caret-color 0.2s ease';
+          setTimeout(() => {
+            this.style.transition = '';
+          }, 200);
+        }
+      });
+    });
+
+            // Dutch form validation messages
+    function setCustomValidationMessages() {
+      const nameInput = document.getElementById('name') as HTMLInputElement;
+      const emailInput = document.getElementById('email') as HTMLInputElement;
+      const phoneInput = document.getElementById('phone') as HTMLInputElement;
+      const serviceInput = document.getElementById('service') as HTMLInputElement;
+      const messageInput = document.getElementById('message') as HTMLTextAreaElement;
+
+      if (nameInput) {
+        nameInput.addEventListener('invalid', function() {
+          if (this.validity.valueMissing) {
+            this.setCustomValidity('Vul uw naam in');
+          } else {
+            this.setCustomValidity('');
+          }
+        });
+        nameInput.addEventListener('input', function() {
+          this.setCustomValidity('');
+        });
+      }
+
+      if (emailInput) {
+        emailInput.addEventListener('invalid', function() {
+          if (this.validity.valueMissing) {
+            this.setCustomValidity('Vul uw e-mailadres in');
+          } else if (this.validity.typeMismatch) {
+            this.setCustomValidity('Vul een geldig e-mailadres in');
+          } else {
+            this.setCustomValidity('');
+          }
+        });
+        emailInput.addEventListener('input', function() {
+          this.setCustomValidity('');
+        });
+      }
+
+      if (phoneInput) {
+        phoneInput.addEventListener('invalid', function() {
+          if (this.validity.valueMissing) {
+            this.setCustomValidity('Vul uw telefoonnummer in');
+          } else {
+            this.setCustomValidity('');
+          }
+        });
+        phoneInput.addEventListener('input', function() {
+          this.setCustomValidity('');
+        });
+      }
+
+      if (serviceInput) {
+        serviceInput.addEventListener('invalid', function() {
+          if (this.validity.valueMissing) {
+            this.setCustomValidity('Selecteer een type dienst');
+          } else {
+            this.setCustomValidity('');
+          }
+        });
+        serviceInput.addEventListener('change', function() {
+          this.setCustomValidity('');
+        });
+      }
+
+      if (messageInput) {
+        messageInput.addEventListener('invalid', function() {
+          if (this.validity.valueMissing) {
+            this.setCustomValidity('Vul uw bericht in');
+          } else {
+            this.setCustomValidity('');
+          }
+        });
+        messageInput.addEventListener('input', function() {
+          this.setCustomValidity('');
+        });
+      }
+    }
+
+    // Call validation setup
+    setCustomValidationMessages();
+
+    // Enhanced form submission handling
+    const form = document.getElementById('cs-form') as HTMLFormElement;
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        // Check if custom dropdown has a value
+        const serviceInput = document.getElementById('service') as HTMLInputElement;
+        if (serviceInput && !serviceInput.value) {
+          e.preventDefault();
+          serviceInput.setCustomValidity('Selecteer een type dienst');
+          serviceInput.reportValidity();
+          return false;
+        }
+
+        // Validate phone number format (basic Dutch format)
+        const phoneInput = document.getElementById('phone') as HTMLInputElement;
+        if (phoneInput && phoneInput.value) {
+          const phoneRegex = /^(\+31|0)[1-9][0-9]{8}$/;
+          if (!phoneRegex.test(phoneInput.value.replace(/\s/g, ''))) {
+            e.preventDefault();
+            phoneInput.setCustomValidity('Vul een geldig Nederlands telefoonnummer in');
+            phoneInput.reportValidity();
+            return false;
+          }
+        }
+
+        // All validation passed - form will submit to /bedankt
+        return true;
+      });
+    }
+
+    // Custom dropdown functionality
+    const customSelects = document.querySelectorAll('[data-dropdown]');
+    
+    customSelects.forEach(dropdown => {
+      const trigger = dropdown.querySelector('[data-trigger]') as HTMLElement;
+      const options = dropdown.querySelector('[data-options]') as HTMLElement;
+      const hiddenInput = dropdown.querySelector('input[type="hidden"]') as HTMLInputElement;
+      const textElement = dropdown.querySelector('[data-text]') as HTMLElement;
+      const optionElements = dropdown.querySelectorAll('.cs-option');
+      
+      if (!trigger || !options || !hiddenInput || !textElement) return;
+      
+      // Toggle dropdown
+      trigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Close other dropdowns
+        customSelects.forEach(otherDropdown => {
+          if (otherDropdown !== dropdown) {
+            otherDropdown.classList.remove('active');
+            const otherOptions = otherDropdown.querySelector('[data-options]');
+            if (otherOptions) {
+              otherOptions.classList.remove('active');
+            }
+          }
+        });
+        
+        // Toggle current dropdown
+        dropdown.classList.toggle('active');
+        options.classList.toggle('active');
+      });
+      
+      // Handle option selection
+      optionElements.forEach(option => {
+        option.addEventListener('click', function() {
+          const value = this.getAttribute('data-value');
+          const text = this.textContent;
+          
+          if (value && text) {
+            // Update hidden input and display text
+            hiddenInput.value = value;
+            textElement.textContent = text;
+            textElement.classList.remove('placeholder');
+            
+            // Update selected state
+            optionElements.forEach(opt => opt.classList.remove('selected'));
+            this.classList.add('selected');
+            
+            // Close dropdown
+            dropdown.classList.remove('active');
+            options.classList.remove('active');
+            
+            // Trigger change event for form validation
+            hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+        });
+      });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+      const target = e.target as HTMLElement;
+      if (target && !target.closest('[data-dropdown]')) {
+        customSelects.forEach(dropdown => {
+          dropdown.classList.remove('active');
+          const dropdownOptions = dropdown.querySelector('[data-options]');
+          if (dropdownOptions) {
+            dropdownOptions.classList.remove('active');
+          }
+        });
+      }
+    });
+  });
+</script>
+
 <style lang="less">
   /* PAGE-SPECIFIC STYLES FOR THE CONTACT PAGE */
+
+  /* Pulsating cursor keyframes */
+  @keyframes caret-pulse {
+    0%, 50% {
+      caret-color: var(--primary);
+    }
+    51%, 100% {
+      caret-color: rgba(254, 213, 0, 0.4);
+    }
+  }
+
+  /* Smooth cursor movement styles */
+  .smooth-cursor {
+    /* Enable smooth text selection and cursor movement */
+    scroll-behavior: smooth;
+    /* Smooth font rendering for better cursor visibility */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    
+    /* Custom properties for cursor animation */
+    --cursor-transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
   /*-- -------------------------- -->
 <---          Contact           -->
@@ -171,6 +445,15 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         margin: auto;
       }
 
+      #cs-form {
+        width: 100%;
+        
+        label {
+          width: 100%;
+          margin-bottom: clamp(1rem, 2vw, 1.5rem);
+        }
+      }
+
       .cs-content {
         width: 100%;
       }
@@ -179,11 +462,19 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         text-align: left;
         /* 8px - 12px */
         margin-bottom: clamp(0.5rem, 1.4vw, 0.75rem);
+        /* Improve font rendering */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
       }
 
       .cs-title {
         text-align: left;
         max-width: (800/16rem);
+        /* Improve font rendering */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
       }
 
       .cs-text {
@@ -193,13 +484,18 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         margin: 0 auto 0 0;
         /* 40px - 48px */
         margin-bottom: clamp(2.5rem, 6.3vw, 3rem);
+        /* Improve font rendering */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        font-weight: 200 !important;
       }
 
       #cs-form {
         margin-bottom: (40/16rem);
         label {
           font-size: (16/16rem);
-          font-weight: 700;
+          font-weight: 200;
           line-height: 1.5em;
           /* 12px - 20px */
           margin-bottom: clamp(0.75rem, 1.3em, 1.25rem);
@@ -208,6 +504,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           flex-direction: column;
           justify-content: center;
           align-items: flex-start;
+          width: 100%;
         }
 
         .cs-label-message {
@@ -215,33 +512,314 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           margin-bottom: clamp(2rem, 6.3vw, 3rem);
         }
 
+        .cs-input-wrapper {
+          position: relative;
+          margin-top: (4/16rem);
+          width: 100%;
+          
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(254, 213, 0, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
+          }
+          
+          &:focus-within::before {
+            opacity: 1;
+          }
+        }
+
+        .cs-custom-select {
+          position: relative;
+          margin-top: (4/16rem);
+          width: 100%;
+          
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(254, 213, 0, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
+          }
+          
+          &.active::before {
+            opacity: 1;
+          }
+        }
+
         input,
-        textarea {
+        textarea,
+        .cs-select {
           font-size: (16/16rem);
           width: 100%;
           height: (64/16rem);
-          margin-top: (4/16rem);
           /* prevents border & padding from affecting height */
           box-sizing: border-box;
-          padding-left: (20/16rem);
-          border: 1px solid #b4b2c7;
-          border-radius: (8/16rem);
-          transition: border 0.3s;
+          padding: 0 (20/16rem);
+          border: 1px solid var(--primary);
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(10px);
+          color: var(--headerColor);
+          font-family: inherit;
+          font-weight: 200;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          z-index: 2;
+          
+          /* Custom pulsating cursor with smooth movement */
+          caret-color: var(--primary);
+          /* Enhanced cursor smoothing */
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          text-rendering: optimizeLegibility;
+          font-kerning: auto;
+          font-variant-ligatures: common-ligatures;
+          
+          /* Smooth scrolling for long inputs */
+          scroll-behavior: smooth;
+          
+          &::placeholder {
+            color: var(--headerColor);
+            font-weight: 200;
+            transition: opacity 0.3s ease;
+          }
 
           &:hover {
-            border: 1px solid var(--primary);
+            border-color: rgba(254, 213, 0, 0.4);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-1px);
+            box-shadow: 
+              0 4px 20px rgba(0, 0, 0, 0.1),
+              0 0 0 1px rgba(254, 213, 0, 0.2);
+          }
+
+          &:focus {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+            transform: translateY(-2px);
+            animation: caret-pulse 1.5s ease-in-out infinite;
+            
+            &::placeholder {
+              opacity: 0.4;
+            }
+          }
+
+          &:invalid {
+            border-color: #ff4444;
+            background: rgba(255, 68, 68, 0.05);
+          }
+
+          &:invalid:focus {
+            border-color: #ff4444;
+            background: rgba(255, 68, 68, 0.1);
+            box-shadow: 
+              0 4px 20px rgba(255, 68, 68, 0.1),
+              0 0 0 1px rgba(255, 68, 68, 0.2);
+          }
+        }
+
+        .cs-select-trigger {
+          font-size: (16/16rem);
+          width: 100%;
+          height: (64/16rem);
+          box-sizing: border-box;
+          padding: 0 (50/16rem) 0 (20/16rem);
+          border: 1px solid var(--primary);
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(10px);
+          color: var(--headerColor);
+          font-family: inherit;
+          font-weight: 200;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          z-index: 2;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          
+          /* Enhanced cursor smoothing */
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          text-rendering: optimizeLegibility;
+          font-kerning: auto;
+          font-variant-ligatures: common-ligatures;
+          
+          &:hover {
+            border-color: rgba(254, 213, 0, 0.4);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-1px);
+            box-shadow: 
+              0 4px 20px rgba(0, 0, 0, 0.1),
+              0 0 0 1px rgba(254, 213, 0, 0.2);
+          }
+        }
+
+        .cs-select-text {
+          flex: 1;
+          color: var(--headerColor);
+          font-weight: 200;
+          
+          &.placeholder {
+            color: var(--headerColor);
+            font-weight: 200;
+          }
+        }
+
+        .cs-select-options {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(20px);
+          border: 1px solid var(--primary);
+          border-top: none;
+          max-height: 200px;
+          overflow-y: auto;
+          z-index: 1000;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-10px);
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          
+          &.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+          }
+        }
+
+        .cs-option {
+          padding: (12/16rem) (20/16rem);
+          font-size: (16/16rem);
+          color: var(--headerColor);
+          cursor: pointer;
+          transition: all 0.2s ease;
+          font-weight: 200;
+          
+          &:hover {
+            background: rgba(254, 213, 0, 0.1);
+            color: var(--headerColor);
+          }
+          
+          &.selected {
+            background: white;
+            color: var(--headerColor);
+            font-weight: 300;
+          }
+        }
+
+        .cs-select-arrow {
+          position: absolute;
+          right: (20/16rem);
+          top: 50%;
+          transform: translateY(-50%);
+          pointer-events: none;
+          color: var(--headerColor);
+          transition: all 0.3s ease;
+          z-index: 3;
+          
+          svg {
+            transition: transform 0.3s ease;
+          }
+        }
+
+        .cs-custom-select.active .cs-select-arrow {
+          color: var(--primary);
+          
+          svg {
+            transform: rotate(180deg);
           }
         }
 
         textarea {
-          font-family: inherit;
           min-height: (120/16rem);
           padding-top: (20/16rem);
+          padding-bottom: (20/16rem);
+          resize: vertical;
+          font-family: inherit;
         }
 
         .cs-button-solid {
           width: 100%;
           border: none;
+          background-color: var(--primary);
+          color: #000;
+          font-weight: 300;
+          font-size: 16px;
+          padding: 17px 32px;
+          margin-top: 2rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-align: center;
+          line-height: 1.2;
+          position: relative;
+          box-sizing: border-box;
+          
+          /* notch dimensions */
+          --notch-width: 5px;
+          --notch-depth: 5px;
+
+          /* clip-path with three centered notches: top, right, bottom */
+          clip-path: polygon(
+              0% 0%,
+              calc(50% - var(--notch-width)) 0%,
+              50% var(--notch-depth),
+              calc(50% + var(--notch-width)) 0%,
+              100% 0%,
+              100% calc(50% - var(--notch-width)),
+              calc(100% - var(--notch-depth)) 50%,
+              100% calc(50% + var(--notch-width)),
+              100% 100%,
+              calc(50% + var(--notch-width)) 100%,
+              50% calc(100% - var(--notch-depth)),
+              calc(50% - var(--notch-width)) 100%,
+              0% 100%,
+              0% 0%
+          );
+          overflow: hidden;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            clip-path: inherit;
+          }
+          
+          &:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            
+            &::before {
+              opacity: 1;
+            }
+          }
+
+          &:active {
+            transform: translateY(0);
+            background-color: #FFC700;
+          }
         }
       }
 
@@ -250,7 +828,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         /* 24px - 40px top & bottom */
         /* 20px - 40px left & right */
         padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem);
-        border-radius: (8/16rem);
+        border-radius: 0;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -258,6 +836,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         position: relative;
         /* cuts off corners on img tag */
         overflow: hidden;
+        border: 2px solid var(--primary);
       }
 
       .cs-header {
@@ -355,13 +934,10 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
   @media only screen and (min-width: 43.75em) {
     #cs-contact {
       #cs-form {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-wrap: wrap;
+        display: block;
 
         label {
-          width: 48%;
+          width: 100%;
         }
 
         .cs-label-message {
@@ -377,21 +953,22 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
       .cs-container {
         max-width: (1280/16rem);
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: flex-start;
-        gap: (80/16rem);
+        gap: (40/16rem);
       }
 
       #cs-form {
-        max-width: (630/16rem);
+        width: 65%;
+        max-width: none;
         label {
           width: 100%;
         }
       }
 
       .cs-right-section {
-        width: 40%;
-        max-width: (542/16rem);
+        width: 30%;
+        max-width: (350/16rem);
         /* changes to 578px at 1300px wide */
         height: (686/16rem);
         /* prevents flexbox from squishing it */
@@ -415,10 +992,9 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
   @media only screen and (min-width: 81.25em) {
     #cs-contact {
       #cs-form {
-        column-gap: (0/16rem);
         label {
-          width: 48%;
-          max-width: (305/16rem);
+          width: 100%;
+          max-width: none;
         }
 
         .cs-label-message {

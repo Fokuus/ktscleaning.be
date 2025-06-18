@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import CTA from "@components/CTA.astro";
+
 import Landing from "@components/Landing.astro";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
@@ -10,8 +10,8 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'});
 ---
 
 <BaseLayout
-  title="Reviews"
-  description="Meta description for the page"
+  title="Klantbeoordelingen - KTS Cleaning"
+  description="Lees wat onze klanten zeggen over KTS Cleaning. Betrouwbare en professionele schoonmaakdiensten met uitstekende klanttevredenheid voor gespecialiseerde reiniging."
   preloadedImage = {optimizedImage}
 >
   <!-- ============================================ -->
@@ -226,7 +226,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'});
       </div>
     </div>
   </section>
-  <CTA />
+  
 </BaseLayout>
 
 <style lang="less">

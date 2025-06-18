@@ -44,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
 	:root {
 		--primary: #fed500;
 		--primaryLight: #fefcf4;
-		--secondary: #001f3f;
+		--secondary: #3f3800;
 		--secondaryLight: #001f3f;
 		--headerColor: #1a1a1a;
 		--bodyTextColor: #66644b;
@@ -56,8 +56,13 @@ h1, h2, h3, h4, h5, h6 {
 		--headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
 		--bodyFontSize: 1rem;
 		--bodyFontSizeBigger: 1.5rem;
-		/* 80px - 120px top and bottom, 1rem left/right on mobile, 3rem on desktop */
-		--sectionPadding: clamp(5rem, 9vw, 7.5rem) 1rem;
+		/* 80px - 120px top and bottom, 1.5rem left/right on mobile, 3rem on desktop */
+		--sectionPadding: clamp(5rem, 9vw, 7.5rem) 1.5rem;
+		
+		/* Content container widths */
+		--contentWidthMobile: 95%;
+		--contentWidthDesktop: 84%;
+		--contentWidthDesktopMax: 1440px;
 	}
 
 	/* Tablet and larger - increase side padding */
@@ -87,6 +92,53 @@ h1, h2, h3, h4, h5, h6 {
 		margin: 0 auto (16/16rem);
 		color: var(--headerColor);
 		position: relative;
+
+		&::after {
+			content: "";
+			position: absolute;
+			display: block;
+			height: 2px;
+			width: 2000px;
+			background-color: var(--primary);
+			left: calc(-2000px - 50px);
+			top: 20px;
+		}
+	}
+
+	/* Mobile styling to match Hero.astro */
+	@media only screen and (max-width: 48rem) {
+		.cs-topper {
+			font-size: (16/16rem);
+			line-height: 1.2em;
+			text-transform: uppercase;
+			text-align: center;
+			letter-spacing: 0.1em;
+			color: var(--primary);
+			margin-bottom: (4/16rem);
+			display: block;
+		}
+
+		.cs-title {
+			font-size: clamp(2.4375rem, 6.3vw, 2.625rem);
+			line-height: 1.2em;
+			text-align: center;
+			max-width: 23ch;
+			margin: 0 auto (16/16rem);
+			color: var(--headerColor);
+			position: relative;
+
+			&::after {
+				content: "";
+				position: absolute;
+				display: block;
+				height: 2px;
+				width: 2000px;
+				background-color: var(--primary);
+				left: calc(-2000px - 50px);
+				top: 20px;
+        z-index: -9999;
+			}
+		}
 	}
 
 	.cs-text {
@@ -132,14 +184,62 @@ html {
 	padding: 0;
 }
 
+/* Centralized Container Width Control */
+@media only screen and (min-width: 0rem) {
+	.cs-container, .container {
+		width: 100%;
+		margin: auto;
+		max-width: var(--contentWidthMobile);
+	}
+}
+
+@media only screen and (min-width: 48rem) {
+	.cs-container, .container {
+		max-width: var(--contentWidthDesktop);
+	}
+}
+
+/* Header Animation Styles - Keep separate from WOW.js */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-load {
+  opacity: 0;
+  animation: fadeInDown 0.6s ease-out forwards;
+}
+
+/* Subtle scroll animation styles - Global */
+.wow {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* When animation is triggered */
+.wow.animated {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media only screen and (min-width: 90rem) {
+	.cs-container, .container {
+		max-width: var(--contentWidthDesktopMax);
+	}
+}
+
 @media only screen and (min-width: 1024px) {
 	html {
 		font-size: 16px; /* Changed from 14px to 16px to prevent elements from getting too large */
-	}
-
-	/* Set max width for containers */
-	.cs-container, .container {
-		max-width: 960px;
 	}
 }
 
@@ -147,21 +247,11 @@ html {
 	html {
 		font-size: 16px; /* Changed from 12px to 16px to prevent elements from getting too large */
 	}
-
-	/* Set max width for containers */
-	.cs-container, .container {
-		max-width: 1200px; /* Increased from 960px to better utilize larger screens */
-	}
 }
 
 @media only screen and (min-width: 1800px) {
 	html {
 		font-size: 16px; /* Changed from 10px to 16px to prevent elements from getting too large */
-	}
-
-	/* Set max width for containers */
-	.cs-container, .container {
-		max-width: 1400px; /* Increased from 960px to better utilize larger screens */
 	}
 }
 

@@ -8,10 +8,10 @@ const posts = await getCollection("blog");
 const featuredPosts = posts.filter((post) => post.data.isFeatured === true);
 ---
 
-<h3 class="blog-sidebar_widget-header">Featured Posts</h3>
+<h3 class="blog-sidebar_widget-header wow animate__fadeInRight">Featured Posts</h3>
 {
-	featuredPosts.map((post) => (
-		<a class="blog-sidebar_widget-link" href={`/blog/${post.id}`}>
+	featuredPosts.map((post, index) => (
+		<a class="blog-sidebar_widget-link wow animate__fadeInRight" data-wow-delay={`${0.1 + index * 0.1}s`} href={`/blog/${post.id}`}>
 			<picture class="blog-sidebar_widget-image">
 				<Image src={post.data.image} alt={post.data.imageAlt} width="60" height="60" decoding="async" />
 			</picture>

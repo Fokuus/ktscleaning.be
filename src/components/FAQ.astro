@@ -1,62 +1,65 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+  isActive?: boolean;
+}
+
+interface Props {
+  title?: string;
+  topper?: string;
+  faqs?: FAQItem[];
+}
+
+const {
+  title = "Veelgestelde Vragen",
+  topper = "FAQ's",
+  faqs = [
+    {
+      question: "Wat is crime scene cleaning en wanneer heb ik dit nodig?",
+      answer: "Crime scene cleaning is de gespecialiseerde reiniging van locaties waar geweld, ongevallen of overlijden hebben plaatsgevonden. Dit omvat het veilig verwijderen van biologische materialen, bloed en andere gevaarlijke stoffen. KTS Cleaning werkt samen met politie, hulpdiensten en verzekeraars om deze gevoelige situaties professioneel en discreet af te handelen.",
+      isActive: true
+    },
+    {
+      question: "Hoe snel kunnen jullie ter plaatse zijn voor een spoedopdracht?",
+      answer: "Wij zijn 24/7 bereikbaar voor noodsituaties. Voor spoedeisende opdrachten zoals crime scene cleaning of acute vervuiling streven we ernaar binnen 2-4 uur ter plaatse te zijn. Ons ervaren team staat altijd paraat met de juiste uitrusting en certificeringen."
+    },
+    {
+      question: "Welke certificeringen en verzekeringen hebben jullie?",
+      answer: "KTS Cleaning beschikt over alle benodigde certificeringen voor gevaarlijke stoffen, industriële reiniging en crime scene cleaning. Wij zijn volledig verzekerd en gecertificeerd voor het werken met biohazards, chemische stoffen en asbest. Al onze medewerkers hebben specifieke trainingen gevolgd voor hun specialisatie."
+    },
+    {
+      question: "Hoe werkt de samenwerking met verzekeraars en overheidsdiensten?",
+      answer: "Als erkend partner van politiediensten, gemeentes en verzekeraars hanteren wij vaste procedures en tariefafspraken. Wij zorgen voor alle benodigde documentatie en certificaten. In veel gevallen wordt onze dienstverlening vergoed door de verzekeraar, afhankelijk van uw polis en de situatie."
+    },
+    {
+      question: "Wat zijn jullie tarieven en hoe wordt er gefactureerd?",
+      answer: "Onze tarieven zijn afhankelijk van het type opdracht, de omvang en complexiteit. Wij bieden altijd een gratis offerte aan na inspectie ter plaatse. Voor spoedeisende opdrachten hanteren we vaste uurtarieven. Particulieren krijgen vooraf duidelijkheid over alle kosten, bedrijven kunnen rekenen op scherpe contracttarieven."
+    }
+  ]
+} = Astro.props;
+---
+
 <section id="faq-326">
   <div class="cs-container">
-    <div class="cs-content">
-      <span class="cs-topper">FAQ's</span>
-      <h2 class="cs-title">Frequently Asked Questions</h2>
+    <div class="cs-content wow animate__fadeInUp">
+      <span class="cs-topper">{topper}</span>
+      <h2 class="cs-title">{title}</h2>
     </div>
     <div class="cs-flex-group">
       <ul class="cs-faq-group">
-        <!-- Active class added as default -->
-        <li class="cs-faq-item active">
-          <button class="cs-button">
-            <span class="cs-button-text">
-              What is the difference between a lawyer and an attorney?
-            </span>
-          </button>
-          <p class="cs-item-p">
-            In the U.S., the terms lawyer and attorney are often used interchangeably. A lawyer provides legal services such as giving legal advice, writing legal documents and providing policy counsel to governments. An attorney, on top of these things also holds a state or regional license to represent clients in a law court.
-          </p>
-        </li>
-        <li class="cs-faq-item">
-          <button class="cs-button">
-            <span class="cs-button-text">
-              How do I get started?
-            </span>
-          </button>
-          <p class="cs-item-p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit convallis nunc neque, bibendum pulvinar vitae commodo velit. Proin diam tortor sed malesuada nunc, habitant. Dignissim ipsum porta enim, magna urna, quam. 
-          </p>
-        </li>
-        <li class="cs-faq-item">
-          <button class="cs-button">
-            <span class="cs-button-text">
-              I'm New to the United States and Need an Attorney. Can I Hire a Stitch Lawyer Instead?
-            </span>
-          </button>
-          <p class="cs-item-p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit convallis nunc neque, bibendum pulvinar vitae commodo velit. Proin diam tortor sed malesuada nunc, habitant. Dignissim ipsum porta enim, magna urna, quam. 
-          </p>
-        </li>
-        <li class="cs-faq-item">
-          <button class="cs-button">
-            <span class="cs-button-text">
-              What Do Lawyers Do? Do They Spend Most of Their Time Arguing Cases in Court?
-            </span>
-          </button>
-          <p class="cs-item-p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit convallis nunc neque, bibendum pulvinar vitae commodo velit. Proin diam tortor sed malesuada nunc, habitant. Dignissim ipsum porta enim, magna urna, quam. 
-          </p>
-        </li>
-        <li class="cs-faq-item">
-          <button class="cs-button">
-            <span class="cs-button-text">
-              May a Lawyer Who Is Licensed in One State Practice Law in Another State?
-            </span>
-          </button>
-          <p class="cs-item-p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit convallis nunc neque, bibendum pulvinar vitae commodo velit. Proin diam tortor sed malesuada nunc, habitant. Dignissim ipsum porta enim, magna urna, quam. 
-          </p>
-        </li>
+        {faqs.map((faq, index) => (
+          <li class={`cs-faq-item ${faq.isActive ? 'active' : ''} wow animate__fadeInUp`} data-wow-delay={`${0.1 + index * 0.1}s`}>
+            <button class="cs-button">
+              <span class="cs-button-text">
+                {faq.question}
+              </span>
+            </button>
+            <p class="cs-item-p">
+              {faq.answer}
+            </p>
+          </li>
+        ))}
       </ul>
     </div>
   </div>
@@ -112,9 +115,6 @@
       position: relative;
 
       .cs-container {
-        width: 100%;
-        /* changes to 1280px at desktop */
-        max-width: calc(700rem / 16);
         margin: 2em auto;
         display: flex;
         flex-direction: column;
@@ -139,7 +139,24 @@
         align-items: center;
       }
 
+      .cs-topper {
+        font-family: 'Lato', sans-serif;
+        font-size: var(--topperFontSize);
+        font-weight: 700;
+        line-height: 1.2em;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--secondary);
+        display: block;
+        margin-bottom: (4/16rem);
+      }
+
       .cs-title {
+        font-family: 'Lato', sans-serif;
+        font-size: var(--headerFontSize);
+        font-weight: 900;
+        line-height: 1.2em;
+        color: var(--headerColor);
         max-width: 15ch;
         margin: 0 0 (32/16rem);
       }
@@ -161,9 +178,8 @@
         list-style: none;
         width: 100%;
         background-color: #f7f7f7;
-        /* clips all corners of the button that overlap the rounded border */
+        /* clips all corners of the button that overlap the border */
         overflow: hidden;
-        border-radius: (12/16rem);
         transition: all 0.3s ease-in-out;
 
         &.active {
@@ -193,7 +209,9 @@
       }
 
       .cs-button {
-        font-size: calc(16rem / 16);
+        font-family: 'Lato', sans-serif;
+        font-size: (16/16rem);
+        font-weight: 700;
         line-height: 1.2em;
         text-align: left;
         /* 16px - 20px */
@@ -218,7 +236,6 @@
         height: calc(2rem / 16);
         background-color: var(--headerColor);
         opacity: 1;
-        border-radius: 50%;
         position: absolute;
         top: 50%;
         right: calc(24rem / 16);
@@ -233,7 +250,6 @@
         height: calc(2rem / 16);
         background-color: var(--headerColor);
         opacity: 1;
-        border-radius: 50%;
         position: absolute;
         top: 50%;
         right: calc(24rem / 16);
@@ -242,6 +258,11 @@
       }
 
       .cs-item-p {
+        font-family: 'Lato', sans-serif;
+        font-size: var(--bodyFontSize);
+        font-weight: 300;
+        line-height: 1.5em;
+        color: var(--bodyTextColor);
         margin: 0;
         height: auto;
         max-height: 0;
@@ -278,7 +299,6 @@
   @media only screen and (min-width: 64rem) {
     #faq-326 {
       .cs-container {
-        max-width: (1280/16rem);
         flex-direction: row;
         justify-content: space-between;
         align-items: stretch;
@@ -316,6 +336,8 @@
         }
 
         .cs-faq-item {
+          background-color: var(--accent);
+          
           &.active {
             .cs-button {
               background-color: var(--secondary);
@@ -338,6 +360,7 @@
         .cs-button {
           color: var(--bodyTextColorWhite);
           border-color: var(--accent);
+          background-color: var(--accent);
 
           &:before,
           &:after {

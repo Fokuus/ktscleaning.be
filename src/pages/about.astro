@@ -1,8 +1,10 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import CTA from "@components/CTA.astro";
+
 import Landing from "@components/Landing.astro";
 import FAQ from "@components/FAQ.astro";
+import Button from "@components/Button.astro";
+import WhyChooseUs from "@components/WhyChooseUs.astro";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
@@ -11,8 +13,8 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 ---
 
 <BaseLayout
-  title="About"
-  description="Meta description for the page"
+  title="Over Ons - KTS Cleaning"
+  description="Meer dan 13 jaar ervaring in gespecialiseerde reiniging. KTS Cleaning is dé expert in crime scene cleaning, industriële reiniging en technische ontmantelingen."
   preloadedImage = {optimizedImage}
 >
   <!-- ============================================ -->
@@ -20,7 +22,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
   <!-- ============================================ -->
 
   <Landing 
-    title="About Us"
+    title="Over KTS Cleaning"
     image={optimizedImage}
   />
 
@@ -35,17 +37,17 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         <picture class="cs-picture cs-picture1">
           <source
             media="(max-width: 600px)"
-            srcset="/assets/images/cabinets2-m.jpg"
+            srcset="/assets/images/about.jpg"
           />
           <source
             media="(min-width: 601px)"
-            srcset="/assets/images/cabinets2.jpg"
+            srcset="/assets/images/about.jpg"
           />
           <img
             aria-hidden="true"
             decoding="async"
-            src="/assets/images/cabinets2.jpg"
-            alt="cabinets"
+            src="/assets/images/about.jpg"
+            alt="KTS Cleaning team"
             loading="lazy"
             width="400"
             height="563"
@@ -54,17 +56,17 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         <picture class="cs-picture cs-picture2">
           <source
             media="(max-width: 600px)"
-            srcset="/assets/images/construction-m.jpg"
+            srcset="/assets/images/industriele-reiniging-productielijnen.webp"
           />
           <source
             media="(min-width: 601px)"
-            srcset="/assets/images/construction.jpg"
+            srcset="/assets/images/industriele-reiniging-productielijnen.webp"
           />
           <img
             aria-hidden="true"
             decoding="async"
-            src="/assets/images/construction.jpg"
-            alt="house"
+            src="/assets/images/industriele-reiniging-productielijnen.webp"
+            alt="industriële reiniging"
             loading="lazy"
             width="400"
             height="563"
@@ -73,43 +75,42 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
       </div>
       <!-- Right Content Section-->
       <div class="cs-right">
-        <span class="cs-topper">About Us</span>
-        <h2 class="cs-title">About Company Title</h2>
+        <span class="cs-topper">Over KTS Cleaning</span>
+        <h2 class="cs-title">Gespecialiseerd Sinds 2012</h2>
         <p class="cs-text">
-          In consequat tincidunt turpis sit amet imperdiet. Praesent Class
-          officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur
-          et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent
-          nonatourean olei aptent taciti sociosqu ad litora torquent per.
+          KTS Cleaning werd opgericht in 2012 als een van de eerste gespecialiseerde schoonmaakbedrijven in Vlaanderen. Met meer dan 13 jaar ervaring in crime scene cleaning, zwaar vervuilde woningen, industriële reiniging en technische ontmantelingen, zijn we uitgegroeid tot een vaste waarde in de sector.
         </p>
         <p class="cs-text">
-          In consequat tincidunt turpis sit amet imperdiet. Praesent Class
-          officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur
-          et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent
-          nonatourean olei aptent taciti sociosqu ad litora torquent per.
+          Wij weten als geen ander wat écht telt: discretie, veiligheid, vakmanschap en vertrouwen. Onze oprichter Koos Taillieu staat zelf nog dagelijks op het terrein, met een team dat getraind is voor de meest complexe opdrachten. Van politiediensten tot particulieren - iedereen kan rekenen op onze professionele aanpak.
         </p>
         <div class="cs-flex-group">
           <p class="cs-flex-p">
-            In consequat tincidunt turpis sit amet imperdiet. Praesent Classei
-            consequat tincidunt turpis sit amet imperdiet for mind.
+            "Met KTS Cleaning heb je een partner die begrijpt dat elk project uniek is. Onze jarenlange ervaring en specialistische kennis maken het verschil wanneer anderen het opgeven."
           </p>
-          <span class="cs-name">Justin Time</span>
-          <span class="cs-job">CEO-Founder</span>
+          <span class="cs-name">Koos Taillieu</span>
+          <span class="cs-job">Oprichter & CEO</span>
           <img
             class="cs-quote-icon"
             loading="lazy"
             decoding="async"
             src="https://csimg.nyc3.digitaloceanspaces.com/SideBySide/quote-white.svg"
-            alt="gavel"
+            alt="quote"
             width="136"
             height="77"
           />
         </div>
-        <a href="/projects" class="cs-button-solid">Our Projects</a>
+        <Button text="Bekijk Onze Projecten" href="/projects" />
       </div>
     </div>
   </section>
+
+  <!-- ============================================ -->
+  <!--                Why Choose Us                 -->
+  <!-- ============================================ -->
+  
+  <WhyChooseUs />
+
   <FAQ />
-  <CTA />
 </BaseLayout>
 
 <style lang="less">
@@ -145,7 +146,6 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
       }
 
       .cs-picture {
-        border-radius: (24/16em);
         display: block;
         position: absolute;
         /* clips img tag corners */
@@ -172,7 +172,6 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         width: (414/16em);
         height: (400/16em);
         background-color: #fff;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 40px;
         /* 6px - 12px */
         border: clamp(0.375em, 1.5vw, 0.75em) solid #fff;
         right: 0;
@@ -192,6 +191,10 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
       .cs-title {
         text-align: left;
         max-width: (800/16rem);
+
+        &::after {
+          display: none;
+        }
       }
 
       .cs-text {
@@ -211,6 +214,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         background-color: #f7f7f7;
         border-radius: (16/16rem);
         position: relative;
+        margin-bottom: (32/16rem);
       }
 
       .cs-flex-p {
@@ -246,10 +250,6 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         /* 16px - 32px */
         right: clamp(1rem, 4vw, 2rem);
         bottom: (0/16rem);
-      }
-
-      .cs-button-solid {
-        margin-top: (32/16rem);
       }
     }
   }

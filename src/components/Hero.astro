@@ -9,7 +9,7 @@ import Button from "@components/Button.astro";
 
 <section id="hero-1806">
     <div class="cs-container">
-        <div class="cs-content">
+        <div class="cs-content wow animate__fadeInLeft">
             <span class="cs-topper">Professionele Reiniging</span>
             <h1 class="cs-title">Gespecialiseerde Schoonmaakdiensten</h1>
             <p class="cs-text">
@@ -22,23 +22,23 @@ import Button from "@components/Button.astro";
             </div>
   
             <ul id="stats-1336" class="cs-ul">
-              <li class="cs-item">
+              <li class="cs-item wow animate__fadeInUp" data-wow-delay="0.3s">
                   <span class="cs-number">24/7</span>
                   <h3 class="cs-h3">Beschikbaarheid</h3>
               </li>
-              <li class="cs-item">
+              <li class="cs-item wow animate__fadeInUp" data-wow-delay="0.4s">
                   <span class="cs-number">10+</span>
                   <h3 class="cs-h3">Jaren ervaring</h3>
               </li>
-              <li class="cs-item">
+              <li class="cs-item wow animate__fadeInUp" data-wow-delay="0.5s">
                   <span class="cs-number">100%</span>
                   <h3 class="cs-h3">Klanttevredenheid</h3>
               </li>
           </ul>
         </div>
-        <div class="cs-video-group">
+        <div class="cs-video-group wow animate__fadeInRight" data-wow-delay="0.2s">
             <div class="cs-video-wrapper">
-                <video src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Videos/gym.mp4" preload="metadata" muted controls={false}></video>
+                <video src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Videos/gym.mp4" poster="/assets/images/industriele-reiniging-productielijnen.webp" preload="metadata" muted controls={false}></video>
                 <button class="cs-play" aria-label="click to play video">
                     <img src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/play-right.svg" alt="play icon" class="cs-icon" width="24" height="24" aria-hidden="true" decoding="async">
                 </button>
@@ -98,7 +98,7 @@ import Button from "@components/Button.astro";
   /* you can copy and paste these styles into the section CSS where you placed the #list-1336 HTML, or you can place it in your global stylesheet so you can reuse the HTML in any Side By Side section on your site. That way when you make changes to it, it will also change everywhere in the site */
   #stats-1336 {
       width: 100%;
-      max-width: (630/16rem);
+      max-width: 100%;
       padding: 0;
       /* 32px - 48px */
       margin: clamp(2rem, 5vw, 3rem) 0 0 0;
@@ -128,6 +128,11 @@ import Button from "@components/Button.astro";
           color: var(--primary);
           display: block;
           margin: 0 0 (8/16rem) 0;
+          /* Crisp font rendering */
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          text-rendering: optimizeLegibility;
+          font-variant-numeric: tabular-nums;
       }
   
       .cs-h3 {
@@ -138,6 +143,10 @@ import Button from "@components/Button.astro";
           /* auto margin top will push text to bottom if there's only one line */
           margin: 0;
           color: var(--bodyTextColor);
+          /* Improve font rendering */
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          text-rendering: optimizeLegibility;
       }
   }
   
@@ -146,7 +155,34 @@ import Button from "@components/Button.astro";
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      gap: 1rem;
+      gap: clamp(0.5rem, 2vw, 1rem);
+      flex-wrap: wrap;
+      
+      /* Tablet breakpoint */
+      @media (max-width: 900px) {
+          flex-direction: column-reverse;
+          gap: 1.5rem;
+          align-items: center;
+          text-align: center;
+      }
+      
+      /* Mobile breakpoint */
+      @media (max-width: 600px) {
+          flex-direction: column-reverse;
+          gap: clamp(0.5rem, 1.5vw, 0.75rem);
+          width: 100%;
+          
+          p {
+              font-size: clamp(0.875rem, 2.5vw, 1rem);
+          }
+      }
+      
+      /* Very small mobile */
+      @media (max-width: 380px) {
+          flex-direction: column-reverse;
+          gap: 0.75rem;
+          width: 100%;
+      }
   }
   
   /* Dark Mode, copy and paste only the styles inside the #list-1336 brackets into your section's dark mode media query */
@@ -177,26 +213,30 @@ import Button from "@components/Button.astro";
       #hero-1806 {
           /* 200px - 244px top */
           /* 60px - 100px  bottom */
-          padding: clamp(12.5rem, 16.82vw, 15.25rem) (16/16rem) 0;
+          padding: clamp(12.5rem, 16.82vw, 15.25rem) 0 0;
           /* clips the svg wave from overflowing */
           overflow: hidden;
           position: relative;
           z-index: 1;
+
+          margin: 0 auto;
+          
   
           .cs-container {
               width: 100%;
-              max-width: (1280/16rem);
               margin: auto;
+              padding-left: 1.5rem;
+              padding-right: 1.5rem;
               display: flex;
               justify-content: center;
               align-items: center;
               flex-direction: column;
               gap: (48/16rem);
+              width: var(--contentWidthDesktop);
           }
   
           .cs-content {
               text-align: center;
-              max-width: (630/16rem);
               display: flex;
               justify-content: center;
               align-items: center;
@@ -214,6 +254,10 @@ import Button from "@components/Button.astro";
               color: var(--primary);
               margin-bottom: (4/16rem);
               display: block;
+              /* Improve font rendering */
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              text-rendering: optimizeLegibility;
           }
   
           .cs-title {
@@ -226,6 +270,15 @@ import Button from "@components/Button.astro";
               margin: 0 0 (16/16rem) 0;
               color: var(--headerColor);
               position: relative;
+              /* Improve font rendering */
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              text-rendering: optimizeLegibility;
+              transform: translateZ(0);
+
+              &::after {
+                  display: none;
+              }
           }
   
           .cs-text {
@@ -237,6 +290,10 @@ import Button from "@components/Button.astro";
               max-width: (531/16rem);
               margin: 0 0 (32/16rem) 0;
               color: var(--bodyTextColor);
+              /* Improve font rendering */
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              text-rendering: optimizeLegibility;
           }
   
           .cs-button-solid {
@@ -350,6 +407,10 @@ import Button from "@components/Button.astro";
               margin: 0;
               padding: 0;
               color: var(--bodyTextColorWhite);
+              /* Improve font rendering */
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              text-rendering: optimizeLegibility;
           }
   
           .cs-box-icon {
@@ -427,9 +488,12 @@ import Button from "@components/Button.astro";
   @media only screen and (min-width: 48rem) {
       #hero-1806 {
           .cs-container {
+              padding-left: 3rem;
+              padding-right: 3rem;
               flex-direction: row;
               align-items: stretch;
               justify-content: space-between;
+              
           }
   
           .cs-content {
@@ -554,5 +618,7 @@ import Button from "@components/Button.astro";
     
     // Call the function to activate the event listener
     toggleVideoPlayback();
+
+
                                   
   </script>

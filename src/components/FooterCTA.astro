@@ -6,7 +6,7 @@ import Button from "@components/Button.astro";
 
 <div class="footer-cta-float">
   <div class="cs-container">
-    <section class="footer-cta">
+    <section class="footer-cta wow animate__fadeInUp" data-wow-delay="0.2s">
       <div class="footer-cta__content">
         <span class="footer-cta__text">Bel ons of krijg vrijblijvend een offerte.</span>
         <div class="cs-button-group">
@@ -30,22 +30,20 @@ import Button from "@components/Button.astro";
   z-index: 20;
   margin-bottom: 60px;
   pointer-events: none;
-  border-radius: 1.25rem;
 
 
   .cs-container {
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
-    padding-left: clamp(1rem, 3vw, 1.5rem);
-    padding-right: clamp(1rem, 3vw, 1.5rem);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     box-sizing: border-box;
   }
 
   .footer-cta {
     width: 100%;
     background: var(--primaryLight);
-    border-radius: 1.25rem; // 20px
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.10);
     display: flex;
     justify-content: center;
@@ -78,7 +76,6 @@ import Button from "@components/Button.astro";
         font-weight: 700;
         font-size: 1.15rem;
         border: none;
-        border-radius: 0.4375rem; // 7px
         padding: 1.1rem 2.8rem;
         text-decoration: none;
         box-shadow: 0 2px 8px rgba(0,0,0,0.07);
@@ -123,6 +120,14 @@ import Button from "@components/Button.astro";
       }
   }
 
+      /* Desktop breakpoint */
+    @media (min-width: 768px) {
+      .cs-container {
+        padding-left: 3rem;
+        padding-right: 3rem;
+      }
+    }
+
       /* Tablet breakpoint */
     @media (max-width: 900px) {
       .footer-cta__content {
@@ -144,7 +149,6 @@ import Button from "@components/Button.astro";
     /* Mobile breakpoint */
     @media (max-width: 600px) {
       .footer-cta {
-        border-radius: clamp(0.5rem, 2vw, 0.75rem);
         margin-bottom: clamp(30px, 8vw, 60px);
         
         .footer-cta__content {
