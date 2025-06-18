@@ -1,6 +1,6 @@
 import { renderers } from './renderers.mjs';
 import { s as serverEntrypointModule } from './chunks/_@astrojs-ssr-adapter_CvSoi7hX.mjs';
-import { manifest } from './manifest_RYnI4_XZ.mjs';
+import { manifest } from './manifest_Bj0MdJUZ.mjs';
 import { createExports } from '@astrojs/netlify/ssr-function.js';
 
 const serverIslandMap = new Map();;
@@ -15,9 +15,8 @@ const _page6 = () => import('./pages/diensten/crime-scene-cleaning.astro.mjs');
 const _page7 = () => import('./pages/diensten/gespecialiseerde-schoonmaak.astro.mjs');
 const _page8 = () => import('./pages/diensten/industriele-reiniging.astro.mjs');
 const _page9 = () => import('./pages/projects.astro.mjs');
-const _page10 = () => import('./pages/projects/_---project_.astro.mjs');
-const _page11 = () => import('./pages/reviews.astro.mjs');
-const _page12 = () => import('./pages/index.astro.mjs');
+const _page10 = () => import('./pages/reviews.astro.mjs');
+const _page11 = () => import('./pages/index.astro.mjs');
 const pageMap = new Map([
     ["src/pages/about.astro", _page0],
     ["src/pages/admin.astro", _page1],
@@ -29,9 +28,8 @@ const pageMap = new Map([
     ["src/pages/diensten/gespecialiseerde-schoonmaak.astro", _page7],
     ["src/pages/diensten/industriele-reiniging.astro", _page8],
     ["src/pages/projects/index.astro", _page9],
-    ["src/pages/projects/[...project].astro", _page10],
-    ["src/pages/reviews.astro", _page11],
-    ["src/pages/index.astro", _page12]
+    ["src/pages/reviews.astro", _page10],
+    ["src/pages/index.astro", _page11]
 ]);
 
 const _manifest = Object.assign(manifest, {
@@ -42,7 +40,7 @@ const _manifest = Object.assign(manifest, {
     middleware: () => import('./_noop-middleware.mjs')
 });
 const _args = {
-    "middlewareSecret": "8d747908-9b3e-443c-8a57-afe029652f66"
+    "middlewareSecret": "01482c6e-7fde-448f-92f0-a4a30631158c"
 };
 const _exports = createExports(_manifest, _args);
 const __astrojsSsrVirtualEntry = _exports.default;

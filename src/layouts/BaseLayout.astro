@@ -8,8 +8,7 @@ import FooterCTA from "@components/FooterCTA.astro";
 import "@styles/root.less";
 import "@styles/dark.less";
 import "@styles/hero.less";
-// Import animate.css for WOW animations
-import "animate.css";
+
 
 // Define a type for images from the content collection
 type ContentImage = {
@@ -49,18 +48,75 @@ const { description, title, preloadedImage } = Astro.props as Props;
             <!-- If present, preloads the image passed as a prop -->
             {preloadedImage && <link rel="preload" href={preloadedImage.src} as="image" />}
 
-            <!-- Critical CSS inlined for performance -->
-            <style>
-                /* Critical font fallback */
-                body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif; }
-            </style>
-            
-            <!-- Google Fonts - Lato - Load async for performance -->
+            <!-- Preconnect to external font domains -->
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+            <!-- Critical CSS inlined for performance -->
+            <style>
+                /* Critical font fallback and basic layout */
+                body { 
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    overflow-x: hidden;
+                    line-height: 1.6;
+                }
+                
+                /* Critical navigation styles */
+                #cs-navigation {
+                    position: fixed;
+                    top: 32px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: 10000;
+                    width: 94%;
+                    max-width: 1440px;
+                }
+                
+                .cs-container {
+                    width: 100%;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 0 1rem;
+                }
+                
+                /* Critical hero styles */
+                #hero-1806 {
+                    padding-top: 200px;
+                    position: relative;
+                    z-index: 1;
+                }
+                
+                .cs-title {
+                    font-size: clamp(2.4375rem, 6.3vw, 5.25rem);
+                    line-height: 1.2;
+                    margin: 0 0 16px 0;
+                    color: var(--headerColor);
+                }
+                
+                /* CSS Variables */
+                :root {
+                    --primary: #fed500;
+                    --primaryLight: #ffed4e;
+                    --secondary: #2a2400;
+                    --headerColor: #1a1a1a;
+                    --bodyTextColor: #4e4b66;
+                    --bodyTextColorWhite: #fafbfc;
+                    --contentWidth: 75rem;
+                    --contentWidthDesktop: 87.5rem;
+                }
+            </style>
+            
+            <!-- Google Fonts - Load async for performance -->
             <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
             <noscript><link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"></noscript>
             
+            <!-- Load Animate.css deferred for better performance -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'">
+            <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"></noscript>
+
             <!-- Social Media Display - generated automatically with the props passd to BaseLayout -->
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
@@ -107,10 +163,6 @@ const { description, title, preloadedImage } = Astro.props as Props;
 
             <!-- Sitewide Scripts -->
             <script src="@js/nav.js"></script>
-            
-            <!-- Load Animate.css deferred for better performance -->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'">
-            <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"></noscript>
 
             <!-- Back to Top Button Styles -->
             <style>
@@ -212,6 +264,8 @@ const { description, title, preloadedImage } = Astro.props as Props;
                 <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
               </svg>
             </button>
+
+
     
         </body>
 </html>
@@ -284,8 +338,6 @@ const { description, title, preloadedImage } = Astro.props as Props;
       window.addEventListener('scroll', toggleTopButton);
     });
 </script>
-
-<!-- WOW.js already loaded in head -->
 
 <!-- Modern scroll animations using Intersection Observer -->
 <script is:inline>

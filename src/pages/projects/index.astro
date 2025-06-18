@@ -1,20 +1,13 @@
 ---
 /**
- * * This page is the projects index and displays all the projects in a grid
+ * * This page is the projects index 
 **/
 
 import BaseLayout from "@layouts/BaseLayout.astro";
-
-import { getCollection } from "astro:content";
 import { getImage } from "astro:assets";
-import "@styles/projects.less";
+
 
 import Landing from "@components/Landing.astro";
-import ProjectsGrid from "@layouts/ProjectsGrid.astro";
-
-// Get all projects and sort by date (newest first)
-const projects = await getCollection("projects");
-projects.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import landingImage from "@assets/images/landing.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
@@ -24,8 +17,51 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 <BaseLayout title="Portfolio - KTS Cleaning" description="Bekijk onze portfolio van gespecialiseerde schoonmaakprojecten. Crime scene cleaning, industriële reiniging en technische ontmanteling uitgevoerd door KTS Cleaning professionals." preloadedImage={optimizedImage}>
 	<Landing title="Portfolio" image={optimizedImage} />
 
-	<!-- Display projects in a grid layout -->
-	<ProjectsGrid projects={projects} />
-	
+	<!-- Coming soon message -->
+	<section class="coming-soon-section">
+		<div class="container">
+			<div class="coming-soon-content">
+				<h2>Portfolio Binnenkort Beschikbaar</h2>
+				<p>We werken aan een uitgebreide portfolio van onze gespecialiseerde schoonmaakprojecten. Bekijk binnenkort voorbeelden van onze crime scene cleaning, industriële reiniging en technische ontmanteling projecten.</p>
+				<p>Voor meer informatie over onze diensten, neem gerust <a href="/contact">contact</a> met ons op.</p>
+			</div>
+		</div>
+	</section>
 	
 </BaseLayout>
+
+<style>
+.coming-soon-section {
+	padding: 4rem 0;
+	background: #f8f9fa;
+}
+
+.coming-soon-content {
+	text-align: center;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.coming-soon-content h2 {
+	font-size: 2.5rem;
+	margin-bottom: 1.5rem;
+	color: var(--headerColor);
+}
+
+.coming-soon-content p {
+	font-size: 1.125rem;
+	line-height: 1.6;
+	color: var(--bodyTextColor);
+	margin-bottom: 1rem;
+}
+
+.coming-soon-content a {
+	color: var(--primary);
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.coming-soon-content a:hover {
+	text-decoration: underline;
+}
+</style>
