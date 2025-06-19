@@ -2,11 +2,6 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Button from "@components/Button.astro";
 
-// Import SVG icons as components for better performance and sharpness
-import Service1Icon from "@assets/svgs/service1.svg";
-import Service2Icon from "@assets/svgs/service2.svg";
-import Service3Icon from "@assets/svgs/service3.svg";
-
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading)
 import landingImage from "@assets/images/landing.jpg"
 import { getImage } from "astro:assets";
@@ -25,19 +20,19 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 
   <section id="error-404" style="padding-top: clamp(12.5rem, 16.82vw, 15.25rem);">
     <div class="cs-container">
-              <div class="cs-content">
-          <div class="cs-flex">
-            <div class="cs-error-number wow fadeInUp" data-wow-delay="0.1s">404</div>
-            <h1 class="cs-title wow fadeInUp" data-wow-delay="0.2s">Pagina niet gevonden</h1>
-            <p class="cs-text wow fadeInUp" data-wow-delay="0.3s">
-              Sorry, de pagina die u zoekt bestaat niet of is verplaatst. Mogelijk heeft u een verkeerde link gevolgd of is de URL onjuist getypt.
-            </p>
-            <div class="cs-button-group wow fadeInUp" data-wow-delay="0.4s">
-              <Button text="Terug naar Home" href="/" />
-              <Button text="Neem Contact Op" href="/contact" variant="outlined" />
-            </div>
+      <div class="cs-content">
+        <div class="cs-flex">
+          <div class="cs-error-number wow fadeInUp" data-wow-delay="0.1s">404</div>
+          <h1 class="cs-title wow fadeInUp" data-wow-delay="0.2s">Pagina niet gevonden</h1>
+          <p class="cs-text wow fadeInUp" data-wow-delay="0.3s">
+            Sorry, de pagina die u zoekt bestaat niet of is verplaatst. Mogelijk heeft u een verkeerde link gevolgd of is de URL onjuist getypt.
+          </p>
+          <div class="cs-button-group wow fadeInUp" data-wow-delay="0.4s">
+            <Button text="Terug naar Home" href="/" />
+            <Button text="Neem Contact Op" href="/contact" variant="outlined" />
           </div>
         </div>
+      </div>
     </div>
   </section>
 
@@ -52,17 +47,44 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         <h2 class="cs-title wow fadeInUp" data-wow-delay="0.2s">Misschien zoekt u dit?</h2>
         <div class="cs-card-group">
           <a href="/diensten/crime-scene-cleaning" class="cs-item wow fadeInUp" data-wow-delay="0.3s">
-            <Service1Icon class="cs-icon" aria-hidden="true" width="48" height="48" />
+            <img
+              class="cs-icon"
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+              src="/assets/svgs/service1.svg"
+              alt="crime scene cleaning"
+              width="48"
+              height="48"
+            />
             <h3 class="cs-h3">Crime Scene Cleaning</h3>
             <p class="cs-item-text">Professionele reiniging na traumatische gebeurtenissen</p>
           </a>
-          <a href="/diensten/industriele-reiniging" class="cs-item wow fadeInUp" data-wow-delay="0.4s">
-            <Service2Icon class="cs-icon" aria-hidden="true" width="48" height="48" />
-            <h3 class="cs-h3">Industriële Reiniging</h3>
-            <p class="cs-item-text">Gespecialiseerde reiniging voor bedrijven en industrie</p>
+          <a href="/diensten/ontruimen-woningen" class="cs-item wow fadeInUp" data-wow-delay="0.4s">
+            <img
+              class="cs-icon"
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+              src="/assets/svgs/service2.svg"
+              alt="ontruimen woningen"
+              width="48"
+              height="48"
+            />
+            <h3 class="cs-h3">Ontruimen Woningen</h3>
+            <p class="cs-item-text">Professionele ontruiming van woningen en inboedel</p>
           </a>
           <a href="/contact" class="cs-item wow fadeInUp" data-wow-delay="0.5s">
-            <Service3Icon class="cs-icon" aria-hidden="true" width="48" height="48" />
+            <img
+              class="cs-icon"
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+              src="/assets/svgs/service3.svg"
+              alt="contact"
+              width="48"
+              height="48"
+            />
             <h3 class="cs-h3">Contact</h3>
             <p class="cs-item-text">Neem direct contact op voor een vrijblijvende offerte</p>
           </a>
@@ -83,6 +105,10 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
     #error-404 {
       padding: var(--sectionPadding);
       background-color: #f7f7f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh;
 
       .cs-container {
         width: 100%;
@@ -91,7 +117,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: clamp(3rem, 6vw, 4rem);
+        justify-content: center;
       }
 
       .cs-content {
@@ -100,13 +126,17 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: clamp(3rem, 6vw, 4rem);
+        justify-content: center;
       }
 
       .cs-flex {
         text-align: center;
         max-width: (630/16rem);
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
 
       .cs-error-number {
@@ -116,36 +146,41 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         margin: 0 0 (24/16rem) 0;
         color: var(--primary);
         opacity: 0.8;
+        text-align: center;
       }
 
       .cs-title {
         font-size: clamp(2.4375rem, 6.4vw, 3.8125rem);
         font-weight: 900;
         line-height: 1.2em;
-        text-align: inherit;
+        text-align: center;
         max-width: (700/16rem);
-        margin: 0 0 (16/16rem) 0;
+        margin: 0 auto (16/16rem) auto;
         color: var(--headerColor);
         position: relative;
+        width: 100%;
       }
 
       .cs-text {
         font-size: (18/16rem);
         line-height: 1.5em;
-        margin: 0 0 (32/16rem) 0;
+        margin: 0 auto (32/16rem) auto;
         color: var(--bodyTextColor);
         max-width: (540/16rem);
+        text-align: center;
+        width: 100%;
       }
 
       .cs-button-group {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
         gap: (16/16rem);
         width: 100%;
         max-width: (400/16rem);
+        margin: 0 auto;
       }
-
-
     }
   }
 
@@ -162,11 +197,13 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         text-align: center;
         width: 100%;
         max-width: (800/16rem);
+        margin: 0 auto;
       }
 
       .cs-button-group {
         flex-direction: row;
         gap: (24/16rem);
+        justify-content: center;
       }
     }
   }
@@ -201,25 +238,31 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 
       .cs-topper {
         color: var(--primary);
+        text-align: center;
+        display: block;
+        width: 100%;
       }
 
       .cs-title {
         font-size: clamp(1.9375rem, 3.9vw, 3.0625rem);
         font-weight: 900;
         line-height: 1.2em;
-        text-align: inherit;
+        text-align: center;
         max-width: (700/16rem);
-        margin: 0;
+        margin: 0 auto;
         color: var(--headerColor);
+        width: 100%;
       }
 
       .cs-card-group {
         width: 100%;
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: clamp(1rem, 2.5vw, 1.25rem);
+        justify-items: center;
+        align-items: stretch;
       }
 
       .cs-item {
@@ -234,19 +277,28 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: flex-start;
         text-decoration: none;
         transition: transform 0.3s, box-shadow 0.3s;
+        width: 100%;
+        max-width: 320px;
 
         &:hover {
           transform: translateY(-4px);
           box-shadow: 0px 20px 100px 0px rgba(26, 26, 26, 0.15);
+
+          .cs-icon {
+            filter: brightness(0.8) saturate(1.2);
+          }
         }
       }
 
       .cs-icon {
         width: (48/16rem);
         height: (48/16rem);
-        margin: 0 0 (16/16rem) 0;
+        margin: 0 auto (16/16rem) auto;
+        transition: filter 0.3s;
+        display: block;
       }
 
       .cs-h3 {
@@ -255,6 +307,8 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         font-weight: 700;
         margin: 0 0 (12/16rem) 0;
         color: var(--headerColor);
+        text-align: center;
+        width: 100%;
       }
 
       .cs-item-text {
@@ -262,6 +316,8 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         line-height: 1.5em;
         margin: 0;
         color: var(--bodyTextColor);
+        text-align: center;
+        width: 100%;
       }
     }
   }
@@ -271,6 +327,12 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
     #quick-links {
       .cs-card-group {
         grid-template-columns: repeat(3, 1fr);
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .cs-item {
+        max-width: none;
       }
     }
   }

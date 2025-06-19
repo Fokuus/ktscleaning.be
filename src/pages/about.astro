@@ -68,31 +68,25 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
       </div>
       <!-- Right Content Section-->
       <div class="cs-right">
-        <span class="cs-topper wow fadeInUp" data-wow-delay="0.2s">Over KTS Cleaning</span>
-        <h2 class="cs-title wow fadeInUp" data-wow-delay="0.3s">Gespecialiseerd Sinds 2012</h2>
-        <p class="cs-text wow fadeInUp" data-wow-delay="0.4s">
+        <span class="cs-topper wow fadeInUp" data-wow-delay="0.1s">Over KTS Cleaning</span>
+        <h2 class="cs-title wow fadeInUp" data-wow-delay="0.2s">Gespecialiseerd Sinds 2012</h2>
+        <p class="cs-text wow fadeInUp" data-wow-delay="0.3s">
           KTS Cleaning werd opgericht in 2012 als een van de eerste gespecialiseerde schoonmaakbedrijven in Vlaanderen. Met meer dan 13 jaar ervaring in crime scene cleaning, zwaar vervuilde woningen, industriële reiniging en technische ontmantelingen, zijn we uitgegroeid tot een vaste waarde in de sector.
         </p>
-        <p class="cs-text wow fadeInUp" data-wow-delay="0.5s">
+        <p class="cs-text wow fadeInUp" data-wow-delay="0.4s">
           Wij weten als geen ander wat écht telt: discretie, veiligheid, vakmanschap en vertrouwen. Onze oprichter Koos Taillieu staat zelf nog dagelijks op het terrein, met een team dat getraind is voor de meest complexe opdrachten. Van politiediensten tot particulieren - iedereen kan rekenen op onze professionele aanpak.
         </p>
-        <div class="cs-flex-group wow fadeInUp" data-wow-delay="0.6s">
+        <div class="cs-flex-group wow fadeInUp" data-wow-delay="0.5s">
           <p class="cs-flex-p">
             "Met KTS Cleaning heb je een partner die begrijpt dat elk project uniek is. Onze jarenlange ervaring en specialistische kennis maken het verschil wanneer anderen het opgeven."
           </p>
           <span class="cs-name">Koos Taillieu</span>
           <span class="cs-job">Oprichter & CEO</span>
-          <img
-            class="cs-quote-icon"
-            loading="lazy"
-            decoding="async"
-            src="https://csimg.nyc3.digitaloceanspaces.com/SideBySide/quote-white.svg"
-            alt="quote"
-            width="136"
-            height="77"
-          />
+          <svg class="cs-quote-icon" width="136" height="77" viewBox="0 0 136 77" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M52.8 76.8C40.32 76.8 29.44 73.6 20.16 67.2C10.88 60.8 3.84 52.16 0 41.28L15.36 35.52C17.92 43.2 22.08 49.28 27.84 53.76C33.6 58.24 40.32 60.48 48 60.48C55.68 60.48 61.76 58.24 66.24 53.76C70.72 49.28 72.96 43.2 72.96 35.52C72.96 27.84 70.72 21.76 66.24 17.28C61.76 12.8 55.68 10.56 48 10.56C40.32 10.56 33.6 12.8 27.84 17.28C22.08 21.76 17.92 27.84 15.36 35.52L0 29.76C3.84 18.88 10.88 10.24 20.16 3.84C29.44 -2.56 40.32 -5.76 52.8 -5.76C69.12 -5.76 82.56 -0.64 93.12 9.6C103.68 19.84 108.96 33.28 108.96 50.88C108.96 68.48 103.68 81.92 93.12 92.16C82.56 102.4 69.12 107.52 52.8 107.52V76.8Z" fill="white" fill-opacity="0.2"/>
+          </svg>
         </div>
-        <div class="wow fadeInUp" data-wow-delay="0.7s">
+        <div class="wow fadeInUp" data-wow-delay="0.6s">
           <Button text="Bekijk Onze Projecten" href="/projects" />
         </div>
       </div>
@@ -103,13 +97,9 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
   <!--                Why Choose Us                 -->
   <!-- ============================================ -->
   
-  <div class="wow fadeInUp" data-wow-delay="0.8s">
-    <WhyChooseUs />
-  </div>
+  <WhyChooseUs />
 
-  <div class="wow fadeInUp" data-wow-delay="0.9s">
-    <FAQ />
-  </div>
+  <FAQ />
 </BaseLayout>
 
 <style lang="less">

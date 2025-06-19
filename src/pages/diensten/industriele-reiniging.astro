@@ -17,8 +17,6 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 const headings = [
   { depth: 2, slug: "industriele-reiniging-productielijnen", text: "Industriële reiniging productielijnen" },
   { depth: 2, slug: "binnenontmanteling", text: "Binnenontmanteling" },
-  { depth: 2, slug: "periodieke-reiniging", text: "Periodieke reiniging" },
-  { depth: 2, slug: "machinepark-onderhoud", text: "Machinepark onderhoud" },
   { depth: 2, slug: "veelgestelde-vragen", text: "Veelgestelde Vragen" }
 ];
 ---
@@ -38,16 +36,10 @@ const headings = [
     <div class="cs-container">
       <div class="cs-content">
         <span class="cs-topper">Industriële Expertise</span>
-        <h2 class="cs-title">Professionele Industriële Reiniging</h2>
+        <h2 class="cs-title">Industriële reiniging</h2>
         <p class="cs-text">
-          Bij intensief gebruik van <strong>productiehallen en werkruimtes</strong> is een professionele en industriële reiniging noodzakelijk om het <strong>werkcomfort en de veiligheid</strong> te garanderen. Wij adviseren en informeren je graag over alle mogelijkheden voor een <strong>éénmalige of periodieke reiniging</strong>.
+          Bij intensief gebruik van productiehallen en werkruimtes is een professionele en industriële reiniging noodzakelijk om het werkcomfort en de veiligheid te garanderen. Wij adviseren en informeren je graag over alle mogelijkheden voor een éénmalige of periodieke reiniging.
         </p>
-        <ul class="cs-services-list">
-          <li><strong>Éénmalige of periodieke</strong> reiniging</li>
-          <li><strong>Minimale productietijd verlies</strong></li>
-          <li><strong>Verlenging levensduur</strong> installaties</li>
-          <li><strong>Verbeterde productietijd</strong> en rendement</li>
-        </ul>
         <Button text="Vraag Industriële Offerte" href="/contact" />
       </div>
       <div class="cs-toc-wrapper" id="desktop-toc">
@@ -63,17 +55,12 @@ const headings = [
   <div id="industriele-reiniging-productielijnen">
     <ContentSection
       heading="Industriële reiniging productielijnen"
-      text="Om een goede werking en een zo hoog mogelijk <strong>rendement te garanderen</strong>, is een reiniging van de <strong>technische installaties en machinepark</strong> in je bedrijf noodzakelijk. <strong>KTS Cleaning</strong> is jouw partner voor de reiniging van jouw machines zonder dat je moet inboeten aan <strong>kostbare productietijd</strong>."
-      servicesTitle="Onze voordelen:"
-      services={[
-        "<strong>Geen verlies van productietijd</strong> tijdens reiniging",
-        "<strong>Verlenging levensduur</strong> van installaties",
-        "<strong>Verbeterde productietijd</strong> en efficiëntie",
-        "<strong>Kwalitatieve reiniging</strong> en onderhoud"
-      ]}
+      text="Om een goede werking en een zo hoog mogelijk rendement te garanderen, is een reiniging van de technische installaties en machinepark in je bedrijf noodzakelijk. KTS Cleaning is jouw partner voor de reiniging van jouw machines zonder dat je moet inboeten aan kostbare productietijd. Niet alleen verlengen we met een kwalitatieve reiniging en onderhoud de levensduur van je installaties, ook de productietijd wordt verbeterd."
+      servicesTitle=""
+      services={[]}
       buttonText="Vraag offerte"
       buttonHref="/contact"
-      imageSrc="/assets/images/industriele-reiniging-productielijnen.webp"
+      imageSrc="/assets/images/industriele-reiniging-productielijnen-original.webp"
       imageAlt="Industriële reiniging productielijnen"
     />
   </div>
@@ -82,14 +69,9 @@ const headings = [
     <ContentSection
       reversed={true}
       heading="Binnenontmanteling"
-      text="Verhuist je bedrijf of wil je jouw <strong>fabriek ontmantelen of opruimen</strong>? Onze experten zorgen voor de <strong>sloopwerken en de ontmanteling</strong> van onder andere complete productielijnen, stoomketels, afgedankte machines, drukpersen, ventilatiekokers. We nemen je de zorgen voor jouw schoonmaak <strong>volledig uit handen</strong>."
-      servicesTitle="Ontmanteling diensten:"
-      services={[
-        "<strong>Complete productielijnen</strong> ontmantelen",
-        "<strong>Stoomketels en machines</strong> verwijderen",
-        "<strong>Veiligheids- en gezondheidsplan</strong>",
-        "<strong>Sloopwerken met grootste zorg</strong>"
-      ]}
+      text="Verhuist je bedrijf of wil je jouw fabriek ontmantelen of opruimen? Onze experten zorgen voor de sloopwerken en de ontmanteling van onder andere complete productielijnen, stoomketels, afgedankte machines, drukpersen, ventilatiekokers … We nemen je de zorgen voor jouw schoonmaak volledig uit handen.<br><br>Is snijbranden of slijpen niet mogelijk, dan overlopen we samen de opties. We werken met de grootste zorg én volgens een fatsoenlijk veiligheids- en gezondheidsplan, zo kan jij jouw productielijn opnieuw opbouwen."
+      servicesTitle=""
+      services={[]}
       buttonText="Vraag offerte"
       buttonHref="/contact"
       imageSrc="/assets/images/binnenontmanteling.jpg"
@@ -97,42 +79,7 @@ const headings = [
     />
   </div>
 
-  <div id="periodieke-reiniging">
-    <ContentSection
-      heading="Periodieke reiniging"
-      text="Voor optimale werkomstandigheden en <strong>continue productiekwaliteit</strong> adviseren wij een periodieke reinigingsplanning. Met regelmatige <strong>professionele reiniging</strong> voorkom je onnodige stilstand en behoud je de <strong>hygiënische standaarden</strong> die jouw sector vereist."
-      servicesTitle="Periodieke diensten:"
-      services={[
-        "<strong>Maandelijkse of kwartaal</strong> reinigingsschema's",
-        "<strong>Preventief onderhoud</strong> van installaties",
-        "<strong>Hygiënische standaarden</strong> behouden",
-        "<strong>Continue productkwaliteit</strong> garanderen"
-      ]}
-      buttonText="Plan reiniging"
-      buttonHref="/contact"
-      imageSrc="/assets/images/periodieke-reiniging.jpg"
-      imageAlt="Periodieke industriële reiniging"
-    />
-  </div>
 
-  <div id="machinepark-onderhoud">
-    <ContentSection
-      reversed={true}
-      heading="Machinepark onderhoud"
-      text="Is <strong>snijbranden of slijpen niet mogelijk</strong>, dan overlopen we samen de opties. We werken met de <strong>grootste zorg</strong> én volgens een fatsoenlijk <strong>veiligheids- en gezondheidsplan</strong>, zo kan jij jouw productielijn opnieuw opbouwen. Niet alleen verlengen we met kwalitatieve reiniging de <strong>levensduur van je installaties</strong>."
-      servicesTitle="Onderhoud expertise:"
-      services={[
-        "<strong>Alternatieve oplossingen</strong> wanneer standaard niet mogelijk",
-        "<strong>Veiligheids- en gezondheidsplan</strong> op maat",
-        "<strong>Verlenging levensduur</strong> van installaties",
-        "<strong>Opbouw nieuwe productielijn</strong> mogelijk"
-      ]}
-      buttonText="Bespreek opties"
-      buttonHref="/contact"
-      imageSrc="/assets/images/machinepark-onderhoud.jpg"
-      imageAlt="Machinepark onderhoud"
-    />
-  </div>
 
   <!-- ============================================ -->
   <!--              Before & After Sections        -->

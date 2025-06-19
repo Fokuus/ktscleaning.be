@@ -92,15 +92,15 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
               </div>
             </div>
             <div class="cs-input-wrapper cs-phone-input">
-              <input
-                required
-                type="tel"
-                id="phone"
-                name="phone"
+            <input
+              required
+              type="tel"
+              id="phone"
+              name="phone"
                 placeholder="412 34 56 78"
-                class="smooth-cursor"
+              class="smooth-cursor"
                 data-phone-input
-              />
+            />
               <input type="hidden" id="phone-full" name="phone-full" />
             </div>
           </div>
@@ -401,7 +401,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 
         if (hasErrors) {
           e.preventDefault();
-          return false;
+            return false;
         }
 
         // All validation passed - form will submit to /bedankt

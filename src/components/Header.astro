@@ -1,6 +1,15 @@
 ---
 import Button from "./Button.astro";
 import PhoneCTASimple from "./PhoneCTASimple.astro";
+
+// Get current pathname for active navigation states
+const pathname = new URL(Astro.request.url).pathname;
+
+// Determine active states
+const isHomePage = pathname === "/";
+const isAboutPage = pathname === "/about";
+const isContactPage = pathname === "/contact";
+const isDienstenPage = pathname.startsWith("/diensten/");
 ---
 <!-- ============================================ -->
 <!--                 Navigation                   -->
@@ -13,6 +22,13 @@ import PhoneCTASimple from "./PhoneCTASimple.astro";
       <a href="/" class="cs-logo wow" data-wow-delay="0.2s" aria-label="back to home">
           <img src="/assets/images/logo-optimized.png" alt="KTS Cleaning logo" width="180" height="45" aria-hidden="true" decoding="async">
       </a>
+      <!--Mobile Phone Icon (visible only on mobile)-->
+      <a href="tel:+32471708090" class="cs-mobile-phone" aria-label="call us">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+          </svg>
+      </a>
+      
       <!--Navigation List-->
       <nav class="cs-nav" role="navigation">
           <!--Mobile Nav Toggle-->
@@ -27,14 +43,14 @@ import PhoneCTASimple from "./PhoneCTASimple.astro";
           <div id="cs-ul-wrapper" class="cs-ul-wrapper">
               <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
                   <li class="cs-li wow" data-wow-delay="0.4s">
-                      <a href="/" class="cs-li-link cs-active">
+                      <a href="/" class={`cs-li-link ${isHomePage ? 'cs-active' : ''}`}>
                           Home
                       </a>
                   </li>
 
                   <!--Copy and paste this cs-dropdown list item and replace any .cs-li with this cs-dropdown group to make a new dropdown and it will work-->
                   <li class="cs-li cs-dropdown wow" data-wow-delay="0.6s" tabindex="0">
-                      <button class="cs-li-link cs-dropdown-button" style="
+                      <button class={`cs-li-link cs-dropdown-button ${isDienstenPage ? 'cs-active' : ''}`} style="
   background: none;
   border: none;
   color: inherit;
@@ -59,17 +75,17 @@ import PhoneCTASimple from "./PhoneCTASimple.astro";
                               <a href="/diensten/gespecialiseerde-schoonmaak" class="cs-li-link cs-drop-link">Gespecialiseerde Schoonmaak</a>
                           </li>
                           <li class="cs-drop-li">
-                              <a href="/diensten/industriele-reiniging" class="cs-li-link cs-drop-link">Industriële Reiniging</a>
+                              <a href="/diensten/ontruimen-woningen" class="cs-li-link cs-drop-link">Ontruimen Woningen</a>
                           </li>
                       </ul>
                   </li>
                   <li class="cs-li wow" data-wow-delay="0.8s">
-                      <a href="/about" class="cs-li-link">
+                      <a href="/about" class={`cs-li-link ${isAboutPage ? 'cs-active' : ''}`}>
                           Over ons
                       </a>
                   </li>
                   <li class="cs-li wow" data-wow-delay="1.0s">
-                      <a href="/contact" class="cs-li-link">
+                      <a href="/contact" class={`cs-li-link ${isContactPage ? 'cs-active' : ''}`}>
                           Contact
                       </a>
                   </li>
@@ -177,19 +193,52 @@ import PhoneCTASimple from "./PhoneCTASimple.astro";
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: (24/16rem);
+            gap: (12/16rem);
+            position: relative;
+        }
+
+        .cs-mobile-phone {
+            width: 40px;
+            height: 40px;
+            margin: 0 0 0 auto;
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            color: #E5B21F;
+            text-decoration: none;
+            border-radius: 8px;
+            background-color: rgba(229, 178, 31, 0.15);
+            transition: all 0.3s ease;
+            order: 3;
+            position: relative;
+            z-index: 1000;
+            flex: none;
+            border: 2px solid rgba(229, 178, 31, 0.3);
+            visibility: visible !important;
+
+            &:hover {
+                background-color: rgba(229, 178, 31, 0.25);
+                transform: scale(1.05);
+            }
+
+            svg {
+                width: 20px;
+                height: 20px;
+                flex: none;
+            }
         }
 
         .cs-logo {
             width: 80px !important;
             height: auto;
-            /* margin-right auto pushes everything away from it to the right */
-            margin: 0 auto 0 0;
+            margin: 0;
             padding: 0;
             display: flex;
             justify-content: flex-start;
             align-items: center;
             z-index: 100;
+            order: 1;
+            flex: none;
 
             img {
                 width: 80px !important;
@@ -220,33 +269,7 @@ import PhoneCTASimple from "./PhoneCTASimple.astro";
         }
 
         .cs-contact-group {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            margin: 0 auto;
-            width: calc(100% - 200px); /* Account for logo and hamburger */
-            
-            :global(.phone-cta-simple) {
-                display: flex !important;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-            }
-
-            :global(.phone-number) {
-                font-size: 0.875rem !important;
-                text-align: center;
-            }
-
-            :global(.custom-button) {
-                display: none;
-            }
+            display: none; /* Hide on mobile */
         }
 
         .cs-phone {
@@ -450,10 +473,14 @@ import PhoneCTASimple from "./PhoneCTASimple.astro";
 }
 
 /* Tablet - 768px */
-@media only screen and (min-width: 48rem) {
+@media only screen and (min-width: 48rem) and (max-width: 63.9375rem) {
     #cs-navigation {
         .cs-contact-group {
-            display: block;
+            display: none; /* Keep hidden on tablet too */
+        }
+        
+        .cs-mobile-phone {
+            display: flex !important; /* Keep phone icon on tablet */
         }
     }
 }
@@ -724,6 +751,10 @@ import PhoneCTASimple from "./PhoneCTASimple.astro";
 
         .cs-toggle {
             display: none;
+        }
+
+        .cs-mobile-phone {
+            display: none; /* Hide on desktop */
         }
 
         .cs-logo {

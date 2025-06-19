@@ -124,7 +124,11 @@ import Button from "@components/Button.astro";
         background-color: var(--primary);
     }
 
-    /* Removed CSS filters - SVGs have proper colors defined */
+    #why-choose-223 .cs-item:hover .cs-icon {
+   
+    }
+
+ 
 
     /* Icon hover effects for all items with dual images */
     #why-choose-223 .cs-item-24-7 .cs-icon-hover,
@@ -161,7 +165,12 @@ import Button from "@components/Button.astro";
         display: block;
     }
 
-    /* Removed CSS overrides - let SVGs use their defined colors */
+    #why-choose-223 .cs-icon path,
+    #why-choose-223 .cs-icon line,
+    #why-choose-223 .cs-icon polyline {
+        fill: var(--primary);
+        stroke: var(--primary);
+    }
 
     #why-choose-223 .cs-h3 {
         /* 25px - 31px */

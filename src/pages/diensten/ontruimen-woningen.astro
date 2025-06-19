@@ -1,0 +1,255 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+import FAQ from "@components/FAQ.astro";
+import Button from "@components/Button.astro";
+import ContentSection from "@components/ContentSection.astro";
+import TableOfContents from "@components/TemplateComponents/TableOfContents.astro";
+import SideBySide from "@components/SideBySide.astro";
+
+// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
+import landingImage from "@assets/images/landing.jpg"
+import { getImage } from "astro:assets";
+const optimizedImage = await getImage({src: landingImage, format: 'avif'})
+
+// Define the headings for the Table of Contents
+const headings = [
+  { depth: 2, slug: "ontruiming-woningen", text: "Ontruiming woningen" },
+  { depth: 2, slug: "inboedel-ontruiming", text: "Inboedel ontruiming" },
+  { depth: 2, slug: "veelgestelde-vragen", text: "Veelgestelde Vragen" }
+];
+---
+
+<BaseLayout
+  title="Ontruimen Woningen - KTS Cleaning"
+  description="Professionele ontruiming van woningen, inboedel en estates. KTS Cleaning zorgt voor discrete en respectvolle ontruiming met volledige afhandeling."
+  preloadedImage = {optimizedImage}
+>
+
+  <!-- ============================================ -->
+  <!--              Table of Contents               -->
+  <!-- ============================================ -->
+
+  <section id="table-of-contents" style="padding-top: clamp(12.5rem, 16.82vw, 15.25rem);">
+    <div class="cs-container">
+      <div class="cs-content">
+        <span class="cs-topper">Ontruiming Expertise</span>
+        <h2 class="cs-title">Ontruimen woningen</h2>
+        <p class="cs-text">
+          Wanneer een woning ontruimd moet worden na een overlijden, verhuizing of andere omstandigheden, zorgt KTS Cleaning voor een discrete en respectvolle ontruiming. Wij nemen alle zorgen uit handen en zorgen voor een volledige afhandeling.
+        </p>
+        <Button text="Vraag Ontruiming Offerte" href="/contact" />
+      </div>
+      <div class="cs-toc-wrapper" id="desktop-toc">
+        <TableOfContents headings={headings} levels={2} />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!--                Content Sections             -->
+  <!-- ============================================ -->
+
+  <div id="ontruiming-woningen">
+    <ContentSection
+      heading="Ontruiming woningen"
+      text="Bij het ontruimen van een woning na een overlijden of andere omstandigheden is het belangrijk dat dit met de grootste zorg en respect gebeurt. KTS Cleaning heeft jarenlange ervaring in het discrete ontruimen van woningen. Wij zorgen ervoor dat alle spullen correct worden gesorteerd, waardevolle items worden bewaard en de rest op een verantwoorde manier wordt afgevoerd."
+      servicesTitle="Onze ontruiming aanpak:"
+      services={[
+        "<strong>Discrete en respectvolle</strong> benadering",
+        "<strong>Waardevolle items</strong> zorgvuldig bewaard",
+        "<strong>Verantwoorde afvoer</strong> van materialen",
+        "<strong>Volledige schoonmaak</strong> na ontruiming"
+      ]}
+      buttonText="Vraag offerte"
+      buttonHref="/contact"
+      imageSrc="/assets/images/industriele-reiniging-productielijnen-original.webp"
+      imageAlt="Professionele ontruiming woningen"
+    />
+  </div>
+
+  <div id="inboedel-ontruiming">
+    <ContentSection
+      reversed={true}
+      heading="Inboedel ontruiming"
+      text="Een complete inboedel ontruiming vereist vakmanschap en organisatie. Wij selecteren waardevolle items, zorgen voor een correcte afhandeling van administratie en documenten, en voeren de resterende inboedel af naar erkende verwerkingscentra. Alles wordt discreet en volgens de wensen van de opdrachtgever afgehandeld."
+      servicesTitle="Inboedel service omvat:"
+      services={[
+        "<strong>Sorteren en inventariseren</strong> van spullen",
+        "<strong>Administratie en documenten</strong> veilig bewaren",
+        "<strong>Erkende afvoer</strong> naar verwerkingscentra",
+        "<strong>Kringloop donaties</strong> voor bruikbare items"
+      ]}
+      buttonText="Vraag offerte"
+      buttonHref="/contact"
+      imageSrc="/assets/images/binnenontmanteling.webp"
+      imageAlt="Inboedel ontruiming service"
+    />
+  </div>
+
+  <!-- ============================================ -->
+  <!--              Before & After Sections        -->
+  <!-- ============================================ -->
+
+  <SideBySide 
+    id="sbs-ontruiming"
+    title="Complete woning ontruiming"
+    text="Deze woning werd volledig ontruimd na een overlijden. Met respect en zorg hebben wij alle spullen gesorteerd, waardevolle items bewaard en de woning schoongemaakt. Het resultaat: een volledig lege en schone woning klaar voor de volgende bestemming."
+    beforeImage="/assets/images/voor.png"
+    afterImage="/assets/images/na.png"
+    beforeAlt="Voor - woning vol met inboedel"
+    afterAlt="Na - volledig ontruimde en schone woning"
+    projectItems={[
+        "Volledige woning ontruimd",
+        "Waardevolle items bewaard",
+        "Professioneel schoongemaakt"
+    ]}
+    showStats={false}
+  />
+
+  <div id="veelgestelde-vragen">
+    <FAQ 
+      title="Ontruiming FAQ"
+      topper="Veelgestelde Vragen"
+      faqs={[
+        {
+          question: "Hoe lang duurt een woning ontruiming?",
+          answer: "De duur van een ontruiming hangt af van de grootte van de woning en de hoeveelheid spullen. Een gemiddelde woning kan binnen 1-2 dagen volledig ontruimd worden. Wij plannen altijd ruim de tijd in en werken discreet.",
+          isActive: true
+        },
+        {
+          question: "Wat gebeurt er met waardevolle spullen?",
+          answer: "Alle waardevolle items worden zorgvuldig geselecteerd en bewaard. Wij maken een inventaris van waardevolle spullen zoals sieraden, kunst, documenten en andere belangrijke items. Deze worden aan de opdrachtgever overhandigd."
+        },
+        {
+          question: "Kunnen jullie ook administratie en documenten sorteren?",
+          answer: "Ja, wij hebben ervaring met het sorteren van belangrijke documenten, foto's en administratie. Wij behandelen alle persoonlijke items met de grootste zorg en discretie."
+        },
+        {
+          question: "Hoe wordt de inboedel afgevoerd?",
+          answer: "Alle spullen worden op een verantwoorde manier afgevoerd. Bruikbare items gaan naar kringloopwinkels, waardevolle items worden apart gehouden, en restmateriaal wordt correct gerecycled of afgevoerd naar erkende verwerkingscentra."
+        },
+        {
+          question: "Zorgen jullie ook voor de schoonmaak na ontruiming?",
+          answer: "Ja, na de ontruiming zorgen wij voor een grondige schoonmaak van de woning. De woning wordt opgeleverd in schone staat, klaar voor verhuur, verkoop of andere bestemming."
+        }
+      ]}
+    />
+  </div>
+
+</BaseLayout>
+
+<style lang="less">
+  /* Table of Contents Styles */
+  #table-of-contents {
+    padding: var(--sectionPadding);
+    padding-bottom: 0rem !important;
+    background-color: #f8f9fa;
+
+    .cs-container {
+      display: flex;
+      flex-direction: column;
+      gap: (48/16rem);
+
+      @media only screen and (min-width: 64rem) {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: (80/16rem);
+      }
+    }
+
+    .cs-content {
+      text-align: left;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      @media only screen and (min-width: 64rem) {
+        width: 60%;
+      }
+    }
+
+    .cs-topper {
+      text-align: left;
+      margin-bottom: (4/16rem);
+    }
+
+    .cs-title {
+      text-align: left;
+      max-width: none;
+      margin: 0 0 (16/16rem) 0;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .cs-text {
+      text-align: left;
+      margin-bottom: (32/16rem);
+      max-width: none;
+    }
+
+    .cs-services-list {
+      margin: 0 0 (32/16rem) 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        font-size: (16/16rem);
+        line-height: 1.5em;
+        color: var(--bodyTextColor);
+        margin-bottom: (12/16rem);
+        padding-left: (20/16rem);
+        position: relative;
+
+        &::before {
+          content: "";
+          width: (8/16rem);
+          height: (8/16rem);
+          background-color: var(--primary);
+          position: absolute;
+          left: 0;
+          top: (8/16rem);
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    .cs-toc-wrapper {
+      width: 100%;
+      background-color: #fff;
+      padding: (32/16rem);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+      @media only screen and (min-width: 64rem) {
+        width: 40%;
+        position: sticky;
+        top: (120/16rem);
+      }
+    }
+  }
+
+  /* Dark Mode */
+  @media only screen and (min-width: 0em) {
+    body.dark-mode {
+      #table-of-contents {
+        background-color: var(--dark);
+
+        .cs-title,
+        .cs-text {
+          color: var(--bodyTextColorWhite);
+        }
+
+        .cs-services-list li {
+          color: var(--bodyTextColorWhite);
+        }
+
+        .cs-toc-wrapper {
+          background-color: var(--accent);
+        }
+      }
+    }
+  }
+</style> 

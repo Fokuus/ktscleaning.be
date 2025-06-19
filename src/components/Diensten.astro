@@ -49,18 +49,17 @@ import PhoneCTA from "./PhoneCTA.astro";
                 </picture>
             </li>
             <li class="cs-item wow animate__fadeInUp" data-wow-delay="0.5s">
-                <a href="/diensten/industriele-reiniging" class="cs-link">
-                    <h3 class="cs-h3">Industriële Reiniging</h3>
+                <a href="/diensten/ontruimen-woningen" class="cs-link">
+                    <h3 class="cs-h3">Ontruimen Woningen</h3>
                     <p class="cs-item-text">
-                        <span class="cs-subservice">REINIGING PRODUCTIELIJNEN</span>
-                        <span class="cs-subservice">BINNENONTMANTELING</span>
-                        <span class="cs-subservice">TANK & SILO REINIGING</span>
+                        <span class="cs-subservice">ONTRUIMING WONINGEN</span>
+                        <span class="cs-subservice">INBOEDEL ONTRUIMING</span>
                     </p>
                 </a>
                 <picture class="cs-item-background">
-                    <source media="(max-width: 600px)" srcset="/assets/images/industriele-reiniging-productielijnen.webp">
-                    <source media="(min-width: 601px)" srcset="/assets/images/industriele-reiniging-productielijnen.webp">
-                    <img decoding="async" src="/assets/images/industriele-reiniging-productielijnen.webp" alt="Industriële Reiniging" width="413" height="374" aria-hidden="true">
+                    <source media="(max-width: 600px)" srcset="/assets/images/binnenontmanteling.jpg">
+                    <source media="(min-width: 601px)" srcset="/assets/images/binnenontmanteling.jpg">
+                    <img decoding="async" src="/assets/images/binnenontmanteling.jpg" alt="Ontruiming Woningen" width="413" height="374" aria-hidden="true">
                 </picture>
             </li>
         </ul>
@@ -98,14 +97,14 @@ import PhoneCTA from "./PhoneCTA.astro";
               }
           }
   
-          .cs-content {
-              /* set text align to left if content needs to be left aligned */
-              text-align: left;
+                    .cs-content {
+              /* set text align to center for topper and title */
+              text-align: center;
               width: 100%;
               display: flex;
               flex-direction: column;
-              /* centers content horizontally, set to flex-start to left align */
-              align-items: flex-start;
+              /* centers content horizontally */
+              align-items: center;
               gap: 0.3rem;
               
               @media only screen and (max-width: 47.9375rem) {
@@ -115,9 +114,23 @@ import PhoneCTA from "./PhoneCTA.astro";
                   gap: .5rem;
               }
           }
-  
+
+          .cs-flex-group {
+              text-align: center;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: (16/16rem);
+          }
+
           .cs-title {
               max-width: 20ch;
+              text-align: center;
+              margin: 0;
+          }
+
+          .cs-topper {
+              text-align: center;
           }
   
           .cs-card-group {
@@ -313,18 +326,27 @@ import PhoneCTA from "./PhoneCTA.astro";
               justify-content: space-between;
               align-items: center;
               gap: 0rem;
+              text-align: left;
           }
   
           .cs-title {
               margin: 0;
+              text-align: left;
+          }
+
+          .cs-topper {
+              text-align: left;
           }
   
           .cs-flex-group {
               width: 50%;
+              text-align: left;
+              align-items: flex-start;
               
               @media only screen and (max-width: 47.9375rem) {
                   width: 100%;
                   align-items: center;
+                  text-align: center;
               }
           }
   
@@ -362,70 +384,3 @@ import PhoneCTA from "./PhoneCTA.astro";
                                   
   </style>
 
-    <script>
-    // Parallax effect for service card images and cards
-    function initParallax() {
-      const cards = document.querySelectorAll('#services-1252 .cs-item');
-      
-      function updateParallax() {
-        cards.forEach(card => {
-          const img = card.querySelector('.cs-item-background img') as HTMLImageElement;
-          const cardElement = card as HTMLElement;
-          if (!img || !cardElement) return;
-          
-          const rect = card.getBoundingClientRect();
-          const cardTop = rect.top;
-          const cardHeight = rect.height;
-          const windowHeight = window.innerHeight;
-          const cardCenter = cardTop + cardHeight / 2;
-          const windowCenter = windowHeight / 2;
-          
-          // Check if card is in viewport (with extended range for smoother effect)
-          if (cardTop < windowHeight + 100 && cardTop + cardHeight > -100) {
-            // Calculate parallax offset based on distance from center
-            const distanceFromCenter = (windowCenter - cardCenter) / windowHeight;
-            
-            // Check if card is being hovered
-            const isHovered = card.matches(':hover');
-            const hoverScale = isHovered ? 'scale(1.1)' : 'scale(1)';
-            
-            // Image parallax (more subtle) with hover effect
-            const imageParallaxValue = distanceFromCenter * 8;
-            img.style.transform = `translateY(${-10 + imageParallaxValue}%) ${hoverScale}`;
-            
-            // Card parallax (more noticeable movement)
-            const cardParallaxValue = distanceFromCenter * 12;
-            cardElement.style.transform = `translateY(${cardParallaxValue}px)`;
-          }
-        });
-      }
-      
-      // More responsive scroll handling - reduced throttling
-      let ticking = false;
-      function onScroll() {
-        if (!ticking) {
-          requestAnimationFrame(updateParallax);
-          ticking = true;
-          setTimeout(() => { ticking = false; }, 8); // Faster response time
-        }
-      }
-      
-      // Add hover event listeners to each card for immediate hover response
-      cards.forEach(card => {
-        card.addEventListener('mouseenter', updateParallax, { passive: true });
-        card.addEventListener('mouseleave', updateParallax, { passive: true });
-      });
-      
-      // Initialize parallax on load and scroll
-      updateParallax();
-      window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', updateParallax, { passive: true });
-    }
-    
-    // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initParallax);
-    } else {
-      initParallax();
-    }
-  </script>
