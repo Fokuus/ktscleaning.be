@@ -6,7 +6,7 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import FooterCTA from "@components/FooterCTA.astro";
 import "@styles/root.less";
-import "@styles/dark.less";
+
 import "@styles/hero.less";
 
 
@@ -103,7 +103,7 @@ const { description, title, preloadedImage } = Astro.props as Props;
                     --secondary: #2a2400;
                     --headerColor: #1a1a1a;
                     --bodyTextColor: #4e4b66;
-                    --bodyTextColorWhite: #fafbfc;
+    
                     --contentWidth: 75rem;
                     --contentWidthDesktop: 87.5rem;
                 }
@@ -203,15 +203,7 @@ const { description, title, preloadedImage } = Astro.props as Props;
                 height: 1.25rem;
               }
 
-              /* Dark mode styling */
-              body.dark-mode .back-to-top-btn {
-                background-color: var(--primary);
-                color: #000;
-              }
 
-              body.dark-mode .back-to-top-btn:hover {
-                background-color: var(--primaryLight);
-              }
 
               /* Mobile adjustments */
               @media (max-width: 768px) {
@@ -271,40 +263,7 @@ const { description, title, preloadedImage } = Astro.props as Props;
 </html>
 
 <script is:inline>
-    // helper functions to toggle dark mode
-    function enableDarkMode() {
-      document.body.classList.add("dark-mode");
-      localStorage.setItem("theme", "dark");
-    }
-  
-    function disableDarkMode() {
-      document.body.classList.remove("dark-mode");
-      localStorage.setItem("theme", "light");
-    }
-  
-    function setTheme() {
-      // default to the light theme
-      let theme = "light";
-  
-      // check localStorage for a saved 'theme' variable. if it's there, the user has visited before, so apply the necessary theme choices
-      if (localStorage.getItem("theme")) {
-        theme = localStorage.getItem("theme");
-      }
-      // if it's not there, check to see if the user has applied dark mode preferences themselves in the browser
-      else if (
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      ) {
-        theme = "dark";
-      }
-  
-      // if there is no preference set, the default of light will be used. apply accordingly
-      theme === "dark" ? enableDarkMode() : disableDarkMode();
-    }
-  
-    setTheme();
-  
-    document.addEventListener("astro:after-swap", setTheme); // For View Transitions purposes - astro:after-swap ensures that the theme is kept after navigating to a new page.
+
 
     // Back to Top Button Functionality
     function scrollToTop() {
