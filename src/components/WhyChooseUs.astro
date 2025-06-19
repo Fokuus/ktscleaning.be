@@ -124,16 +124,7 @@ import Button from "@components/Button.astro";
         background-color: var(--primary);
     }
 
-    #why-choose-223 .cs-item:hover .cs-icon {
-        filter: grayscale(1) brightness(1000%);
-    }
-
-    #why-choose-223 .cs-item:hover .cs-icon path,
-    #why-choose-223 .cs-item:hover .cs-icon line,
-    #why-choose-223 .cs-item:hover .cs-icon polyline {
-        fill: #fff;
-        stroke: #fff;
-    }
+    /* Removed CSS filters - SVGs have proper colors defined */
 
     /* Icon hover effects for all items with dual images */
     #why-choose-223 .cs-item-24-7 .cs-icon-hover,
@@ -170,12 +161,7 @@ import Button from "@components/Button.astro";
         display: block;
     }
 
-    #why-choose-223 .cs-icon path,
-    #why-choose-223 .cs-icon line,
-    #why-choose-223 .cs-icon polyline {
-        fill: var(--primary);
-        stroke: var(--primary);
-    }
+    /* Removed CSS overrides - let SVGs use their defined colors */
 
     #why-choose-223 .cs-h3 {
         /* 25px - 31px */
