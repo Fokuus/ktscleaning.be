@@ -1258,7 +1258,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         font-weight: 200;
         line-height: 1.2em;
         margin-bottom: (8/16rem);
-        color: var(--bodyTextColorWhite);
+        color: #fff;
         display: block;
       }
 
@@ -1268,7 +1268,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         line-height: 1.2em;
         text-decoration: none;
         margin-bottom: (20/16rem);
-        color: var(--bodyTextColorWhite);
+        color: #fff;
         display: block;
         position: relative;
         font-weight: 100;
@@ -1422,42 +1422,3 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
     }
   }
 
-  /* Dark Mode */
-  @media only screen and (min-width: 0em) {
-    body.dark-mode {
-      #cs-contact {
-        .cs-text,
-        .cs-title {
-          color: var(--bodyTextColorWhite);
-        }
-
-        .cs-topper {
-          color: var(--primaryLight);
-        }
-
-        #cs-form {
-          label,
-          input,
-          textarea {
-            color: var(--bodyTextColorWhite);
-            background-color: transparent;
-
-            &::placeholder {
-              /* lighten up the color of the text by 40%*/
-              filter: brightness(1.4);
-            }
-          }
-        }
-
-        .cs-bg-picture {
-          background-color: #000;
-
-          img {
-            /* lets parent background-color bleed through and darken it */
-            opacity: 0.7;
-          }
-        }
-      }
-    }
-  }
-</style>

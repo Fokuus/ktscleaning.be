@@ -184,29 +184,3 @@
 
 /* Dark Mode - already dark by default, but keeping for consistency */
 @media only screen and (min-width: 0em) {
-  body.dark-mode {
-    .project-card {
-      background-color: #121212;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      
-      &:hover {
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      }
-    }
-    
-    .project-client span {
-      color: #ffffff;
-    }
-  }
-  
-  /* Light mode override */
-  body:not(.dark-mode) {
-    .project-card {
-      background-color: #121212;
-    }
-    
-    .project-client span {
-      color: #ffffff;
-    }
-  }
-}

@@ -99,26 +99,6 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
         }
     }
 
-    /* Dark Mode */
-    @media only screen and (min-width: 0em) {
-    body.dark-mode {
-        .cs-toc-item {
-            &::before {
-                background-color: var(--primary);
-            }
-        }
-
-        .cs-toc-link {
-            color: var(--bodyTextColorWhite);
-			&.cs-toc-current {
-				color: var(--primary);
-			}
-			&:hover {
-				color: var(--primary);
-			}
-        }
-    }
-}
 </style>
 
 <script>

@@ -275,16 +275,7 @@ const sectionId = reversed ? "RPsbsr-2278" : "RPsbs-2278";
             }
         }
 
-        // Multiple targeting approaches to ensure we catch the strong elements
-        .cs-ul .cs-li strong,
-        ul.cs-ul li.cs-li strong,
-        .cs-li strong,
-        li strong {
-            font-weight: 900 !important;
-            margin-right: 0.5rem !important;
-            color: red !important; // Temporary test to see if CSS is applied
-            background-color: yellow !important; // Temporary test
-        }
+
 
         .cs-picture {
             width: 100%;
@@ -372,46 +363,7 @@ const sectionId = reversed ? "RPsbsr-2278" : "RPsbs-2278";
     }
 }
 
-/* Dark Mode */
-@media only screen and (min-width: 0rem) {
-    body.dark-mode {
-        #RPsbs-2278,
-        #RPsbsr-2278 {
-            background-color: var(--dark);
 
-            .cs-container {
-                &:before {
-                    background: var(--accent);
-                }
-            }
-
-            .cs-container {
-                &:before {
-                    background: var(--accent);
-                    border-color: var(--primaryLight);
-                }
-            }
-
-            .cs-title,
-            .cs-h3,
-            .cs-heading {
-                color: var(--bodyTextColorWhite);
-            }
-
-            .cs-text {
-                color: var(--bodyTextColorWhite);
-            }
-
-            .cs-li {
-                color: var(--bodyTextColorWhite);
-            }
-
-            .cs-topper {
-                color: var(--primaryLight);
-            }
-        }
-    }
-}
 
 /* Global CSS targeting for dynamically inserted strong elements */
 :global(#RPsbs-2278 .cs-ul .cs-li strong),
