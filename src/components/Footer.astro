@@ -4,6 +4,10 @@ import navData from "@data/navData.json";
 import { getCurrentYear } from "@js/utils"
 import FooterCTA from "@components/FooterCTA.astro";
 
+// Import SVG icons as components for better performance and sharpness
+import PhoneIcon from "@assets/icons/phone-call.svg";
+import EmailIcon from "@assets/icons/email.svg";
+
 const currentYear = getCurrentYear()
 ---
 
@@ -28,11 +32,11 @@ const currentYear = getCurrentYear()
                    BTW BE 0642.578.577
                </p>
                <a href="tel:+32471708090" class="cs-link">
-                   <img class="cs-link-icon" aria-hidden="true" loading="lazy" decoding="async" src="/assets/images/icons/phone-call.svg" alt="phone icon" width="18" height="18">
+                   <PhoneIcon class="cs-link-icon" aria-hidden="true" width="18" height="18" />
                    +32 471 70 80 90
                </a>
                <a href="mailto:info@ktscleaning.be" class="cs-link">
-                   <img class="cs-link-icon" aria-hidden="true" loading="lazy" decoding="async" src="/assets/images/icons/email.svg" alt="email icon" width="18" height="18">
+                   <EmailIcon class="cs-link-icon" aria-hidden="true" width="18" height="18" />
                    info@ktscleaning.be
                </a>
            </div>

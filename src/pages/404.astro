@@ -2,6 +2,11 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Button from "@components/Button.astro";
 
+// Import SVG icons as components for better performance and sharpness
+import Service1Icon from "@assets/svgs/service1.svg";
+import Service2Icon from "@assets/svgs/service2.svg";
+import Service3Icon from "@assets/svgs/service3.svg";
+
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading)
 import landingImage from "@assets/images/landing.jpg"
 import { getImage } from "astro:assets";
@@ -47,44 +52,17 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         <h2 class="cs-title wow fadeInUp" data-wow-delay="0.2s">Misschien zoekt u dit?</h2>
         <div class="cs-card-group">
           <a href="/diensten/crime-scene-cleaning" class="cs-item wow fadeInUp" data-wow-delay="0.3s">
-            <img
-              class="cs-icon"
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-              src="/assets/svgs/service1.svg"
-              alt="crime scene cleaning"
-              width="48"
-              height="48"
-            />
+            <Service1Icon class="cs-icon" aria-hidden="true" width="48" height="48" />
             <h3 class="cs-h3">Crime Scene Cleaning</h3>
             <p class="cs-item-text">Professionele reiniging na traumatische gebeurtenissen</p>
           </a>
           <a href="/diensten/industriele-reiniging" class="cs-item wow fadeInUp" data-wow-delay="0.4s">
-            <img
-              class="cs-icon"
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-              src="/assets/svgs/service2.svg"
-              alt="industriële reiniging"
-              width="48"
-              height="48"
-            />
+            <Service2Icon class="cs-icon" aria-hidden="true" width="48" height="48" />
             <h3 class="cs-h3">Industriële Reiniging</h3>
             <p class="cs-item-text">Gespecialiseerde reiniging voor bedrijven en industrie</p>
           </a>
           <a href="/contact" class="cs-item wow fadeInUp" data-wow-delay="0.5s">
-            <img
-              class="cs-icon"
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-              src="/assets/svgs/service3.svg"
-              alt="contact"
-              width="48"
-              height="48"
-            />
+            <Service3Icon class="cs-icon" aria-hidden="true" width="48" height="48" />
             <h3 class="cs-h3">Contact</h3>
             <p class="cs-item-text">Neem direct contact op voor een vrijblijvende offerte</p>
           </a>
