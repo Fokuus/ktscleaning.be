@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 
-import Landing from "@components/Landing.astro";
+
 import FAQ from "@components/FAQ.astro";
 import Button from "@components/Button.astro";
 import ContentSection from "@components/ContentSection.astro";
@@ -28,20 +28,13 @@ const headings = [
   description="Professionele industriële reiniging voor productiehallen, werkruimtes en industriële installaties. KTS Cleaning garandeert veiligheid en werkcomfort met gecertificeerde technieken."
   preloadedImage = {optimizedImage}
 >
-  <!-- ============================================ -->
-  <!--                    LANDING                   -->
-  <!-- ============================================ -->
 
-  <Landing 
-    title="Industriële Reiniging"
-    image={optimizedImage}
-  />
 
   <!-- ============================================ -->
   <!--              Table of Contents               -->
   <!-- ============================================ -->
 
-  <section id="table-of-contents">
+  <section id="table-of-contents" style="padding-top: clamp(12.5rem, 16.82vw, 15.25rem);">
     <div class="cs-container">
       <div class="cs-content">
         <span class="cs-topper">Industriële Expertise</span>
@@ -253,7 +246,7 @@ const headings = [
       li {
         font-size: (16/16rem);
         line-height: 1.5em;
-        color: var(--bodyTextColor);
+      color: var(--bodyTextColor);
         margin-bottom: (12/16rem);
         padding-left: (20/16rem);
         position: relative;
@@ -262,7 +255,7 @@ const headings = [
           content: "";
           width: (8/16rem);
           height: (8/16rem);
-          background-color: var(--primary);
+      background-color: var(--primary);
           position: absolute;
           left: 0;
           top: (8/16rem);

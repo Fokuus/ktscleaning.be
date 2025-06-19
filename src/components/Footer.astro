@@ -28,11 +28,11 @@ const currentYear = getCurrentYear()
                    BTW BE 0642.578.577
                </p>
                <a href="tel:+32471708090" class="cs-link">
-                   <img class="cs-link-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/thick-phone.svg" alt="phone icon" width="24" height="24">
+                   <img class="cs-link-icon" aria-hidden="true" loading="lazy" decoding="async" src="/assets/images/icons/phone-call.svg" alt="phone icon" width="18" height="18">
                    +32 471 70 80 90
                </a>
                <a href="mailto:info@ktscleaning.be" class="cs-link">
-                   <img class="cs-link-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/thick-mail.svg" alt="email icon" width="24" height="24">
+                   <img class="cs-link-icon" aria-hidden="true" loading="lazy" decoding="async" src="/assets/images/icons/email.svg" alt="email icon" width="18" height="18">
                    info@ktscleaning.be
                </a>
            </div>
@@ -56,24 +56,19 @@ const currentYear = getCurrentYear()
                   <span class="cs-header">Andere</span>
               </li>
               <li class="cs-nav-li">
-                  <a class="cs-nav-link" href="/jobs">Jobs</a>
-              </li>
-              <li class="cs-nav-li">
                   <a class="cs-nav-link" href="/contact">Contact</a>
               </li>
+
           </ul>
           <ul class="cs-nav">
               <li class="cs-nav-li">
-                  <span class="cs-header">Privacybeleid</span>
+                  <span class="cs-header">Juridisch</span>
               </li>
               <li class="cs-nav-li">
                   <a class="cs-nav-link" href="/privacybeleid">Privacybeleid</a>
               </li>
               <li class="cs-nav-li">
-                  <a class="cs-nav-link" href="/disclaimer">Disclaimer</a>
-              </li>
-              <li class="cs-nav-li">
-                  <a class="cs-nav-link" href="/cookies">Cookies</a>
+                  <a class="cs-nav-link" href="/algemene-voorwaarden">Algemene Voorwaarden</a>
               </li>
           </ul>
 
@@ -334,6 +329,10 @@ const currentYear = getCurrentYear()
             &:hover {
                 color: var(--primary);
             }
+        }
+
+        .cs-link-icon {
+            transition: opacity 0.3s;
         }
 
         /* Navigation Links */

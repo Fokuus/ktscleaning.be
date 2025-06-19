@@ -9,7 +9,7 @@ import { getCollection } from "astro:content";
 import { getImage } from "astro:assets";
 import "@styles/sidebar.less";
 
-import Landing from "@components/Landing.astro";
+
 
 import BlogRecentArticles from "@layouts/BlogRecentArticles.astro";
 import BlogRecentArticlesWithSidebar from "@layouts/BlogRecentArticlesWithSidebar.astro";
@@ -24,7 +24,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 ---
 
 <BaseLayout title="Blog - KTS Cleaning" description="Lees de laatste nieuwtjes en tips van KTS Cleaning over gespecialiseerde schoonmaak, crime scene cleaning en industriële reiniging. Expert advies en branche-inzichten." preloadedImage={optimizedImage}>
-	<Landing title="Blog" image={optimizedImage} />
+
 
 	<!-- Use the BlogRecentArticles layout to display the recent articles in a standard grid -->
 	<!-- <BlogRecentArticles posts={posts} /> -->

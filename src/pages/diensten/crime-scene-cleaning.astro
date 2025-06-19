@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 
-import Landing from "@components/Landing.astro";
+
 import FAQ from "@components/FAQ.astro";
 import Button from "@components/Button.astro";
 import ContentSection from "@components/ContentSection.astro";
@@ -28,20 +28,15 @@ const headings = [
   description="Professionele crime scene cleaning diensten. KTS Cleaning biedt discrete en veilige reiniging van plaatsen delict, met 24/7 beschikbaarheid en volledige certificering."
   preloadedImage = {optimizedImage}
 >
-  <!-- ============================================ -->
-  <!--                    LANDING                   -->
-  <!-- ============================================ -->
 
-  <Landing 
-    title="Crime Scene Cleaning"
-    image={optimizedImage}
-  />
+
+
 
   <!-- ============================================ -->
   <!--              Table of Contents               -->
   <!-- ============================================ -->
 
-  <section id="table-of-contents">
+  <section id="table-of-contents" style="padding-top: clamp(12.5rem, 16.82vw, 15.25rem);">
     <div class="cs-container">
       <div class="cs-content">
         <span class="cs-topper">Gespecialiseerde Dienstverlening</span>

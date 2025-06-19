@@ -1,0 +1,299 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Button from "@components/Button.astro";
+
+// Optimize our landing image and pass it as props to the BaseLayout (for preloading)
+import landingImage from "@assets/images/landing.jpg"
+import { getImage } from "astro:assets";
+const optimizedImage = await getImage({src: landingImage, format: 'avif'})
+---
+
+<BaseLayout
+  title="Pagina niet gevonden - KTS Cleaning"
+  description="De pagina die u zoekt kon niet worden gevonden. Ga terug naar de homepage of neem contact met ons op."
+  preloadedImage = {optimizedImage}
+>
+
+  <!-- ============================================ -->
+  <!--                    404                       -->
+  <!-- ============================================ -->
+
+  <section id="error-404" style="padding-top: clamp(12.5rem, 16.82vw, 15.25rem);">
+    <div class="cs-container">
+              <div class="cs-content">
+          <div class="cs-flex">
+            <div class="cs-error-number wow fadeInUp" data-wow-delay="0.1s">404</div>
+            <h1 class="cs-title wow fadeInUp" data-wow-delay="0.2s">Pagina niet gevonden</h1>
+            <p class="cs-text wow fadeInUp" data-wow-delay="0.3s">
+              Sorry, de pagina die u zoekt bestaat niet of is verplaatst. Mogelijk heeft u een verkeerde link gevolgd of is de URL onjuist getypt.
+            </p>
+            <div class="cs-button-group wow fadeInUp" data-wow-delay="0.4s">
+              <Button text="Terug naar Home" href="/" />
+              <Button text="Neem Contact Op" href="/contact" variant="outlined" />
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!--                 Quick Links                  -->
+  <!-- ============================================ -->
+
+  <section id="quick-links">
+    <div class="cs-container">
+      <div class="cs-content">
+        <span class="cs-topper wow fadeInUp" data-wow-delay="0.1s">Populaire Pagina's</span>
+        <h2 class="cs-title wow fadeInUp" data-wow-delay="0.2s">Misschien zoekt u dit?</h2>
+        <div class="cs-card-group">
+          <a href="/diensten/crime-scene-cleaning" class="cs-item wow fadeInUp" data-wow-delay="0.3s">
+            <img
+              class="cs-icon"
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+              src="/assets/svgs/service1.svg"
+              alt="crime scene cleaning"
+              width="48"
+              height="48"
+            />
+            <h3 class="cs-h3">Crime Scene Cleaning</h3>
+            <p class="cs-item-text">Professionele reiniging na traumatische gebeurtenissen</p>
+          </a>
+          <a href="/diensten/industriele-reiniging" class="cs-item wow fadeInUp" data-wow-delay="0.4s">
+            <img
+              class="cs-icon"
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+              src="/assets/svgs/service2.svg"
+              alt="industriële reiniging"
+              width="48"
+              height="48"
+            />
+            <h3 class="cs-h3">Industriële Reiniging</h3>
+            <p class="cs-item-text">Gespecialiseerde reiniging voor bedrijven en industrie</p>
+          </a>
+          <a href="/contact" class="cs-item wow fadeInUp" data-wow-delay="0.5s">
+            <img
+              class="cs-icon"
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+              src="/assets/svgs/service3.svg"
+              alt="contact"
+              width="48"
+              height="48"
+            />
+            <h3 class="cs-h3">Contact</h3>
+            <p class="cs-item-text">Neem direct contact op voor een vrijblijvende offerte</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style lang="less">
+  /*-- -------------------------- -->
+  <---           404             -->
+  <--- -------------------------- -*/
+
+  /* Mobile - 360px */
+  @media only screen and (min-width: 0rem) {
+    #error-404 {
+      padding: var(--sectionPadding);
+      background-color: #f7f7f7;
+
+      .cs-container {
+        width: 100%;
+        max-width: (1280/16rem);
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(3rem, 6vw, 4rem);
+      }
+
+      .cs-content {
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(3rem, 6vw, 4rem);
+      }
+
+      .cs-flex {
+        text-align: center;
+        max-width: (630/16rem);
+        width: 100%;
+      }
+
+      .cs-error-number {
+        font-size: clamp(6rem, 12vw, 10rem);
+        font-weight: 900;
+        line-height: 1em;
+        margin: 0 0 (24/16rem) 0;
+        color: var(--primary);
+        opacity: 0.8;
+      }
+
+      .cs-title {
+        font-size: clamp(2.4375rem, 6.4vw, 3.8125rem);
+        font-weight: 900;
+        line-height: 1.2em;
+        text-align: inherit;
+        max-width: (700/16rem);
+        margin: 0 0 (16/16rem) 0;
+        color: var(--headerColor);
+        position: relative;
+      }
+
+      .cs-text {
+        font-size: (18/16rem);
+        line-height: 1.5em;
+        margin: 0 0 (32/16rem) 0;
+        color: var(--bodyTextColor);
+        max-width: (540/16rem);
+      }
+
+      .cs-button-group {
+        display: flex;
+        flex-direction: column;
+        gap: (16/16rem);
+        width: 100%;
+        max-width: (400/16rem);
+      }
+
+
+    }
+  }
+
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #error-404 {
+      .cs-content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cs-flex {
+        text-align: center;
+        width: 100%;
+        max-width: (800/16rem);
+      }
+
+      .cs-button-group {
+        flex-direction: row;
+        gap: (24/16rem);
+      }
+    }
+  }
+
+  /*-- -------------------------- -->
+  <---       Quick Links         -->
+  <--- -------------------------- -*/
+
+  /* Mobile - 360px */
+  @media only screen and (min-width: 0rem) {
+    #quick-links {
+      padding: var(--sectionPadding);
+
+      .cs-container {
+        width: 100%;
+        max-width: (1280/16rem);
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(3rem, 6vw, 4rem);
+      }
+
+      .cs-content {
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(3rem, 6vw, 4rem);
+      }
+
+      .cs-topper {
+        color: var(--primary);
+      }
+
+      .cs-title {
+        font-size: clamp(1.9375rem, 3.9vw, 3.0625rem);
+        font-weight: 900;
+        line-height: 1.2em;
+        text-align: inherit;
+        max-width: (700/16rem);
+        margin: 0;
+        color: var(--headerColor);
+      }
+
+      .cs-card-group {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: clamp(1rem, 2.5vw, 1.25rem);
+      }
+
+      .cs-item {
+        text-align: center;
+        list-style: none;
+        margin: 0;
+        padding: (32/16rem);
+        background-color: #fff;
+        border-radius: (16/16rem);
+        box-shadow: 0px 12px 80px 0px rgba(26, 26, 26, 0.08);
+        border: 1px solid #f7f7f7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        transition: transform 0.3s, box-shadow 0.3s;
+
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: 0px 20px 100px 0px rgba(26, 26, 26, 0.15);
+        }
+      }
+
+      .cs-icon {
+        width: (48/16rem);
+        height: (48/16rem);
+        margin: 0 0 (16/16rem) 0;
+      }
+
+      .cs-h3 {
+        font-size: (20/16rem);
+        line-height: 1.2em;
+        font-weight: 700;
+        margin: 0 0 (12/16rem) 0;
+        color: var(--headerColor);
+      }
+
+      .cs-item-text {
+        font-size: (14/16rem);
+        line-height: 1.5em;
+        margin: 0;
+        color: var(--bodyTextColor);
+      }
+    }
+  }
+
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #quick-links {
+      .cs-card-group {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+</style> 

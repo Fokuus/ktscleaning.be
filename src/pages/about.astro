@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 
-import Landing from "@components/Landing.astro";
+
 import FAQ from "@components/FAQ.astro";
 import Button from "@components/Button.astro";
 import WhyChooseUs from "@components/WhyChooseUs.astro";
@@ -17,23 +17,16 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
   description="Meer dan 13 jaar ervaring in gespecialiseerde reiniging. KTS Cleaning is dé expert in crime scene cleaning, industriële reiniging en technische ontmantelingen."
   preloadedImage = {optimizedImage}
 >
-  <!-- ============================================ -->
-  <!--                    LANDING                   -->
-  <!-- ============================================ -->
 
-  <Landing 
-    title="Over KTS Cleaning"
-    image={optimizedImage}
-  />
 
   <!-- ============================================ -->
   <!--                 Side By Side                 -->
   <!-- ============================================ -->
 
-  <section id="sbs">
+  <section id="sbs" style="padding-top: clamp(12.5rem, 16.82vw, 15.25rem);">
     <div class="cs-container">
       <!-- Left Image Section -->
-      <div class="cs-left">
+      <div class="cs-left wow fadeInLeft" data-wow-delay="0.1s">
         <picture class="cs-picture cs-picture1">
           <source
             media="(max-width: 600px)"
@@ -75,15 +68,15 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
       </div>
       <!-- Right Content Section-->
       <div class="cs-right">
-        <span class="cs-topper">Over KTS Cleaning</span>
-        <h2 class="cs-title">Gespecialiseerd Sinds 2012</h2>
-        <p class="cs-text">
+        <span class="cs-topper wow fadeInUp" data-wow-delay="0.2s">Over KTS Cleaning</span>
+        <h2 class="cs-title wow fadeInUp" data-wow-delay="0.3s">Gespecialiseerd Sinds 2012</h2>
+        <p class="cs-text wow fadeInUp" data-wow-delay="0.4s">
           KTS Cleaning werd opgericht in 2012 als een van de eerste gespecialiseerde schoonmaakbedrijven in Vlaanderen. Met meer dan 13 jaar ervaring in crime scene cleaning, zwaar vervuilde woningen, industriële reiniging en technische ontmantelingen, zijn we uitgegroeid tot een vaste waarde in de sector.
         </p>
-        <p class="cs-text">
+        <p class="cs-text wow fadeInUp" data-wow-delay="0.5s">
           Wij weten als geen ander wat écht telt: discretie, veiligheid, vakmanschap en vertrouwen. Onze oprichter Koos Taillieu staat zelf nog dagelijks op het terrein, met een team dat getraind is voor de meest complexe opdrachten. Van politiediensten tot particulieren - iedereen kan rekenen op onze professionele aanpak.
         </p>
-        <div class="cs-flex-group">
+        <div class="cs-flex-group wow fadeInUp" data-wow-delay="0.6s">
           <p class="cs-flex-p">
             "Met KTS Cleaning heb je een partner die begrijpt dat elk project uniek is. Onze jarenlange ervaring en specialistische kennis maken het verschil wanneer anderen het opgeven."
           </p>
@@ -99,7 +92,9 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
             height="77"
           />
         </div>
-        <Button text="Bekijk Onze Projecten" href="/projects" />
+        <div class="wow fadeInUp" data-wow-delay="0.7s">
+          <Button text="Bekijk Onze Projecten" href="/projects" />
+        </div>
       </div>
     </div>
   </section>
@@ -108,9 +103,13 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
   <!--                Why Choose Us                 -->
   <!-- ============================================ -->
   
-  <WhyChooseUs />
+  <div class="wow fadeInUp" data-wow-delay="0.8s">
+    <WhyChooseUs />
+  </div>
 
-  <FAQ />
+  <div class="wow fadeInUp" data-wow-delay="0.9s">
+    <FAQ />
+  </div>
 </BaseLayout>
 
 <style lang="less">

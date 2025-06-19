@@ -1,0 +1,287 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+// Optimize our landing image and pass it as props to the BaseLayout (for preloading)
+import landingImage from "@assets/images/landing.jpg"
+import { getImage } from "astro:assets";
+const optimizedImage = await getImage({src: landingImage, format: 'avif'})
+---
+
+<BaseLayout
+  title="Algemene Voorwaarden - KTS Cleaning"
+  description="Algemene voorwaarden van KTS Cleaning. Lees onze voorwaarden voor dienstverlening en samenwerking."
+  preloadedImage = {optimizedImage}
+>
+
+  <!-- ============================================ -->
+  <!--                 Content Section              -->
+  <!-- ============================================ -->
+
+  <section id="content-1400" style="padding-top: clamp(12.5rem, 16.82vw, 15.25rem);">
+    <div class="cs-container">
+      <div class="cs-content">
+        <div class="cs-flex">
+          <span class="cs-topper wow fadeInUp" data-wow-delay="0.1s">Juridisch</span>
+          <h1 class="cs-title wow fadeInUp" data-wow-delay="0.2s">Algemene Voorwaarden</h1>
+        </div>
+        <div class="cs-text-group">
+          <div class="cs-section wow fadeInUp" data-wow-delay="0.3s">
+            <h2>1. Definities</h2>
+            <ul>
+              <li><strong>KTS Cleaning:</strong> KTS Cleaning, gevestigd te Mellestraat 46, B-8501 Heule, BTW BE 0642.578.577</li>
+              <li><strong>Opdrachtgever:</strong> de natuurlijke of rechtspersoon die een overeenkomst aangaat met KTS Cleaning</li>
+              <li><strong>Diensten:</strong> alle door KTS Cleaning verrichte werkzaamheden</li>
+              <li><strong>Offerte:</strong> het aanbod van KTS Cleaning tot het verrichten van diensten</li>
+            </ul>
+          </div>
+
+          <div class="cs-section wow fadeInUp" data-wow-delay="0.4s">
+            <h2>2. Toepasselijkheid</h2>
+            <p>Deze algemene voorwaarden zijn van toepassing op alle offertes, overeenkomsten en diensten van KTS Cleaning. Afwijkende bepalingen zijn alleen geldig indien deze schriftelijk zijn overeengekomen.</p>
+          </div>
+
+          <div class="cs-section wow fadeInUp" data-wow-delay="0.5s">
+            <h2>3. Offertes en overeenkomsten</h2>
+            <ul>
+              <li>Alle offertes zijn vrijblijvend en geldig voor 30 dagen</li>
+              <li>Offertes zijn gebaseerd op de door opdrachtgever verstrekte informatie</li>
+              <li>Overeenkomsten komen tot stand door schriftelijke bevestiging of aanvang werkzaamheden</li>
+              <li>Wijzigingen in de opdracht kunnen prijsaanpassingen tot gevolg hebben</li>
+            </ul>
+          </div>
+
+          <div class="cs-section wow fadeInUp" data-wow-delay="0.6s">
+            <h2>4. Uitvoering van de diensten</h2>
+            <ul>
+              <li>KTS Cleaning voert diensten uit conform de geldende wet- en regelgeving</li>
+              <li>Toegang tot het object dient te worden verschaft door opdrachtgever</li>
+              <li>Opdrachtgever draagt zorg voor veilige arbeidsomstandigheden</li>
+              <li>Bij gevaarlijke stoffen worden aanvullende veiligheidsmaatregelen getroffen</li>
+            </ul>
+          </div>
+
+          <div class="cs-section wow fadeInUp" data-wow-delay="0.7s">
+            <h2>5. Prijzen en betaling</h2>
+            <ul>
+              <li>Alle prijzen zijn exclusief BTW, tenzij anders vermeld</li>
+              <li>Facturen dienen binnen 30 dagen te worden betaald</li>
+              <li>Bij overschrijding van de betalingstermijn wordt wettelijke rente berekend</li>
+              <li>KTS Cleaning behoudt zich eigendomsvoorbehoud voor tot volledige betaling</li>
+            </ul>
+          </div>
+
+          <div class="cs-section wow fadeInUp" data-wow-delay="0.8s">
+            <h2>6. Annulering en wijziging</h2>
+            <ul>
+              <li>Annulering tot 24 uur voor uitvoering is kosteloos</li>
+              <li>Annulering binnen 24 uur: 50% van het overeengekomen bedrag</li>
+              <li>Wijzigingen dienen tijdig schriftelijk te worden doorgegeven</li>
+              <li>Spoedopdrachten kunnen tegen toeslag worden uitgevoerd</li>
+            </ul>
+          </div>
+
+          <div class="cs-section wow fadeInUp" data-wow-delay="0.9s">
+            <h2>7. Aansprakelijkheid</h2>
+            <ul>
+              <li>KTS Cleaning is verzekerd voor beroepsaansprakelijkheid</li>
+              <li>Aansprakelijkheid is beperkt tot het factuurbedrag van de betreffende opdracht</li>
+              <li>Verborgen gebreken of schades dienen binnen 24 uur gemeld te worden</li>
+              <li>Aansprakelijkheid voor gevolgschade is uitgesloten</li>
+            </ul>
+          </div>
+
+          <div class="cs-section wow fadeInUp" data-wow-delay="1.0s">
+            <h2>8. Overmacht</h2>
+            <p>Bij overmacht is KTS Cleaning gerechtigd de uitvoering op te schorten of de overeenkomst te ontbinden. Onder overmacht wordt verstaan: oorlog, terrorisme, pandemie, natuurrampen, stakingen, overheidsmaatregelen en andere omstandigheden buiten onze invloed.</p>
+          </div>
+
+          <div class="cs-section wow fadeInUp" data-wow-delay="1.1s">
+            <h2>9. Geheimhouding</h2>
+            <p>KTS Cleaning behandelt alle informatie verkregen tijdens de uitvoering van werkzaamheden strikt vertrouwelijk. Medewerkers zijn gebonden aan geheimhoudingsverplichtingen.</p>
+          </div>
+
+          <div class="cs-section wow fadeInUp" data-wow-delay="1.2s">
+            <h2>10. Geschillen</h2>
+            <ul>
+              <li>Op alle overeenkomsten is Belgisch recht van toepassing</li>
+              <li>Geschillen worden voorgelegd aan de bevoegde rechter te Kortrijk</li>
+              <li>Partijen streven naar minnelijke schikking alvorens juridische stappen te ondernemen</li>
+            </ul>
+          </div>
+
+          <div class="cs-section wow fadeInUp" data-wow-delay="1.3s">
+            <h2>11. Contact</h2>
+            <div class="contact-info">
+              <p><strong>KTS Cleaning</strong><br>
+              Mellestraat 46<br>
+              B-8501 Heule<br>
+              <strong>BTW:</strong> BE 0642.578.577<br>
+              <strong>E-mail:</strong> <a href="mailto:info@ktscleaning.be">info@ktscleaning.be</a><br>
+              <strong>Telefoon:</strong> <a href="tel:+32471708090">+32 471 70 80 90</a></p>
+            </div>
+          </div>
+
+          <div class="cs-section wow fadeInUp" data-wow-delay="1.4s">
+            <p><em>Laatst bijgewerkt: januari 2025</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style lang="less">
+  /*-- -------------------------- -->
+  <---        Content Page       -->
+  <--- -------------------------- -*/
+
+  /* Mobile - 360px */
+  @media only screen and (min-width: 0rem) {
+    #content-1400 {
+      padding: var(--sectionPadding);
+      background-color: #f7f7f7;
+
+      .cs-container {
+        width: 100%;
+        max-width: (1280/16rem);
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(3rem, 6vw, 4rem);
+      }
+
+      .cs-content {
+        text-align: left;
+        width: 100%;
+        max-width: (800/16rem);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(3rem, 6vw, 4rem);
+      }
+
+      .cs-flex {
+        text-align: center;
+      }
+
+      .cs-topper {
+        color: var(--primary);
+      }
+
+      .cs-title {
+        font-size: clamp(2.4375rem, 6.4vw, 3.8125rem);
+        font-weight: 900;
+        line-height: 1.2em;
+        text-align: inherit;
+        max-width: (700/16rem);
+        margin: 0 0 (16/16rem) 0;
+        color: var(--headerColor);
+        position: relative;
+      }
+
+      .cs-text-group {
+        width: 100%;
+        max-width: (800/16rem);
+      }
+
+      .cs-section {
+        margin-bottom: (48/16rem);
+
+        h2 {
+          font-size: clamp(1.5625rem, 3vw, 1.9375rem);
+          font-weight: 700;
+          line-height: 1.2em;
+          margin: 0 0 (16/16rem) 0;
+          color: var(--headerColor);
+        }
+
+        h3 {
+          font-size: clamp(1.25rem, 2.5vw, 1.5625rem);
+          font-weight: 700;
+          line-height: 1.2em;
+          margin: 0 0 (12/16rem) 0;
+          color: var(--headerColor);
+        }
+
+        p {
+          font-size: (16/16rem);
+          line-height: 1.5em;
+          margin: 0 0 (16/16rem) 0;
+          color: var(--bodyTextColor);
+        }
+
+        ul {
+          margin: (16/16rem) 0;
+          padding-left: (20/16rem);
+
+          li {
+            font-size: (16/16rem);
+            line-height: 1.5em;
+            margin: 0 0 (8/16rem) 0;
+            color: var(--bodyTextColor);
+            list-style: disc;
+          }
+        }
+
+        a {
+          color: var(--primary);
+          text-decoration: none;
+          transition: color 0.3s;
+
+          &:hover {
+            color: var(--primaryDark);
+            text-decoration: underline;
+          }
+        }
+
+        .contact-info {
+          background-color: #fff;
+          border: 1px solid #e0e0e0;
+          border-radius: (8/16rem);
+          padding: (24/16rem);
+          margin: (16/16rem) 0;
+
+          p {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #content-1400 {
+      .cs-container {
+        max-width: (1280/16rem);
+      }
+
+      .cs-content {
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cs-flex {
+        text-align: center;
+      }
+
+      .cs-text-group {
+        text-align: left;
+        width: 100%;
+      }
+    }
+  }
+
+  /* Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
+    #content-1400 {
+      .cs-flex {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+</style> 

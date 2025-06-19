@@ -1,9 +1,8 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import client from "@data/client.json";
-import Landing from "@components/Landing.astro";
 
-// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
+// Optimize our landing image and pass it as props to the BaseLayout (for preloading)
 import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
 import { getImage } from "astro:assets";
 const optimizedImage = await getImage({src: landingImage, format: 'avif'})
@@ -15,20 +14,13 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
   preloadedImage = {optimizedImage}
 >
 
-  <!-- ============================================ -->
-  <!--                    LANDING                   -->
-  <!-- ============================================ -->
 
-  <Landing 
-    title="Contact"
-    image={optimizedImage}
-  />
 
   <!-- ============================================ -->
   <!--                Contact Form                  -->
   <!-- ============================================ -->
 
-  <section id="cs-contact">
+  <section id="cs-contact" style="padding-top: clamp(12.5rem, 16.82vw, 15.25rem);">
     <div class="cs-container">
       <form id="cs-form" name="Contact Form" method="post" action="/bedankt" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="Contact Form" />
@@ -38,13 +30,13 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           </label>
         </p>
         <div class="cs-content">
-          <span class="cs-topper">Contact</span>
-          <h2 class="cs-title">Neem Contact Op</h2>
-          <p class="cs-text">
+          <span class="cs-topper wow fadeInUp" data-wow-delay="0.1s">Contact</span>
+          <h2 class="cs-title wow fadeInUp" data-wow-delay="0.2s">Neem Contact Op</h2>
+          <p class="cs-text wow fadeInUp" data-wow-delay="0.3s">
             Noodsituatie? Wij zijn 24/7 bereikbaar voor spoedeisende opdrachten. Van crime scene cleaning tot industriële reiniging - onze gespecialiseerde teams staan klaar om u te helpen. Vraag een vrijblijvende offerte aan.
           </p>
         </div>
-        <label>
+        <label class="wow fadeInUp" data-wow-delay="0.4s">
           Naam
           <div class="cs-input-wrapper">
             <input
@@ -57,7 +49,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
             />
           </div>
         </label>
-        <label>
+        <label class="wow fadeInUp" data-wow-delay="0.5s">
           E-mail
           <div class="cs-input-wrapper">
             <input
@@ -70,20 +62,50 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
             />
           </div>
         </label>
-        <label>
+        <label class="wow fadeInUp" data-wow-delay="0.6s">
           Telefoon
-          <div class="cs-input-wrapper">
-            <input
-              required
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="+32 12 34 56 789"
-              class="smooth-cursor"
-            />
+          <div class="cs-phone-wrapper">
+            <div class="cs-country-select" data-phone-dropdown>
+              <input type="hidden" id="country-code" name="country-code" value="+32" />
+              <div class="cs-country-trigger" data-phone-trigger>
+                <span class="cs-country-flag">🇧🇪</span>
+                <span class="cs-country-code" data-phone-text>+32</span>
+                <div class="cs-select-arrow">
+                  <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="cs-country-options" data-phone-options>
+                <div class="cs-country-option" data-country-value="+32" data-flag="🇧🇪">
+                  <span class="cs-country-flag">🇧🇪</span>
+                  <span>+32 België</span>
+                </div>
+                <div class="cs-country-option" data-country-value="+31" data-flag="🇳🇱">
+                  <span class="cs-country-flag">🇳🇱</span>
+                  <span>+31 Nederland</span>
+                </div>
+                <div class="cs-country-option" data-country-value="+33" data-flag="🇫🇷">
+                  <span class="cs-country-flag">🇫🇷</span>
+                  <span>+33 Frankrijk</span>
+                </div>
+              </div>
+            </div>
+            <div class="cs-input-wrapper cs-phone-input">
+              <input
+                required
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="412 34 56 78"
+                class="smooth-cursor"
+                data-phone-input
+              />
+              <input type="hidden" id="phone-full" name="phone-full" />
+            </div>
           </div>
         </label>
-                  <label>
+                  <label class="wow fadeInUp" data-wow-delay="0.7s">
             Type dienst
             <div class="cs-custom-select" data-dropdown>
               <input type="hidden" id="service" name="service-type" required />
@@ -106,7 +128,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
               </div>
             </div>
           </label>
-        <label class="cs-label-message">
+        <label class="cs-label-message wow fadeInUp" data-wow-delay="0.8s">
           Bericht
           <div class="cs-input-wrapper">
             <textarea
@@ -117,21 +139,21 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
               class="smooth-cursor"></textarea>
           </div>
         </label>
-        <div data-netlify-recaptcha="true"></div>
-        <button type="submit" class="cs-button-solid">Bericht Versturen</button>
+        <div data-netlify-recaptcha="true" class="wow fadeInUp" data-wow-delay="0.9s"></div>
+        <button type="submit" class="cs-button-solid wow fadeInUp" data-wow-delay="1.0s">Bericht versturen</button>
       </form>
-      <div class="cs-right-section">
+              <div class="cs-right-section wow fadeInRight" data-wow-delay="0.3s">
         <!--Email-->
-        <span class="cs-header">E-mail</span>
-        <a class="cs-link" href={`mailto:${client.email}`}>{client.email}</a>
+        <span class="cs-header wow fadeInUp" data-wow-delay="0.5s">E-mail</span>
+        <a class="cs-link wow fadeInUp" data-wow-delay="0.6s" href={`mailto:${client.email}`}>{client.email}</a>
         <!--Phone-->
-        <span class="cs-header">Telefoon</span>
-        <a class="cs-link" href={`tel:${client.phoneForTel}`}
+        <span class="cs-header wow fadeInUp" data-wow-delay="0.7s">Telefoon</span>
+        <a class="cs-link wow fadeInUp" data-wow-delay="0.8s" href={`tel:${client.phoneForTel}`}
           >{client.phoneFormatted}</a
         >
         <!--Address-->
-        <span class="cs-header">Adres</span>
-        <a class="cs-link" href={client.address.mapLink}>
+        <span class="cs-header wow fadeInUp" data-wow-delay="0.9s">Adres</span>
+        <a class="cs-link wow fadeInUp" data-wow-delay="1.0s" href={client.address.mapLink}>
           {client.address.lineOne}
           <br />
           <span class="cs-block">
@@ -143,13 +165,13 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         <picture class="cs-bg-picture">
           <source
             media="(min-width: 601px)"
-            srcset="/assets/images/about.jpg"
+            srcset="/public/assets/images/industriele-reiniging-productielijnen.webp"
           />
           <img
             aria-hidden="true"
             decoding="async"
-            src="/assets/images/about.jpg"
-            alt="KTS Cleaning professional cleaning"
+            src="/public/assets/images/industriele-reiniging-productielijnen.webp"
+            alt="KTS Cleaning professional team"
             loading="lazy"
             width="2500"
             height="1667"
@@ -163,6 +185,31 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 <script>
   // Enhanced smooth cursor movement
   document.addEventListener('DOMContentLoaded', function() {
+    // Prevent validation styling on page load and only show on actual errors
+    const allInputs = document.querySelectorAll('input, textarea, select');
+    allInputs.forEach(input => {
+      // Track if the user has actually entered something (not just focused)
+      input.addEventListener('input', function() {
+        if (this.value.trim() !== '') {
+          this.classList.add('has-content');
+        } else {
+          this.classList.remove('has-content');
+        }
+      });
+      
+      // Only show validation errors if field has content and is invalid
+      input.addEventListener('blur', function() {
+        if (this.value.trim() !== '' && !this.checkValidity()) {
+          this.classList.add('show-validation');
+        }
+      });
+      
+      // Clear validation styling when user starts typing
+      input.addEventListener('input', function() {
+        this.classList.remove('show-validation');
+      });
+    });
+
     const smoothInputs = document.querySelectorAll('.smooth-cursor');
     
     smoothInputs.forEach(input => {
@@ -248,7 +295,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           if (this.validity.valueMissing) {
             this.setCustomValidity('Vul uw telefoonnummer in');
           } else {
-            this.setCustomValidity('');
+            this.setCustomValidity('Vul een geldig mobiel telefoonnummer in');
           }
         });
         phoneInput.addEventListener('input', function() {
@@ -290,29 +337,213 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
     const form = document.getElementById('cs-form') as HTMLFormElement;
     if (form) {
       form.addEventListener('submit', function(e) {
+        let hasErrors = false;
+        
+        // Show validation for all empty required fields
+        const requiredInputs = form.querySelectorAll('input[required], textarea[required]');
+        requiredInputs.forEach(input => {
+          const inputElement = input as HTMLInputElement | HTMLTextAreaElement;
+          if (!inputElement.checkValidity()) {
+            inputElement.classList.add('show-validation');
+            hasErrors = true;
+          }
+        });
+        
         // Check if custom dropdown has a value
         const serviceInput = document.getElementById('service') as HTMLInputElement;
         if (serviceInput && !serviceInput.value) {
           e.preventDefault();
           serviceInput.setCustomValidity('Selecteer een type dienst');
-          serviceInput.reportValidity();
-          return false;
+          // Show validation for dropdown trigger
+          const dropdownTrigger = serviceInput.closest('.cs-custom-select')?.querySelector('.cs-select-trigger');
+          if (dropdownTrigger) {
+            dropdownTrigger.classList.add('show-validation');
+          }
+          hasErrors = true;
         }
 
-        // Validate phone number format (basic Dutch format)
+        // Validate phone number format
         const phoneInput = document.getElementById('phone') as HTMLInputElement;
-        if (phoneInput && phoneInput.value) {
-          const phoneRegex = /^(\+31|0)[1-9][0-9]{8}$/;
-          if (!phoneRegex.test(phoneInput.value.replace(/\s/g, ''))) {
-            e.preventDefault();
-            phoneInput.setCustomValidity('Vul een geldig Nederlands telefoonnummer in');
-            phoneInput.reportValidity();
-            return false;
+        const phoneFullInput = document.getElementById('phone-full') as HTMLInputElement;
+        const countryCodeInput = document.getElementById('country-code') as HTMLInputElement;
+        
+        if (phoneInput && phoneInput.value && countryCodeInput && phoneFullInput) {
+          const countryCode = countryCodeInput.value;
+          const digits = phoneInput.value.replace(/\D/g, '').replace(/^0+/, '');
+          
+          let isValid = false;
+          let minLength = 0;
+          
+          if (countryCode === '+32') {
+            // Belgian mobile: 9 digits (after removing leading 0)
+            minLength = 9;
+            isValid = digits.length === 9 && digits.startsWith('4');
+          } else if (countryCode === '+31') {
+            // Dutch mobile: 9 digits (after removing leading 0)
+            minLength = 9;
+            isValid = digits.length === 9 && digits.startsWith('6');
+          } else if (countryCode === '+33') {
+            // French mobile: 10 digits (after removing leading 0)
+            minLength = 10;
+            isValid = digits.length === 10 && digits.startsWith('6');
           }
+          
+          if (!isValid || digits.length < minLength) {
+            e.preventDefault();
+            phoneInput.setCustomValidity('Vul een geldig mobiel telefoonnummer in');
+            phoneInput.classList.add('show-validation');
+            hasErrors = true;
+          } else {
+            // Make sure the full phone number is set correctly
+            phoneFullInput.value = getFullPhoneNumber(phoneInput.value, countryCode);
+          }
+        }
+
+        if (hasErrors) {
+          e.preventDefault();
+          return false;
         }
 
         // All validation passed - form will submit to /bedankt
         return true;
+      });
+    }
+
+    // Phone country code dropdown functionality
+    const phoneDropdowns = document.querySelectorAll('[data-phone-dropdown]');
+    
+    phoneDropdowns.forEach(dropdown => {
+      const trigger = dropdown.querySelector('[data-phone-trigger]') as HTMLElement;
+      const options = dropdown.querySelector('[data-phone-options]') as HTMLElement;
+      const hiddenInput = dropdown.querySelector('input[type="hidden"]') as HTMLInputElement;
+      const textElement = dropdown.querySelector('[data-phone-text]') as HTMLElement;
+      const flagElement = dropdown.querySelector('.cs-country-flag') as HTMLElement;
+      const optionElements = dropdown.querySelectorAll('.cs-country-option');
+      
+      if (!trigger || !options || !hiddenInput || !textElement || !flagElement) return;
+      
+      // Toggle dropdown
+      trigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Close other dropdowns
+        phoneDropdowns.forEach(otherDropdown => {
+          if (otherDropdown !== dropdown) {
+            otherDropdown.classList.remove('active');
+            const otherOptions = otherDropdown.querySelector('[data-phone-options]');
+            if (otherOptions) {
+              otherOptions.classList.remove('active');
+            }
+          }
+        });
+        
+        // Toggle current dropdown
+        dropdown.classList.toggle('active');
+        options.classList.toggle('active');
+      });
+      
+      // Handle option selection
+      optionElements.forEach(option => {
+        option.addEventListener('click', function() {
+          const value = this.getAttribute('data-country-value');
+          const flag = this.getAttribute('data-flag');
+          
+          if (value && flag) {
+            // Update hidden input, display text, and flag
+            hiddenInput.value = value;
+            textElement.textContent = value;
+            flagElement.textContent = flag;
+            
+            // Update selected state
+            optionElements.forEach(opt => opt.classList.remove('selected'));
+            this.classList.add('selected');
+            
+            // Close dropdown
+            dropdown.classList.remove('active');
+            options.classList.remove('active');
+            
+            // Update placeholder for phone input
+            updatePhonePlaceholder(value);
+            
+            // Trigger change event
+            hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+        });
+      });
+    });
+
+    // Phone number formatting functionality
+    function formatPhoneNumber(value: string, countryCode: string): string {
+      // Remove all non-digits
+      const digits = value.replace(/\D/g, '');
+      
+      // Remove leading zero if present
+      const cleanDigits = digits.replace(/^0+/, '');
+      
+      // Format based on country
+      if (countryCode === '+32') {
+        // Belgian format: 0476 28 90 78
+        if (cleanDigits.length <= 3) return cleanDigits;
+        if (cleanDigits.length <= 5) return `${cleanDigits.slice(0, 3)} ${cleanDigits.slice(3)}`;
+        if (cleanDigits.length <= 7) return `${cleanDigits.slice(0, 3)} ${cleanDigits.slice(3, 5)} ${cleanDigits.slice(5)}`;
+        return `${cleanDigits.slice(0, 3)} ${cleanDigits.slice(3, 5)} ${cleanDigits.slice(5, 7)} ${cleanDigits.slice(7, 9)}`;
+      } else if (countryCode === '+31') {
+        // Dutch format: similar to Belgian
+        if (cleanDigits.length <= 2) return cleanDigits;
+        if (cleanDigits.length <= 5) return `${cleanDigits.slice(0, 2)} ${cleanDigits.slice(2)}`;
+        if (cleanDigits.length <= 8) return `${cleanDigits.slice(0, 2)} ${cleanDigits.slice(2, 5)} ${cleanDigits.slice(5)}`;
+        return `${cleanDigits.slice(0, 2)} ${cleanDigits.slice(2, 5)} ${cleanDigits.slice(5, 8)} ${cleanDigits.slice(8, 9)}`;
+      } else if (countryCode === '+33') {
+        // French format
+        if (cleanDigits.length <= 2) return cleanDigits;
+        if (cleanDigits.length <= 4) return `${cleanDigits.slice(0, 2)} ${cleanDigits.slice(2)}`;
+        if (cleanDigits.length <= 6) return `${cleanDigits.slice(0, 2)} ${cleanDigits.slice(2, 4)} ${cleanDigits.slice(4)}`;
+        if (cleanDigits.length <= 8) return `${cleanDigits.slice(0, 2)} ${cleanDigits.slice(2, 4)} ${cleanDigits.slice(4, 6)} ${cleanDigits.slice(6)}`;
+        return `${cleanDigits.slice(0, 2)} ${cleanDigits.slice(2, 4)} ${cleanDigits.slice(4, 6)} ${cleanDigits.slice(6, 8)} ${cleanDigits.slice(8, 10)}`;
+      }
+      
+      return cleanDigits;
+    }
+
+    function updatePhonePlaceholder(countryCode: string): void {
+      const phoneInput = document.querySelector('[data-phone-input]') as HTMLInputElement;
+      if (!phoneInput) return;
+      
+      if (countryCode === '+32') {
+        phoneInput.placeholder = '0476 28 90 78';
+      } else if (countryCode === '+31') {
+        phoneInput.placeholder = '06 1234 5678';
+      } else if (countryCode === '+33') {
+        phoneInput.placeholder = '06 12 34 56 78';
+      }
+    }
+
+    function getFullPhoneNumber(localNumber: string, countryCode: string): string {
+      // Remove all formatting and leading zeros
+      const digits = localNumber.replace(/\D/g, '').replace(/^0+/, '');
+      
+      // Return full international format
+      return `${countryCode}${digits}`;
+    }
+
+    // Phone input formatting
+    const phoneInput = document.querySelector('[data-phone-input]') as HTMLInputElement;
+    const countryCodeInput = document.getElementById('country-code') as HTMLInputElement;
+    const phoneFullInput = document.getElementById('phone-full') as HTMLInputElement;
+    
+    if (phoneInput && countryCodeInput && phoneFullInput) {
+      phoneInput.addEventListener('input', function() {
+        const countryCode = countryCodeInput.value;
+        const formattedValue = formatPhoneNumber(this.value, countryCode);
+        
+        // Update display value
+        this.value = formattedValue;
+        
+        // Update hidden full phone number
+        phoneFullInput.value = getFullPhoneNumber(formattedValue, countryCode);
+        
+        // Clear validation styling
+        this.classList.remove('show-validation');
       });
     }
 
@@ -378,10 +609,23 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
     // Close dropdowns when clicking outside
     document.addEventListener('click', function(e) {
       const target = e.target as HTMLElement;
+      
+      // Close service dropdowns
       if (target && !target.closest('[data-dropdown]')) {
         customSelects.forEach(dropdown => {
           dropdown.classList.remove('active');
           const dropdownOptions = dropdown.querySelector('[data-options]');
+          if (dropdownOptions) {
+            dropdownOptions.classList.remove('active');
+          }
+        });
+      }
+      
+      // Close phone dropdowns
+      if (target && !target.closest('[data-phone-dropdown]')) {
+        phoneDropdowns.forEach(dropdown => {
+          dropdown.classList.remove('active');
+          const dropdownOptions = dropdown.querySelector('[data-phone-options]');
           if (dropdownOptions) {
             dropdownOptions.classList.remove('active');
           }
@@ -471,6 +715,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
       .cs-title {
         text-align: left;
         max-width: (800/16rem);
+        margin: 0 0 (16/16rem) 0;
         /* Improve font rendering */
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -479,8 +724,8 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 
       .cs-text {
         text-align: left;
-        /* 404px - 522px */
-        max-width: clamp(25.25rem, 30vw, 32.625rem);
+        /* 500px - 650px */
+        max-width: clamp(31.25rem, 40vw, 40.625rem);
         margin: 0 auto 0 0;
         /* 40px - 48px */
         margin-bottom: clamp(2.5rem, 6.3vw, 3rem);
@@ -488,7 +733,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
-        font-weight: 200 !important;
+        font-weight: 100 !important;
       }
 
       #cs-form {
@@ -517,6 +762,10 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           margin-top: (4/16rem);
           width: 100%;
           
+          &.cs-phone-input {
+            margin-top: 0;
+          }
+          
           &::before {
             content: '';
             position: absolute;
@@ -533,6 +782,164 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           
           &:focus-within::before {
             opacity: 1;
+          }
+        }
+
+        .cs-phone-wrapper {
+          display: flex;
+          gap: (8/16rem);
+          margin-top: (4/16rem);
+          width: 100%;
+          align-items: flex-start;
+        }
+
+        .cs-country-select {
+          position: relative;
+          width: (120/16rem);
+          flex-shrink: 0;
+          
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(254, 213, 0, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
+          }
+          
+          &.active::before {
+            opacity: 1;
+          }
+        }
+
+        .cs-country-trigger {
+          font-size: (16/16rem);
+          width: 100%;
+          height: (64/16rem);
+          box-sizing: border-box;
+          padding: 0 (35/16rem) 0 (12/16rem);
+          border: 1px solid var(--primary);
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(10px);
+          color: var(--headerColor);
+          font-family: inherit;
+          font-weight: 200;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          z-index: 2;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: (8/16rem);
+          
+          &:hover {
+            border-color: rgba(254, 213, 0, 0.4);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-1px);
+            box-shadow: 
+              0 4px 20px rgba(0, 0, 0, 0.1),
+              0 0 0 1px rgba(254, 213, 0, 0.2);
+          }
+          
+          &.show-validation {
+            border-color: #ff4444;
+            background: rgba(255, 68, 68, 0.05);
+          }
+          
+          .cs-select-arrow {
+            position: absolute;
+            right: (8/16rem);
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: var(--headerColor);
+            transition: all 0.3s ease;
+            z-index: 3;
+            
+            svg {
+              transition: transform 0.3s ease;
+              width: 10px;
+              height: 6px;
+            }
+          }
+        }
+
+        .cs-country-flag {
+          font-size: (18/16rem);
+          line-height: 1;
+        }
+
+        .cs-country-code {
+          font-size: (14/16rem);
+          font-weight: 300;
+          color: var(--headerColor);
+        }
+
+        .cs-country-options {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(20px);
+          border: 1px solid var(--primary);
+          border-top: none;
+          max-height: 200px;
+          overflow-y: auto;
+          z-index: 1000;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-10px);
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          
+          &.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+          }
+        }
+
+        .cs-country-option {
+          padding: (12/16rem) (12/16rem);
+          font-size: (14/16rem);
+          color: var(--headerColor);
+          cursor: pointer;
+          transition: all 0.2s ease;
+          font-weight: 200;
+          display: flex;
+          align-items: center;
+          gap: (8/16rem);
+          
+          &:hover {
+            background: rgba(254, 213, 0, 0.1);
+            color: var(--headerColor);
+          }
+          
+          &.selected {
+            background: white;
+            color: var(--headerColor);
+            font-weight: 300;
+          }
+        }
+
+        .cs-country-select.active .cs-country-trigger .cs-select-arrow {
+          color: var(--primary);
+          
+          svg {
+            transform: rotate(180deg);
+          }
+        }
+
+        .cs-phone-input {
+          flex: 1;
+          
+          .cs-input-wrapper {
+            margin-top: 0 !important;
           }
         }
 
@@ -592,7 +999,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           scroll-behavior: smooth;
           
           &::placeholder {
-            color: var(--headerColor);
+            color: #888;
             font-weight: 200;
             transition: opacity 0.3s ease;
           }
@@ -618,12 +1025,12 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
             }
           }
 
-          &:invalid {
+          &.show-validation:invalid {
             border-color: #ff4444;
             background: rgba(255, 68, 68, 0.05);
           }
 
-          &:invalid:focus {
+          &.show-validation:invalid:focus {
             border-color: #ff4444;
             background: rgba(255, 68, 68, 0.1);
             box-shadow: 
@@ -666,6 +1073,11 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
               0 4px 20px rgba(0, 0, 0, 0.1),
               0 0 0 1px rgba(254, 213, 0, 0.2);
           }
+          
+          &.show-validation {
+            border-color: #ff4444;
+            background: rgba(255, 68, 68, 0.05);
+          }
         }
 
         .cs-select-text {
@@ -674,7 +1086,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           font-weight: 200;
           
           &.placeholder {
-            color: var(--headerColor);
+            color: #888;
             font-weight: 200;
           }
         }
@@ -769,6 +1181,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           line-height: 1.2;
           position: relative;
           box-sizing: border-box;
+          text-transform: none;
           
           /* notch dimensions */
           --notch-width: 5px;
@@ -842,7 +1255,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
       .cs-header {
         /* 16px - 20px */
         font-size: clamp(1rem, 3vw, 1.25rem);
-        font-weight: 700;
+        font-weight: 200;
         line-height: 1.2em;
         margin-bottom: (8/16rem);
         color: var(--bodyTextColorWhite);
@@ -858,6 +1271,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         color: var(--bodyTextColorWhite);
         display: block;
         position: relative;
+        font-weight: 100;
 
         &:before {
           /* Animated underline */
@@ -907,8 +1321,8 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           height: 100%;
           background: linear-gradient(
             180deg,
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 0.8) 100%
+            rgba(0, 0, 0, 0.2) 0%,
+            rgba(0, 0, 0, 0.6) 100%
           );
           display: block;
           position: absolute;
@@ -1040,7 +1454,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 
           img {
             /* lets parent background-color bleed through and darken it */
-            opacity: 0.5;
+            opacity: 0.7;
           }
         }
       }
