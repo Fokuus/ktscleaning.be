@@ -159,7 +159,7 @@ const isDienstenPage = pathname.startsWith("/diensten/");
             box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
             opacity: 1;
             /* 12px - 24px */
-            border-radius: clamp(0.75rem, 2vw, 1.5rem);
+            
             display: block;
             position: absolute;
             top: 0;
@@ -596,7 +596,7 @@ const isDienstenPage = pathname.startsWith("/diensten/");
             min-width: (200/16rem);
             margin: 0;
             padding: 0;
-            background-color: #fff;
+            background-color: var(--primary);
             box-shadow: inset rgba(149, 157, 165, 0.1) 0px 8px 10px;
             opacity: 0;
             border-bottom: 5px solid var(--primary);
@@ -664,13 +664,13 @@ const isDienstenPage = pathname.startsWith("/diensten/");
                 /* prevents padding from affecting height and width */
                 box-sizing: border-box;
                 padding: (12/16rem);
-                color: var(--headerColor);
+                color: var(--bodyTextColorWhite);
                 display: block;
                 transition: color 0.3s, background-color 0.3s;
 
                 &:hover {
-                    color: var(--bodyTextColorWhite);
-                    background-color: var(--primary);
+                    color: var(--headerColor);
+                    background-color: rgba(255, 255, 255, 0.2);
                 }
 
                 &:before {
