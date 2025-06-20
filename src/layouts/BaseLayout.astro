@@ -4,7 +4,6 @@ import type { GetImageResult } from 'astro';
 import client from "@data/client.json";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-import FooterCTA from "@components/FooterCTA.astro";
 import "@styles/root.less";
 
 import "@styles/hero.less";
@@ -140,9 +139,9 @@ const { description, title, preloadedImage } = Astro.props as Props;
             }
                 
             <!-- Favicons -->
-            <link rel="apple-touch-icon" href="/favicon.svg">
-            <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-            <link rel="icon" type="image/png" href="/favicon.png">
+            <link rel="apple-touch-icon" href="/assets/images/Nieuw logo.png">
+            <link rel="icon" type="image/png" href="/assets/images/Nieuw logo.png">
+            <link rel="icon" type="image/x-icon" href="/assets/images/Nieuw logo.png">
             <link rel="sitemap" href="/sitemap-index.xml" />
             <link rel="manifest" href="/assets/favicons/site.webmanifest">
             <meta name="msapplication-TileColor" content="#fed500">
@@ -365,3 +364,29 @@ const { description, title, preloadedImage } = Astro.props as Props;
   // Re-initialize after page transitions (for Astro)
   document.addEventListener('astro:after-swap', initAnimations);
 </script>
+
+<style is:inline>
+.cs-select-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;  // ← Solid white background
+  border: 1px solid var(--primary);
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+</style>

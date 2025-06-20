@@ -3,9 +3,9 @@
     "short_name": "KTS Cleaning",
     "icons": [
         {
-            "src": "/favicon.svg",
-            "sizes": "any",
-            "type": "image/svg+xml"
+            "src": "/assets/images/Nieuw logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
         },
         {
             "src": "/assets/favicons/android-chrome-192x192.png",

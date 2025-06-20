@@ -274,8 +274,10 @@ const {
         color: var(--bodyTextColor);
         position: relative;
       }
-      [id^="sbs-"] .cs-li strong {
+      [id^="sbs-"] .cs-li :global(strong) {
         color: #1a1a1a;
+        font-weight: 900;
+        margin-right: 0.5rem;
       }
       [id^="sbs-"] .cs-li::before {
         content: "";

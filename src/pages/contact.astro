@@ -885,8 +885,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           top: 100%;
           left: 0;
           right: 0;
-          background: rgba(255, 255, 255, 0.95);
-          backdrop-filter: blur(20px);
+          background: #ffffff;
           border: 1px solid var(--primary);
           border-top: none;
           max-height: 200px;
@@ -896,6 +895,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           visibility: hidden;
           transform: translateY(-10px);
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
           
           &.active {
             opacity: 1;
@@ -1096,8 +1096,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           top: 100%;
           left: 0;
           right: 0;
-          background: rgba(255, 255, 255, 0.95);
-          backdrop-filter: blur(20px);
+          background: #ffffff;
           border: 1px solid var(--primary);
           border-top: none;
           max-height: 200px;
@@ -1107,6 +1106,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           visibility: hidden;
           transform: translateY(-10px);
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
           
           &.active {
             opacity: 1;
