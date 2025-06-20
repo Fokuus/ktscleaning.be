@@ -72,7 +72,7 @@ import Button from "@components/Button.astro";
       min-width: 150px !important;
       padding: 0.75rem 1.5rem !important;
       background-color: var(--primary) !important;
-      border-radius: 0.25rem !important;
+      border-radius: 0 !important;
       display: inline-flex !important; /* Changed to inline-flex for better centering */
       justify-content: center !important; /* Perfect centering horizontally */
       align-items: center !important; /* Perfect centering vertically */
@@ -224,20 +224,28 @@ import Button from "@components/Button.astro";
           
   
           .cs-container {
-              width: 100%;
+              width: var(--contentWidthMobile);
+              max-width: var(--contentWidthDesktopMax);
               margin: auto;
-              padding-left: 1.5rem;
-              padding-right: 1.5rem;
+              padding-left: 1rem;
+              padding-right: 1rem;
               display: flex;
               justify-content: center;
               align-items: center;
               flex-direction: column;
-              gap: (48/16rem);
-              width: var(--contentWidthDesktop);
+              gap: clamp(2rem, 6vw, 3rem);
+              
+              @media only screen and (min-width: 64rem) {
+                  padding-left: 1.5rem;
+                  padding-right: 1.5rem;
+                  width: var(--contentWidthDesktop);
+              }
           }
   
           .cs-content {
               text-align: center;
+              width: 100%;
+              padding: 0 1rem;
               display: flex;
               justify-content: center;
               align-items: center;
@@ -309,7 +317,7 @@ import Button from "@components/Button.astro";
               min-width: (150/16rem);
               padding: 0 (24/16rem);
               background-color: var(--primary);
-              border-radius: (4/16rem);
+              border-radius: 0;
               display: inline-block;
               position: relative;
               z-index: 1;
@@ -326,7 +334,7 @@ import Button from "@components/Button.astro";
                   top: 0;
                   left: 0;
                   z-index: -1;
-                  border-radius: (4/16rem);
+                  border-radius: 0;
                   transition: width 0.3s;
               }
   
@@ -339,8 +347,9 @@ import Button from "@components/Button.astro";
   
           .cs-video-group {
               width: 100%;
-              height: 100vw;
-              min-height: (340/16rem);
+              height: 80vw;
+              max-height: 60vh;
+              min-height: (300/16rem);
               display: flex;
               flex-direction: column;
               row-gap: (16/16rem);
@@ -486,8 +495,27 @@ import Button from "@components/Button.astro";
       }
   }
   
-  /* Tablet - 768px */
-  @media only screen and (min-width: 48rem) {
+  /* Small Mobile - 480px */
+  @media only screen and (min-width: 30rem) {
+      #hero-1806 {
+          .cs-container {
+              padding-left: 1.25rem;
+              padding-right: 1.25rem;
+          }
+          
+          .cs-content {
+              padding: 0 0.5rem;
+          }
+          
+          .cs-video-group {
+              height: 70vw;
+              max-height: 50vh;
+          }
+      }
+  }
+
+  /* Large Tablet/Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
       #hero-1806 {
           .cs-container {
               padding-left: 3rem;
@@ -544,13 +572,13 @@ import Button from "@components/Button.astro";
       }
   }
   
-  /* Desktop - 1024px */
-  @media only screen and (min-width: 64rem) {
+    /* Desktop - 1200px */
+  @media only screen and (min-width: 75rem) {
       #hero-1806 {
           .cs-video-wrapper {
               height: 100%;
           }
-  
+
           .cs-box {
               bottom: (48/16rem);
           }
