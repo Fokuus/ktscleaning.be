@@ -1,15 +1,16 @@
 {
 	"name": "KTS Cleaning",
 	"email": "info@ktscleaning.be",
-	"phoneForTel": "+32123456789",
-	"phoneFormatted": "+32 12 34 56 789",
+	"phoneForTel": "+32475123456",
+	"phoneFormatted": "+32 475 12 34 56",
 	"address": {
-		"lineOne": "Industriestraat 123",
+		"lineOne": "Mellestraat 46",
 		"lineTwo": "",
-		"city": "Brussel",
-		"state": "Brussels",
-		"zip": "1000",
-		"mapLink": "https://goo.gl/maps/UAQn4vuGDiwv7DV39"
+		"city": "Heule",
+		"state": "West-Vlaanderen",
+		"zip": "8501",
+		"mapLink": "https://maps.google.com/maps?q=Mellestraat+46+8501+Heule+Belgium"
 	},
-	"domain": "www.ktscleaning.be"
+	"domain": "www.ktscleaning.be",
+	"btw": "BE 0642.578.577"
 }
