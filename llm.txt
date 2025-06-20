@@ -1,25 +1,50 @@
 # KTS Cleaning Website (ktscleaning.be)
 
+**Last Updated:** January 27, 2025  
+**Primary Language:** Dutch/Flemish (Belgium)  
+**Website:** https://ktscleaning.be
+
+## Core Services
+
+KTS Cleaning specializes in professional cleaning services in Belgium:
+
+- **Crime Scene Cleaning** - Forensic and trauma scene cleanup
+- **Industrial Cleaning** - Factory equipment and production line cleaning  
+- **Specialized Residential Cleaning** - Fire/water damage, hoarding situations
+- **Emergency Response** - 24/7 availability for urgent cleaning needs
+- **Building Decontamination** - Specialized cleaning for contaminated spaces
+
+## Contact Information
+
+- **Phone:** Available on website contact page
+- **Emergency:** 24/7 response available
+- **Service Area:** Belgium (Flanders region)
+- **Contact Form:** https://ktscleaning.be/contact
+- **Email:** Available through contact form
+
 ## Overview
+
 Professional cleaning services website built with Astro, focusing on specialized cleaning services including crime scene cleaning, industrial cleaning, and specialized residential cleaning in Belgium. **Performance optimized to achieve 95+ Lighthouse scores**.
 
-## Site Structure
+## Site Structure & Direct URLs
 
-### Main Navigation Pages (accessible via Header.astro)
-- **Home (/)** - Landing page with hero section, services overview, and company introduction
-- **About (/about)** - Company information, experience, and team details  
-- **Contact (/contact)** - Contact form, phone numbers, and location information
-- **Services Dropdown (/diensten/)**:
-  - Crime Scene Cleaning (/diensten/crime-scene-cleaning)
-  - Gespecialiseerde Schoonmaak (/diensten/gespecialiseerde-schoonmaak)
-  - Industriële Reiniging (/diensten/industriele-reiniging)
+### Main Navigation Pages
+- **Home:** https://ktscleaning.be/
+- **About:** https://ktscleaning.be/about - Company information, experience, and team details  
+- **Contact:** https://ktscleaning.be/contact - Contact form, phone numbers, and location information
+- **Reviews:** https://ktscleaning.be/reviews - Customer testimonials and reviews
+
+### Service Pages (Diensten)
+- **Crime Scene Cleaning:** https://ktscleaning.be/diensten/crime-scene-cleaning
+- **Gespecialiseerde Schoonmaak:** https://ktscleaning.be/diensten/gespecialiseerde-schoonmaak
+- **Industriële Reiniging:** https://ktscleaning.be/diensten/industriele-reiniging
+- **Ontruimen Woningen:** https://ktscleaning.be/diensten/ontruimen-woningen
 
 ### Additional Pages
-- **Blog (/blog/)** - Blog index and individual blog posts (/blog/[post-slug])
-- **Projects (/projects/)** - Portfolio page (coming soon message)
-- **Reviews (/reviews)** - Customer testimonials and reviews
-- **Bedankt (/bedankt)** - Thank you page after form submissions
-- **Admin (/admin)** - CMS admin interface (Netlify CMS)
+- **Thank You:** https://ktscleaning.be/bedankt - Thank you page after form submissions
+- **Admin:** https://ktscleaning.be/admin - CMS admin interface (Netlify CMS)
+- **Privacy Policy:** https://ktscleaning.be/privacybeleid
+- **Terms & Conditions:** https://ktscleaning.be/algemene-voorwaarden
 
 ## Key Components
 
@@ -33,17 +58,15 @@ Professional cleaning services website built with Astro, focusing on specialized
 - **ContentSection.astro** - Reusable section with image, text, services list, and CTA
 - **SideBySide.astro** - Before/after showcase with project details
 - **FAQ.astro** - Expandable FAQ section
-- **Landing.astro** - Page header component for internal pages
 - **Diensten.astro** - Services overview cards with links
 - **WhyChooseUs.astro** - Company benefits and value proposition
 
 ### Utility Components
 - **Button.astro** - Styled CTA buttons with hover effects
 - **PhoneCTA.astro** & **PhoneCTASimple.astro** - Phone number call-to-action
-- **FeaturedPost.astro** - Blog post cards for layouts
 - **TableOfContents.astro** - Navigation for long-form content
 
-## Performance Optimizations 🚀
+## Performance Optimizations
 
 ### Critical CSS & Loading Strategy
 - **Inline critical CSS** for navigation, hero, and core layout styles
@@ -67,68 +90,60 @@ Professional cleaning services website built with Astro, focusing on specialized
 - **SVG files** cached for 24 hours
 
 ### Accessibility Improvements
-- **Fixed contrast ratios**: Used #2a2400 instead of #fed500 for text elements
+- **Fixed contrast ratios** - Used #2a2400 instead of #fed500 for text elements
 - **Enhanced font weights** for better readability
 - **Proper heading hierarchy** maintained
 - **ARIA labels** and semantic markup
 - **Video captions** and accessibility attributes
 
 ## Content Management
-- **Blog content**: Markdown files in `/src/content/blog/`
-- **Client data**: JSON file at `/src/data/client.json`
-- **Navigation data**: JSON file at `/src/data/navData.json`
-- **CMS**: Netlify CMS for content editing
-- **Content validation**: Zod schemas for type safety
+
+- **Client data** - JSON file at `/src/data/client.json`
+- **Navigation data** - JSON file at `/src/data/navData.json`
+- **CMS** - Netlify CMS for content editing
+- **Content validation** - Zod schemas for type safety
 
 ## Styling & Assets
-- **CSS Framework**: LESS preprocessor with modular stylesheets
-- **Fonts**: Lato font family (300, 400, 700, 900 weights) with async loading
+
+- **CSS Framework** - LESS preprocessor with modular stylesheets
+- **Fonts** - Lato font family (300, 400, 700, 900 weights) with async loading
 - **Colors**: 
   - Primary: #fed500 (yellow)
   - Secondary: #2a2400 (dark contrast-friendly)
   - Header: #1a1a1a (dark text)
   - Body: #4e4b66 (readable gray)
-- **Images**: Optimized WebP/AVIF formats, responsive sizing
-- **Animations**: Modern Intersection Observer API instead of heavy libraries
+- **Images** - Optimized WebP/AVIF formats, responsive sizing
+- **Animations** - Modern Intersection Observer API instead of heavy libraries
 
 ## Security & Best Practices
+
 - **Content Security Policy** with specific domain allowances
-- **Security headers**: X-Frame-Options, X-Content-Type-Options, COOP, COEP
-- **No console errors**: Proper error handling for video elements
-- **Semantic HTML**: Proper structure and accessibility
+- **Security headers** - X-Frame-Options, X-Content-Type-Options, COOP, COEP
+- **No console errors** - Proper error handling for video elements
+- **Semantic HTML** - Proper structure and accessibility
 
 ## Technical Stack
-- **Framework**: Astro with SSR
-- **Deployment**: Netlify with optimized headers
-- **CMS**: Netlify CMS (Decap CMS)
-- **Styling**: LESS with component-scoped styles
-- **Build**: Node.js with TypeScript support
-- **Performance**: Lighthouse-optimized (95+ scores targeted)
 
-## Cleaned Up Assets
-- **Removed unused components**: Portfolio, blog gallery, dark mode toggle
-- **Deleted test content**: Placeholder blog posts and irrelevant projects
-- **Eliminated large files**: Original backup images (~1.2MB saved)
-- **Removed unused styles**: Portfolio CSS and associated files
-
-## Target Market
-Professional cleaning services in Belgium specializing in:
-- Crime scene and forensic cleaning
-- Industrial facility cleaning and maintenance
-- Specialized residential cleaning (fire/water damage, hoarding, etc.)
-- 24/7 emergency response services
+- **Framework** - Astro with SSR
+- **Deployment** - Netlify with optimized headers
+- **CMS** - Netlify CMS (Decap CMS)
+- **Styling** - LESS with component-scoped styles
+- **Build** - Node.js with TypeScript support
+- **Performance** - Lighthouse-optimized (95+ scores targeted)
 
 ## Expected Performance Metrics
-- **Performance**: 95+ (from critical CSS, image optimization, deferred loading)
-- **Accessibility**: 100 (contrast fixes, proper markup)
-- **Best Practices**: 100 (security headers, no console errors)
-- **SEO**: 100 (semantic structure, meta tags, sitemap)
+
+- **Performance:** 95+ (from critical CSS, image optimization, deferred loading)
+- **Accessibility:** 100 (contrast fixes, proper markup)
+- **Best Practices:** 100 (security headers, no console errors)
+- **SEO:** 100 (semantic structure, meta tags, sitemap)
 
 ## Key Features
-- **Multilingual support**: Dutch/Flemish primary language
-- **Mobile-responsive design**: Optimized for all screen sizes
-- **SEO-optimized**: Structured data, meta tags, canonical URLs
-- **Contact forms**: Netlify Forms integration
-- **Video content**: Accessibility captions, proper error handling
-- **Modern animations**: Lightweight scroll effects using Intersection Observer
-- **Back-to-top functionality**: Smooth scrolling with fade animations 
+
+- **Multilingual support** - Dutch/Flemish primary language
+- **Mobile-responsive design** - Optimized for all screen sizes
+- **SEO-optimized** - Structured data, meta tags, canonical URLs
+- **Contact forms** - Netlify Forms integration
+- **Video content** - Accessibility captions, proper error handling
+- **Modern animations** - Lightweight scroll effects using Intersection Observer
+- **Back-to-top functionality** - Smooth scrolling with fade animations 
