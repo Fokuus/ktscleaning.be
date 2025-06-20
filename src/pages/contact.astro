@@ -26,7 +26,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         <input type="hidden" name="form-name" value="Contact Form" />
         <p class="hidden">
           <label>
-            Don’t fill this out if you’re human: <input name="bot-field" />
+            Don't fill this out if you're human: <input name="bot-field" />
           </label>
         </p>
         <div class="cs-content">
@@ -76,16 +76,16 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
                   </svg>
                 </div>
               </div>
-              <div class="cs-country-options" data-phone-options>
-                <div class="cs-country-option" data-country-value="+32" data-flag="🇧🇪">
+              <div class="cs-country-options" data-phone-options style="background: #ffffff !important;">
+                <div class="cs-country-option" data-country-value="+32" data-flag="🇧🇪" style="background-color: #ffffff !important;">
                   <span class="cs-country-flag">🇧🇪</span>
                   <span>+32 België</span>
                 </div>
-                <div class="cs-country-option" data-country-value="+31" data-flag="🇳🇱">
+                <div class="cs-country-option" data-country-value="+31" data-flag="🇳🇱" style="background-color: #ffffff !important;">
                   <span class="cs-country-flag">🇳🇱</span>
                   <span>+31 Nederland</span>
                 </div>
-                <div class="cs-country-option" data-country-value="+33" data-flag="🇫🇷">
+                <div class="cs-country-option" data-country-value="+33" data-flag="🇫🇷" style="background-color: #ffffff !important;">
                   <span class="cs-country-flag">🇫🇷</span>
                   <span>+33 Frankrijk</span>
                 </div>
@@ -117,14 +117,14 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
                   </svg>
                 </div>
               </div>
-              <div class="cs-select-options" data-options>
-                <div class="cs-option" data-value="industriele-reiniging">Industriële reiniging</div>
-                <div class="cs-option" data-value="gespecialiseerde-schoonmaak">Gespecialiseerde schoonmaak</div>
-                <div class="cs-option" data-value="crime-scene-cleaning">Crime scene cleaning</div>
-                <div class="cs-option" data-value="ontmanteling-cannabisplantage">Ontmanteling cannabisplantage</div>
-                <div class="cs-option" data-value="gecontamineerde-voertuigen">Gecontamineerde voertuigen</div>
-                <div class="cs-option" data-value="gevangeniscellen">Gevangeniscellen reinigen</div>
-                <div class="cs-option" data-value="andere">Andere</div>
+              <div class="cs-select-options" data-options style="background: #ffffff !important;">
+                <div class="cs-option" data-value="industriele-reiniging" style="background-color: #ffffff !important;">Industriële reiniging</div>
+                <div class="cs-option" data-value="gespecialiseerde-schoonmaak" style="background-color: #ffffff !important;">Gespecialiseerde schoonmaak</div>
+                <div class="cs-option" data-value="crime-scene-cleaning" style="background-color: #ffffff !important;">Crime scene cleaning</div>
+                <div class="cs-option" data-value="ontmanteling-cannabisplantage" style="background-color: #ffffff !important;">Ontmanteling cannabisplantage</div>
+                <div class="cs-option" data-value="gecontamineerde-voertuigen" style="background-color: #ffffff !important;">Gecontamineerde voertuigen</div>
+                <div class="cs-option" data-value="gevangeniscellen" style="background-color: #ffffff !important;">Gevangeniscellen reinigen</div>
+                <div class="cs-option" data-value="andere" style="background-color: #ffffff !important;">Andere</div>
               </div>
             </div>
           </label>
@@ -324,8 +324,15 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
             this.setCustomValidity('');
           }
         });
+
+        // Auto-grow functionality
+        messageInput.style.overflowY = 'hidden';
         messageInput.addEventListener('input', function() {
+          // Clear validation
           this.setCustomValidity('');
+          // Auto-grow
+          this.style.height = 'auto';
+          this.style.height = (this.scrollHeight) + 'px';
         });
       }
     }
@@ -426,20 +433,24 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
       trigger.addEventListener('click', function(e) {
         e.preventDefault();
         
-        // Close other dropdowns
-        phoneDropdowns.forEach(otherDropdown => {
-          if (otherDropdown !== dropdown) {
-            otherDropdown.classList.remove('active');
-            const otherOptions = otherDropdown.querySelector('[data-phone-options]');
-            if (otherOptions) {
-              otherOptions.classList.remove('active');
-            }
-          }
+        const parentLabel = dropdown.closest('label');
+        const isActive = dropdown.classList.contains('active');
+
+        // Close all dropdowns and reset z-index
+        document.querySelectorAll('[data-dropdown], [data-phone-dropdown]').forEach(d => {
+            const pLabel = d.closest('label');
+            if (pLabel) pLabel.classList.remove('dropdown-active');
+            d.classList.remove('active');
+            const opts = d.querySelector('[data-options], [data-phone-options]');
+            if (opts) opts.classList.remove('active');
         });
-        
-        // Toggle current dropdown
-        dropdown.classList.toggle('active');
-        options.classList.toggle('active');
+
+        if (!isActive) {
+            // Open this dropdown
+            if (parentLabel) parentLabel.classList.add('dropdown-active');
+            dropdown.classList.add('active');
+            options.classList.add('active');
+        }
       });
       
       // Handle option selection
@@ -563,20 +574,24 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
       trigger.addEventListener('click', function(e) {
         e.preventDefault();
         
-        // Close other dropdowns
-        customSelects.forEach(otherDropdown => {
-          if (otherDropdown !== dropdown) {
-            otherDropdown.classList.remove('active');
-            const otherOptions = otherDropdown.querySelector('[data-options]');
-            if (otherOptions) {
-              otherOptions.classList.remove('active');
-            }
-          }
+        const parentLabel = dropdown.closest('label');
+        const isActive = dropdown.classList.contains('active');
+
+        // Close all dropdowns and reset z-index
+        document.querySelectorAll('[data-dropdown], [data-phone-dropdown]').forEach(d => {
+            const pLabel = d.closest('label');
+            if (pLabel) pLabel.classList.remove('dropdown-active');
+            d.classList.remove('active');
+            const opts = d.querySelector('[data-options], [data-phone-options]');
+            if (opts) opts.classList.remove('active');
         });
-        
-        // Toggle current dropdown
-        dropdown.classList.toggle('active');
-        options.classList.toggle('active');
+
+        if (!isActive) {
+            // Open this dropdown
+            if (parentLabel) parentLabel.classList.add('dropdown-active');
+            dropdown.classList.add('active');
+            options.classList.add('active');
+        }
       });
       
       // Handle option selection
@@ -618,6 +633,8 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           if (dropdownOptions) {
             dropdownOptions.classList.remove('active');
           }
+          const parentLabel = dropdown.closest('label');
+          if (parentLabel) parentLabel.classList.remove('dropdown-active');
         });
       }
       
@@ -629,6 +646,8 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           if (dropdownOptions) {
             dropdownOptions.classList.remove('active');
           }
+          const parentLabel = dropdown.closest('label');
+          if (parentLabel) parentLabel.classList.remove('dropdown-active');
         });
       }
     });
@@ -750,11 +769,16 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           justify-content: center;
           align-items: flex-start;
           width: 100%;
+          position: relative;
+
+          &.dropdown-active {
+            z-index: 100;
+          }
         }
 
         .cs-label-message {
           /* 32px - 48px */
-          margin-bottom: clamp(2rem, 6.3vw, 3rem);
+          margin-bottom: clamp(1.5rem, 4vw, 2rem);
         }
 
         .cs-input-wrapper {
@@ -797,6 +821,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           position: relative;
           width: (120/16rem);
           flex-shrink: 0;
+          z-index: 10000;
           
           &::before {
             content: '';
@@ -814,6 +839,10 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           
           &.active::before {
             opacity: 1;
+          }
+          
+          &.active {
+            z-index: 100000;
           }
         }
 
@@ -885,12 +914,12 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           top: 100%;
           left: 0;
           right: 0;
-          background: #ffffff;
+          background: #ffffff !important;
           border: 1px solid var(--primary);
           border-top: none;
           max-height: 200px;
           overflow-y: auto;
-          z-index: 1000;
+          z-index: 99999;
           opacity: 0;
           visibility: hidden;
           transform: translateY(-10px);
@@ -898,10 +927,17 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
           
           &.active {
-            opacity: 1;
+            opacity: 1 !important;
             visibility: visible;
             transform: translateY(0);
+            background: #ffffff !important;
+            background-color: #ffffff !important;
           }
+        }
+        
+        .cs-country-select.active .cs-country-options {
+          background: #ffffff !important;
+          background-color: #ffffff !important;
         }
 
         .cs-country-option {
@@ -911,17 +947,18 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           cursor: pointer;
           transition: all 0.2s ease;
           font-weight: 200;
+          background-color: #ffffff !important;
           display: flex;
           align-items: center;
           gap: (8/16rem);
           
           &:hover {
-            background: rgba(254, 213, 0, 0.1);
+            background: rgba(254, 213, 0, 0.1) !important;
             color: var(--headerColor);
           }
           
           &.selected {
-            background: white;
+            background: #ffffff !important;
             color: var(--headerColor);
             font-weight: 300;
           }
@@ -947,6 +984,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           position: relative;
           margin-top: (4/16rem);
           width: 100%;
+          z-index: 10000;
           
           &::before {
             content: '';
@@ -965,6 +1003,10 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           &.active::before {
             opacity: 1;
           }
+          
+          &.active {
+            z-index: 100000;
+          }
         }
 
         input,
@@ -977,7 +1019,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           box-sizing: border-box;
           padding: 0 (20/16rem);
           border: 1px solid var(--primary);
-          background: rgba(255, 255, 255, 0.05);
+          background: rgba(255, 255, 255, 1);
           backdrop-filter: blur(10px);
           color: var(--headerColor);
           font-family: inherit;
@@ -1046,7 +1088,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           box-sizing: border-box;
           padding: 0 (50/16rem) 0 (20/16rem);
           border: 1px solid var(--primary);
-          background: rgba(255, 255, 255, 0.05);
+          background: rgba(255, 255, 255, 15);
           backdrop-filter: blur(10px);
           color: var(--headerColor);
           font-family: inherit;
@@ -1096,12 +1138,12 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           top: 100%;
           left: 0;
           right: 0;
-          background: #ffffff;
+          background: #ffffff !important;
           border: 1px solid var(--primary);
           border-top: none;
           max-height: 200px;
           overflow-y: auto;
-          z-index: 1000;
+          z-index: 99999;
           opacity: 0;
           visibility: hidden;
           transform: translateY(-10px);
@@ -1109,10 +1151,17 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
           
           &.active {
-            opacity: 1;
+            opacity: 1 !important;
             visibility: visible;
             transform: translateY(0);
+            background: #ffffff !important;
+            background-color: #ffffff !important;
           }
+        }
+        
+        .cs-custom-select.active .cs-select-options {
+          background: #ffffff !important;
+          background-color: #ffffff !important;
         }
 
         .cs-option {
@@ -1122,14 +1171,15 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           cursor: pointer;
           transition: all 0.2s ease;
           font-weight: 200;
+          background-color: #ffffff !important;
           
           &:hover {
-            background: rgba(254, 213, 0, 0.1);
+            background: rgba(254, 213, 0, 0.1) !important;
             color: var(--headerColor);
           }
           
           &.selected {
-            background: white;
+            background: #ffffff !important;
             color: var(--headerColor);
             font-weight: 300;
           }
@@ -1162,12 +1212,13 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
           min-height: (120/16rem);
           padding-top: (20/16rem);
           padding-bottom: (20/16rem);
-          resize: vertical;
+          resize: none;
           font-family: inherit;
         }
 
         .cs-button-solid {
-          width: 100%;
+          width: auto;
+          display: inline-block;
           border: none;
           background-color: var(--primary);
           color: #000;
