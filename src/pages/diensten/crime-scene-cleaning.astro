@@ -1,12 +1,9 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-
-
 import FAQ from "@components/FAQ.astro";
-import Button from "@components/Button.astro";
 import ContentSection from "@components/ContentSection.astro";
-import TableOfContents from "@components/TemplateComponents/TableOfContents.astro";
 import SideBySide from "@components/SideBySide.astro";
+import ServiceHero from "@components/ServiceHero.astro";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import landingImage from "@assets/images/landing.jpg"
@@ -29,34 +26,16 @@ const headings = [
   preloadedImage = {optimizedImage}
 >
 
-
-
-
-  <!-- ============================================ -->
-  <!--              Table of Contents               -->
-  <!-- ============================================ -->
-
-  <section id="table-of-contents" style="padding-top: clamp(12.5rem, 16.82vw, 15.25rem);">
-    <div class="cs-container">
-      <div class="cs-content">
-        <span class="cs-topper">Gespecialiseerde Dienstverlening</span>
-        <h2 class="cs-title">Crime Scene Cleaning Expertise</h2>
-        <p class="cs-text">
-          <strong>KTS Cleaning</strong> is specialist in <strong>crime scene cleaning</strong> en biedt discrete, professionele dienstverlening voor de meest complexe situaties. Met <strong>jarenlange ervaring</strong> en gespecialiseerde uitrusting zorgen wij voor <strong>veilige en grondige reiniging</strong> waar anderen het opgeven.
-        </p>
-        <ul class="cs-services-list">
-          <li><strong>24/7 spoedhulp</strong> voor noodsituaties</li>
-          <li><strong>Gecertificeerde biohazard</strong> verwijdering</li>
-          <li><strong>Discrete en respectvolle</strong> benadering</li>
-          <li>Samenwerking met <strong>hulpdiensten</strong></li>
-        </ul>
-        <Button text="24/7 Noodlijn" href="/contact" />
-      </div>
-      <div class="cs-toc-wrapper" id="desktop-toc">
-        <TableOfContents headings={headings} levels={2} />
-      </div>
-    </div>
-  </section>
+  <ServiceHero
+    topper="Gespecialiseerde Dienstverlening"
+    title="Crime Scene Cleaning Expertise"
+    text="<strong>KTS Cleaning</strong> is specialist in <strong>crime scene cleaning</strong> en biedt discrete, professionele dienstverlening voor de meest complexe situaties. Met <strong>jarenlange ervaring</strong> en gespecialiseerde uitrusting zorgen wij voor <strong>veilige en grondige reiniging</strong> waar anderen het opgeven."
+    imageSrc="/assets/images/crime-scene-cleaning-01.webp"
+    imageAlt="Crime Scene Cleaning Professional Service"
+    headings={headings}
+    buttonText="24/7 Noodlijn"
+    buttonHref="/contact"
+  />
 
   <!-- ============================================ -->
   <!--                Content Sections             -->
@@ -197,9 +176,21 @@ const headings = [
     background-color: #f8f9fa;
 
     .cs-container {
+      width: var(--contentWidthMobile);
+      max-width: var(--contentWidthDesktopMax);
+      margin: auto;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 (24/16rem);
       gap: (48/16rem);
+      background-color: #f7f7f7;
+
+      @media only screen and (min-width: 48rem) {
+        padding: 0 (64/16rem);
+        width: var(--contentWidthDesktop);
+      }
 
       @media only screen and (min-width: 64rem) {
         flex-direction: row;
@@ -211,9 +202,7 @@ const headings = [
     .cs-content {
       text-align: left;
       width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+
 
       @media only screen and (min-width: 64rem) {
         width: 60%;
@@ -237,47 +226,76 @@ const headings = [
 
     .cs-text {
       text-align: left;
-      margin-bottom: (32/16rem);
       max-width: none;
     }
 
-    .cs-services-list {
-      margin: 0 0 (32/16rem) 0;
-      padding: 0;
-      list-style: none;
 
-      li {
-        font-size: (16/16rem);
-        line-height: 1.5em;
-        color: var(--bodyTextColor);
-        margin-bottom: (12/16rem);
-        padding-left: (20/16rem);
-        position: relative;
 
-        &::before {
-          content: "";
-          width: (8/16rem);
-          height: (8/16rem);
-          background-color: var(--primary);
-          position: absolute;
-          left: 0;
-          top: (8/16rem);
-          transform: rotate(45deg);
-        }
+    .cs-sidebar-wrapper {
+      width: 100%;
+      display: none; // Hide on mobile since we have inline TOC
+
+      @media only screen and (min-width: 64rem) {
+        display: flex;
+        flex-direction: column;
+        gap: (24/16rem);
+        width: 40%;
+        position: sticky;
+        top: (120/16rem);
+      }
+    }
+
+    .cs-mobile-image {
+      width: 100%;
+      height: 91.14vw;
+      max-height: (360/16rem);
+      margin: 2.4rem 0;
+      position: relative;
+      display: block; // Show on mobile
+      overflow: hidden;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      @media only screen and (min-width: 64rem) {
+        display: none; // Hide mobile image on desktop
+      }
+    }
+
+    .cs-sidebar-image-desktop {
+      width: 100%;
+      height: (400/16rem);
+      margin: 0; // Reset margin for desktop version
+      position: relative;
+      overflow: hidden;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      @media only screen and (max-width: 63.9375rem) {
+        display: none; // Hide desktop image on mobile
+      }
+
+      @media only screen and (min-width: 64rem) {
+        display: block; // Show desktop image on desktop
       }
     }
 
     .cs-toc-wrapper {
       width: 100%;
       background-color: #fff;
-      padding: (32/16rem);
+      padding: (20/16rem);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-
-      @media only screen and (min-width: 64rem) {
-        width: 40%;
-        position: sticky;
-        top: (120/16rem);
-      }
+      margin: 2.4rem 0;
     }
   }
 

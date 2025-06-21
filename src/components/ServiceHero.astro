@@ -1,0 +1,172 @@
+---
+import Button from "@components/Button.astro";
+import TableOfContents from "@components/TemplateComponents/TableOfContents.astro";
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  topper: string;
+  title: string;
+  text: string;
+  imageSrc: string;
+  imageAlt: string;
+  headings: Heading[];
+  buttonText: string;
+  buttonHref: string;
+}
+
+const {
+  topper,
+  title,
+  text,
+  imageSrc,
+  imageAlt,
+  headings,
+  buttonText,
+  buttonHref,
+} = Astro.props;
+---
+
+<section id="table-of-contents" style="padding-top: clamp(12.5rem, 16.82vw, 15.25rem);">
+  <div class="cs-container">
+    <div class="cs-content">
+      <span class="cs-topper">{topper}</span>
+      <h2 class="cs-title" set:html={title} />
+      <p class="cs-text" set:html={text} />
+      <div class="cs-button">
+        <Button text={buttonText} href={buttonHref} />
+      </div>
+      <div class="cs-sidebar-image cs-mobile-image">
+        <img src={imageSrc} alt={imageAlt} width="400" height="300" loading="lazy" decoding="async">
+      </div>
+      <div class="cs-toc-wrapper" id="desktop-toc">
+        <TableOfContents headings={headings} levels={2} />
+      </div>
+    </div>
+    <div class="cs-sidebar-wrapper">
+      <div class="cs-sidebar-image cs-sidebar-image-desktop">
+        <img src={imageSrc} alt={imageAlt} width="400" height="300" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="less">
+  #table-of-contents {
+    padding-bottom: 0rem !important;
+    background-color: #f8f9fa;
+
+    .cs-container {
+      width: 100%;
+      max-width: var(--contentWidthDesktop);
+      margin: auto;
+      padding: 0 (24/16rem);
+      background-color: #f7f7f7;
+
+      @media only screen and (min-width: 64rem) {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: (80/16rem);
+        padding: 0 (64/16rem);
+      }
+    }
+
+    .cs-content {
+      text-align: left;
+      width: 100%;
+
+      @media only screen and (min-width: 64rem) {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .cs-topper {
+      text-align: left;
+      margin-bottom: (4/16rem);
+    }
+
+    .cs-title {
+      text-align: left;
+      max-width: none;
+      margin: 0 0 (16/16rem) 0;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .cs-text {
+      text-align: left;
+      max-width: none;
+      margin-bottom: (24/16rem);
+    }
+
+    .cs-button {
+      @media only screen and (min-width: 64rem) {
+        order: 3;
+      }
+    }
+
+    .cs-sidebar-wrapper {
+      display: none;
+
+      @media only screen and (min-width: 64rem) {
+        display: block;
+        width: 40%;
+        position: sticky;
+        top: (120/16rem);
+      }
+    }
+
+    .cs-mobile-image {
+      width: 100%;
+      height: (300/16rem);
+      margin: (24/16rem) 0;
+      position: relative;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      @media only screen and (min-width: 64rem) {
+        display: none;
+      }
+    }
+
+    .cs-sidebar-image-desktop {
+      width: 100%;
+      height: (400/16rem);
+      position: relative;
+      overflow: hidden;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .cs-toc-wrapper {
+      width: 100%;
+      background-color: #fff;
+      padding: (20/16rem);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      margin: (24/16rem) 0 0 0;
+
+      @media only screen and (min-width: 64rem) {
+        order: 2;
+        margin-bottom: (24/16rem);
+      }
+    }
+  }
+</style> 

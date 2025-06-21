@@ -1,12 +1,9 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-
-
 import FAQ from "@components/FAQ.astro";
-import Button from "@components/Button.astro";
 import ContentSection from "@components/ContentSection.astro";
-import TableOfContents from "@components/TemplateComponents/TableOfContents.astro";
 import SideBySide from "@components/SideBySide.astro";
+import ServiceHero from "@components/ServiceHero.astro";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import landingImage from "@assets/images/landing.jpg"
@@ -29,32 +26,16 @@ const headings = [
   preloadedImage = {optimizedImage}
 >
 
-
-  <!-- ============================================ -->
-  <!--              Table of Contents               -->
-  <!-- ============================================ -->
-
-  <section id="table-of-contents" style="padding-top: clamp(12.5rem, 16.82vw, 15.25rem);">
-    <div class="cs-container">
-      <div class="cs-content">
-        <span class="cs-topper">Professionele Expertise</span>
-        <h2 class="cs-title">Gespecialiseerde Schoonmaak Diensten</h2>
-        <p class="cs-text">
-          Van het eenmalig reinigen van een <strong>zwaar vervuilde woning</strong> of na een <strong>onopgemerkt overlijden</strong> tot het ontruimen van inboedel of een periodieke stal- en industriële reiniging… onze <strong>ervaren teams</strong> voeren zowel specialistische opdrachten als grootschalige projecten uit. <strong>Professioneel en persoonlijk</strong>, reken op een vlekkeloos resultaat.
-        </p>
-        <ul class="cs-services-list">
-          <li><strong>24/7 beschikbaarheid</strong> voor spoedsituaties</li>
-          <li><strong>Gecertificeerde expertise</strong> in gespecialiseerde reiniging</li>
-          <li><strong>Discrete en respectvolle</strong> benadering</li>
-          <li><strong>Volledige verzekering</strong> en garantie</li>
-        </ul>
-        <Button text="Vraag Gratis Offerte" href="/contact" />
-      </div>
-      <div class="cs-toc-wrapper" id="desktop-toc">
-        <TableOfContents headings={headings} levels={2} />
-      </div>
-    </div>
-  </section>
+<ServiceHero
+  topper="Professionele Expertise"
+  title="Gespecialiseerde Schoonmaak Diensten"
+  text="Van het eenmalig reinigen van een <strong>zwaar vervuilde woning</strong> of na een <strong>onopgemerkt overlijden</strong> tot het ontruimen van inboedel of een periodieke stal- en industriële reiniging… onze <strong>ervaren teams</strong> voeren zowel specialistische opdrachten als grootschalige projecten uit. <strong>Professioneel en persoonlijk</strong>, reken op een vlekkeloos resultaat."
+  imageSrc="/assets/images/gespecialiseerde-schoonmaak-01.jpg"
+  imageAlt="Gespecialiseerde schoonmaak diensten"
+  headings={headings}
+  buttonText="Vraag Gratis Offerte"
+  buttonHref="/contact"
+/>
 
   <!-- ============================================ -->
   <!--                Content Sections             -->
@@ -185,72 +166,4 @@ const headings = [
   </div>
 
 </BaseLayout>
-
-<style lang="less">
-  /* Table of Contents Styles */
-  #table-of-contents {
-    padding: var(--sectionPadding);
-    padding-bottom: 0rem !important;
-    background-color: #f8f9fa;
-
-    .cs-container {
-      display: flex;
-      flex-direction: column;
-      gap: (48/16rem);
-
-      @media only screen and (min-width: 64rem) {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: (80/16rem);
-      }
-    }
-
-    .cs-content {
-      text-align: left;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-
-      @media only screen and (min-width: 64rem) {
-        width: 60%;
-      }
-    }
-
-    .cs-topper {
-      text-align: left;
-      margin-bottom: (4/16rem);
-    }
-
-    .cs-title {
-      text-align: left;
-      max-width: none;
-      margin: 0 0 (16/16rem) 0;
-
-      &::after {
-        display: none;
-      }
-    }
-
-    .cs-text {
-      text-align: left;
-      margin-bottom: (32/16rem);
-      max-width: none;
-    }
-
-
-
-    .cs-toc-wrapper {
-      width: 100%;
-      background-color: #fff;
-      padding: (32/16rem);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-
-      @media only screen and (min-width: 64rem) {
-        width: 40%;
-        position: sticky;
-        top: (120/16rem);
-      }
-    }
-  }
 
