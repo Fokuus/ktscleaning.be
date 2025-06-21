@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+
+const services = await getCollection('services');
+---
+
+<html>
+<head>
+    <title>Test Services Collection</title>
+</head>
+<body>
+    <h1>Services Collection Test</h1>
+    <p>Found {services.length} services:</p>
+    <ul>
+        {services.map(service => (
+            <li>
+                <strong>{service.slug}</strong>: {service.data.title}
+                <br />
+                <small>Hero title: {service.data.hero.title}</small>
+            </li>
+        ))}
+    </ul>
+</body>
+</html> 

@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from "@layouts/BaseLayout.astro";
+import FAQ from "@components/FAQ.astro";
+import ContentSection from "@components/ContentSection.astro";
+import SideBySide from "@components/SideBySide.astro";
+import ServiceHero from "@components/ServiceHero.astro";
+
+// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
+import landingImage from "@assets/images/landing.jpg"
+import { getImage } from "astro:assets";
+const optimizedImage = await getImage({src: landingImage, format: 'avif'})
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const { data } = service;
+
+// Transform table of contents for ServiceHero component
+const headings = data.tableOfContents.map(item => ({
+  depth: 2,
+  slug: item.slug,
+  text: item.text
+}));
+---
+
+<BaseLayout
+  title={data.title}
+  description={data.description}
+  preloadedImage={optimizedImage}
+>
+  <ServiceHero
+    topper={data.hero.topper}
+    title={data.hero.title}
+    text={data.hero.text}
+    imageSrc={data.hero.image}
+    imageAlt={data.hero.imageAlt}
+    headings={headings}
+    buttonText={data.hero.buttonText}
+    buttonHref={data.hero.buttonHref}
+  />
+
+  <!-- ============================================ -->
+  <!--                Content Sections             -->
+  <!-- ============================================ -->
+
+  {data.contentSections.map((section) => (
+    <div id={section.id}>
+      <ContentSection
+        heading={section.heading}
+        text={section.text}
+        servicesTitle={section.servicesTitle}
+        services={section.services}
+        buttonText={section.buttonText}
+        buttonHref={section.buttonHref}
+        imageSrc={section.imageSrc}
+        imageAlt={section.imageAlt}
+        reversed={section.reversed}
+      />
+    </div>
+  ))}
+
+  <!-- ============================================ -->
+  <!--              Before & After Section         -->
+  <!-- ============================================ -->
+
+  {data.beforeAfter && (
+    <SideBySide 
+      id={data.beforeAfter.id}
+      title={data.beforeAfter.title}
+      text={data.beforeAfter.text}
+      beforeImage={data.beforeAfter.beforeImage}
+      afterImage={data.beforeAfter.afterImage}
+      beforeAlt={data.beforeAfter.beforeAlt}
+      afterAlt={data.beforeAfter.afterAlt}
+      projectItems={data.beforeAfter.projectItems}
+      showStats={false}
+    />
+  )}
+
+  <!-- ============================================ -->
+  <!--                    FAQ                       -->
+  <!-- ============================================ -->
+
+  <div id="veelgestelde-vragen">
+    <FAQ 
+      title={data.faq.title}
+      topper={data.faq.topper}
+      faqs={data.faq.faqs}
+    />
+  </div>
+
+</BaseLayout> 

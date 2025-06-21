@@ -26,6 +26,94 @@ media_folder: "src/assets/images" # Main media folder
 public_folder: "/src/assets/images" # Main public folder with leading slash for absolute paths
 
 collections:
+  - name: "services"
+    label: "Service Pages"
+    folder: "src/content/services"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    media_folder: "../../assets/images/services"
+    public_folder: "/src/assets/images/services"
+    format: "frontmatter"
+    identifier_field: "title"
+    fields:
+      # Page metadata
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Meta Description", name: "description", widget: "text" }
+      
+      # Hero Section
+      - label: "Hero Section"
+        name: "hero"
+        widget: "object"
+        fields:
+          - { label: "Topper Text", name: "topper", widget: "string" }
+          - { label: "Main Title", name: "title", widget: "string" }
+          - { label: "Description", name: "text", widget: "markdown" }
+          - { label: "Hero Image", name: "image", widget: "image" }
+          - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+          - { label: "Button Text", name: "buttonText", widget: "string" }
+          - { label: "Button Link", name: "buttonHref", widget: "string", default: "/contact" }
+      
+      # Table of Contents
+      - label: "Table of Contents"
+        name: "tableOfContents"
+        widget: "list"
+        fields:
+          - { label: "Section Title", name: "text", widget: "string" }
+          - { label: "Section ID", name: "slug", widget: "string", hint: "URL anchor (e.g., plaats-delict)" }
+      
+      # Content Sections
+      - label: "Content Sections"
+        name: "contentSections"
+        widget: "list"
+        fields:
+          - { label: "Section ID", name: "id", widget: "string" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Text Content", name: "text", widget: "markdown" }
+          - { label: "Services Title", name: "servicesTitle", widget: "string" }
+          - label: "Services List"
+            name: "services"
+            widget: "list"
+            field: { label: "Service Item", name: "item", widget: "string" }
+          - { label: "Button Text", name: "buttonText", widget: "string" }
+          - { label: "Button Link", name: "buttonHref", widget: "string", default: "/contact" }
+          - { label: "Section Image", name: "imageSrc", widget: "image" }
+          - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+          - { label: "Reversed Layout", name: "reversed", widget: "boolean", default: false }
+      
+      # Before/After Section
+      - label: "Before & After Section"
+        name: "beforeAfter"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Section ID", name: "id", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "text", widget: "markdown" }
+          - { label: "Before Image", name: "beforeImage", widget: "image" }
+          - { label: "Before Alt Text", name: "beforeAlt", widget: "string" }
+          - { label: "After Image", name: "afterImage", widget: "image" }
+          - { label: "After Alt Text", name: "afterAlt", widget: "string" }
+          - label: "Project Items"
+            name: "projectItems"
+            widget: "list"
+            field: { label: "Item", name: "item", widget: "string" }
+      
+      # FAQ Section
+      - label: "FAQ Section"
+        name: "faq"
+        widget: "object"
+        fields:
+          - { label: "FAQ Title", name: "title", widget: "string" }
+          - { label: "FAQ Topper", name: "topper", widget: "string" }
+          - label: "FAQ Items"
+            name: "faqs"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }
+              - { label: "Default Open", name: "isActive", widget: "boolean", default: false }
+
   - name: "blog" # Used in routes, e.g., /admin/collections/blog. Is also the key when fetching data from the CMS.
     label: "Blog" # Used in the admin dashboard UI
     folder: "src/content/blog" # The path to the folder where the documents are stored
